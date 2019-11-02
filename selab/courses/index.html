@@ -1,73 +1,81 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8" />
-	<title>Software Engineering Lab - Research</title>
-	<!--[if IE]>
-	<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="../common/styles/reset-1.6.1.css" type="text/css" />
-<link rel="stylesheet" href="../common/styles/jquery-ui.css" type="text/css" />
-<link rel="stylesheet" href="../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" />
-<link rel="stylesheet" href="../common/styles/common.css" type="text/css" />
-<link rel="shortcut icon" href="../common/images/SelabFavicon.png" type="image/png">
-<link rel="stylesheet" href="styles/courses.css" type="text/css" />
+	<head>
+		<meta charset="utf-8" />
+		<title>Software Engineering Lab - Courses</title>
+		<!--[if IE]>
+		<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" href="../maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
+		<link rel="stylesheet" href="../common/styles/reset-1.6.1.css" type="text/css" />
+		<link rel="stylesheet" href="../common/styles/jquery-ui.css" type="text/css" />
+		<link rel="stylesheet" href="../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" />
+		<link rel="stylesheet" href="../common/styles/common.css" type="text/css" />
+		<link rel="shortcut icon" href="../common/images/SelabFavicon.png" type="image/png">
+		<link rel="stylesheet" href="styles/courses.css" type="text/css" />
 
-<script type="text/javascript" src="../common/scripts/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../common/scripts/jquery-ui.js"></script>
-<script type="text/javascript" src="../common/scripts/buffered-keyup.js"></script>
-<script type="text/javascript" src="../common/scripts/common.js"></script>
-<script type="text/javascript" src="script/courses.js"></script>
+		<script type="text/javascript" src="../common/scripts/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="../common/scripts/jquery-ui.js"></script>
+		<script type="text/javascript" src="../common/scripts/buffered-keyup.js"></script>
+		<script type="text/javascript" src="../common/scripts/common.js"></script>
+		<script type="text/javascript" src="scripts/courses.js"></script>
 
-</head>
+	</head>
 
+	<body>
+		<header role="banner">
+			<div class="container">
+				<nav role="navigation">
+					<div id="logo" class="pull-left"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
+					<ul id="menu" class="inline-list pull-left">
+						<li class="pull-left"><a href="../notice/index.html" >NOTICE</a></li>
+						<li class="pull-left"><a href="../members/index.html" >MEMBERS</a></li>
+						<li class="pull-left"><a href="../research/index.html"class="selected" >RESEARCH</a></li>
+						<li class="pull-left"><a href="../publications/index.html" >PUBLICATIONS</a></li>
+						<li class="pull-left"><a href="../courses/index.html" >COURSES</a></li>
+						<li class="pull-left"><a href="../gallery/index.html" >GALLERY</a></li>
+					</ul>
+					<div role="login" class="pull-right">
+						<a href="../login/index4e7d.html?source=/index.php">LOGIN</a>
+					</div>
+					<a id="contact" href="../contact/index.html" class='pull-right'>CONTACT</a>
+				</nav>
+			</div>
+		</header>
 
-
-<!-- Created by HTTrack Website Copier/3.49-2 [XR&CO'2014] -->
-
-<!-- Mirrored from selab.hanyang.ac.kr/research/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:25 GMT -->
-<body>
-	<header role="banner">
-		<div class="container">
-			<nav role="navigation">
-				<div id="logo" class="pull-left"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
-				<ul id="menu" class="inline-list pull-left">
-					<li class="pull-left"><a href="../notice/index.html" >NOTICE</a></li>
-					<li class="pull-left"><a href="../members/index.html" >MEMBERS</a></li>
-					<li class="pull-left"><a href="../research/index.html"class="selected" >RESEARCH</a></li>
-					<li class="pull-left"><a href="../publications/index.html" >PUBLICATIONS</a></li>
-					<li class="pull-left"><a href="../courses/index.html" >COURSES</a></li>
-					<li class="pull-left"><a href="../gallery/index.html" >GALLERY</a></li>
-				</ul>
-				<div role="login" class="pull-right">
-					<a href="login/index4e7d.html?source=/index.php">LOGIN</a>            
-				</div>
-				<a id="contact" href="contact/index.html" class='pull-right'>CONTACT</a>
-			</nav>
-		</div>
-	</header>
-
-	<main role="main" style="height: 4874px;">
-		<div class="container">
-			<div class="contents">
-				<h1>COURSES</h1>
-				<div id="course_table">
-					<table id="first_table">
-						<tbody>
+		<main role="main">
+			<div class="container">
+				<div class="contents">
+					<h1>COURSES</h1>
+					<div id="course_table">
+						<table id="first_table">
 							<tr>
-								<th class="coursenum"colspan="2">Undergraduate Courses</th>
+								<th class="coursenum" colspan="2">Undergraduate Courses</th>
 							</tr>
 							<tr>
-								<td class="coursnum active"><a href="./cse326/2019/index.html">CSE326</a></td>
-								<td class="course active"><a href="./cse326/2019/index.html">
+								<td class="coursenum" data-href="cse107">CSE107</td>
+								<td class="course" data-href="cse107">Logical Fundamentals of Programming</td>
+							</tr>
+							<tr>
+								<td class="coursenum">CSE117</td>
+								<td class="course">Programming Fundamentals</td>
+							</tr>
+							<tr>
+								<td class="coursenum">CSE322</td>
+								<td class="course">Web Programming</td>
+							</tr>
+							<tr>
+								<td class="coursnum active"><a href="cse326/2019/index.html">CSE326</a></td>
+								<td class="course active"><a href="cse326/2019/index.html">
 								Web Application Development</a></td>
 							</tr>
-						</tbody>
-					</table>
-					<div id="over">
-						<table id="second_table">
-							<tbody>
+							<tr>
+								<td class="coursenum" data-href="cse406">CSE406</td>
+								<td class="course" data-href="cse406">Software Engineering</td>
+							</tr>
+						</table>
+						<div id="over">
+							<table id="second_table">
 								<tr>
 									<th>2019-2</th>
 									<th>2019-1</th>
@@ -84,13 +92,28 @@
 									<th>2013-1</th>
 									<th>2012-2</th>
 									<th>2012-1</th>
-									<th>2011-1</th>
+									<th>2011-2</th>
 								</tr>
 								<tr>
-									<td>
-										<div class="circle">
-										</div>
-									</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+								</tr>
+								<!--Programming Fundamentals-->
+								<tr>
 									<td></td>
 									<td></td>
 									<td></td>
@@ -103,22 +126,79 @@
 									<td></td>
 									<td></td>
 									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+								</tr>
+								<!--Web-->
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<!-- Web App -->
+								<tr>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td><div class="circle"></div></td>
 									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>
 								</tr>
-							</tbody>
-						</table>
+								<!--SE-->
+								<tr>
+									<td></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td><div class="circle"></div></td>
+									<td></td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</main>
-	<footer role="contentinfo">
-		<div class="container">
-			<p>COPYRIGHT 2014 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
-		</div>
-	</footer>
-</body>
+		</main>
+
+		<footer role="contentinfo">
+			<div class="container">
+				<p>COPYRIGHT 2014 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
+			</div>
+		</footer>
+	</body>
 </html>

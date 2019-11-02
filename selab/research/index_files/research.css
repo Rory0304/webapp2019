@@ -1,0 +1,196 @@
+/*.contents a{
+	color: gray;
+}*/
+.contents .hidden{
+	display: none;
+}
+.contents h3{
+	background-color: #8bcbe3;
+	color: white;
+	font-size: 20px;
+	padding: 10px;
+	margin-bottom:10px;
+}
+/*탭바 css 시작*/
+input[type=radio]{display:none;}
+#first ~ #researches{display:none;}
+#first:checked ~ #researches{display: block;}
+
+#second ~ #project{display:none;}
+#second:checked ~ #project{display: block;}
+
+/*탭바 css 끝*/
+.subject{
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 10px;
+	background-color: white;
+}
+.contents ul{
+}
+.contents .subject li{
+	margin: 5px;
+	font-size: 18px;
+	list-style-image: url('../../members/images/list-img.png');
+}
+#long{
+	height: 230px;
+}
+.subject img{
+	float: left;
+}
+.subject #KEY{
+	margin-left: 27px;
+	margin-right: 65px;
+}
+.subject #FEM{
+	margin-left: 5px;
+	padding-top: 20px;
+	margin-right: 35px;/*230+30px*/
+}
+.subject #RT{
+	margin-left: 5px;
+	padding-top: 7px;
+	margin-right: 30px;
+}
+.subject #RE{
+	margin-left: 41px;
+	padding-top: 7px;
+	margin-right: 75px;
+}
+.subject #XML{
+	padding-top: 5px;
+	margin-left: 37px;
+	margin-right: 50px;
+	padding-bottom: 5px;
+}
+/*-----------------researches end-------------------------*/
+.contents #register{
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    width: 690px;
+    margin-left:-345px;
+    color:#4796bd;
+    border-radius: 5px;
+    border: 2px solid #4796bd;
+    font-size: 15px;
+    font-weight: normal;
+    background-color: #f4f4f4;
+    box-shadow: 0 3px 10px black;
+    z-index: 1;
+}
+.contents #register .subwrap{
+    width: 660px;
+    margin: 15px;
+	margin-top: 0;
+	margin-bottom: 0;
+    overflow: hidden;
+}
+.contents #register .subwrap p{
+    margin: 0;
+    padding: 0;
+	float: left
+}
+.contents #register input[type="text"]{
+    padding: 0;
+	margin-top:7px;
+	margin-bottom:7px;
+    border: none;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 100;
+    padding-left: 10px;
+}
+.contents #register #Project_name{
+	width: 648px;
+}
+.contents #register  #start_date, .contents #register #end_date{
+	font-size: 18px;
+	margin-right: 30px;
+	width:100px;
+}
+.contents #register #related{
+	width: 250px;
+}
+.contents #register .subname{
+    margin: 0;
+    padding: 0;
+    display: inline;
+    float: left;
+    padding-top: 11px;
+    margin-right: 10px;
+}
+
+.contents #register #title-name{
+	margin: 15px;
+    font-size: 30px;
+    padding-top: 3px;
+}
+.contents #register #buttons{
+	margin-bottom: 15px;
+	float: right;
+}
+.contents #register #buttons button{
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background-color: #4796bd;
+    width: 110px;
+    color: white;
+    font-size: 15px;
+    height: 40px;
+    margin-left:10px;
+}
+.contents #register #buttons button:hover{
+    background-color: rgb(41, 112, 148);
+}
+/*-----------register end-----------------*/
+.add_btn{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	text-align: right;
+}
+
+#hl{
+	height: 5px;
+  padding: 0px;
+	background-color: #70c8e9;
+  clear: both;
+}
+
+#tab div {
+  height: 48px;
+  line-height: 48px; /* height(#class a) */ /* for vertical align */
+  text-align: center;
+  background-color: #70c8e9;
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+  display: inline-block;
+  padding: 0px 10px;
+  margin: 0px 2px;
+  float: left;
+  cursor: pointer;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.first-tab{
+  margin-left: 0px !important;
+}
+
+.last-tab{
+  margin-right: 0px !important;
+}
+
+#tab div.deactive {
+  height: 41px;
+  margin-top: 7px;
+  background-color: #afafaf;
+  color: #d6d6d6;
+}
+
+.display_none{
+  display: none;
+}
