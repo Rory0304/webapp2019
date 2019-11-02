@@ -1,0 +1,77 @@
+table tr[data-href] {
+    cursor: pointer;
+}
+
+table td:hover{
+  background-color: #EDE2FA !important;
+}
+
+table{
+  width: 1145px;
+}
+
+table th{
+  background-color: #D3EDF5;
+  height: 30px;
+  vertical-align: middle;
+  font-family: 'Abel', "Nanum Gothic", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 17px;
+}
+
+#publications tr:nth-child(odd) td {
+	background-color: white;
+}
+
+#publications tr:nth-child(even) td {
+	background-color: #edf7fa;
+}
+
+#publications td{
+	text-align: left;
+  font-size: 16px;
+  line-height: 20px;
+	vertical-align: middle;
+  padding: 10px;
+}
+
+#hl{
+	height: 5px;
+  padding: 0px;
+	background-color: #70c8e9;
+  clear: both;
+}
+
+#tab div {
+  height: 48px;
+  line-height: 48px; /* height(#class a) */ /* for vertical align */
+  text-align: center;
+  background-color: #70c8e9;
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+  display: inline-block;
+  padding: 0px 10px;
+  margin: 0px 2px;
+  float: left;
+  cursor: pointer;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.first-tab{
+  margin-left: 0px !important;
+}
+
+.last-tab{
+  margin-right: 0px !important;
+}
+
+#tab div.deactive {
+  height: 41px;
+  margin-top: 7px;
+  background-color: #afafaf;
+  color: #d6d6d6;
+}
+
+.display_none{
+  display: none;
+}
