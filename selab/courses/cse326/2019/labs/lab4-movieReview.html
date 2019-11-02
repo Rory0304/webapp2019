@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab4-movieReview.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:43 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Lab slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="stylesheet" href="ui/default/labs-slides.css" type="text/css" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+
+		<title>CSE3026 Lab 4: Movie Review</title>
+	</head>
+
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1>
+				<h2>Lab 4: Movie Review</h2>
+			</div>
+		</div>
+
+		<div class="presentation">
+			<div class="slide">
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Lab 4: Movie Review</strong></h1>
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+				
+				<p class="license">
+					Except where otherwise noted, the contents of this document are
+					Copyright 2019 Scott Uk-Jin Lee.
+
+					All rights reserved.
+					Any redistribution, reproduction, transmission, or storage of part
+					or all of the contents in any form is prohibited without the author's
+					expressed written permission.
+				</p>
+
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS" /></a>
+				</div>
+			</div>		
+		
+
+
+<div class="slide">
+	<h1>Lab 4</h1>
+	<p class="readbeforestarting">
+		This lab consists of HTML, CSS, Layout
+	</p>
+	
+	<hr/>
+
+	<p>
+		Create a movie review web site named "Rancid Tomatoes" for the film TMNT!		
+	</p>
+
+	<ul>
+		<li>The page created should look like the screenshot on the next slide.</li>
+		<li>The page must match the appearance specified in the following slides.
+			<ul>
+				<li>A pixel-perfect page that exactly matches the screenshot on the next slide is not expected (but as closely as possible)!</li>
+			</ul>
+		</li>
+	</ul>
+	
+	<ul>
+		<li>
+			Resources:  <a class="popup" href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector">Firefox Page Inspector</a>, 
+			<a class="popup" href="https://developers.google.com/chrome-developer-tools/">Chrome Dev Tools</a>
+		</li>
+	</ul>
+</div>		
+
+
+<div class="slide">
+	<h1>Screenshot of the movie review page</h1>
+
+	<p>
+		This screenshot is taken on Windows in Firefox! <br />
+		It may differ slightly fron your system.
+	</p>
+	
+	<ul>
+		<li>You can also download this <a href="images/4/out.png">screenshot</a> and <a href="images/4/out-wide.png">its wider-version</a>.</li>
+	</ul>
+	
+	<p class="scrollableEx">
+		<img src="images/4/out-slide.png" alt="expected output" />
+	</p>
+</div>		
+		
+
+<div class="slide">
+	<h1>Lab 4 resources</h1>
+
+	<p>
+		Download the <a href="labResources/lab4-movieReview.zip"><code>lab4-movieReview.zip</code></a> which consists of :
+	</p>
+
+	<ul>
+		<li><code>tmnt.html</code>: skeleton of the movie review page with the page contents
+			<ul>
+				<li>This <code>html</code> file has no page sections or styles.</li>
+				<li>The only modifications you should make are to:
+					<ul>
+						<li>divide the page into sections using <code>div/span</code> tags, and add <code>id/class</code> attributes.</li>
+						<li>add the HTML necessary to enable the "favorites icon" (favicon) specified in later slide.</li>
+						
+					</ul> 
+				</li>
+			</ul>
+		</li>
+		<li>All images: on the movie review page and mentioned in the following slides
+			<ul>
+				<li><code>background.png</code>, <code>banner.png</code>, <code>bannerbg.png</code>, <code>critic.png</code>, <code>fresh.png</code>,
+					<code>overview.png</code>, <code>rbg.png</code>, <code>rotten.png</code>, <code>rottenbig.png</code>, <code>w3c-css.png</code>, <code>w3c-html.png</code></li>
+			</ul>
+		</li>
+	</ul>
+</div>	
+
+
+<div class="slide">
+	<h1>Lab 4 exercises</h1>
+
+	<p>
+		According to the specification on following slides :
+	</p>
+
+	<ul>
+		<li>Modify <code>tmnt.html</code>.
+			<ul>
+				<li>divide the page into sections using <code>div/span</code> tags, and add <code>id/class</code> attributes.</li>
+				<li>add the HTML necessary to enable the "favorites icon" (favicon) specified in later slide.</li>
+			</ul> 
+		</li>
+		<li>Create <code>movie.css</code>, style sheet for <code>tmnt.html</code>.</li>
+	</ul>
+</div>	
+
+
+<div class="slide">
+	<h1>Lab 4 constraints</h1>
+	
+	<p>You must satisfy the following constraints.</p>
+	
+	<ul>
+		<li>Do not express unnecessary or redundant styles in CSS. For example:
+			<ul>
+				<li>if two section share common styles, you should only specify those styles once.</li>
+				<li>if the same style property is used for multiple elements, you should group those elements into a single CSS rule.</li>
+			</ul>
+		</li>
+		<li>Do not express style information in the HTML such as embedding style sheet, inline styles, 
+			and presentational HTML tags (e.g, <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, or <code>&lt;font&gt;</code>)</li>
+		<li>Use context selectors to avoid creating too many classes and IDs. You should use 10 or less classes + IDs.</li>
+		<li>Do not use HTML tables or absolute positioning on this lab.</li>
+		<li>Format your HTML and CSS to be as readable as possible. Use proper indentation.</li>
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: general page style</h1>
+
+	<p> General style for the movie review page : </p>
+	<ul>
+		<li>page title is <q>TMNT – Rancid Tomatoes</q></li>
+		<li>Page has a 'favorites icon' (favicon) of <code>rotten.gif</code></li>
+		<li>Background of the page should be <code>background.png</code></li>
+		<li>Text of the page has size of 8pt and uses Verdana, Tahoma, or any sans-serif font on the system</li>
+		<li>Page has no margin or padding - the contents stretch to the very edge of the browser window</li>
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: top banner &amp; page heading</h1>
+
+	<p>Image banner is at the top of the page</p>
+	<ul>
+		<li>at the center of this banner, there is <code>banner.png</code></li>
+		<li>as a background of this banner, <code>bannerbg.png</code> repeats horizontally across the length of the page</li>
+		<li>the heights of both images are 50px</li>
+	</ul>
+	
+	<hr />
+
+	<p>Page heading (movie name and year) underneath the top banner :</p>
+	<ul>
+		<li>is centered and uses 24pt bold font</li>
+		<li>uses Tahoma, Verdana, or sans-serif font available on the system </li>
+		<li>has shadow - 3px to right and down - with color <code>#999999</code></li>
+	</ul>
+
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: overall content area</h1>
+
+	<p>
+		Below the page heading, there is the overall content area with 33% rating for the film, several reviews from critics, and overview of the film.
+	</p>
+
+	<p>The overall content area :</p>
+
+	<ul>
+		<li>occupies 800px width and centered horizontally within the page
+			<ul>
+				<li>when the page (browser) resize horizontally, overall content area should remain centered horizontally on the page </li>
+			</ul>
+		</li>
+		<li>has 4px gray solid border with 20px radius round corner</li>
+		<li>should be large enough to contain all of its content (use overflow property in CSS)</li> 
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: overall content area - left</h1>
+
+	<p>
+		On the left side of overall content area, there are 550px-wide section with <q>rotten 33%</q> rating and critics’ reviews of the film.
+	</p>
+
+	<hr />
+	
+	<p>
+		On the top of this overall content area - left, there is a smaller (33% overall rating) section containing large 'rotten' image. 
+	</p>
+
+	<ul>
+		<li>the large 'rotten' image is  <code>rottenbig.png</code> and vertically aligned at the bottom</li>
+		<li>at the background of this section <code>rbg.png</code> repeats horizontally across the entire length of the section</li>
+		<li>both images are 83px tall </li>
+		<li>'33%' overall rating text in this section uses 48pt red bold font</li>
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: reviews section</h1>
+
+	<p>Below the 33% overall rating section, there are two columns of reviews where : </p>
+	<ul>
+		<li>each column occupies 47% of the width of the overall left section</li>
+		<li>there is a horizontal spacing of 2% between columns and neighboring content (do not use the new CSS3 column property)</li>
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: reviews section</h1>
+	
+	<p>Each review box with quote :</p>
+
+	<ul>
+		<li>uses bold 8pt font &amp; has background color of <code>#E8DC9B</code></li>
+		<li>has 2px gray border with 10px radius round corner</li>
+		<li>has 8px spacing between quote box’s content and its border</li>
+		<li>has <code>fresh.gif</code> or <code>rotten.gif</code> icon for the each review on the left side of the box has 5px spacing on the right</li>
+		<li>review text should wrap around the <code>fresh</code>/<code>rotten.gif</code> icon as needed</li>
+		<li>has 20pt of vertical space between reviews. </li>
+	</ul>
+	
+	<hr />
+	
+	<p>Reviewer information below review box : </p>
+	<ul>
+		<li>follows under the quote box where review's affiliation is in italic</li>
+		<li>has reviewer icon (<code>critic.gif</code>) that is shown to the left of the text and has 5px horizontal spacing from the text</li>
+	</ul>	
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: overall content area - right</h1>
+	
+	<p>On the right side of overall content area, there is the general overview section with movie poster and a list of information about the movie.</p>
+
+	<p>The general overview section : </p>
+	<ul>
+		<li>is 250px wide and has a background color of <code>#A2B964</code></li>
+		<li>has 10pt spacing between the edge of the section and the text of the list</li>
+	</ul>
+	
+	<p>Note : it is assumed that the general overview section will always be taller than the section of reviews to its left</p>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: overall content area - right</h1>
+	
+	<p>Movie information section (under the movie poster) : </p>
+	<ul>
+		<li>uses an 8pt Arial or any sans-serif font available on the system</li>
+		<li>uses definition list (<code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code> elements)
+			<ul>
+				<li>each definition term has bold text and has 10pt vertical spacing between it and the element above it</li>
+			</ul>
+		</li>
+		<li>has a list of links at the bottom that sohuld be shown without bullets or indentation</li>
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: overall content area - bottom</h1>
+	
+	<p>At the bottom of overall content area, there is a bar of centered text indicating review <q>(1-10) of 88</q> with: </p>
+	<ul>
+		<li>background color of <code>#A2B964</code></li>
+		<li>5px spacing between its text and the element’s own outer edge</li>
+		<li>should have no spacing between its vertically neighbouring elements</li>
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: w3c validator</h1>
+	
+	<p>At the bottom right corner of the movie review page has links to the W3C validators.</p>
+	
+	<p>The validator images should: </p>
+	<ul>
+		<li>remain fixed in the page's bottom-right corner, even after scrolling</li>
+		<li>appear as 50% opaque, halfway transparent</li>
+	</ul>
+	
+	<hr/>
+	
+	<p>Produce valid movie review page! </p>
+	<ul>
+		<li>Your page must use valid HTML5 and successfully pass the W3C HTML5 validator.</li>
+		<li>Your style sheet must use valid CSS3 and successfully pass the W3C CSS validator.</li>
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>If you finish them all...</h1>
+
+	<p>If you finish all the exercises:</p>
+
+	<ol>
+		<li><strong>check the correctness</strong> of your page with a TA if necessary</li>
+		<li>submit your <code>tmnt.html</code> &amp; <code>movie.css</code> files to your <code>Git</code> repository under <code>lab04</code> folder</li>
+	</ol>
+	<p><strong>Great work!</strong></p>
+</div>
+
+
+		</div>
+
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab4-movieReview.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:43 GMT -->
+</html>
+

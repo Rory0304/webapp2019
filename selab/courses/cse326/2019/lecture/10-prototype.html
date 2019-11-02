@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/10-prototype.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:26 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="Hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+		
+		<title>CSE3026 - 10. Prototype</title>
+	</head>
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1>
+				<h2>10. Prototype</h2>
+			</div>
+		</div>
+	
+		<div class="presentation">
+			<div class="slide">			
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Prototype</strong></h1>			
+				<br/>		
+				<h4>Scott Uk-Jin Lee</h4>
+							
+				<p class="license"> 				
+					Reproduced with permission of author.
+					Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
+					All rights reserved. 
+					Further reproduction or distribution is prohibited without written permission.
+				</p>
+				
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML 5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
+				</div>
+			</div>
+
+
+
+<div class="slide">
+	<h1>Problems with JavaScript</h1>
+
+	<p>
+		JavaScript is a powerful language, but it has many flaws:
+	</p>
+
+	<ul>
+		<li>the DOM can be clunky to use</li>
+		<li>the same code doesn't always work the same way in every browser
+			<ul>
+				<li>code that works great in Firefox, Safari, ... will fail in IE and vice versa</li>
+			</ul>
+		</li>
+		<li>many developers work around these problems with hacks (checking if browser is IE, etc.)
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		<a href="http://prototypejs.org/">Prototype</a> framework
+	</h1>
+
+	<pre class="examplecode js" style="font-size: smaller">
+&lt;script <em>src=&quot;prototype.js&quot;</em> type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</pre>
+
+	<pre class="examplecode js" style="font-size: smaller">
+&lt;script <em>src=&quot;http://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js&quot;</em> 
+  type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</pre>
+
+	<ul>
+		<li>the <a href="http://prototypejs.org/">Prototype</a> JavaScript library adds many useful features to JavaScript:
+			<ul>
+				<li>many useful <a class="popup" href="http://prototypejs.org/learn/extensions">extensions to the DOM</a></li>
+				<li>added methods to String, Array, Date, Number, Object</li>
+				<li>improves event-driven programming</li>
+				<li>many cross-browser compatibility fixes</li>
+				<li>makes <a class="popup" href="http://prototypejs.org/learn/introduction-to-ajax">Ajax programming</a> easier (seen later)</li>
+			</ul>
+		</li>
+		<li> In order to use Prototype JavaScript library : 
+			<ul>
+				<li>download Prototype library from <a href="http://prototypejs.org/">Prototype homepage</a></li>
+				<li>link to the downloaded Prototype.js in web page or the Google hosted Prototype JavaScript library</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		The <a href="http://prototypejs.org/doc/latest/dom/dollar/"><code>$</code></a> function
+	</h1>
+
+	<pre class="syntaxtemplate js">
+$(&quot;<var>id</var>&quot;)
+</pre>
+
+	<ul>
+		<li>
+			returns the DOM object representing the element with the given <code>id</code>
+		</li>
+		<li>
+			short for <code>document.getElementById(&quot;<var>id</var>&quot;)</code>
+		</li>
+		<li>
+			often used to write more concise DOM code:
+
+			<pre class="examplecode js">
+$(&quot;footer&quot;).innerHTML = $(&quot;username&quot;).value.toUpperCase();
+</pre>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Prototype's <a href="http://prototypejs.org/doc/latest/dom/Element/">DOM element</a> methods
+	</h1>
+
+	<table class="standard" style="font-size: smaller">
+		<tr>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/absolutize"><code>absolutize</code></a></td>
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/addClassName"><code>addClassName</code></a></strong></td>
+			<!--
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/addMethods"><code>addMethods</code></a></td>
+			-->
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/classNames"><code>classNames</code></a></strong></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/cleanWhitespace"><code>cleanWhitespace</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/clonePosition"><code>clonePosition</code></a></td>
+		</tr>
+
+		<tr>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/cumulativeOffset"><code>cumulativeOffset</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/cumulativeScrollOffset"><code>cumulativeScrollOffset</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/empty"><code>empty</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/extend"><code>extend</code></a></td>
+			<!--
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/fire"><code>fire</code></a></td>
+			-->
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/firstDescendant"><code>firstDescendant</code></a></td>
+		</tr>
+		<tr>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/getDimensions"><code>getDimensions</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/getHeight"><code>getHeight</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/getOffsetParent"><code>getOffsetParent</code></a></td>
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/getStyle"><code>getStyle</code></a></strong></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/getWidth"><code>getWidth</code></a></td>
+		</tr>
+		<tr>
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/hasClassName"><code>hasClassName</code></a></strong></td>
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/hide"><code>hide</code></a></strong></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/identify"><code>identify</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/insert"><code>insert</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/inspect"><code>inspect</code></a></td>
+		</tr>
+		<tr>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/makeClipping"><code>makeClipping</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/makePositioned"><code>makePositioned</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/match"><code>match</code></a></td>
+			<!--
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/observe"><code>observe</code></a></td>
+			-->
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/positionedOffset"><code>positionedOffset</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/readAttribute"><code>readAttribute</code></a></td>
+		</tr>
+		<tr>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/recursivelyCollect"><code>recursivelyCollect</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/relativize"><code>relativize</code></a></td>
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/remove"><code>remove</code></a></strong></td>
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/removeClassName"><code>removeClassName</code></a></strong></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/replace"><code>replace</code></a></td>
+		</tr>
+		<tr>
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/scrollTo"><code>scrollTo</code></a></strong></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/select"><code>select</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/setOpacity"><code>setOpacity</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/setStyle"><code>setStyle</code></a></td>
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/show"><code>show</code></a></strong></td>
+		</tr>
+		<tr>
+			<!--
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/stopobserving"><code>stopObserving</code></a></td>
+			-->
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/toggle"><code>toggle</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/toggleClassName"><code>toggleClassName</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/undoClipping"><code>undoClipping</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/undoPositioned"><code>undoPositioned</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/update"><code>update</code></a></td>
+		</tr>
+		<tr>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/viewportOffset"><code>viewportOffset</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/visible"><code>visible</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/wrap"><code>wrap</code></a></td>
+			<td><a href="http://prototypejs.org/doc/latest/dom/Element/writeAttribute"><code>writeAttribute</code></a></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<!--
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/getElementsByClassName"><code>getElementsByClassName</code></a></strong></td>
+			<td><strong><a href="http://prototypejs.org/doc/latest/dom/Element/getelementsbyselector"><code>getElementsBySelector</code></a></strong></td>
+	-->
+
+	<ul>
+		<li>
+			categories: CSS classes, DOM tree traversal/manipulation, events, styles
+		</li>
+	</ul>
+</div>
+
+
+
+<!--
+		<li>
+			Prototype methods for setting CSS classes:
+			<ul>
+				<li>
+					<a href="http://prototypejs.org/api/element/addClassName"><code>addClassName</code></a>, 
+					<a href="http://prototypejs.org/api/element/classNames"><code>classNames</code></a>, 
+					<a href="http://prototypejs.org/api/element/hasClassName"><code>hasClassName</code></a>, 
+					<a href="http://prototypejs.org/api/element/removeClassName"><code>removeClassName</code></a>
+				</li>
+			</ul>
+		</li>
+-->
+
+
+
+<div class="slide">
+	<h1>
+		Prototype's DOM tree traversal methods
+	</h1>
+
+	<table class="standard">
+		<tr>
+			<th>
+				method(s)
+			</th>
+			<th>
+				description
+			</th>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://prototypejs.org/doc/latest/dom/Element/ancestors"><code>ancestors</code></a>,
+				<a href="http://prototypejs.org/doc/latest/dom/Element/up"><code>up</code></a>
+			</td>
+			<td>
+				elements above this one
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://prototypejs.org/doc/latest/dom/Element/childElements"><code>childElements</code></a>,
+				<a href="http://prototypejs.org/doc/latest/dom/Element/descendants"><code>descendants</code></a>,
+				<a href="http://prototypejs.org/doc/latest/dom/Element/down"><code>down</code></a>
+			</td>
+			<td>
+				elements below this one (not text nodes)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="http://prototypejs.org/doc/latest/dom/Element/siblings"><code>siblings</code></a>,
+				<a href="http://prototypejs.org/doc/latest/dom/Element/next"><code>next</code></a>,
+				<a href="http://prototypejs.org/doc/latest/dom/Element/nextSiblings"><code>nextSiblings</code></a>, <br />
+
+				<a href="http://prototypejs.org/doc/latest/dom/Element/previous"><code>previous</code></a>,
+				<a href="http://prototypejs.org/doc/latest/dom/Element/previousSiblings"><code>previousSiblings</code></a>,
+				<a href="http://prototypejs.org/doc/latest/dom/Element/adjacent"><code>adjacent</code></a>
+			</td>
+			<td>
+				elements with same parent <br />
+				as this one (not text nodes)
+			</td>
+		</tr>
+	</table>
+
+	<div class="rightfigure" style="width: 33%">
+		<img src="images/figure_1_element.png" alt="DOM element" style="width: 100%" />
+	</div>
+
+	<pre class="examplecode js">
+<span class="comment">// alter siblings of &quot;main&quot; that do not contain &quot;Sun&quot;</span>
+var sibs = <em>$(&quot;main&quot;).siblings()</em>;
+for (var i = 0; i &lt; sibs.length; i++) {
+	if (sibs[i].innerHTML.indexOf(&quot;Sun&quot;) &lt; 0) {
+		sibs[i].innerHTML += &quot; Sunshine&quot;;
+	}
+}
+</pre>
+	<ul>
+		<li>
+			Prototype strips out the unwanted text nodes
+		</li>
+		<li>
+			notice that these are methods, so you need <code>()</code>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Selecting groups of DOM objects
+	</h1>
+
+	<ul>
+		<li>
+			methods in <code>document</code> and other DOM objects for accessing descendents:
+		</li>
+	</ul>
+
+	<table class="standard">
+		<tr>
+			<th>
+				name
+			</th>
+			<th>
+				description
+			</th>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.w3schools.com/jsref/met_doc_getelementsbytagname.asp"><code>getElementsByTagName</code></a>
+			</td>
+			<td>
+				returns array of descendents with the given tag, such as <code>&quot;div&quot;</code>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.w3schools.com/jsref/met_doc_getelementsbyname.asp"><code>getElementsByName</code></a>
+			</td>
+			<td>
+				returns array of descendents with the given <code>name</code> attribute (mostly useful for accessing form controls)
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="https://developer.mozilla.org/en/DOM/Element.querySelector"><code>querySelector</code></a>  *
+			</td>
+			<td>
+				returns the first element that would be matched by the given CSS selector string
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="https://developer.mozilla.org/en/DOM/Element.querySelectorAll"><code>querySelectorAll</code></a>  *
+			</td>
+			<td>
+				returns an array of all elements that would be matched by the given CSS selector string
+			</td>
+		</tr>		
+	</table>
+	
+	<p>* = HTML5 : older browsers did not support <code>querySelectorAll</code> methods</p>
+	
+</div>
+
+
+
+<div class="slide">
+	<h1>Prototype's methods for selecting elements</h1>
+
+	<p>
+		Prototype adds methods to the <code>document</code> object (and all DOM element objects) for selecting groups of elements:
+	</p>
+
+
+	<table class="standard">
+<!--		<tr>
+			<td>
+				<a href="http://prototypejs.org/api/utility/getElementsByClassName"><code>getElementsByClassName</code></a>
+			</td>
+			<td>
+				array of elements that use given <code>class</code> attribute
+			</td>
+		</tr>
+-->
+		<tr>
+			<td>
+				<a href="http://prototypejs.org/doc/latest/dom/Element/select"><code>select</code></a>
+			</td>
+			<td>
+				array of descendants that match given CSS selector, such as <code>&quot;div#sidebar ul.news > li&quot;</code>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="http://api.prototypejs.org/dom/dollar-dollar/"><code>$$</code></a>
+			</td>
+			<td>
+				equivalent to <code>document.querySelectorAll</code>
+			</td>
+		</tr>
+	</table>
+
+	<pre class="examplecode js">
+var gameButtons = <em>$(&quot;game&quot;).select(&quot;button.control&quot;)</em>;
+for (var i = 0; i &lt; gameButtons.length; i++) {
+	gameButtons[i].style.color = &quot;yellow&quot;;
+}
+</pre>
+</div>
+
+
+
+
+<div class="slide">
+	<h1>
+		The <a href="http://prototypejs.org/doc/latest/dom/dollar-dollar/"><code>$$</code></a> function
+	</h1>
+
+	<pre class="syntaxtemplate js">
+var <var>arrayName</var> = $$(&quot;<var>CSS selector</var>&quot;);
+</pre>
+
+	<pre class="examplecode js">
+<span class="comment">// hide all &quot;announcement&quot; paragraphs in the &quot;news&quot; section</span>
+var paragraphs = <em>$$(&quot;div#news p.announcement&quot;)</em>;
+for (var i = 0; i &lt; paragraphs.length; i++) {
+	paragraphs[i].hide();
+}
+</pre>
+
+	<ul>
+		<li>
+			<code>$$</code> returns an array of DOM elements that match the given CSS selector
+			<ul>
+				<li>
+					like <code>$</code> but returns an array instead of a single DOM object
+				</li>
+				<li>
+					a shorthand for <code>document.select</code>
+				</li>
+				<li>
+					essentially equivalent to <code>document.querySelectorAll</code>
+				</li>
+			</ul>
+		</li>
+
+		<li>
+			useful for applying an operation each one of a set of elements
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Common <code>$$</code> issues</h1>
+
+	<ul>
+		<li>
+			many students forget to write <code>.</code> or <code>#</code> in front of a <code>class</code> or <code>id</code>
+
+			<pre class="examplecode js">
+<span class="comment">// get all buttons with a class of &quot;control&quot;</span>
+var gameButtons = <del>$$(&quot;control&quot;);</del>
+var gameButtons = $$(&quot;<em>.</em>control&quot;);
+</pre>
+
+		</li>
+
+		<li>
+			<code>$$</code> returns an array, not a single element; must loop over the results
+
+			<pre class="examplecode js">
+<span class="comment">// set all buttons with a class of &quot;control&quot; to have red text</span>
+<del>$$(&quot;.control&quot;).style.color = &quot;red&quot;;</del>
+var gameButtons = $$(&quot;<em>.</em>control&quot;);
+for (var i = 0; i &lt; gameButtons.length; i++) {
+	gameButtons[i].style.color = &quot;red&quot;;
+}
+</pre>
+
+		</li>
+
+		<li>Q: Can I still select a group of elements using <code>$$</code> even if my CSS file doesn't have any style rule for that same group?  (A: Yes!)
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Problems with reading/changing styles
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;button id=&quot;clickme&quot;&gt;Click Me&lt;/button&gt;
+</pre>
+
+		<pre class="examplecode examplecode2 js">
+window.onload = function() {
+	$(&quot;clickme&quot;).onclick = biggerFont;
+};
+function biggerFont() {
+	<em class="bad">var size = parseInt($(&quot;clickme&quot;).style.fontSize);</em>
+	size += 4;
+	$(&quot;clickMe&quot;).style.fontSize = size + &quot;pt&quot;;
+}
+</pre>
+
+		<div class="exampleoutput">
+			<button>Click Me</button>
+		</div>
+	</div>
+
+	<ul>
+		<li><a class="popup" href="http://www.w3schools.com/jsref/dom_obj_style.asp"><code>style</code></a> property lets you set any CSS style for an element</li>
+		<li>
+			problem: you cannot (usually) read existing styles with it
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Accessing styles in Prototype
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode js">
+function biggerFont() {
+	<span class="comment">// turn text yellow and make it bigger</span>
+	var size = parseInt($(&quot;clickme&quot;).<em>getStyle</em>(&quot;font-size&quot;));
+	$(&quot;clickme&quot;).style.fontSize = (size + 4) + &quot;pt&quot;;
+}
+</pre>
+
+		<div class="exampleoutput">
+			<button style="font-size: 20pt !important;" onclick="var s = parseInt(this.style.fontSize); this.style.setProperty('font-size', s + 4 + 'pt', 'important');">Click Me</button>
+		</div>
+	</div>
+
+	<ul>
+		<li><code>getStyle</code> function added to DOM object allows accessing existing styles</li>
+		<li><code>addClassName</code>, <code>removeClassName</code>, <code>hasClassName</code> manipulate CSS classes</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Common bug: incorrect usage of existing styles</h1>
+
+	<pre class="examplecode js">
+<del>this.style.top = this.getStyle(&quot;top&quot;) + 100 + &quot;px&quot;;</del>            <span class="comment">// bad!</span>
+</pre>
+
+	<ul>
+		<li>the above example computes e.g. 
+			<code>&quot;200px&quot; + 100 + &quot;px&quot;</code> , <br />
+			which would evaluate to <code>&quot;200px100px&quot;</code>
+		</li>
+		<li>
+			a corrected version:
+		</li>
+	</ul>
+
+	<pre class="examplecode js">
+this.style.top = <em>parseInt(</em>this.getStyle(&quot;top&quot;)<em>)</em> + 100 + &quot;px&quot;;  <span class="comment">// correct</span>
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Setting CSS classes in Prototype
+	</h1>
+
+	<pre class="examplecode js">
+function highlightField() {
+	<span class="comment">// turn text yellow and make it bigger</span>
+	if (!$(&quot;text&quot;).<em>hasClassName</em>(&quot;invalid&quot;)) {
+		$(&quot;text&quot;).<em>addClassName</em>(&quot;highlight&quot;);
+	}
+}
+</pre>
+
+	<ul>
+		<li><code>addClassName</code>, <code>removeClassName</code>, <code>hasClassName</code> manipulate CSS classes</li>
+		<li>
+			similar to existing <code>className</code> DOM property, but don't have to manually split by spaces
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Prototype form shortcuts
+	</h1>
+
+	<pre class="syntaxtemplate js">
+$(&quot;<var>formID</var>&quot;)[&quot;<var>name</var>&quot;]
+</pre>
+
+	<ul style="margin-bottom: 1em">
+		<li>
+			gets parameter with given <strong>name</strong> from form with given <strong>id</strong>
+		</li>
+	</ul>
+
+	<pre class="syntaxtemplate js">
+<em>$F</em>(&quot;<var>controlID</var>&quot;)
+</pre>
+
+	<ul>
+		<li>
+			<a class="popup" href="http://www.prototypejs.org/doc/latest/dom/dollar-F"><code>$F</code> function</a> returns the <strong>value</strong> of a form control with the given <strong>id</strong>
+
+			<pre class="examplecode js">
+if (<em>$F(&quot;username&quot;)</em>.length &lt; 4) {
+	$(&quot;username&quot;).<em>clear</em>();
+	$(&quot;login&quot;).<em>disable</em>();
+}
+</pre>
+		</li>
+	</ul>
+</div>
+
+
+<!--
+<div class="slide">
+	<h1>Stopping an event</h1>
+
+	<pre class="examplecode html">
+&lt;form <em>id=&quot;exampleform&quot;</em> action=&quot;http://foo.com/foo.php&quot;&gt;...&lt;/form&gt;
+</pre>
+
+	<pre class="examplecode js">
+window.onload = function() {
+	$(&quot;exampleform&quot;).observe(<em>"submit"</em>, checkData);
+};
+
+function checkData(<em>event</em>) {
+	if ($F(&quot;city&quot;) == &quot;&quot; || $F(&quot;state&quot;).length != 2) {
+		alert(&quot;Error, invalid city/state.&quot;);  <span class="comment">// show error message</span> 
+		<em>event.stop();</em>
+		<em>return false;</em>
+	}
+}
+</pre>
+
+	<ul>
+		<li>to abort a form submit or other event, call Prototype's <a href="http://www.prototypejs.org/api/event/stop"><code>stop</code></a> method on the event</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Classes and prototypes</h1>
+
+	<ul>
+		<li>limitations of <span style="text-decoration: underline">p</span>rototype-based code:
+			<ul>	
+				<li>unfamiliar / confusing to many programmers</li>
+				<li>somewhat unpleasant syntax</li>
+				<li>difficult to get inheritance-like semantics (subclassing, overriding methods)</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul>
+		<li><span style="text-decoration: underline">P</span>rototype library's <a href="http://prototypejs.org/doc/latest/language/Class/create/"><code>Class.create</code></a> method makes a new class of objects</li>
+			<ul>
+				<li>essentially the same as using prototypes, but uses a more familiar style and allows for <a href="http://www.prototypejs.org/learn/class-inheritance">richer inheritance semantics</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Creating a class</h1>
+
+	<pre class="syntaxtemplate js">
+<var>className</var> = Class.create({
+	<span class="comment">// constructor</span>
+	initialize : function(<var>parameters</var>) {
+		this.<var>fieldName</var> = <var>value</var>;
+		...
+	},
+
+	<var>methodName</var> : function(<var>parameters</var>) {	
+		<var>statements</var>;
+	},
+	...
+});
+</pre>
+
+	<ul>
+		<li>constructor is written as a special <code>initialize</code> function</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>Class.create</code> example</h1>
+
+	<pre class="examplecode js">
+Point = Class.create({
+	<span class="comment">// Constructs a new Point object at the given initial coordinates.</span>
+	initialize: function(initialX, initialY) {
+		this.x = initialX;
+		this.y = initialY;
+	},
+
+	<span class="comment">// Computes the distance between this Point and the given Point p.	</span>
+	distance: function(p) {
+		var dx = this.x - p.x;
+		var dy = this.y - p.y;
+		return Math.sqrt(dx * dx + dy * dy);
+	},
+
+	<span class="comment">// Returns a text representation of this Point object.</span>	
+	toString: function() {
+		return &quot;(&quot; + this.x + &quot;, &quot; + this.y + &quot;)&quot;;
+	}
+});
+</pre>
+
+</div>
+
+
+
+<div class="slide">
+	<h1>Inheritance</h1>
+
+	<pre class="syntaxtemplate js">
+<var>className</var> = Class.create(<em><var>superclass</var></em>, {
+	...
+});
+</pre>
+
+	<pre class="examplecode js">
+<span class="comment">// Points that use &quot;Manhattan&quot; (non-diagonal) distances.</span>
+ManhattanPoint = Class.create(<em>Point</em>, {
+	<span class="comment">// Computes the Manhattan distance between this Point and p.</span>
+	<span class="comment">// Overrides the distance method from Point.</span>
+	distance: function(p) {
+		var dx = Math.abs(this.x - p.x);
+		var dy = Math.abs(this.y - p.y);
+		return dx + dy;
+	},
+	
+	<span class="comment">// Computes this point's Manhattan Distance from the origin.</span>
+	distanceFromOrigin: function() {
+		return this.x + this.y;
+	}
+});
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1>Referring to superclass: <code>$super</code></h1>
+
+	<pre class="syntaxtemplate js">
+<var>name</var>: function(<em>$super</em>, <var>parameters</var>) {
+	<var>statements</var>;
+}
+</pre>
+
+	<pre class="examplecode js">
+ManhattanPoint3D = Class.create(ManhattanPoint, {
+	initialize: function(<em>$super</em>, initialX, initialY, initialZ) {
+		<em>$super(initialX, initialY);</em>   // call Point constructor
+		this.z = initialZ;
+	},
+	
+	<span class="comment">// Returns 3D &quot;Manhattan Distance&quot; from p.</span>
+	distance: function(<em>$super</em>, p) {
+		var dz = Math.abs(this.z - p.z);
+		return <em>$super(p)</em> + dz;
+	},
+});
+</pre>
+				
+	<ul>
+		<li>can refer to superclass's overridden method as <code>$super</code> in code</li>
+	</ul>
+</div>
+
+
+			
+<div class="slide practiceproblem">
+	<h1>Practice problem: Fancy movies</h1>
+
+	<div class="rightfigure">
+		<img src="images/moviespage2.png" alt="movies page v2" />
+	</div>
+
+	<ul>
+		<li>
+			Modify the movie gallery code from the last practice problem so that it uses Prototype's <code>Class.create</code> method to make the <code>Movie</code> type.
+		</li>
+
+		<li>
+			Once this is done, add a new subtype <code>FancyMovie</code> that displays its movie ratings as star images rather than just showing a number on the page.
+		</li>
+	</ul>
+</div>
+-->
+			
+
+		</div><!-- end div class="presentation" -->
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/10-prototype.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:26 GMT -->
+</html>		

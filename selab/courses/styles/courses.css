@@ -1,0 +1,86 @@
+#course_table{
+	width: 1145px;
+	margin-bottom: 20px;
+}
+
+#first_table{
+	float: left;
+	border-right: 1px solid #dfdfdf;
+}
+
+table th{
+	height: 45px;
+	vertical-align: middle;
+	background-color: #8bcbe3;
+	color: white;
+	border-bottom: 3px solid #dfdfdf;
+	text-align: center;
+}
+
+table td{
+	height: 40px;
+	vertical-align: middle;
+	padding: 0px;
+	background-color: #edf7fa;
+	text-align: center;
+}
+#second_table th{
+	min-width: 70px;
+}
+
+.course{
+	width: 310px;
+	border-right: 2px solid #dfdfdf;
+}
+
+.coursenum{
+	width: 70px;
+}
+
+table tr td{
+	border-bottom: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+}
+
+td:last-child{
+	border-right: none;
+}
+
+.active{
+	background-color: #63D5F7 !important;
+	cursor: pointer;
+}
+
+.hovered{
+	background-color: #83D9FF !important;
+}
+
+tr:nth-child(odd) td{
+	background-color: white;
+}
+
+.circle {
+	width: 20px;
+	height: 20px;
+	background-color: #65D4D2;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	display: inline-block;
+}
+
+#over{
+	overflow: auto;
+}
+
+#second_table{
+	table-layout:fixed;
+}
+
+#first_table th:first-of-type{
+	border-radius: 3px 0px 0px 0px;
+}
+
+#second_table th:last-of-type{
+	border-radius: 0px 3px 0px 0px;
+}

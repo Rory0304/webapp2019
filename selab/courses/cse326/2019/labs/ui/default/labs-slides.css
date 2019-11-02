@@ -1,0 +1,186 @@
+.arraytable {
+	border-collapse: collapse;
+}
+
+.arraytable td {
+	border: 2px solid #777;
+}
+
+.arraytable td input[type="text"] {
+	margin-left: 30px;
+}
+
+.arraytable th {
+	color: #777;
+}
+
+.assertionpoint {
+	font-weight: bold;
+	color: #404;
+}
+
+.assertiontable td {
+	padding-right: 24px;
+}
+
+.assertiontable th {
+	padding-right: 10px;
+}
+
+.attention {
+	background-color: #efe;
+	border: thin dashed #8f8;
+	font-size: smaller;
+	margin: 0.5em;
+	margin-bottom: 0.2em;
+	margin-top: 0.1em;
+	padding: 0.25em;
+	text-align: center;
+}
+
+.compressed {
+	font-size: smaller !important;
+	line-height: 0.9em;
+}
+
+.expression code {
+	white-space: nowrap;
+}
+
+.expressiontable {
+	font-size: smaller;
+	margin-left: 2em;
+}
+
+.expressiontable td, label.correct, label.incorrect, label.almost, .expressionarea {
+	padding-right: 30px;
+}
+
+.expressionanswer {
+	font-size: 20px;
+}
+
+.expressionsolution, .ignore {
+	display: none;
+}
+
+.correct {
+	background-color: #cfc !important;
+}
+
+.almost {
+	background-color: #ff9 !important;
+}
+
+.incorrect {
+	background-color: #fcc !important;
+}
+
+.figure img {
+	vertical-align: top;
+}
+
+table.linenumbertable {
+	font-size: 95%;
+}
+
+pre.linenumbers {
+	background-color: white;
+	border: 1px solid white;
+	color: #888;
+	margin-right: 0.5em;
+}
+
+td.correct,
+td.incorrect,
+td.almost,
+ol label.correct,
+ol label.incorrect,
+ol label.almost,
+.expressionarea.correct, 
+.expressionarea.almost, 
+.expressionarea.incorrect {
+	background-position: 99% 10%;
+	background-repeat: no-repeat;
+}
+
+td.correct,
+ol label.correct,
+.expressionarea.correct {
+	background-image: url(correct.html) !important;
+}
+
+td.incorrect,
+ol label.incorrect,
+.expressionarea.incorrect {
+	background-image: url(incorrect.html) !important;
+}
+
+td.almost,
+ol label.almost,
+.expressionarea.almost {
+	background-image: url(incorrect.html) !important;
+}
+
+.mcresultimage {
+	display: none;
+}
+
+ol.mcquestion {
+	list-style-type: lower-alpha;
+}
+
+.practiceitlink {
+	margin-left: 0.5em;
+}
+
+.practiceitlink img {
+	border: none;
+	width: 26px;
+	height: 26px;
+}
+
+.slide a img.icon {
+	border: 0;
+}
+
+.slide ol > li {
+	margin-top: 0.4em;
+}
+
+.userinput {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.validationSuccess {
+	background-color: green;
+	color: white;
+}
+
+.scrollableEx {
+	height: 370px;
+	width: 700px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.readbeforestarting {
+	font-weight: bold;
+	color: #F7931E;
+	text-align: center;
+}
+
+.slide pre {
+	background-color: #F8F8FF;
+}
+
+::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 7px;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color: rgba(0,0,0,.5);
+	-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}

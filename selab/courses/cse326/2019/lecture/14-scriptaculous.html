@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/14-scriptaculous.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:31 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="Hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+		
+		<style type="text/css">
+			#bandlistarea2 {
+				border: 2px solid gray;
+			}
+			#bandlistarea2 .selected {
+				background-color: pink;
+			}
+		</style>
+		
+		<title>CSE3026 - 14. Scriptaculous</title>
+	</head>
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1>
+				<h2>14. Scriptaculous</h2>
+			</div>
+		</div>
+	
+		<div class="presentation">
+			<div class="slide">			
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Scriptaculous</strong></h1>			
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+							
+				<p class="license"> 				
+					Reproduced with permission of the authors.
+					Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
+					All rights reserved. 
+					Further reproduction or distribution is prohibited without written permission.
+				</p>
+				
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML 5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
+				</div>
+			</div>
+
+
+
+<div class="slide titleslide">
+	<h1>Visual Effects</h1>
+
+	<ul>
+		<li>
+			<strong>Visual Effects</strong>
+		</li>
+		<li>
+			Sortable Lists; Drag and Drop
+		</li>
+		<li>
+			Auto-completing Text Fields
+		</li>
+		<li>
+			Other Features
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Scriptaculous overview</h1>
+
+	<p>
+		<a href="http://script.aculo.us/"><span class="term">Scriptaculous</span></a> : a JavaScript library, built on top of Prototype, that adds:
+	</p>
+
+	<ul>
+		<li>visual effects (animation, fade in/out, highlighting)</li>
+		<li>drag and drop</li>
+		<li>Ajax features:
+			<ul>
+				<li>Auto-completing text fields (drop-down list of matching choices)</li>
+				<li>In-place editors (clickable text that you can edit and send to server)</li>
+			</ul>
+		</li>
+		<li>some DOM enhancements</li>
+		<li>other stuff (unit testing, etc.)</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Downloading and using Scriptaculous</h1>
+
+	<pre class="examplecode js" style="font-size: smaller">
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js&quot;
+ type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+
+&lt;script <em>src=&quot;http://ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js&quot;</em>
+ type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</pre>
+
+	<ul>
+		<li>or <a href="http://script.aculo.us/downloads">download it</a>, extract its <code>.js</code> files to your project folder</li>
+		<li>
+			documentation available on the <a href="http://madrobby.github.com/scriptaculous/">Scriptaculous wiki</a>
+		</li>
+		<li><a href="http://www.slash7.com/cheats/scriptaculous_fx1.pdf">Scriptaculous Effects Cheat Sheet</a></li>
+	</ul>
+</div>
+
+
+
+<!--
+<div class="slide">
+	<h1>Learning about Scriptaculous</h1>
+
+	<p>
+		There's no complete online API documentation (argh), but the following are useful resources:
+	</p>
+
+	<ul>
+		<li><a href="http://wiki.script.aculo.us/">Scriptaculous wiki documentation</a>
+			<ul>
+				<li><a href="http://wiki.script.aculo.us/scriptaculous/show/VisualEffects">Visuals</a></li>
+				<li><a href="http://wiki.script.aculo.us/scriptaculous/show/CoreEffects">Core FX</a></li>
+				<li><a href="http://wiki.script.aculo.us/scriptaculous/show/CombinationEffects">Combo FX</a></li>
+				<li><a href="http://wiki.script.aculo.us/scriptaculous/show/Sortables">Sortables</a></li>
+				<li><a href="http://wiki.script.aculo.us/scriptaculous/show/Draggable">Drag 'n' Drop 1</a> | 
+				<a href="http://wiki.script.aculo.us/scriptaculous/show/Draggables">2</a> | 
+				<a href="http://wiki.script.aculo.us/scriptaculous/show/Droppables.add">3</a> |
+				<a href="http://wiki.script.aculo.us/scriptaculous/show/Droppables.remove">4</a></li>
+				<li><a href="http://wiki.script.aculo.us/scriptaculous/show/Ajax.Autocompleter">Auto-Completion 1</a> | 
+				<a href="http://wiki.script.aculo.us/scriptaculous/show/Autocompleter.Local">2</a></li>
+				<li><a href="http://wiki.script.aculo.us/scriptaculous/show/Builder">DOM</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+-->
+
+
+
+<div class="slide">
+	<h1>
+		Visual effects
+	</h1>
+
+	<p>
+		<button class="effectbutton" onclick="$('demo-all').appear();">appear</button>
+		<button class="effectbutton" onclick="$('demo-all').blindDown();">blindDown</button> 
+		<button class="effectbutton" onclick="$('demo-all').grow();">grow</button>
+		<button class="effectbutton" onclick="$('demo-all').slideDown();">slideDown</button>
+		(appearing) <br /><br />
+
+		<button class="effectbutton" onclick="$('demo-all').blindUp();">blindUp</button>
+		<button class="effectbutton" onclick="$('demo-all').dropOut();">dropOut</button>
+		<button class="effectbutton" onclick="$('demo-all').fade();">fade</button>
+		<button class="effectbutton" onclick="$('demo-all').fold();">fold</button>
+		<button class="effectbutton" onclick="$('demo-all').puff();">puff</button> <br />
+		<button class="effectbutton" onclick="$('demo-all').shrink();">shrink</button>
+		<button class="effectbutton" onclick="$('demo-all').slideUp();">slideUp</button>
+		<button class="effectbutton" onclick="$('demo-all').squish();">squish</button>
+		<button class="effectbutton" onclick="$('demo-all').switchOff();">switchOff</button>
+		(disappearing) <br /><br />
+
+		<button class="effectbutton" onclick="$('demo-all').highlight();">highlight</button>
+		<button class="effectbutton" onclick="$('demo-all').pulsate();">pulsate</button>
+		<button class="effectbutton" onclick="$('demo-all').shake();">shake</button> <br />
+		<button class="effectbutton" onclick="$('demo-all').morph('background-color: green; color: red; width: 60px; height: 160px; font-size: 10pt; font-weight: bold');">morph</button>
+		<button class="effectbutton" onclick="new Effect.Move($('demo-all'), {x:80, y:-40})">Effect.Move</button>
+		<button class="effectbutton" onclick="new Effect.Scale($('demo-all'), 150)">Effect.Scale</button>
+		<!--<button class="effectbutton" onclick="Effect.toggle($('demo-all'),'blind')">Effect.toggle (blind)</button>-->
+		(Getting attention)
+	</p>
+
+
+	<div class="demo" style="width:120px; height:120px; font-size: 16pt;">
+		<div class="example" id="demo-all" style="background-color: white;">
+			<div style="height: 120px;">
+				<img src="images/scriptaculous_demo_logo.gif" alt="scriptaculous logo" />
+				<span>Click effects above</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Adding effects to an element</h1>
+
+	<pre class="syntaxtemplate js">
+<var>element</var>.<var>effectName</var>();            <span class="comment">// for most effects</span>
+</pre>
+
+	<pre class="syntaxtemplate js">
+new Effect.<var>Name</var>(<var>element or id</var>);   <span class="comment">// for some effects</span>
+</pre>
+
+	<pre class="examplecode js">
+$(&quot;sidebar&quot;).<em>shake()</em>;
+
+var buttons = $$(&quot;results &gt; button&quot;);
+for (var i = 0; i &lt; buttons.length; i++) {
+	buttons[i].<em>fade()</em>;
+}
+</pre>
+
+	<ul>
+		<li>
+			the effect will begin to animate on screen (asynchronously) the moment you call it
+		</li>
+		<li>six core effects are used to implement all effects on the previous slides:
+			<ul>
+				<li>
+					<a href="http://madrobby.github.com/scriptaculous/effect-highlight"><code>Effect.Highlight</code></a>, 
+					<a href="http://madrobby.github.com/scriptaculous/effect-morph"><code>Effect.Morph</code></a>, 
+					<a href="http://madrobby.github.com/scriptaculous/effect-move"><code>Effect.Move</code></a>, <br />
+					<a href="http://madrobby.github.com/scriptaculous/effect-opacity"><code>Effect.Opacity</code></a>, 
+					<a href="http://madrobby.github.com/scriptaculous/effect-parallel"><code>Effect.Parallel</code></a>, 
+					<a href="http://madrobby.github.com/scriptaculous/effect-scale"><code>Effect.Scale</code></a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Effect options</h1>
+
+	<pre class="syntaxtemplate js">
+<var>element</var>.<var>effectName</var>({
+	<var>option</var>: <var>value</var>,
+	<var>option</var>: <var>value</var>,
+	...
+});
+</pre>
+
+	<pre class="examplecode js">
+$(&quot;my_element&quot;).pulsate({
+	<em>duration: 2.0, 
+	pulses: 2</em>
+});
+</pre>
+
+	<ul>
+		<li>many effects can be customized by passing additional options (note the <code>{}</code>)</li>
+		<li>options (<a href="http://madrobby.github.com/scriptaculous/core-effects/">wiki</a>):
+			<code>delay</code>,
+			<code>direction</code>,
+			<code>duration</code>,
+			<code>fps</code>,
+			<code>from</code>,
+			<code>queue</code>,
+			<code>sync</code>,
+			<code>to</code>,
+			<code>transition</code>
+		</li>
+		<li class="incremental">
+			Q: How would we show two effects in a row on the same element?
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Effect <a class="popup" href="http://madrobby.github.com/scriptaculous/core-effects/">events</a></h1>
+
+	<pre class="examplecode js">
+$(&quot;my_element&quot;).fade({
+	duration: 3.0, 
+	<em>afterFinish: displayMessage</em>
+});
+
+function displayMessage(<em>effect</em>) {
+	alert(<em>effect.element</em> + &quot; is done fading now!&quot;);
+}
+</pre>
+
+	<ul>
+		<li>all effects have the following events that you can handle:
+			<ul>
+				<li>
+					<code>beforeStart</code>,
+					<code>beforeUpdate</code>,
+					<code>afterUpdate</code>,
+					<code>afterFinish</code>
+				</li>
+			</ul>
+		</li>
+
+		<li>the <code>afterFinish</code> event fires once the effect is done animating
+			<ul>
+				<li>useful to do something to the element (style, remove, etc.) when effect is done</li>
+			</ul>
+		</li>
+
+		<li>each of these events receives the <code>Effect</code> object as its parameter
+			<ul>
+				<li>its properties: <code>element</code>, <code>options</code>, <code>currentFrame</code>, <code>startOn</code>, <code>finishOn</code></li>
+				<li>some effects (e.g. <code>Shrink</code>) are technically &quot;parallel effects&quot;, so to access the modified element, you write <code>effect.effects[0].element</code> rather than just <code>effect.element</code></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>Sortable Lists; Drag and Drop</h1>
+
+	<ul>
+		<li>
+			Visual Effects
+		</li>
+		<li>
+			<strong>Sortable Lists; Drag and Drop</strong>
+		</li>
+		<li>
+			Auto-completing Text Fields
+		</li>
+		<li>
+			Other Features
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Drag and drop
+	</h1>
+
+	<p>
+		Scriptaculous provides several objects for supporting drag-and-drop functionality:
+	</p>
+
+	<ul>
+		<li><strong><a href="http://madrobby.github.com/scriptaculous/draggable/"><code>Draggable</code></a> : an element that can be dragged</strong></li>
+		<li><a href="http://madrobby.github.com/scriptaculous/draggables-object/"><code>Draggables</code></a> : manages all <code>Draggable</code> objects on the page</li>
+		<li><a href="http://madrobby.github.com/scriptaculous/droppables/"><code>Droppables</code></a> : elements on which a <code>Draggable</code> can be dropped</li>
+		<li><strong><a href="http://madrobby.github.com/scriptaculous/sortable-create/"><code>Sortable</code></a> : a list of items that can be reordered</strong></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><a href="http://madrobby.github.com/scriptaculous/draggable"><code>Draggable</code></a></h1>
+
+	<pre class="syntaxtemplate js">
+new Draggable(<var>element or id</var>, {
+	<var>options</var>
+});
+</pre>
+
+	<ul>
+		<li>specifies an element as being able to be dragged</li>
+		<li>options:
+			<code>handle</code>, 
+			<code>revert</code>, 
+			<code>snap</code>, 
+			<code>zindex</code>, 
+			<code>constraint</code>, 
+			<code>ghosting</code>, 
+			<code>starteffect</code>,
+			<code>reverteffect</code>,
+			<code>endeffect</code>
+		</li>
+
+		<li>event options:
+			<code>onStart</code>,
+			<code>onDrag</code>,
+			<code>onEnd</code>
+
+			<ul>
+				<li>each handler function accepts two parameters: the <code>Draggable</code> object, and the mouse event</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>Draggable</code> example</h1>
+
+	<pre class="examplecode html">
+&lt;div <em>id=&quot;draggabledemo1&quot;</em>&gt;Draggable demo 1. Default options.&lt;/div&gt;
+&lt;div <em>id=&quot;draggabledemo2&quot;</em>&gt;Draggable demo 2.
+	{snap: [40,40], revert: true}&lt;/div&gt;
+</pre>
+
+				<pre class="examplecode js">
+document.observe(&quot;dom:loaded&quot;, function() {
+	<em>new Draggable(&quot;draggabledemo1&quot;);</em>
+	new Draggable(&quot;draggabledemo2&quot;, <em>{revert: true, snap: [40, 40]}</em>);
+});
+</pre>
+
+	<div>
+		<div class="demo" id="draggabledemo1" style="width: 120px; background-color: white; font-size: 16pt;">
+			<div class="example" id="demo-effect" >
+				<img src="images/scriptaculous_demo_logo.gif" alt="logo" />
+				<span id="demo1Content">Draggable demo 1.<br/>Default options.</span>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			new Draggable('draggabledemo1');
+		</script>
+
+		<div class="demo" id="draggabledemo2" style="width: 120px; background-color: white; font-size: 16pt;">
+			<div class="example" id="demo-effect2" style="margin-top: 20px">
+				<img src="../../../../../script.aculo.us/images/demo-logo.gif" alt="" />
+				<span id="demo2Content">Draggable demo 2.<br/>
+				<span style="font-size: 10pt;">{snap:[40, 40], revert:true}</span></span>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			new Draggable('draggabledemo2', {revert: true, snap: [40, 40]} );
+		</script>
+
+		<div style="clear:left;"></div>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1><a href="http://madrobby.github.com/scriptaculous/draggables-object"><code>Draggables</code></a></h1>
+
+	<ul>
+		<li>a global helper for accessing/managing all Draggable objects on a page</li>
+		<li>(not needed for this course)</li>
+
+		<li>properties:
+			<code>drags</code>, 
+			<code>observers</code>
+		</li>
+
+		<li>methods:
+			<code>register</code>, 
+			<code>unregister</code>, 
+			<code>activate</code>,
+			<code>deactivate</code>, 
+			<code>updateDrag</code>, 
+			<code>endDrag</code>, 
+			<code>keyPress</code>, 
+			<code>addObserver</code>, 
+			<code>removeObserver</code>, 
+			<code>notify</code>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><a href="http://madrobby.github.com/scriptaculous/droppables"><code>Droppables</code></a></h1>
+
+	<pre class="syntaxtemplate js">
+Droppables.add(<var>element or id</var>, {
+	<var>options</var>
+});
+</pre>
+
+	<ul>
+		<li>specifies an element as an area that react to draggable items that are dropped on it</li>
+		<li>options:
+			<code>accept</code>, 
+			<code>containment</code>, 
+			<code>hoverclass</code>, 
+			<code>overlap</code>, 
+			<code>greedy</code>
+		</li>
+
+		<li>event options:
+			<code>onHover</code>,
+			<code>onDrop</code>
+
+			<ul>
+				<li>each callback accepts three parameters: the <code>Draggable</code>, the <code>Droppable</code>, and the event</li>
+
+				<!-- <li><a href="http://demo.script.aculo.us/shop">Shopping Cart</a> demo</li>-->
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Drag/drop shopping cart demo</h1><!-- <a href="http://demo.script.aculo.us/shop">shopping cart demo</a></h1>-->
+
+	<pre class="examplecode html compressed">
+&lt;img id=&quot;shirt&quot; src=&quot;images/shirt.png&quot; alt=&quot;shirt&quot; /&gt;
+&lt;img id=&quot;cup&quot; src=&quot;images/cup.png&quot; alt=&quot;cup&quot; /&gt;
+&lt;div id=&quot;droptarget&quot;&gt;&lt;/div&gt;
+</pre>
+
+	<pre class="examplecode js compressed">
+document.observe("dom:loaded", function() {
+	new Draggable(&quot;shirt&quot;);
+	new Draggable(&quot;cup&quot;);
+	Droppables.add(&quot;droptarget&quot;, {onDrop: productDrop});
+});
+
+function productDrop(drag, drop, event) {
+	alert(&quot;You dropped &quot; + drag.id);
+}
+</pre>
+
+	<div>
+		<div>
+			<img id="shirt" src="images/shirt.png" alt="shirt" />
+			<img id="cup" src="images/cup.png" alt="cup" />
+		</div>
+
+		<div id="droptarget" style="width: 800px; height: 120px; border: 2px solid gray; background-image: url('images/shopping-cart.png'); background-size: 144px 120px; background-position: top right; background-repeat: no-repeat;"></div>
+
+		<script type="text/javascript">
+			new Draggable('shirt');
+			new Draggable('cup');
+
+			Droppables.add('droptarget', 
+				{
+					onDrop: function(drag, drop, event) {
+						if (drop.getStyle('visibility') != 'hidden') {   // only do it when this slide is showing!
+							alert('You dropped ' + drag.id);
+						}
+					}
+				}
+			);
+		</script>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1><a href="http://madrobby.github.com/scriptaculous/sortable"><code>Sortable</code></a></h1>
+
+	<pre class="syntaxtemplate js">
+Sortable.create(<var>element or id of list</var>, {
+	<var>options</var>
+});
+</pre>
+
+	<ul>
+		<li>specifies a list (<code>ul</code>, <code>ol</code>) as being able to be dragged into any order</li>
+		<li>implemented internally using <code>Draggable</code>s and <code>Droppable</code>s</li>
+
+		<li>options:
+			<code>tag</code>, 
+			<code>only</code>, 
+			<code>overlap</code>, 
+			<code>constraint</code>, 
+			<code>containment</code>, 
+			<code>format</code>, 
+			<code>handle</code>,
+			<code>hoverclass</code>,
+			<code>ghosting</code>,
+			<code>dropOnEmpty</code>,
+			<code>scroll</code>,
+			<code>scrollSensitivity</code>,
+			<code>scrollSpeed</code>,
+			<code>tree</code>,
+			<code>treeTag</code>
+		</li>
+
+		<li>to make a list un-sortable again, call <code>Sortable.destroy</code> on it</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>Sortable</code> demo</h1>
+
+	<pre class="examplecode html">
+&lt;ol <em>id=&quot;simpsons&quot;</em>&gt;
+	&lt;li id=&quot;simpsons_0&quot;&gt;Homer&lt;/li&gt;
+	&lt;li id=&quot;simpsons_1&quot;&gt;Marge&lt;/li&gt;
+	&lt;li id=&quot;simpsons_2&quot;&gt;Bart&lt;/li&gt;
+	&lt;li id=&quot;simpsons_3&quot;&gt;Lisa&lt;/li&gt;
+	&lt;li id=&quot;simpsons_4&quot;&gt;Maggie&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+	<pre class="examplecode js">
+document.observe("dom:loaded", function() {
+	<em>Sortable.create(&quot;simpsons&quot;);</em>
+});
+</pre>
+
+	<div>
+		<ol id="simpsons" style="font-size: smaller">
+			<li>Homer</li>
+			<li>Marge</li>
+			<li>Bart</li>
+			<li>Lisa</li>
+			<li>Maggie</li>
+		</ol>
+
+		<script type="text/javascript">
+			Sortable.create('simpsons');
+		</script>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>Sortable</code> list events</h1>
+
+	<table class="standard">
+		<tr>
+			<th>event</th>
+			<th>description</th>
+		</tr>
+
+		<tr>
+			<td>
+				<code>onChange</code>
+			</td>
+			<td>
+				when any list item hovers over a new position while dragging
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code>onUpdate</code>
+			</td>
+			<td>
+				when a list item is dropped into a new position  (more useful)
+			</td>
+		</tr>
+	</table>
+
+	<pre class="examplecode js">
+document.observe("dom:loaded", function() {
+	Sortable.create(&quot;simpsons&quot;, {
+			<em>onUpdate: listUpdate</em>
+	});
+});
+</pre>
+
+	<ul>
+		<li><code>onChange</code> handler function receives the dragging element as its parameter</li>
+		<li><code>onUpdate</code> handler function receives the list as its parameter</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>Sortable</code> list events example</h1>
+
+	<pre class="examplecode js">
+document.observe("dom:loaded", function() {
+	Sortable.create(&quot;simpsons&quot;, {
+			<em>onUpdate: listUpdate</em>
+	});
+});
+
+function listUpdate(list) {
+	<span class="comment">// can do anything I want here; effects, an Ajax request, etc.</span>
+	list.shake();
+}
+</pre>
+
+	<div>
+		<ol id="simpsons2" style="font-size: smaller">
+			<li id="simpsons2_0">Homer</li>
+			<li id="simpsons2_1">Marge</li>
+			<li id="simpsons2_2">Bart</li>
+			<li id="simpsons2_3">Lisa</li>
+			<li id="simpsons2_4">Maggie</li>
+		</ol>
+
+		<script type="text/javascript">
+			Sortable.create('simpsons2',
+				{
+					onUpdate: function(list) {
+						list.shake();
+					}
+				}
+			);
+		</script>
+	</div>
+</div>
+
+
+
+<!--
+<div class="slide">
+	<h1>Persistent saved items</h1>
+
+	<p>
+		<strong>problem</strong>: rearranged items are not &quot;remembered&quot;; they return to their original order when we revisit the page
+	</p>
+
+	<ul>
+		<li>a <code>Sortable</code> has events you can handle when the list order changes:
+			<ul>
+				<li><code>onChange</code> : during a drag, each time the list order changes</li>
+				<li><code>onUpdate</code> : when a drag is done and the order has changed</li>
+			</ul>
+		</li>
+		<li>in a handler for a <code>Sortable</code>'s event, <code>post</code> the data to the server to save it</li>
+		<li>there's also a <code>Sortable.serialize</code> method for packaging and saving list data (seen later)</li>
+	</ul>
+</div>
+-->
+
+
+
+<div class="slide">
+	<h1>Subtleties of <code>Sortable</code> events</h1>
+
+	<ul>
+		<li>for <code>onUpdate</code> to work, each <code>li</code> <strong>must</strong> have an <code>id</code> of the form <code><var>listID</var>_<var>index</var></code>
+
+			<pre class="examplecode html">
+&lt;ol id=&quot;simpsons&quot;&gt;
+	&lt;li <em>id=&quot;simpsons_0&quot;</em>&gt;Homer&lt;/li&gt;
+	&lt;li <em>id=&quot;simpsons_1&quot;</em>&gt;Marge&lt;/li&gt;
+	&lt;li <em>id=&quot;simpsons_2&quot;</em>&gt;Bart&lt;/li&gt;
+	&lt;li <em>id=&quot;simpsons_3&quot;</em>&gt;Lisa&lt;/li&gt;
+	&lt;li <em>id=&quot;simpsons_4&quot;</em>&gt;Maggie&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+
+		</li>
+
+		<li>if the elements of the list change after you make it sortable (if you add or remove an item using the DOM, etc.), the new items can't be sorted
+			<ul>
+				<li>must call <code>Sortable.create</code> on the list again to fix it</li>
+			</ul>
+		</li>
+
+	</ul>
+</div>
+
+
+
+<!-- *** what if the elements of the list change? -->
+
+
+
+<div class="slide titleslide">
+	<h1>Auto-completing Text Fields</h1>
+
+	<ul>
+		<li>
+			Visual Effects
+		</li>
+		<li>
+			Sortable Lists; Drag and Drop
+		</li>
+		<li>
+			<strong>Auto-completing Text Fields</strong>
+		</li>
+		<li>
+			Other Features
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Auto-completing text fields
+	</h1>
+
+	<a href="http://demo.script.aculo.us/ajax/autocompleter_customized">
+		<img src="images/scriptaculous_autocomplete.png" alt="autocomplete" style="float: right; margin-left: 1em" />
+	</a>
+
+	<p>
+		Scriptaculous offers ways to make a text box that auto-completes based on prefix strings *:
+	</p>
+
+	<ul>
+		<li>
+			<a href="http://madrobby.github.com/scriptaculous/autocompleter-local"><code>Autocompleter.Local</code></a> :
+			auto-completes from an array of choices
+		</li>
+
+		<li>
+			<a href="http://madrobby.github.com/scriptaculous/ajax-autocompleter"><code>Ajax.Autocompleter</code></a> :
+			fetches and displays list of choices using Ajax
+		</li>
+	</ul>
+	
+	<p>
+		* (won't be necessary once HTML5 <a class="popup" href="http://www.w3schools.com/tags/tag_datalist.asp"><code>datalist</code></a> element is well supported)
+	</p>
+</div>
+
+
+
+<div class="slide">
+	<h1>Using <a href="http://madrobby.github.com/scriptaculous/autocompleter-local"><code>Autocompleter.Local</code></a></h1>
+
+	<pre class="syntaxtemplate js">
+new Autocompleter.Local(
+	<var>element or id of text box</var>, 
+	<var>element or id of div to show completions</var>,
+	<var>array of choices</var>, 
+	{ <var>options</var> }
+);
+</pre>
+
+	<ul>
+		<li>you must create an (initially empty) <code>div</code> to store the auto-completion matches
+			<ul>
+				<li>it will be inserted as a <code>ul</code> that you can style with CSS</li>
+				<li>the user can select items by pressing Up/Down arrows; selected item is given a <code>class</code> of <code>selected</code></li>
+			</ul>
+		</li>
+		<li>pass the choices as an array of strings</li>
+		<li>pass any extra options as a fourth parameter between <code>{</code> <code>}</code>
+			<ul>
+				<li>options: <code>choices</code>, <code>partialSearch</code>, <code>fullSearch</code>, <code>partialChars</code>, <code>ignoreCase</code></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>Autocompleter.Local</code> demo</h1>
+
+	<pre class="examplecode html">
+&lt;input <em>id=&quot;bands70s&quot;</em> size=&quot;40&quot; type=&quot;text&quot; /&gt;
+&lt;div <em>id=&quot;bandlistarea&quot;</em>&gt;&lt;/div&gt;
+</pre>
+
+	<pre class="examplecode js">
+document.observe(&quot;dom:loaded&quot;, function() {
+	new Autocompleter.Local(
+		&quot;bands70s&quot;,
+		&quot;bandlistarea&quot;,
+		[&quot;ABBA&quot;, &quot;AC/DC&quot;, &quot;Aerosmith&quot;, &quot;America&quot;, &quot;Bay City Rollers&quot;, ...], 
+		{}
+	);
+});
+</pre>
+
+	<div>
+		<input id="bands70s" autocomplete="off" size="40" type="text" value="" />
+		<div id="bandlistarea"></div>
+
+		<script type="text/javascript">
+		new Autocompleter.Local('bands70s', 'bandlistarea',
+			['ABBA', 'AC/DC', 'Aerosmith', 'America', 'Bay City Rollers', 'Black Sabbath', 'Boston', 'David Bowie', 'Can', 'The Carpenters', 'Chicago', 'The Commodores', 'Crass', 'Deep Purple', 'The Doobie Brothers', 'Eagles', 'Fleetwood Mac', 'Haciendo Punto en Otro Son', 'Heart', 'Iggy Pop and the Stooges', 'Journey', 'Judas Priest', 'KC and the Sunshine Band', 'Kiss', 'Kraftwerk', 'Led Zeppelin', 'Lindisfarne (band)', 'Lipps, Inc', 'Lynyrd Skynyrd', 'Pink Floyd', 'Queen', 'Ramones', 'REO Speedwagon', 'Rhythm Heritage', 'Rush', 'Sex Pistols', 'Slade', 'Steely Dan', 'Stillwater', 'Styx', 'Supertramp', 'Sweet', 'Three Dog Night', 'The Village People', 'Wings (fronted by former Beatle Paul McCartney)', 'Yes'],
+			{}
+		);
+		</script>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Autocompleter styling</h1>
+
+	<pre class="examplecode html">
+&lt;input <em>id=&quot;bands70s&quot;</em> size=&quot;40&quot; type=&quot;text&quot; /&gt;
+&lt;div <em>id=&quot;bandlistarea&quot;</em>&gt;&lt;/div&gt;
+</pre>
+
+	<pre class="examplecode css">
+#bandlistarea {
+	border: 2px solid gray;
+}
+<span class="comment">/* 'selected' class is given to the autocomplete item currently chosen */</span>
+#bandlistarea <em>.selected</em> {
+	<em>background-color: pink;</em>
+}
+</pre>
+	<div>
+		<input id="bands70s2" autocomplete="off" size="40" type="text" value="" />
+
+
+		<div id="bandlistarea2"></div>
+
+		<script type="text/javascript">
+		new Autocompleter.Local('bands70s2', 'bandlistarea2',
+			['ABBA', 'AC/DC', 'Aerosmith', 'America', 'Bay City Rollers', 'Black Sabbath', 'Boston', 'David Bowie', 'Can', 'The Carpenters', 'Chicago', 'The Commodores', 'Crass', 'Deep Purple', 'The Doobie Brothers', 'Eagles', 'Fleetwood Mac', 'Haciendo Punto en Otro Son', 'Heart', 'Iggy Pop and the Stooges', 'Journey', 'Judas Priest', 'KC and the Sunshine Band', 'Kiss', 'Kraftwerk', 'Led Zeppelin', 'Lindisfarne (band)', 'Lipps, Inc', 'Lynyrd Skynyrd', 'Pink Floyd', 'Queen', 'Ramones', 'REO Speedwagon', 'Rhythm Heritage', 'Rush', 'Sex Pistols', 'Slade', 'Steely Dan', 'Stillwater', 'Styx', 'Supertramp', 'Sweet', 'Three Dog Night', 'The Village People', 'Wings (fronted by former Beatle Paul McCartney)', 'Yes'],
+			{}
+		);
+		</script>
+	</div>
+</div>
+
+
+
+<!-- *** this is like Facebook's friend search auto-complete, or Gmail's address complete -->			
+<div class="slide">
+	<h1>Using <a href="http://madrobby.github.com/scriptaculous/ajax-autocompleter"><code>Ajax.Autocompleter</code></a></h1>
+
+	<pre class="syntaxtemplate js">
+new <em>Ajax.Autocompleter</em>(
+	<var>element or id of text box</var>, 
+	<var>element or id of div to show completions</var>,
+	<em><var>url</var></em>, 
+	{ <var>options</var> }
+);
+</pre>
+
+	<ul>
+		<li>when you have too many choices to hold them all in an array, you can instead fetch subsets of choices from the server using Ajax</li>
+		<li>instead of passing choices as an array, pass a URL from which to fetch them
+			<ul>
+				<li>the choices are sent back from the server as an HTML <code>ul</code> with <code>li</code> elements in it</li>
+			</ul>
+		</li>
+		<li>options:
+			<code>paramName</code>,
+			<code>tokens</code>,
+			<code>frequency</code>,
+			<code>minChars</code>,
+			<code>indicator</code>,
+			<code>updateElement</code>,
+			<code>afterUpdateElement</code>,
+			<code>callback</code>,
+			<code>parameters</code>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><a href="http://madrobby.github.com/scriptaculous/ajax-inplaceeditor"><code>Ajax.InPlaceEditor</code></a></h1>
+
+	<pre class="syntaxtemplate js">
+new Ajax.InPlaceEditor(<var>element or id</var>,
+	<var>url</var>,
+	{ <var>options</var> }
+);
+</pre>
+	
+	<p>
+		<em>Makes it possible to edit the content of elements on a page "live" and send the edits back to the server using Ajax.</em>
+	</p>
+	
+	<ul>
+		<li>options:
+			<code>okButton</code>, 
+			<code>okText</code>, 
+			<code>cancelLink</code>, 
+			<code>cancelText</code>, 
+			<code>savingText</code>, 
+			<code>clickToEditText</code>, 
+			<code>formId</code>, 
+			<code>externalControl</code>, 
+			<code>rows</code>, 
+			<code>onComplete</code>, 
+			<code>onFailure</code>, 
+			<code>cols</code>, 
+			<code>size</code>, 
+			<code>highlightcolor</code>, 
+			<code>highlightendcolor</code>, 
+			<code>formClassName</code>, 
+			<code>hoverClassName</code>, 
+			<code>loadTextURL</code>, 
+			<code>loadingText</code>, 
+			<code>callback</code>, 
+			<code>submitOnBlur</code>,
+			<code>ajaxOptions</code>
+		</li>
+
+		<li>event options:
+			<code>onEnterHover</code>, 
+			<code>onLeaveHover</code>, 
+			<code>onEnterEditMode</code>, 
+			<code>onLeaveEditMode</code>
+		</li>
+	</ul>
+</div>
+
+
+
+<!--			
+<div class="slide">
+	<h1><code>Ajax.InPlaceEditor</code> demo</h1>
+
+<pre>
+
+</pre>
+
+</div>
+-->
+			
+			
+
+<div class="slide">
+	<h1><a href="http://madrobby.github.com/scriptaculous/ajax-inplacecollectioneditor"><code>Ajax.InPlaceCollectionEditor</code></a></h1>
+
+	<pre class="syntaxtemplate js">
+new Ajax.InPlace<em>Collection</em>Editor(<var>element or id</var>, <var>url</var>, {
+	<em>collection: <var>array of choices</var>,</em>
+	<var>options</var>
+});
+</pre>
+
+	<ul>
+		<li>a variation of <code>Ajax.InPlaceEditor</code> that gives a collection of choices</li>
+		<li>requires <code>collection</code> option whose value is an array of strings to choose from</li>
+		<li>all other options are the same as <code>Ajax.InPlaceEditor</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>Other Features</h1>
+
+	<ul>
+		<li>
+			Visual Effects
+		</li>
+		<li>
+			Sortable Lists; Drag and Drop
+		</li>
+		<li>
+			Auto-completing Text Fields
+		</li>
+		<li>
+			<strong>Other Features</strong>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Playing sounds (<a href="http://madrobby.github.com/scriptaculous/sound">API</a>)</h1>
+
+	<table class="standard">
+		<tr>
+			<th>method</th>
+			<th>description</th>
+		</tr>
+
+		<tr>
+			<td>
+				<code>Sound.play(&quot;<var>url</var>&quot;);</code>
+			</td>
+			<td>
+				plays a sound/music file
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code>Sound.disable();</code>
+			</td>
+			<td>
+				stops future sounds from playing (doesn't mute any sound in progress)
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code>Sound.enable();</code>
+			</td>
+			<td>
+				re-enables sounds to be playable after a call to <code>Sound.disable()</code>
+			</td>
+		</tr>
+	</table>
+
+	<pre class="examplecode php">
+Sound.play(&quot;music/java_rap.mp3&quot;);
+Sound.play(&quot;music/wazzaaaaaap.wav&quot;);
+</pre>
+
+
+	<ul>
+		<li>
+			to silence a sound playing in progress, use
+			<code>Sound.play('', {replace: true});</code>
+		</li>
+		<li>
+			cannot play sounds from a local computer (must be uploaded to a web site)
+		</li>
+		<li>
+			uses your browser's built-in audio plugin to play sounds (e.g. Quicktime)
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Other neat features</h1>
+
+	<ul>
+		<li>
+			<a href="http://madrobby.github.com/scriptaculous/slider">slider control</a>:
+
+			<pre class="examplecode js">
+new Control.Slider(&quot;<var>id of knob</var>&quot;, &quot;<var>id of track</var>&quot;, {<var>options</var>});
+</pre>
+		</li>
+
+		<li>
+			<a href="http://madrobby.github.com/scriptaculous/builder"><code>Builder</code></a> - convenience class to replace <code>document.createElement</code> :
+
+			<pre class="examplecode js">
+var img = <em>Builder.node</em>(&quot;img&quot;, {
+  src: &quot;images/lolcat.jpg&quot;,
+  width: 100, height: 100,
+  alt: &quot;I can haz Scriptaculous?&quot;
+});
+$(&quot;main&quot;).appendChild(img);
+</pre>
+		</li>
+
+		<li>
+			<a href="http://madrobby.github.com/scriptaculous/tabs">Tabbed UIs</a>
+		</li>
+	</ul>
+</div>
+			
+
+
+		</div><!-- end div class="presentation" -->
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/14-scriptaculous.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:33 GMT -->
+</html>		

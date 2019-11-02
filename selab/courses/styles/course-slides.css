@@ -1,0 +1,97 @@
+#slides, #problems {
+  font-size: 15px;
+  width: 1145px;
+  margin: 0 auto;
+  display: none;
+}
+
+#slides a, #problems a {
+    color: rgb(0, 113, 216);
+    font-size: 15px;
+
+}
+
+#slides a:hover, #problems a:hover {
+    color: rgb(255, 103, 103);
+}
+
+
+h1 {
+	font-size: 60px;
+	color: #00abd9;
+	margin: 20px 0 5px 0;
+}
+
+#lecture, #lab {
+	width: 570px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#slides th, #problems th {
+	background-color: #8bcbe3;
+	height: 52px;
+	font-size: 20px;
+	color: white;
+	border-bottom: 3px solid #dfdfdf;
+	vertical-align: middle;
+	font-weight: normal;
+	text-align: center;
+}
+
+/*
+#slides th.number, #slides td.number, #problems th.number, #problems td.number {
+	width: 85px;
+	border-right: 1px solid #dfdfdf;
+}
+*/
+
+tr>th:first-child, tr>td:first-child {
+	width: 85px;
+	border-right: 1px solid #dfdfdf;
+}
+
+#slides th.title, #slides td.title {
+	width: 486px;
+	height: 48px;
+}
+
+#problems th.title, #problems td.title {
+	height: 48px;
+}
+
+#slides tr td, #problems tr td {
+	background-color: white;
+	font-size: 18px;
+	height: 30px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+#slides tr:nth-child(odd) td, #problems tr:nth-child(odd) td {
+	background-color: #edf7fa;
+}
+
+/*
+#slides td.number, #problems td.number {
+	text-align: center;
+	font-size: 15px;
+	color: rgb(105, 105, 105);
+	font-weight: 300;
+}
+*/
+
+tr>th:first-child, tr>td:first-child {
+	text-align: center;
+	font-size: 15px;
+	color: rgb(105, 105, 105);
+	font-weight: 300;
+}
+
+#slides td.title, #problems td.title {
+	padding-left: 10px;
+}
+
+#problems table {
+    width: 100%;
+}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab0-introduction.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:33 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Lab slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="stylesheet" href="ui/default/labs-slides.css" type="text/css" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+
+		<title>CSE326 Lab 0: Introduction</title>
+	</head>
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE326: Web Application Development</h1>
+				<h2>Lab 0: Introduction</h2>
+			</div>
+		</div>
+
+		<div class="presentation">
+			<div class="slide">
+				<h1><span class="smallerFont">CSE326: Web Application Development</span> <br/> <strong>Lab 0: Introduction <br/> (Git &amp; MAMP)</strong></h1>
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+
+				<p class="license">
+					Except where otherwise noted, the contents of this document are
+					Copyright 2019 Scott Uk-Jin Lee and Ahn YounGeun.
+				
+					All rights reserved.
+					<br/>Any redistribution, reproduction, transmission, or storage of part
+					or all of the contents in any form is prohibited without the author's
+					expressed written permission.
+				</p>
+
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS" /></a>
+				</div>
+			</div>
+
+<div class="slide">
+	<h1>Basic lab instructions</h1>
+
+	<ul>
+		<li>You are advised to look up syntax and examples from the <strong>lecture slides</strong>.</li>
+		<li>Ask <strong>TA</strong> or your <strong>classmates</strong> for help, if needed.</li>
+		<li>Talk to your <strong>classmates</strong> to share ideas; but do not copy or share code.</li>
+		<li>Complete all of the exercises in reasonable time (maximum 2 hours).</li>
+		<li>Your solution for a lab can be <strong>checked</strong> with TA in that lab session <strong>only</strong>.</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>What is VCS (Version Control System)?</h1>
+	
+	<ul>
+		<li>Database for <em><q>Version</q></em></li>
+		<li>A system for managing multiple revisions of the same unit of information</li>
+		<li>Git, SVN, Mercurial, ...</li>
+		<li>Why use VCS?
+			<ul>
+				<li>to collaborate with team</li>
+				<li>to backup the version of project</li>
+				<li>to track changes in source code</li>
+				<li>to reduce side-effects when developing a new module</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Git</h1>
+
+	<p>
+		<img alt="git logo" src="images/0/Git-Logo-2Color.png" />
+	</p>
+	<ul>
+		<li>the most commonly used VCS</li>
+		<li>Git Tutorial: <a href="https://rogerdudler.github.io/git-guide/index.ko.html">https://rogerdudler.github.io/git-guide/index.ko.html</a> (in Korean)</li>
+		<li>Download: <a href="https://git-scm.com/">https://git-scm.com/</a></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>GitHub</h1>
+
+	<p>
+		<img alt="github" src="images/0/github.png" />
+	</p>
+	<ul>
+		<li>Web based remote source code repository</li>
+		<li>offers git repository hosting service</li>
+		<li><a href="https://github.com/">https://github.com/</a></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Git: Create GitHub Remote Repository</h1>
+
+	<p>
+		<img alt="create repository for newbie" src="images/0/repo_new.png" />
+	</p>
+	<ul>
+		<li>If you are new GitHub user, click <q>Start a project</q>.</li>
+	</ul>
+	<p>
+		<img alt="create repository for existing user" src="images/0/repo_old.png"/>
+	</p>
+	<ul>
+		<li>If you are already a registered GitHub user, click <q>New repository</q>.</li>
+	</ul>
+
+</div>
+
+<div class="slide">
+	<h1>Git: Create GitHub Remote Repository</h1>
+
+	<p><img alt="create repository" src="images/0/repo_create.png" /></p>
+</div>
+
+<div class="slide">
+	<h1>Git: Create GitHub Remote Repository</h1>
+
+	<p><img alt="created repo" src="images/0/repo_created.png"/></p>
+	<ul><li>Copy your repository URL for next step.</li></ul>
+
+</div>
+
+<div class="slide">
+	<h1>Git: Initial Setting</h1>
+
+	<ol>
+		<li>Initialize Git <em>Workspace</em>: <code>git init</code></li>
+		<li>
+			User login:
+			<ul>
+				<li><code>git config user.name "Your Name"</code></li>
+				<li><code>git config user.email yourGitEmail@abcde.def</code> (No double quotes!)</li>
+			</ul>
+		</li>
+		<li>Naming your GitHub <em>Remote Repository</em>: <code>git remote add origin https://github.com/...</code></li>
+	</ol>
+</div>
+
+<div class="slide">
+	<h1>Git: Basic Workflow</h1>
+
+	<p class="leftFloatingImage"><img alt="git" src="images/0/workflow.png"/></p>
+
+	<ol>
+		<li>Pull your remote repository to <em>Local Repository and Workspace</em></li>
+		<li>Code, Code, Code ... in your <em>Workspace</em></li>
+		<li>Add your changes to <em>Index</em></li>
+		<li>Commit(Save) your changes to <em>Local Repository</em></li>
+		<li>
+			Pull your remote repository again
+			<ul><li>conflict can occur when remote repository is modified before push</li></ul>
+		</li>
+		<li>Upload your works in <em>Local Repository to Remote Repository</em></li>
+	</ol>
+</div>
+
+<div class="slide">
+	<h1>Git: Basic Workflow (Commands)</h1>
+
+
+		<p class="leftFloatingImage"><img alt="git" src="images/0/workflow.png" /></p>
+
+		<ol>
+			<li><code>git pull origin master</code></li>
+			<li>Code, Code, Code ... in your <em>Workspace</em></li>
+			<li><code>git add *</code></li>
+			<li><code>git commit -m "Describe how code is changed ..."</code></li>
+			<li><code>git pull origin master</code></li>
+			<li><code>git push origin master</code></li>
+		</ol>
+</div>
+
+<div class="slide">
+	<h1>Environment Setup: MAMP</h1>
+
+	<ul>
+		<li>In order to practice the concepts and theories learned in this course, web server must be setup.</li>
+		<li>Before the course web server gets configured, we will use MAMP.</li>
+	</ul>
+	<br/>
+
+	<p class="leftFloatingImage"><img alt="git" src="images/0/mamp.png" /></p>
+
+	<ul class="leftFloatingImage">
+		<li>MAMP (Mac OS X + Apache + MySQL + PHP) consists of :
+			<ul>
+				<li>Apache HTTP/HTTPS Server - Web server application</li>
+				<li>MySQL - Open-source Relation Database Management System (RDBMS)</li>
+				<li>PHP - Server-side scripting Language</li>
+			</ul>
+		</li>
+		<li>It setups local server environment and supports both Mac and Windows.</li>
+		<li>Download: <a href="https://www.mamp.info/en/downloads/">https://www.mamp.info/en/downloads/</a></li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Ex 1: Setup Git &amp; Create GitHub Repository</h1>
+
+	<ol>
+		<li>
+			Download <em>Git</em> and install it.
+			<ul><li><strong>Don't change any settings when you install Git.</strong></li></ul>
+		</li>
+		<li>Create new GitHub Repository.</li>
+		<li>
+			Open Terminal.
+			<ul>
+				<li>Windows: <code>Win+R -> cmd</code></li>
+				<li>Mac OS X: open Spotlight -> search 'Terminal' ('터미널')</li>
+			</ul>
+		</li>
+		<li>
+			Follow the Git Basic Workflow(slide 9-10).
+			<ul>
+				<li>Initialize ~ Pull -> <em>Create some file(anything is okay)</em> -> Add ~ Push</li>
+				<li>Type the commands in <em>Terminal or Git Bash</em>.</li>
+			</ul>
+		</li>
+	</ol>
+</div>
+
+<div class="slide">
+	<h1>Ex 2: Setup MAMP (Web Server &amp; MySQL)</h1>
+
+	<ol>
+		<li>
+			Download <em>MAMP</em> and install it.
+			<ul><li><strong>Don't install <em>MAMP PRO</em>.</strong></li></ul>
+			<!--
+			<ul>
+				<li>change port number to 80 @ Ports tab</li>
+				<li>set Apache root directory to your user directory ('Users/user_name/Documents/MAMP/htdocs') @ Apache tab</li>
+			</ul>
+			-->
+		</li>
+		<li>
+			Execute MAMP and click <q>Start Servers</q>.
+			<ul>
+				<li>If there is an error, restart MAMP, start server, stop server(to terminate the service), and start server again.</li>
+			</ul>
+		</li>
+		<li>Open your Internet browser (IE, Chrome, Firefox, ...).</li>
+		<li>Type <code>localhost</code> or <code>127.0.0.1</code> in address.</li>
+		<li>Type <code>mysql -uroot -proot</code> in Terminal.</li>
+	</ol>
+</div>
+
+
+<div class="slide">
+	<h1>Ex 3: Creating a demo web page</h1>
+
+	<ul>
+		<li>Atom
+			<ul>
+				<li>it is advisable to use Atom as an editor for web application development</li>
+			</ul>
+		</li>
+		<li>Recreate the <em>Hello World</em> demo page using Atom
+			<ol>
+				<li>browse the <a href="labResources/helloWorld.html">Hello World demo page</a></li>
+				<li>view the page source</li>
+				<li>recreate the demo page using Atom</li>
+				<li>open and check your web page in a web browser</li>
+			</ol>
+		</li>
+		<li>Upload your web page
+			<ul>
+				<li>put <em>Hello World</em> demo page in the the Apache root directory</li>
+				<li>browse the uploaded demo page at <a href="http://localhost/helloWorld.html">http://localhost/helloWorld.html</a></li>
+			</ul>
+			<ul>
+				<li>download the <a href="labResources/welcomeToCSE3026.zip">server-side script</a> and put it in the the Apache root directory</li>
+				<li>browse the uploaded script at <em>http://localhost/welcomeToCSE3026.php?name=<strong>yourname</strong></em>
+					<ul>
+						<li>e.g.) <a href="http://localhost/welcomeToCSE3026.php?name=Scott">http://localhost/welcomeToCSE3026.php?name=Scott</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+		</div>
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab0-introduction.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:37 GMT -->
+</html>
+

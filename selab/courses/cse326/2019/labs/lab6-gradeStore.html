@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab6-gradeStore.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:47 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Lab slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="Hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="stylesheet" href="ui/default/labs-slides.css" type="text/css" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+
+		<title>CSE3026 Lab 6: Forms</title>
+	</head>
+
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1>
+				<h2>Lab 6: Forms</h2>
+			</div>
+		</div>
+
+		<div class="presentation">
+			<div class="slide">
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Lab 6: Forms</strong></h1>
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+				
+				<p class="license">
+					Except where otherwise noted, the contents of this document are
+					Copyright 2019 Scott Uk-Jin Lee.
+
+					All rights reserved.
+					Any redistribution, reproduction, transmission, or storage of part
+					or all of the contents in any form is prohibited without the author's
+					expressed written permission.
+				</p>
+
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS" /></a>
+				</div>
+			</div>		
+		
+
+<div class="slide">
+	<h1>Lab 6: Forms</h1>
+
+	<p>Lab 6: Forms - create the <q>Grade Store</q> web page </p>
+
+    <hr />
+    	<p>
+    		The <q>Grade Store</q> page sells A+, A, B+, and B grades for various courses  
+    		that students can buy with their credit card. (Just a joke!)
+    </p>
+	<p>
+		The <q>Grade Store</q> page (<code>gradestore.html</code>) has a form that submits to <code>cheater.php</code>.
+		Then <code>cheater.php</code> will output a web page to confirm that the student's money was taken out.
+	</p>
+</div>
+
+
+<div class="slide">
+	<h1>Lab 6 exercises</h1>
+    
+	<p>
+		Download the <a class="popup" href="labResources/gradestore.zip"><code>gradestore.zip</code></a> and complete the following exercises.
+	</p>
+
+	<ol>
+		<li>Create a Form</li>
+		<li>Process Form Data</li>
+		<li>Save Form Data</li>
+		<li>Basic Data Validation</li>
+		<li>Name &amp; Credit Card Check</li>
+	</ol>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Create a Form</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>
+		Create an HTML form that <code>POST</code>s its submitted data to a PHP program on a server.
+	</p>
+
+	<ul>
+		<li>
+			Modify the <code>gradestore.html</code> by turning part of its contents into an HTML form: 
+			<ul>
+				<li>create two text fields for <q>Name</q> and <q>ID</q></li>
+				<li>create checkboxes for courses - <q>CSE326</q>, <q>CSE107</q>, <q>CSE603</q>, <q>CIN870</q> </li>
+				<li>create a drop-down list for grades - <q>A+</q>, <q>A</q>, <q>B+</q>, <q>B</q> </li>
+				<li>create a text field for <q>Credit Card</q> and radio buttons for - <q>Visa</q>, <q>MasterCard</q></li>
+				<li>create a submit button with the button text - <q>I am a giant cheater!</q></li>
+			</ul>
+		</li>
+		<li>
+			Note : 
+			<ul>
+				<li><code>name</code> attribute must be given to form controls for the data to be sent as query parameters</li>
+				<li>some form controls requires <code>value</code> attribute</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		Your page should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/6/ex1_output.png" alt="expected output" />
+	</div>
+
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Process Form Data</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>Write the PHP page to handle the submitted form data.</p>
+
+	<ul>
+		<li>Modify <code>gradestore.html</code> to POST its data to <code>cheater.php</code>.</li>
+		<li>
+			Modify the <code>cheater.php</code> to display submitted data. 
+			<ul>
+				<li>data to be displayed - name, id, selected courses, selected grade, credit card number and type</li>
+				<li>for now, the page does not need to save this information on the server</li>
+				<li>do <strong>NOT</strong> use <code>print</code> or <code>echo</code> in PHP: use expression block</li>
+			</ul>
+		</li>
+		<li>
+			Complete the PHP function <code>processCheckbox</code> : 
+			<ul>
+				<li>processes a given array of names (values of name attributes for all the checkboxes)</li>
+				<li>return a single string of all the selected checkboxes' names with comma separation (, )</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		Your page should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/6/ex2_output.png" alt="expected output" />
+	</div>
+
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Save Form Data</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>Modify <code>cheater.php</code> to save the submitted data to a file <code>loosers.txt</code>.</p>
+
+	<ul>
+		<li>
+			Use the following format:
+			<pre>
+Jaejin Kim;20120024754;4125475455554754;visa
+Jaeho Choi;20130024754;5855457454324754;mastercard
+Scott Lee;20110115238;4300523877775238;visa</pre>
+		</li>
+
+		<li>
+			Change your page's output to show the complete contents of <code>loosers.txt</code>.
+			<ul>
+				<li>place the file contents into an HTML <code>&lt;pre&gt;</code> element to preserve whitespace</li>
+			</ul>
+		</li>
+		<li>
+			Use <a href="http://www.php.net/file_get_contents/"><code>file_get_contents</code></a> and 
+			<a href="http://www.php.net/file_put_contents/"><code>file_put_contents</code></a>.
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		Your page should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/6/ex3_output.png" alt="expected output" />
+	</div>
+
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Basic Data Validation</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+	
+	<p>
+		Update <code>cheater.php</code> to verify that all parameters exist and are not blank.
+	</p>
+	
+	<ul>
+		<li>
+			Check the existence of each parameter using the PHP function <code>isset</code>.
+		</li>
+		
+		<li>
+			Check the blankness of an element in $_POST by comparing it to the empty string.
+		</li>
+		
+		<li>
+			If the form is filled incorrectly, show an error message as seen on the next page. 
+			<ul>
+				<li>provide a <q>Try again</q> link that directs back to the initial <code>gradesotre.html</code> page</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		Your page should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/6/ex4_output.png" alt="expected output" />
+	</div>
+
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Name &amp; Credit Card Check</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+	
+	<p>
+		Update <code>cheater.php</code> to further validite the name and the credit card number.
+	</p>
+	
+	<ul>
+		<li>
+			Check if the name is composed of alphabets, dash(-), or a single white space.
+		</li>
+	
+		<li>
+			Check if the credit card number is composed of exactly <strong>16</strong> digits.
+		</li>
+		
+		<li>
+			Check if the Visa card starts with <strong>4</strong> and MasterCard starts with <strong>5</strong>.
+		</li>
+		
+		<li>
+			If the name or credit card number does not pass the above checks, show an error message as seen on the next page.
+		</li>		
+	</ul>
+
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		Your page should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/6/ex5a_output.png" alt="expected output" />
+	</div>
+	
+	<div>
+		<img src="images/6/ex5b_output.png" alt="expected output" />
+	</div>
+
+</div>
+
+
+<div class="slide">
+	<h1>If you finish them all...</h1>
+
+	<p>If you finish all the exercises:</p>
+
+	<ol>
+		<li>you can add any other content you like to your page</li>
+		<li><strong>check the correctness</strong> of your page with a TA if necessary</li>
+		<li>submit your <code>gradestore.html</code> and <code>cheater.php</code> files to your <code>Git</code> repository under <code>lab06</code> folder</li>
+	</ol>
+	
+	<p><strong>Great work!</strong></p>
+</div>
+
+
+		</div>
+
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab6-gradeStore.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:49 GMT -->
+</html>
+

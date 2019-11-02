@@ -1,0 +1,15 @@
+.urgent {
+	background-color: pink;
+}
+.highlight {
+	background-color: yellow;
+}
+
+.pseudo_class_eg:link { color: #FF0000; }
+.pseudo_class_eg:visited { color: #00FF00; } 
+.pseudo_class_eg:hover { color: #FF00FF; } 
+
+.pseudoCSS {
+	font-size: smaller; 
+	margin-top: 2px;
+}

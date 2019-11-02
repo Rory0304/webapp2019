@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html>
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/01-www.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:52 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+		
+		<title>CSE3026 - The Internet &amp; World Wide Web</title>
+	</head>
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1> 
+				<h2>01.The Internet &amp; World Wide Web</h2>
+			</div>
+		</div>
+	
+		<div class="presentation">
+			<div class="slide">
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>The Internet &amp; World Wide Web</strong></h1>			
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+							
+				<p class="license">
+					Reproduced with permission of the authors.
+					Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
+					All rights reserved. 
+					Further reproduction or distribution is prohibited without written permission.
+				</p>
+				
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
+				</div>
+			</div>
+	
+	
+			<div class="slide titleslide">
+				<h1>1.1: The Internet</h1>
+			
+				<ul>
+					<li>
+						<strong>1.1: The Internet</strong>
+					</li>
+					<li>
+						1.2: The World Wide Web (WWW)
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>The Internet</h1>
+			
+				<div class="centerfigure">
+					<img src="images/internet.png" alt="The Internet" />
+				</div>
+			
+				<ul>
+					<li>Wikipedia: <a href="http://en.wikipedia.org/wiki/Internet">http://en.wikipedia.org/wiki/Internet</a>
+						<ul>
+							<li>network of networks</li>
+							<li>a connection of computer networks using the Internet Protocol (IP)</li>
+						</ul>
+					</li>		
+					<li>layers of communication protocols: 
+						<ul>
+							<li>IP &rarr; TCP/UDP &rarr; HTTP/FTP/POP/SMTP/SSH...</li>
+						</ul>
+					</li>
+					<li>What's the difference between the Internet and the World Wide Web (WWW)?</li>
+				</ul>
+			
+				<div class="handout">
+					<ul>
+						<li>the Web is the collection of web sites and pages around the world; the Internet is larger and also includes other services such as email, chat, online games, etc.</li>
+					</ul>
+				</div>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>Brief history</h1>
+			
+				<ul>
+					<li>began as a US Department of Defense network called <a href="http://en.wikipedia.org/wiki/ARPANET">ARPANET</a> (1960s-70s)</li>
+					<li>initial services: electronic mail, file transfer</li>
+					<li>opened to commercial interests in late 80s</li>
+					<li>WWW created in 1989-91 by <a href="http://en.wikipedia.org/wiki/Tim_Berners-Lee">Tim Berners-Lee</a></li>
+					<li>popular web browsers released: Netscape 1994, IE 1995</li>
+					<li>Amazon.com opens in 1995; Google January 1996</li>
+					<li><a href="https://web.archive.org/web/19991123001948/http://www.geocities.com/Heartland/Bluffs/4157/hampdance.html">Hamster Dance</a> web page created in 1999 
+						<!-- <img src="images/hamster_dance.png" alt="hamster dance" style="vertical-align: top" /> -->
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>Key aspects of the internet</h1>
+			
+				<ul>
+					<li>subnetworks can stand on their own</li>
+					<li>computers can dynamically join and leave the network</li>
+					<li>built on open standards
+						<ul>
+							<li>anyone can create a new internet device</li>	
+						</ul>
+					</li>
+					<li>lack of centralized control (mostly)</li>
+					<li>everyone can use it with simple, commonly available software</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>
+					People and organizations
+				</h1>
+			
+				<ul>				
+					<li>Internet Engineering Task Force (<a href="http://en.wikipedia.org/wiki/Internet_Engineering_Task_Force">IETF</a>):
+						<ul>
+							<li>internet protocol standards</li>
+						</ul> 			
+					</li>
+					<li>Internet Corporation for Assigned Names and Numbers (<a href="http://en.wikipedia.org/wiki/ICANN">ICANN</a>):
+						<ul>
+							<li>decides top-level domain names</li>
+						</ul>
+					</li>
+					<li>World Wide Web Consortium (<a href="http://en.wikipedia.org/wiki/World_Wide_Web_Consortium">W3C</a>):
+						<ul>
+							<li>web standards</li>
+						</ul> 
+					</li>
+				</ul>
+			
+				<div class="centerfigure">
+					<img src="images/ietf_logo.gif" alt="IETF" height="70" />
+					<img src="images/icann.jpg" alt="ICANN" height="70"/>
+					<img src="images/w3c.png" alt="W3C" height="50" />
+				</div>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>
+					Layered architecture
+				</h1>
+			
+				<p>
+					The internet uses a layered hardware/software architecture (OSI model):
+<!--			
+					<img class="rightfigure" src="images/osi_model.png" alt="OSI model" />
+-->
+				</p>
+			
+				<ul>
+					<li>physical layer
+						<ul>
+							<li>devices such as ethernet, coaxial cables, fiber-optic lines, modems</li>
+						</ul>
+					</li>
+					<li>data link layer
+						<ul>
+							<li>basic hardware protocols (ethernet protocol, wifi protocol, DSL's PPP)</li>
+						</ul>
+					</li>
+					<li>network / internet layer
+						<ul>
+							<li>basic software protocol (IP)</li>
+						</ul>
+					</li>	
+					<li>transport layer
+						<ul>
+							<li>adds reliability to network layer (TCP, UDP)</li>
+						</ul>
+					</li>	
+					<li>application layer
+						<ul>
+							<li>implements specific communication for each kind of program (HTTP, POP3/IMAP, SSH, FTP)</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>Internet Protocol (<a href="http://en.wikipedia.org/wiki/Internet_Protocol">IP</a>)</h1>
+			
+				<ul>
+					<li>a simple protocol for attempting to send data between two computers</li>
+					<li>each device has a 32-bit IP address written as four 8-bit numbers (0-255) <br />
+					<img src="images/fig1_ip_address.png" alt="IP address" style="width: 507px; margin-top: 20px;" />
+					</li>
+					<li>find out your internet IP address: <a href="http://www.whatismyip.com/">whatismyip.com</a></li>
+					<li>find out your local IP address:
+						<ul>
+							<li>in a terminal, type: <code>ipconfig</code> (Windows) or <code>ifconfig</code> (Mac/Linux)</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>Transmission Control Protocol (<a href="http://en.wikipedia.org/wiki/Tcp_protocol">TCP</a>)</h1>
+			
+				<ul>
+					<li>adds multiplexing, guaranteed message delivery on top of IP</li>
+					<li>
+						<strong>multiplexing</strong>: multiple programs using the same IP address
+						<ul>
+							<li><strong>port</strong>: a number given to each program or service</li>
+							<li>port 80: web browser (port 443 for secure browsing)</li>
+							<li>port 25,110: email (SMTP, POP3)</li>
+							<li>port 22: secure shell (SSH)</li>
+							<li>port 21: file transfers (FTP)</li>
+							<li><a href="http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">more common ports</a></li>
+						</ul>
+					</li>
+					<li>some programs (games, streaming media programs) use simpler <a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a> protocol instead of TCP</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide titleslide">
+				<h1>1.2: The World Wide Web (WWW)</h1>
+			
+				<ul>
+					<li>
+						1.1: The Internet
+					</li>
+					<li>
+						<strong>1.2: The World Wide Web (WWW)</strong>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>
+					<a href="http://en.wikipedia.org/wiki/Web_server">Web servers</a> and
+					<a href="http://en.wikipedia.org/wiki/Web_browser">browsers</a>
+				</h1>
+			
+				<div class="rightfigure">
+					<img src="images/webserver.gif" alt="web server" height="120"/>
+				</div>
+			
+			
+				<ul>
+					<li>
+						<strong>web server</strong>: software that listens for web page requests
+			
+						<ul>
+							<li><a href="http://www.apache.org/">Apache</a></li>
+							<li>Microsoft Internet Information Services (IIS) (<a href="https://www.iis.net/">part of Windows</a>)</li>
+						</ul>
+					</li>
+			
+					<li><strong>web browser</strong>: fetches/displays documents from web servers
+						<img class="rightfigure" src="images/web_browser.jpg" alt="Firefox web browser" />
+						<ul>
+							<li><a href="http://www.getfirefox.com/">Mozilla Firefox</a></li>
+							<li>Microsoft <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">Internet Explorer</a> (IE)</li>
+							<li>Apple <a href="http://www.apple.com/safari/">Safari</a></li>
+							<li><a href="http://www.google.com/chrome/">Google Chrome</a></li>
+							<li><a href="http://www.opera.com/">Opera</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>
+					Domain Name System (<a href="http://en.wikipedia.org/wiki/Dns">DNS</a>)
+				</h1>
+			
+				<ul>
+					<li>a set of servers that map written names to IP addresses
+						<ul>
+							<li>e.g.: <code>cse.hanyang.ac.kr</code> &rarr; <code>166.104.239.93</code></li>
+						</ul>
+					</li>
+			
+					<li>many systems maintain a local cache called a <a href="http://en.wikipedia.org/wiki/Hosts_file">hosts file</a>
+						<ul>
+							<li>Windows: <code><a href="file:///C:/Windows/system32/drivers/etc/hosts">C:\Windows\system32\drivers\etc\hosts</a></code></li>
+							<li>Mac: <code><a href="file:///private/etc/hosts">/private/etc/hosts</a></code></li>
+							<li>Linux: <code><a href="file:///etc/hosts">/etc/hosts</a></code></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>Uniform Resource Locator (<a href="http://en.wikipedia.org/wiki/Url">URL</a>)</h1>
+			
+				<ul>
+					<li>an identifier for the location of a document on a web site</li>
+					<li>
+						a basic URL:
+			<pre>
+<a href="http://www.aw-bc.com/info/regesstepp/index.html">http://www.aw-bc.com/info/regesstepp/index.html</a>
+~~~~   ~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+protocol    host                path
+</pre>
+					</li>
+					<li>
+						upon entering this URL into the browser, it would:
+						<ul>
+							<li>ask the DNS server for the IP address of <code>www.aw-bc.com</code></li>
+							<li>connect to that IP address at port 80</li>
+							<li>ask the server to <code>GET /info/regesstepp/index.html</code></li>
+							<li>display the resulting page on the screen</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>More advanced URLs</h1>
+			
+				<ul>
+					<li>
+						<strong>anchor</strong>: jumps to a given section of a web page
+<pre>
+<a href="http://www.textpad.com/download/index.html#downloads">http://www.textpad.com/download/index.html<strong>#downloads</strong></a>
+</pre>
+						<ul>
+							<li>fetches <code>index.html</code> then jumps down to part of the page labeled <code>downloads</code></li>
+						</ul>
+					</li>
+			
+					<li>
+						<strong>port</strong>: for web servers on ports other than the default 80
+<pre>
+http://selab.hanyang.ac.kr<strong>:8080</strong>/secret/money.txt
+</pre>
+					</li>
+			
+					<li>
+						<strong>query string</strong>: a set of parameters passed to a web program
+<pre>
+<a href="http://www.google.com/search?q=miserable+failure&amp;start=10">http://www.google.com/search<strong>?q=miserable+failure&amp;start=10</strong></a>
+</pre>
+						<ul>
+							<li>parameter <code>q</code> is set to <code>&quot;miserable+failure&quot;</code></li>
+							<li>parameter <code>start</code> is set to <code>10</code></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>
+					Hypertext Transport Protocol
+					(<a href="http://en.wikipedia.org/wiki/Http_protocol">HTTP</a>)
+					</h1>
+			
+				<ul>
+					<li>the set of commands understood by a web server and sent from a browser</li>
+			
+					<li>
+						some HTTP commands (your browser sends these internally):
+						<ul>
+							<li><code>GET&nbsp; <em>filename</em></code> : download</li>
+							<li><code>POST <em>filename</em></code> : send a web form response</li>
+							<li><code>PUT&nbsp; <em>filename</em></code> : upload</li>
+						</ul>
+					</li>
+					<li>
+						simulating a browser with a terminal window:
+			
+<pre class="examplecode shell">
+$ <em>telnet cse.hanyang.ac.kr 80</em>
+Trying 166.104.239.93...
+Connected to cse.hanyang.ac.kr.
+Escape character is '^]'.
+<em>GET /index.html</em>
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 ..."&gt;
+&lt;html&gt;
+...
+</pre>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>HTTP error codes</h1>
+			
+				<ul>
+					<li>when something goes wrong, the web server returns a special "error code" number to the browser, possibly followed by an HTML document</li>
+					<li>common error codes:
+						<table class="standard">
+							<tr>
+								<th class="spaced">Number</th><th>Meaning</th>
+							</tr>
+							<tr>
+								<td>200</td>
+								<td>OK</td>
+							</tr>
+							<tr>
+								<td><a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.3.2">301-303</a></td>
+								<td>page has moved (permanently or temporarily)</td>
+							</tr>
+							<tr>
+								<td><a href="../project/index.html">403</a></td>
+								<td>you are forbidden to access this page</td>
+							</tr>
+							<tr>
+								<td><a href="http://www.homestarrunner.com/404.html">404</a></td>
+								<td>page not found</td>
+							</tr>
+							<tr>
+								<td>500</td>
+								<td>internal server error</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="completelist"><a href="http://en.wikipedia.org/wiki/Http_error_codes">complete list</a></td>
+							</tr>
+						</table>
+					</li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>Internet media (&quot;<a href="http://en.wikipedia.org/wiki/Mime_type">MIME</a>&quot;) types</h1>
+			
+				<ul>
+					<li>
+						sometimes when including resources in a page (style sheet, icon, multimedia object), we specify their type of data
+			
+						<table class="standard">
+							<tr>
+								<th>MIME type</th>
+								<th class="slidetable">file extension</th>
+							</tr>
+							<tr class="code">
+								<td>text/html</td><td>.html</td>
+							</tr>
+							<tr class="code">
+								<td>text/plain</td><td>.txt</td>
+							</tr>
+							<tr class="code">
+								<td>image/gif</td><td>.gif</td>
+							</tr>
+							<tr class="code">
+								<td>image/jpeg</td><td>.jpg</td>
+							</tr>
+							<tr class="code">
+								<td>video/quicktime</td><td>.mov</td>
+							</tr>
+							<tr class="code">
+								<td>application/octet-stream</td><td>.exe</td>
+							</tr>
+						</table>
+					</li>
+					<li>Lists of MIME types: <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">by type</a>, <a href="https://www.sitepoint.com/web-foundations/mime-types-complete-list/">by extension</a></li>
+				</ul>
+			</div>
+			
+			
+			<div class="slide">
+				<h1>
+					Web languages / technologies
+				</h1>
+			
+				<ul>
+					<li>Hypertext Markup Language (<a href="http://en.wikipedia.org/wiki/Html">HTML</a>): used for writing web pages</li>
+					<li>Cascading Style Sheets (<a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>): stylistic info for web pages</li>
+					<li>PHP Hypertext Processor (<a href="http://www.php.net/">PHP</a>): dynamically create pages on a web server</li>
+					<li><a href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a>: interactive and programmable web pages</li>
+					<li>Asynchronous JavaScript and XML (<a href="http://en.wikipedia.org/wiki/Ajax_(programming)">Ajax</a>): accessing data for web applications</li>
+					<li>eXtensible Markup Language (<a href="http://en.wikipedia.org/wiki/Xml">XML</a>): metalanguage for organizing data</li>
+					<li>Structured Query Language (<a href="http://en.wikipedia.org/wiki/SQL">SQL</a>): interaction with databases</li>
+				</ul>
+			</div>
+	
+
+		</div>
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/01-www.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:54 GMT -->
+</html>

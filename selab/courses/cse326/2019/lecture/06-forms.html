@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/06-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:20 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="Hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+		
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+		
+		<title>CSE3026 - 06. Forms</title>
+	</head>
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1>
+				<h2>06. Forms</h2>
+			</div>
+		</div>
+	
+		<div class="presentation">
+			<div class="slide">			
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Forms</strong></h1>			
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+							
+				<p class="license"> 				
+					Reproduced with permission of the authors.
+					Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
+					All rights reserved. 
+					Further reproduction or distribution is prohibited without written permission.
+				</p>
+				
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML 5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
+				</div>
+			</div>
+			
+			
+			
+<div class="slide titleslide">
+	<h1>6.1: Form Basics</h1>
+
+	<ul>
+		<li>
+			<strong>6.1: Form Basics</strong>
+		</li>
+		<li>
+			6.2: Form Controls
+		</li>
+		<li>
+			6.3: Submitting Data
+		</li>
+		<li>
+			6.4: Processing Form Data in PHP
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Web data</h1>
+
+	<ul>
+		<li>most interesting web pages revolve around data
+			<ul>
+				<li>examples: Google, IMDB, Digg, Facebook, YouTube, Rotten Tomatoes</li>
+				<li>can take many formats: text, HTML, XML, multimedia</li>
+			</ul>
+		</li>
+		<li>many of them allow us to access their data</li>
+		<li>some even allow us to submit our own new data</li>
+		<li>most server-side web programs accept <span class="term">parameters</span> that guide their execution</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Query strings and parameters
+	</h1>
+
+	<pre class="syntaxtemplate url">
+<var>URL</var><em>?</em><var>name</var><em>=</em><var>value</var><em>&amp;</em><var>name</var><em>=</em><var>value</var>...
+</pre>
+
+	<pre class="url">
+http://www.google.com/search?<em>q=Obama</em>
+http://example.com/student_login.php?<em>username=lee</em>&<em>id=1234567</em>
+</pre>
+
+	<ul>
+		<li><span class="term">query string</span>: a set of parameters passed from a browser to a web server
+			<ul>
+				<li>often passed by placing name/value pairs at the end of a URL</li>
+				<li>above, parameter <code>username</code> has value <code>lee</code>, and <code>sid</code> has value <code>1234567</code></li>
+			</ul>
+		</li>
+		<li>PHP code on the server can examine and utilize the value of parameters</li>
+		<li>a way for PHP code to produce different output based on values passed by the user</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Query parameters:
+		<a class="popup underscorelink" href="http://us2.php.net/manual/en/reserved.variables.get.php"><code>$_GET</code></a>,
+		<a class="popup underscorelink" href="http://us2.php.net/manual/en/reserved.variables.post.php"><code>$_POST</code></a>
+	</h1>
+
+	<pre class="examplecode php">
+$user_name = <em>$_GET[&quot;username&quot;]</em>;
+$id_number = (int) <em>$_GET[&quot;id&quot;]</em>;
+$eats_meat = FALSE;
+if (isset(<em>$_GET[&quot;meat&quot;]</em>)) {
+  $eats_meat = TRUE;
+}
+</pre>
+
+	<ul>
+		<li>
+			<code>$_GET[&quot;<var>parameter name</var>&quot;]</code> or <code>$_POST[&quot;<var>parameter name</var>&quot;]</code> returns a GET/POST parameter's value as a string
+		</li>
+		<li>parameters specified as <code>http://....?<var>name</var>=<var>value</var>&amp;<var>name</var>=<var>value</var></code> are GET parameters</li>
+		<li>test whether a given parameter was passed with <code>isset</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>HTML forms</h1>
+
+	<div style="float: right; border: 3px solid gray;"><img src="images/form.png" alt="HTML form" /></div>
+
+	<ul>
+		<li><span class="term">form</span>: a group of UI controls that accepts information from the user and sends the information to a web server</li>
+		<li>the information is sent to the server as a <span class="term">query string</span></li>
+		<li>JavaScript can be used to create interactive controls (seen later)</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		HTML form:
+		<a href="http://www.w3schools.com/tags/tag_form.asp"><code>&lt;form&gt;</code></a>
+	</h1>
+
+	<pre class="examplecode html">
+<em>&lt;form action=&quot;<var>destination URL</var>&quot;&gt;</em>
+  <var>form controls</var>
+<em>&lt;/form&gt;</em>
+</pre>
+
+	<ul>
+		<li>required <code>action</code> attribute gives the URL of the page that will process this form's data</li>
+		<li>
+			when form has been filled out and <span class="term">submitted</span>, its data will be sent to the <code>action</code>'s URL
+		</li>
+		<li>
+			one page may contain many forms if so desired
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Form example
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+<em>&lt;form action=&quot;http://www.google.com/search&quot;&gt;</em>
+  &lt;div&gt;
+    Let's search Google:
+    &lt;input name=&quot;q&quot; /&gt;
+    &lt;input type=&quot;submit&quot; /&gt;
+  &lt;/div&gt;
+<em>&lt;/form&gt;</em>
+</pre>
+
+		<div class="exampleoutput insertoutput"></div>
+	</div>
+
+	<ul>
+		<li>must wrap the form's controls in a block element such as <code>div</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>6.2: Form Controls</h1>
+
+	<ul>
+		<li>
+			6.1: Form Basics
+		</li>
+		<li>
+			<strong>6.2: Form Controls</strong>
+		</li>
+		<li>
+			6.3: Submitting Data
+		</li>
+		<li>
+			6.4: Processing Form Data in PHP
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Form controls: <a href="http://www.w3schools.com/tags/tag_input.asp"><code>&lt;input&gt;</code></a>
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+<span class="comment">&lt;!-- 'q' happens to be the name of Google's required parameter --&gt;</span>
+&lt;input <em>type=&quot;text&quot; name=&quot;q&quot; value=&quot;Colbert Report&quot;</em> /&gt;
+&lt;input <em>type=&quot;submit&quot; value=&quot;Booyah!&quot;</em> /&gt;
+</pre>
+
+		<form action="http://www.google.com/search" class="exampleoutput insertoutput"></form>
+	</div>
+
+	<ul>
+		<li><code>input</code> element is used to create many UI controls
+			<ul>
+				<li>an inline element that MUST be self-closed</li>
+			</ul>
+		</li>
+		<li><code>name</code> attribute specifies name of query parameter to pass to server</li>
+		<li><code>type</code> can be <code>button</code>, <code>checkbox</code>, <code>file</code>, <code>hidden</code>, <code>password</code>, <code>radio</code>, <code>reset</code>, <code>submit</code>, <code>text</code>, ...</li>
+		<li><code>value</code> attribute specifies control's initial text</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Text fields:
+		<a href="http://www.w3schools.com/tags/tag_input.asp"><code>&lt;input&gt;</code></a>
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;input type=&quot;text&quot; <em>size=&quot;10&quot; maxlength=&quot;8&quot;</em> /&gt; NetID &lt;br /&gt;
+&lt;input <em>type=&quot;password&quot;</em> size=&quot;16&quot; /&gt; Password
+&lt;input type=&quot;submit&quot; value=&quot;Log In&quot; /&gt;
+</pre>
+				
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput"></form>
+	</div>
+
+	<ul>
+		<li><code>input</code> attributes: <code>disabled</code>, <code>maxlength</code>, <code>readonly</code>, <code>size</code>, <code>value</code></li>
+		<li><code>size</code> attribute controls onscreen width of text field</li>
+		<li><code>maxlength</code> limits how many characters user is able to type into field</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Text boxes:
+		<a href="http://www.w3schools.com/tags/tag_textarea.asp"><code>&lt;textarea&gt;</code></a>
+	</h1>
+
+	<p class="description">
+		a multi-line text input area (inline)
+	</p>
+
+	<div class="example">
+		<pre class="examplecode html">
+<em>&lt;textarea rows=&quot;4&quot; cols=&quot;20&quot;&gt;</em>
+Type your comments here.
+<em>&lt;/textarea&gt;</em>
+</pre>
+		
+		<div class="exampleoutput insertoutput"></div>
+	</div>
+
+	<ul>
+		<li>initial text is placed inside <code>textarea</code> tag (optional)</li>
+		<li>required <code>rows</code> and <code>cols</code> attributes specify height/width in characters</li>
+		<li>optional <code>readonly</code> attribute means text cannot be modified</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Checkboxes:
+		<a href="http://www.w3schools.com/tags/tag_input.asp"><code>&lt;input&gt;</code></a>
+	</h1>
+
+	<p class="description">
+		yes/no choices that can be checked and unchecked (inline)
+	</p>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;input <em>type=&quot;checkbox&quot;</em> name=&quot;lettuce&quot; /&gt; Lettuce
+&lt;input <em>type=&quot;checkbox&quot; name=&quot;tomato&quot; checked=&quot;checked&quot;</em> /&gt; Tomato
+&lt;input <em>type=&quot;checkbox&quot;</em> name=&quot;pickles&quot; checked=&quot;checked&quot; /&gt; Pickles
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li>none, 1, or many checkboxes can be checked at same time</li>
+		<li>when sent to server, any checked boxes will be sent with value <code>on</code>:
+			<ul>
+				<li>
+					<pre>
+http://domain_name/params.php<em>?tomato=on&amp;pickles=on</em>
+</pre>
+				</li>
+			</ul>
+		</li>
+		<li>use <code>checked=&quot;checked&quot;</code> attribute in HTML to initially check the box</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Radio buttons:
+		<a href="http://www.w3schools.com/tags/tag_input.asp"><code>&lt;input&gt;</code></a>
+	</h1>
+
+	<p class="description">
+		sets of mutually exclusive choices (inline)
+	</p>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;input <em>type=&quot;radio&quot;</em> name=&quot;cc&quot; value=&quot;visa&quot; checked=&quot;checked&quot; /&gt; Visa
+&lt;input <em>type=&quot;radio&quot;</em> name=&quot;cc&quot; value=&quot;mastercard&quot; /&gt; MasterCard
+&lt;input <em>type=&quot;radio&quot;</em> name=&quot;cc&quot; value=&quot;amex&quot; /&gt; American Express
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li>grouped by <code>name</code> attribute (only one can be checked at a time)</li>
+		<li>must specify a <code>value</code> for each one or else it will be sent as value <code>on</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Text labels:
+		<a href="http://www.w3schools.com/tags/tag_label.asp"><code>&lt;label&gt;</code></a>
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode html" style="font-size: smaller">
+<em>&lt;label&gt;</em>&lt;input type=&quot;radio&quot; name=&quot;cc&quot; value=&quot;visa&quot; checked=&quot;checked&quot; /&gt; Visa<em>&lt;/label&gt;</em>
+<em>&lt;label&gt;</em>&lt;input type=&quot;radio&quot; name=&quot;cc&quot; value=&quot;mastercard&quot; /&gt; MasterCard<em>&lt;/label&gt;</em>
+<em>&lt;label&gt;</em>&lt;input type=&quot;radio&quot; name=&quot;cc&quot; value=&quot;amex&quot; /&gt; American Express<em>&lt;/label&gt;</em>
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li>associates nearby text with control, so you can click text to activate control</li>
+		<li>can be used with checkboxes or radio buttons</li>
+		<li><code>label</code> element can be targeted by CSS style rules</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Drop-down list:
+		<a href="http://www.w3schools.com/tags/tag_select.asp"><code>&lt;select&gt;</code></a>,
+		<a href="http://www.w3schools.com/tags/tag_option.asp"><code>&lt;option&gt;</code></a>
+	</h1>
+
+	<p class="description">
+		menus of choices that collapse and expand (inline)
+	</p>
+
+	<div class="example">
+		<pre class="examplecode html">
+<em>&lt;select name=&quot;favoritecharacter&quot;&gt;</em>
+  &lt;option&gt;Jerry&lt;/option&gt;
+  &lt;option&gt;George&lt;/option&gt;
+  &lt;option <em>selected=&quot;selected&quot;</em>&gt;Kramer&lt;/option&gt;
+  &lt;option&gt;Elaine&lt;/option&gt;
+<em>&lt;/select&gt;</em>
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li><code>option</code> element represents each choice</li>
+		<li><code>select</code> optional attributes: <code>disabled</code>, <code>multiple</code>, <code>size</code></li>
+		<li>optional <code>selected</code> attribute sets which one is initially chosen</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Using <code>&lt;select&gt;</code> for lists</h1>
+
+	<div class="example">
+		<pre class="examplecode html" style="font-size: smaller">
+&lt;select name=&quot;favoritecharacter<em>[]</em>&quot; <em>size=&quot;3&quot; multiple=&quot;multiple&quot;</em>&gt;
+  &lt;option&gt;Jerry&lt;/option&gt;
+  &lt;option&gt;George&lt;/option&gt;
+  &lt;option&gt;Kramer&lt;/option&gt;
+  &lt;option&gt;Elaine&lt;/option&gt;
+  &lt;option <em>selected=&quot;selected&quot;</em>&gt;Newman&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li>optional <code>multiple</code> attribute allows selecting multiple items with shift- or ctrl-click
+			<ul>
+				<li>
+					must declare parameter's name with <code>[]</code> if you allow multiple selections
+				</li>
+			</ul>
+		</li>
+		<li><code>option</code> tags can be set to be initially <code>selected</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Option groups:
+		<a href="http://www.w3schools.com/tags/tag_optgroup.asp"><code>&lt;optgroup&gt;</code></a>
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode html" style="font-size: smaller">
+&lt;select name=&quot;favoritecharacter&quot;&gt;
+  <em>&lt;optgroup label=&quot;Major Characters&quot;&gt;</em>
+    &lt;option&gt;Jerry&lt;/option&gt;
+    &lt;option&gt;George&lt;/option&gt;
+    &lt;option&gt;Kramer&lt;/option&gt;
+    &lt;option&gt;Elaine&lt;/option&gt;
+  <em>&lt;/optgroup&gt;</em>
+  <em>&lt;optgroup label=&quot;Minor Characters&quot;&gt;</em>
+    &lt;option&gt;Newman&lt;/option&gt;
+    &lt;option&gt;Susan&lt;/option&gt;
+  <em>&lt;/optgroup&gt;</em>
+&lt;/select&gt;
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li>What should we do if we don't like the style?</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Reset buttons
+	</h1>
+
+	<!-- *** this form doesn't make sense as a GET; change -->
+
+	<div class="example">
+		<pre class="examplecode html">
+Name: &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt; &lt;br /&gt;
+Food: &lt;input type=&quot;text&quot; name=&quot;meal&quot; value=&quot;pizza&quot; /&gt; &lt;br /&gt;
+&lt;label&gt;Meat? &lt;input type=&quot;checkbox&quot; name=&quot;meat&quot; /&gt;&lt;/label&gt; &lt;br /&gt;
+<em>&lt;input type=&quot;reset&quot; /&gt;</em>
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li>when clicked, returns all form controls to their initial values</li>
+		<li>specify custom text on the button by setting its <code>value</code> attribute</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Common UI control errors</h1>
+
+	<ul>
+		<li>
+			<q>I changed the form's HTML code ... but when I refresh, the page doesn't update!</q>
+
+			<ul>
+				<li>By default, when you refresh a page, it leaves the previous values in all form controls</li>
+				<li>it does this in case you were filling out a long form and needed to refresh/return to it</li>
+				<li>if you want it to clear out all UI controls' state and values, you must do a <span class="term">full refresh</span>
+					<ul>
+						<li>Firefox: Shift-Ctrl-R</li>
+						<li>Mac: Shift-Command-R</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Hidden input parameters
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt; Name &lt;br /&gt;
+&lt;input type=&quot;text&quot; name=&quot;sid&quot; /&gt; SID &lt;br /&gt;
+<em>&lt;input type=&quot;hidden&quot; name=&quot;school&quot; value=&quot;HYU&quot; /&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;year&quot; value=&quot;2048&quot; /&gt;</em></pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li>an invisible parameter that is still passed to the server when form is submitted</li>
+		<li>useful for passing on additional state that isn't modified by the user</li>
+	</ul>
+</div>
+
+
+<!--
+<div class="slide titleslide">
+	<h1>6.4: Processing Form Data in PHP</h1>
+
+	<ul>
+		<li>
+			6.1: Form Basics
+		</li>
+		<li>
+			6.2: Form Controls
+		</li>
+		<li>
+			6.3: Submitting Data
+		</li>
+		<li>
+			<strong>6.4: Processing Form Data in PHP</strong>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Example: Exponents</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+$base = <em>$_GET[&quot;base&quot;]</em>;
+$exp = <em>$_GET[&quot;exponent&quot;]</em>;
+$result = pow($base, $exp);
+print "$base ^ $exp = $result";
+</pre>
+
+<pre class="exampleurl url">
+http://example.com/exponent.php?<em>base=3</em>&<em>exponent=4</em>
+</pre>
+
+		<div class="exampleoutput">
+			3 ^ 4 = 81
+		</div>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Example: Print all parameters</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+&lt;?php
+<em>foreach ($_GET as $param =&gt; $value) {</em>
+	?&gt;
+
+	&lt;p&gt;Parameter <em>&lt;?= $param ?&gt;</em> has value <em>&lt;?= $value ?&gt;</em>&lt;/p&gt;
+
+	&lt;?php
+<em>}</em>
+?&gt;
+</pre>
+
+		<pre class="exampleurl url">
+http://example.com/print_params.php?<em>name=Marty+Stepp</em>&<em>sid=1234567</em>
+</pre>
+
+		<div class="exampleoutput">				
+			<p>Parameter name has value Marty Stepp</p>
+			<p>Parameter sid has value 1234567</p>
+		</div>
+	</div>
+
+	<ul>
+		<li>
+			or call <code>print_r</code> or <code>var_dump</code> on <code>$_GET</code> or <code>$_POST</code> for debugging
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>6.2: Form Controls</h1>
+
+	<ul>
+		<li>
+			6.1: Form Basics
+		</li>
+		<li>
+			<strong>6.2: Form Controls</strong>
+		</li>
+		<li>
+			6.3: Submitting Data
+		</li>
+		<li>
+			6.4: Processing Form Data in PHP
+		</li>
+	</ul>
+</div>
+-->
+
+
+<div class="slide">
+	<h1>
+		Grouping input:
+		<a href="http://www.w3schools.com/tags/tag_fieldset.asp"><code>&lt;fieldset&gt;</code></a>, 
+		<a href="http://www.w3schools.com/tags/tag_legend.asp"><code>&lt;legend&gt;</code></a>
+	</h1>
+
+	<p class="description">
+		groups of input fields with optional caption (block)
+	</p>
+
+	<div class="example">
+		<pre class="examplecode html">
+<em>&lt;fieldset&gt;</em>
+  <em>&lt;legend&gt;</em>Credit cards:<em>&lt;/legend&gt;</em>
+  &lt;input <em>type=&quot;radio&quot;</em> name=&quot;cc&quot; value=&quot;visa&quot; checked=&quot;checked&quot; /&gt; Visa
+  &lt;input <em>type=&quot;radio&quot;</em> name=&quot;cc&quot; value=&quot;mastercard&quot; /&gt; MasterCard
+  &lt;input <em>type=&quot;radio&quot;</em> name=&quot;cc&quot; value=&quot;amex&quot; /&gt; American Express
+<em>&lt;/fieldset&gt;</em>
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li><code>fieldset</code> groups related input fields, adds a border; <code>legend</code> supplies a caption</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Styling form controls 
+	</h1>
+
+	<div class="example">
+		<pre class="syntaxtemplate css">
+<span class="placeholder">element</span><em>[<span class="placeholder">attribute</span>=&quot;<span class="placeholder">value</span>&quot;]</em> {
+  <span class="placeholder">property</span> : <span class="placeholder">value</span>;
+  <span class="placeholder">property</span> : <span class="placeholder">value</span>;
+  ...
+  <span class="placeholder">property</span> : <span class="placeholder">value</span>;
+}
+</pre>
+
+		<pre class="examplecode css">
+input<em>[type=&quot;text&quot;]</em> {
+  background-color: yellow;
+  font-weight: bold;
+}
+</pre>
+
+		<div class="exampleoutput insertoutput">
+			<input type="text" value="Borat" style="background-color: yellow; font-weight: bold;" />
+		</div>
+	</div>
+
+	<ul>
+		<li><span class="term">attribute selector</span>: matches only elements that have a particular attribute value</li>
+		<li>useful for controls because many share the same element (<code>input</code>)</li>
+	</ul>
+</div>
+
+
+<!--
+<div class="slide titleslide">
+	<h1>6.4: Processing Form Data in PHP</h1>
+
+	<ul>
+		<li>
+			6.1: Form Basics
+		</li>
+		<li>
+			6.2: Form Controls
+		</li>
+		<li>
+			6.3: Submitting Data
+		</li>
+		<li>
+			<strong>6.4: Processing Form Data in PHP</strong>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Example: Exponents</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+$base = <em>$_GET[&quot;base&quot;]</em>;
+$exp = <em>$_GET[&quot;exponent&quot;]</em>;
+$result = pow($base, $exp);
+print "$base ^ $exp = $result";
+</pre>
+
+<pre class="exampleurl url">
+http://example.com/exponent.php?<em>base=3</em>&<em>exponent=4</em>
+</pre>
+
+		<div class="exampleoutput">
+			3 ^ 4 = 81
+		</div>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Example: Print all parameters</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+&lt;?php <em>foreach ($_GET as $param =&gt; $value) {</em> ?&gt;
+	&lt;p&gt;Parameter <em>&lt;?= $param ?&gt;</em> has value <em>&lt;?= $value ?&gt;</em>&lt;/p&gt;
+&lt;?php <em>}</em> ?&gt;
+</pre>
+
+		<pre class="exampleurl url">
+http://example.com/print_params.php?<em>name=Scott+Lee</em>&<em>sid=1234567</em>
+</pre>
+
+		<div class="exampleoutput">				
+			<p>Parameter name has value Scott Lee</p>
+			<p>Parameter sid has value 1234567</p>
+		</div>
+	</div>
+
+	<ul>
+		<li>
+			or call <code>print_r</code> or <code>var_dump</code> on <code>$_GET</code> for debugging
+		</li>
+	</ul>
+</div>
+-->
+
+<!-- *** there should be a slide here about float left to align form columns -->
+
+
+
+<!--
+*** this is more useful for ASCIImation...
+<div class="slide">
+	<h1>Styling Text Boxes</h1>
+				
+	<pre class="examplecode html">
+&lt;textarea <em>rows=&quot;3&quot; cols=&quot;40&quot;</em>&gt;&lt;/textarea&gt;
+</pre>
+
+<pre class="examplecode js">
+body { <em>height: 100%;</em> }
+textarea {
+	<em>position: absolute;</em>
+	<em>width: 50%;</em>
+	<em>height: 15%;</em>
+}
+</pre>
+
+	<ul>
+		<li>XHTML validator requires <code>rows</code> and <code>cols</code> on a <code>textarea</code></li>
+		<li>if you want a <code>textarea</code> at a specific width/height in pixels or %, you must specify <code>rows</code>/<code>cols</code> in the XHTML <em>and</em> <code>width</code>/<code>height</code> in the CSS
+			<ul>
+				<li>the <code>rows</code>/<code>cols</code> will be ignored but must be there anyway...</li>
+				<li>sometimes specifying a <code>height</code> on the page's <code>body</code> helps</li>
+				<li>sometimes using absolute/fixed positioning on the <code>textarea</code> helps</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+-->
+
+
+<div class="slide titleslide">
+	<h1>6.3: Submitting Data</h1>
+
+	<ul>
+		<li>
+			6.1: Form Basics
+		</li>
+		<li>
+			6.2: Form Controls
+		</li>
+		<li>
+			<strong>6.3: Submitting Data</strong>
+		</li>
+		<li>
+			6.4: Processing Form Data in PHP
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Problems with submitting data</h1>
+
+	<div class="example">
+		<pre class="examplecode html" style="font-size: smaller">
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;cc&quot; /&gt; Visa&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;cc&quot; /&gt; MasterCard&lt;/label&gt; &lt;br /&gt;
+Favorite Star Trek captain:
+&lt;select name=&quot;startrek&quot;&gt;
+  &lt;option&gt;James T. Kirk&lt;/option&gt;
+  &lt;option&gt;Jean-Luc Picard&lt;/option&gt;
+&lt;/select&gt; &lt;br /&gt;
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li>this form submits to our handy <a href="resources/params.html">params.php</a> tester page</li>
+		<li>the form may look correct, but when you submit it...</li>
+		<li><code><em class="bad">[cc] => on</em>, [startrek] => Jean-Luc Picard</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>The <code>value</code> attribute</h1>
+
+	<div class="example">
+		<pre class="examplecode html" style="font-size: smaller">
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;cc&quot; <em>value=&quot;visa&quot;</em> /&gt; Visa&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;cc&quot; <em>value=&quot;mastercard&quot;</em> /&gt; MasterCard&lt;/label&gt; &lt;br /&gt;
+Favorite Star Trek captain:
+&lt;select name=&quot;startrek&quot;&gt;
+  &lt;option <em>value=&quot;kirk&quot;</em>&gt;James T. Kirk&lt;/option&gt;
+  &lt;option <em>value=&quot;picard&quot;</em>&gt;Jean-Luc Picard&lt;/option&gt;
+&lt;/select&gt; &lt;br /&gt;
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php" class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li><code>value</code> attribute sets what will be submitted if a control is selected</li>
+		<li><code>[cc] => visa, [startrek] => picard</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		URL-encoding
+	</h1>
+
+	<ul>
+		<li>certain characters are not allowed in URL query parameters:
+			<ul>
+				<li>examples: <code>&quot; &quot;</code>, <code>&quot;/&quot;</code>, <code>&quot;=&quot;</code>, <code>&quot;&&quot;</code></li>
+			</ul>
+		</li>
+
+		<li>when passing a parameter, it is <span class="term">URL-encoded</span>
+			(<a class="popup" href="http://www.w3schools.com/TAGS/ref_urlencode.asp">reference table</a>)
+
+			<ul>
+				<li><code>&quot;Scott's cool!?&quot;</code> &rarr; <code>&quot;Scott<em>%27s+</em>cool<em>%3F%21</em>&quot;</code></li>
+			</ul>
+		</li>
+
+		<li>you don't usually need to worry about this:
+			<ul>
+				<li>the browser automatically encodes parameters before sending them</li>
+				<li>the PHP <code>$_GET</code> and <code>$_POST</code> arrays automatically decode them</li>
+				<li>
+					... but occasionally the encoded version does pop up (e.g. in Firebug)
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Submitting data to a web server</h1>
+
+	<ul>
+		<li>though browsers mostly retrieve data, sometimes you want to submit data to a server
+			<ul>
+				<li>Hotmail: Send a message</li>
+				<li>Flickr: Upload a photo</li>
+				<li>Google Calendar: Create an appointment</li>
+			</ul>
+		</li>
+
+		<li>the data is sent in HTTP requests to the server
+			<ul>
+				<li>with HTML forms</li>
+				<li>with <span class="term">Ajax</span> (seen later)</li>
+			</ul>
+		</li>
+
+		<li>the data is placed into the request as parameters</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		HTTP <code>GET</code> vs. <code>POST</code> requests
+	</h1>
+
+	<ul>
+		<li>
+			<strong><code>GET</code></strong> : asks a server for a page or data
+			<ul>
+				<li>if the request has parameters, they are sent in the URL as a query string</li>
+			</ul>
+		</li>
+		<li>
+			<strong><code>POST</code></strong> : submits data to a web server and retrieves the server's response
+			<ul>
+				<li>if the request has parameters, they are embedded in the request's HTTP packet, not the URL</li>
+			</ul>
+		</li>
+		<!--
+		<li>
+			<strong><code>put</code></strong> : uploads an entire file to a web server
+			<ul>
+				<li>useful for large uploads such as image files and email attachments</li>
+			</ul>
+		</li>
+		-->
+
+		<li class="incremental">
+			For submitting data, a <code>POST</code> request is more appropriate than a <code>GET</code>
+
+			<ul>
+				<li><code>GET</code> requests embed their parameters in their URLs</li>
+				<li>URLs are limited in length (~ 1024 characters)</li>
+				<li>URLs cannot contain special characters without encoding</li>
+				<li><a href="http://www.allvirtualware.com/languages/french_translation_software.htm">private data in a URL</a> can be seen or modified by users</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Form POST example</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;form action=&quot;http://foo.com/app.php&quot; <em>method=&quot;post&quot;</em>&gt;
+  &lt;div&gt;
+    Name: &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt; &lt;br /&gt;
+    Food: &lt;input type=&quot;text&quot; name=&quot;meal&quot; /&gt; &lt;br /&gt;
+    &lt;label&gt;Meat? &lt;input type=&quot;checkbox&quot; name=&quot;meat&quot; /&gt;&lt;/label&gt; &lt;br /&gt;
+    &lt;input type=&quot;submit&quot; /&gt;
+  &lt;div&gt;
+&lt;/form&gt;
+</pre>
+
+		<div class="exampleoutput insertoutput"></div>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>GET or POST?</h1>
+
+	<pre class="examplecode php">
+if (<em>$_SERVER[&quot;REQUEST_METHOD&quot;]</em> == "GET") {
+  <span class="comment"># process a GET request</span>
+  <var>...</var>
+} elseif (<em>$_SERVER[&quot;REQUEST_METHOD&quot;]</em> == "POST") {
+  <span class="comment"># process a POST request</span>
+  <var>...</var>
+}
+</pre>
+
+	<ul>
+		<li>some PHP pages process both GET and POST requests</li>
+		<li>to find out which kind of request we are currently processing, <br />
+		look at the global <code>$_SERVER</code> array's <code>&quot;REQUEST_METHOD&quot;</code> element</li>
+	</ul>
+</div>
+
+
+<!--
+<div class="slide">
+	<h1>The <code>htmlspecialchars</code> function</h1>
+
+	<table class="standard">
+		<tr>
+			<td>
+				<a href="http://www.php.net/htmlspecialchars"><code>htmlspecialchars</code></a>
+			</td>
+			<td>
+				returns an HTML-escaped version of a string
+			</td>
+		</tr>
+	</table>
+
+	<ul>
+		<li>text from files / user input / query params might contain &lt;, &gt;, &amp;, etc.</li>
+		<li>we could manually write code to strip out these characters</li>
+		<li>better idea: allow them, but <span class="term">escape</span> them</li>
+	</ul>
+
+	<pre class="php">
+$text = "&lt;p&gt;hi 2 u &amp; me&lt;/p&gt;";
+$text = htmlspecialchars($text);  <span class="comment"># "&amp;lt;p&amp;gt;hi 2 u &amp;amp; me&amp;lt;/p&amp;gt;"</span>
+</pre>
+</div>
+-->
+
+
+<div class="slide titleslide">
+	<h1>6.4: Processing Form Data in PHP</h1>
+
+	<ul>
+		<li>
+			6.1: Form Basics
+		</li>
+		<li>
+			6.2: Form Controls
+		</li>
+		<li>
+			6.3: Submitting Data
+		</li>
+		<li>
+			<strong>6.4: Processing Form Data in PHP</strong>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		&quot;Superglobal&quot; arrays
+	</h1>
+
+	<table class="standard underscorelink">
+		<tr>
+			<th>Array</th>
+			<th>Description</th>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/manual/en/reserved.variables.get.php"><code>$_GET</code></a>,
+				<a href="http://www.php.net/manual/en/reserved.variables.post.php"><code>$_POST</code></a>
+			</td>
+			<td>parameters passed to GET and POST requests</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/manual/en/reserved.variables.files.php"><code>$_FILES</code></a>
+			</td>
+			<td>files uploaded with the web request</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/manual/en/reserved.variables.session.php"><code>$_SESSION</code></a>,
+				<a href="http://www.php.net/manual/en/reserved.variables.cookies.php"><code>$_COOKIE</code></a>
+			</td>
+			<td>&quot;cookies&quot; used to identify the user (seen later)</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<a href="http://www.php.net/manual/en/reserved.variables.server.php"><code>$_SERVER</code></a>,
+				<a href="http://www.php.net/manual/en/reserved.variables.environment.php"><code>$_ENV</code></a>
+			</td>
+			<td>information about the web server</td>
+		</tr>
+	</table>
+
+	<ul>
+		<li>
+			PHP <span class="term">superglobal</span> arrays contain information about the current request, server, etc.:
+		</li>
+
+		<li>
+			These are special kinds of arrays called <span class="term">associative arrays</span>.
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Associative arrays
+	</h1>
+
+	<pre class="examplecode php">
+$blackbook = array();
+<em>$blackbook[&quot;scott&quot;]</em> = &quot;031-400-5238&quot;;
+<em>$blackbook[&quot;jaejin&quot;]</em> = &quot;031-400-4754&quot;;
+...
+print &quot;Scott's number is &quot; . <em>$blackbook[&quot;scott&quot;]</em> . &quot;.\n&quot;;
+</pre>
+
+	<ul>
+		<li><span class="term">associative array</span> (a.k.a. <span class="term">map</span>, <span class="term">dictionary</span>, <span class="term">hash table</span>) : uses non-integer indexes</li>
+		<li>associates a particular index &quot;key&quot; with a value
+			<ul>
+				<li>key <code>&quot;scott&quot;</code> maps to value <code>&quot;031-400-5238&quot;</code></li>
+			</ul>
+		</li>
+		<li>syntax for embedding an associative array element in interpreted string:
+			<pre class="examplecode php">print &quot;Scott's number is <em>{$blackbook['scott']}</em>.\n&quot;;</pre>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Uploading files
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;form action=&quot;resources/params.php&quot;
+      method=&quot;post&quot; <em>enctype=&quot;multipart/form-data&quot;</em>&gt;
+  Upload an image as your avatar:
+  <em>&lt;input type=&quot;file&quot; name=&quot;avatar&quot; /&gt;</em>
+  &lt;input type=&quot;submit&quot; /&gt;
+&lt;/form&gt;
+</pre>
+
+		<div class="exampleoutput insertoutput"></div>
+	</div>
+
+	<ul>
+		<li>add a file upload to your form as an <code>input</code> tag with <code>type</code> of <code>file</code></li>
+		<li>must also set the <code>enctype</code> attribute of the form</li>
+	</ul>
+
+	<div class="handout">
+		<ul>
+			<li>it makes sense that the form's request method must be <code>post</code> (an entire file can't be put into a URL!)</li>
+			<li>form's <code>enctype</code> (data encoding type) must be set to <code>multipart/form-data</code> or else the file will not arrive at the server</li>
+		</ul>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Processing an uploaded file in PHP
+	</h1>
+
+	<ul>
+		<li>
+			uploaded files are placed into global array <code>$_FILES</code>, not <code>$_POST</code>
+		</li>
+		<li>each element of <code>$_FILES</code> is itself an associative array, containing:
+			<ul>
+				<li><code>name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> : the local filename that the user uploaded</li>
+				<li><code>type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> : the MIME type of data that was uploaded, such as <code>image/jpeg</code></li>
+				<li><code>size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code> : file's size in bytes</li>
+				<li><code>tmp_name&nbsp;</code> : a filename where PHP has temporarily saved the uploaded file
+					<ul>
+						<li>to permanently store the file, move it from this location into some other file</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Uploading details
+	</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;input type=&quot;file&quot; name=&quot;avatar&quot; /&gt;
+</pre>
+
+		<form action="https://selab.hanyang.ac.kr/courses/cse326/2019/lecture/resources/params.php"
+					method="post" enctype="multipart/form-data"
+					class="exampleoutput insertoutput">
+			<input type="submit" />
+		</form>
+	</div>
+
+	<ul>
+		<li>example: if you upload <code>borat.jpg</code> as a parameter named <code>avatar</code>,
+			<ul>
+				<li><code>$_FILES[&quot;avatar&quot;][&quot;name&quot;]</code> will be <code>&quot;borat.jpg&quot;</code></li>
+				<li><code>$_FILES[&quot;avatar&quot;][&quot;type&quot;]</code> will be <code>&quot;image/jpeg&quot;</code></li>
+				<li><code>$_FILES[&quot;avatar&quot;][&quot;tmp_name&quot;]</code> will be something like <code>&quot;/var/tmp/phpZtR4TI&quot;</code></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Processing uploaded file, example</h1>
+
+	<pre class="examplecode php">
+$username = $_POST[&quot;username&quot;];
+if (<em>is_uploaded_file($_FILES[&quot;avatar&quot;][&quot;tmp_name&quot;])</em>) {
+  <em>move_uploaded_file($_FILES[&quot;avatar&quot;][&quot;tmp_name&quot;], &quot;$username/avatar.jpg&quot;)</em>;
+  print &quot;Saved uploaded file as $username/avatar.jpg\n&quot;;
+} else {
+  print &quot;Error: required file not uploaded&quot;;
+}
+</pre>
+
+	<ul>
+
+		<li>functions for dealing with uploaded files:
+			<ul>
+				<li>
+					<code>is_uploaded_file(<var>filename</var>)</code> <br />
+					returns <code>TRUE</code> if the given filename was uploaded by the user
+				</li>
+				<li>
+					<code>move_uploaded_file(<var>from</var>, <var>to</var>)</code> <br />
+					moves from a temporary file location to a more permanent file
+				</li>
+			</ul>
+		</li>
+		<li>proper idiom: check <code>is_uploaded_file</code>, then do <code>move_uploaded_file</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Including files: <a href="http://www.php.net/include"><code>include</code></a>
+	</h1>
+
+	<pre class="syntaxtemplate php">
+include(&quot;<var>filename</var>&quot;);
+</pre>
+
+	<pre class="examplecode php">
+include(&quot;header.php&quot;);
+include(&quot;shared-code.php&quot;);
+</pre>
+
+	<ul>
+		<li>inserts the entire contents of the given file into the PHP script's output page</li>
+		<li>encourages modularity</li>
+		<li>useful for defining reused functions needed by multiple pages</li>
+	</ul>
+</div>
+
+
+<!--
+<div class="slide">
+	<h1>
+		Functions
+	</h1>
+
+	<pre class="syntaxtemplate php">
+function <var>name</var>(<var>parameterName</var>, <var>...</var>, <var>parameterName</var>) {
+  <var>statements</var>;
+}
+</pre>
+
+	<pre class="examplecode php">
+function bmi($weight, $height) {
+  $result = 703 * $weight / $height / $height;
+  return $result;
+}
+</pre>
+
+	<ul>
+		<li>parameter types and return types are not written</li>
+		<li>a function with no <code>return</code> statements is implicitly "void"</li>
+		<li>can be declared in any PHP block, at start/end/middle of code</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Calling functions</h1>
+
+	<pre class="syntaxtemplate php">
+<var>name</var>(<var>expression</var>, <var>...</var>, <var>expression</var>);
+</pre>
+
+	<pre class="examplecode php">
+$w = 163;  <span class="comment"># pounds</span>
+$h = 70;   <span class="comment"># inches</span>
+$my_bmi = <em>bmi($w, $h)</em>;
+</pre>
+
+	<ul>
+		<li>if the wrong number of parameters are passed, it's an error</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Variable scope: global and local vars</h1>
+				
+	<pre class="examplecode php">
+$school = &quot;UW&quot;;                   <span class="comment"># global</span>
+...
+
+function downgrade() {
+  <em>global $school;</em>
+  $suffix = &quot;(Wisconsin)&quot;;        <span class="comment"># local</span>
+
+  $school = &quot;$school $suffix&quot;;
+  print &quot;$school\n&quot;;
+}
+</pre>
+
+	<ul>
+		<li>variables declared in a function are <span class="term">local</span> to that function; others are <span class="term">global</span></li>
+		<li>if a function wants to use a global variable, it must have a <code>global</code> statement
+			<ul>
+				<li>but don't abuse this; mostly you should use parameters</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Default parameter values</h1>
+
+	<pre class="syntaxtemplate php">
+function <var>name</var>(<var>parameterName</var> = <var>value</var>, <var>...</var>, <var>parameterName</var> = <var>value</var>) {
+  <var>statements</var>;
+}
+</pre>
+
+	<pre class="examplecode php">
+function print_separated($str, <em>$separator = &quot;, &quot;</em>) {
+  if (strlen($str) &gt; 0) {
+    print $str[0];
+    for ($i = 1; $i &lt; strlen($str); $i++) {
+      print $separator . $str[$i];
+    }
+  }
+}
+</pre>
+
+	<pre class="examplecode php">
+print_separated(&quot;hello&quot;);        <span class="comment"># h, e, l, l, o</span>
+print_separated(&quot;hello&quot;<em>, &quot;-&quot;</em>);   <span class="comment"># h-e-l-l-o</span>
+</pre>
+
+	<ul>
+		<li>if no value is passed, the default will be used (defaults must come last)</li>
+	</ul>
+</div>
+-->
+
+
+<div class="slide titleslide">
+	<h1>Extra stuff about associative arrays</h1>
+
+	<ul>
+		<li>
+			6.1: Form Basics
+		</li>
+		<li>
+			6.2: Form Controls
+		</li>
+		<li>
+			6.3: Submitting Data
+		</li>
+		<li>
+			6.4: Processing Form Data in PHP
+		</li>
+		<li>
+			<strong>More about associative arrays</strong>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Creating an associative array</h1>
+
+	<pre class="syntaxtemplate php">
+$<var>name</var> = array();
+$<var>name</var>[&quot;<var>key</var>&quot;] = <var>value</var>;
+...
+$<var>name</var>[&quot;<var>key</var>&quot;] = <var>value</var>;
+</pre>
+
+	<pre class="syntaxtemplate php">
+$<var>name</var> = array(<var>key</var> => <var>value</var>, ..., <var>key</var> => <var>value</var>);
+</pre>
+
+	<pre class="examplecode php">
+$blackbook = array(&quot;scott&quot;  =&gt; &quot;031-400-5238&quot;,
+                   &quot;jaejin&quot; =&gt; &quot;031-400-4754&quot;,
+                   &quot;cathy&quot;  =&gt; &quot;031-400-7777&quot;);
+</pre>
+
+	<ul>
+		<li>can be declared either initially empty, or with a set of predeclared key/value pairs</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Printing an associative array</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+<em>print_r</em>($blackbook);
+</pre>
+
+		<pre class="exampleoutput">
+Array
+(
+    [scott] => 031-400-5238
+    [jaejin] => 031-400-4754
+    [cathy] => 031-400-7777
+)
+</pre>
+	</div>
+
+	<ul>
+		<li><a href="http://www.php.net/print_r"><code>print_r</code></a> function displays all keys/values in the array</li>
+		<li><a href="http://www.php.net/var_dump"><code>var_dump</code></a> function is much like <code>print_r</code> but prints more info</li>
+		<li>unlike <code>print</code>, these functions require parentheses</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Associative array <a href="http://www.php.net/array">functions</a></h1>
+
+	<pre class="examplecode php">
+if (<em>isset($blackbook[&quot;scott&quot;])</em>) {
+  print &quot;Scott's phone number is {$blackbook['scott']}\n&quot;;
+} else {
+  print &quot;No phone number found for Scott Lee.\n&quot;;
+}
+</pre>
+
+	<table class="standard">
+		<tr>
+			<th>name(s)</th>
+			<th>category</th>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/isset"><code>isset</code></a>, <a href="http://www.php.net/array_key_exists"><code>array_key_exists</code></a>
+			</td>
+			<td>
+				whether the array contains value for given key
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/array_keys"><code>array_keys</code></a>, <a href="http://www.php.net/array_values"><code>array_values</code></a>
+			</td>
+			<td>
+				an array containing all keys or all values in the assoc.array
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/asort"><code>asort</code></a>, <a href="http://www.php.net/arsort"><code>arsort</code></a>
+			</td>
+			<td>
+				sorts by value, in normal or reverse order
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/ksort"><code>ksort</code></a>, <a href="http://www.php.net/krsort"><code>krsort</code></a>
+			</td>
+			<td>
+				sorts by key, in normal or reverse order
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>foreach</code> loop and associative arrays</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+<em>foreach ($blackbook as $key => $value)</em> {
+  print &quot;$key's phone number is $value\n&quot;;
+}
+</pre>
+
+<pre class="exampleoutput">
+scott's phone number is 031-400-5238
+jaejin's phone number is 031-400-4754
+cathy's phone number is 031-400-7777
+</pre>
+	</div>
+
+	<ul>
+		<li>both the key and the value are given a variable name</li>
+		<li>the elements will be processed in the order they were added to the array</li>
+	</ul>
+</div>
+
+
+<!--
+<div class="slide">
+	<h1>A form that submits to itself</h1>
+
+	<div class="example">
+		<pre class="examplecode html" style="font-size: smaller">
+&lt;form <em>action=&quot;&quot;</em> method=&quot;post&quot;&gt;
+	...
+&lt;/form&gt;
+</pre>
+	</div>
+
+	<ul>
+		<li>
+			a form can submit its data back to itself by setting the <code>action</code> to the page's own URL (or blank)
+		</li>
+		<li>
+			benefits
+			<ul>
+				<li>
+					fewer pages/files (don't need a separate file for the code to process the form data)
+				</li>
+				<li>
+					can more easily re-display the form if there are any errors
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Processing a self-submitted form</h1>
+
+	<pre class="examplecode php">
+if (<em>$_SERVER[&quot;REQUEST_METHOD&quot;]</em> == "GET") {
+	<span class="comment"># normal GET request; display self-submitting form</span>
+	?&gt;
+	&lt;form <em>action=&quot;&quot;</em> method=&quot;post&quot;&gt;...&lt;/form&gt;
+	&lt;?php
+} elseif (<em>$_SERVER[&quot;REQUEST_METHOD&quot;]</em> == "POST") {
+	<span class="comment"># POST request; user is submitting form back to here; process it</span>
+	$var1 = $_POST[&quot;param1&quot;];
+	...
+}
+</pre>
+
+	<ul>
+		<li>a page with a self-submitting form can process both GET and POST requests</li>
+		<li>look at the global <code>$_SERVER</code> array to see which request you're handling</li>
+		<li>handle a GET by showing the form; handle a POST by processing the submitted form data</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>What is &quot;Web 2.0&quot;?</h1>
+
+	<div class="figure">
+		<img src="images/web-2-0.gif" alt="web 2.0" />
+	</div>
+
+	<ul>
+		<li>
+			<strong>Web 2.0</strong>: A set of ideas and technologies for creating modern, interactive web applications
+
+			<ul>
+				<li>
+					Ajax, multimedia, streaming, stateful pages, cookies, user-generated content, web services, ...
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>What is a web service?</h1>
+
+	<p>
+		<span class="term">web service</span>: software functionality that can be invoked through the internet using common protocols
+	</p>
+
+	<ul>
+		<li>like a remote function(s) you can call by contacting a program on a web server</li>
+		<li>many web services accept parameters and produce results</li>
+		<li>can be written in PHP and contacted by the browser in XHTML and/or Ajax code</li>
+		<li>service's output is often not HTML but rather text, XML, or other content types</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Content (&quot;<a href="http://en.wikipedia.org/wiki/Mime_type">MIME</a>&quot;) types
+	</h1>
+
+	<table class="standard">
+		<tr>
+			<th>MIME type</th>
+			<th class="slidetable">related file extension</th>
+		</tr>
+		<tr class="code">
+			<td>text/plain</td><td>.txt</td>
+		</tr>
+		<tr class="code">
+			<td>text/html</td><td>.html, .htm, ...</td>
+		</tr>
+		<tr class="code">
+			<td>text/css</td><td>.css</td>
+		</tr>
+		<tr class="code">
+			<td>text/javascript</td><td>.js</td>
+		</tr>
+		<tr class="code">
+			<td>text/xml</td><td>.xml</td>
+		</tr>
+		<tr class="code">
+			<td>image/gif</td><td>.gif</td>
+		</tr>
+		<tr class="code">
+			<td>image/jpeg</td><td>.jpg, .jpeg</td>
+		</tr>
+		<tr class="code">
+			<td>video/quicktime</td><td>.mov</td>
+		</tr>
+		<tr class="code">
+			<td>application/octet-stream</td><td>.exe</td>
+		</tr>
+	</table>
+
+	<ul>
+		<li>Lists of MIME types: <a href="http://www.w3schools.com/media/media_mimeref.asp">by type</a>, <a href="http://www.webmaster-toolkit.com/mime-types.shtml">by extension</a></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Setting content type with <code>header</code></h1>
+
+	<pre class="syntaxtemplate php">
+header(&quot;Content-type: <var>type</var>/<var>subtype</var>&quot;);
+</pre>
+
+	<pre class="examplecode php">
+<em>header(&quot;Content-type: text/plain&quot;);</em>
+print(&quot;This output will appear as plain text now!\n&quot;);
+</pre>
+
+	<ul>
+		<li>by default, a PHP script's output is assumed to be HTML</li>
+		<li>use the <a href="http://www.php.net/header"><code>header</code></a> function to specify non-HTML output
+			<ul>
+				<li>must appear before any other output generated by the script</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Example: Exponent web service</h1>
+
+	<ul>
+		<li>
+			Write a web service that accepts a <code>base</code> and <code>exponent</code> and outputs <code>base</code> raised to the <code>exponent</code> power.  For example, the following query should output <code>81</code> :
+
+			<pre class="examplecode url">
+http://example.com/exponent.php?<em>base=3</em>&amp;<em>exponent=4</em>
+</pre>
+		</li>
+
+		<li class="incremental">
+			solution:
+
+			<pre class="examplecode php">
+header(&quot;Content-type: text/plain&quot;);
+$base = <em>$_GET[&quot;base&quot;]</em>;
+$exp = <em>$_GET[&quot;exponent&quot;]</em>;
+$result = pow($base, $exp);
+print $result;
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1>The <a href="http://www.php.net/manual/en/reserved.variables.server.php"><code>$_SERVER</code></a> superglobal array</h1>
+
+	<table class="standard">
+		<tr>
+			<th>index</th>
+			<th>description</th>
+			<th>example</th>
+		</tr>
+
+		<tr>
+			<td><code>$_SERVER[&quot;SERVER_NAME&quot;]</code></td>
+			<td>name of this web server</td>
+			<td><code>&quot;webster.cs.washington.edu&quot;</code></td>
+		</tr>
+
+		<tr>
+			<td><code>$_SERVER[&quot;SERVER_ADDR&quot;]</code></td>
+			<td>IP address of web server</td>
+			<td><code>&quot;128.208.179.154&quot;</code></td>
+		</tr>
+
+		<tr>
+			<td><code>$_SERVER[&quot;REMOTE_HOST&quot;]</code></td>
+			<td>user's domain name</td>
+			<td><code>&quot;hsd1.wa.comcast.net&quot;</code></td>
+		</tr>
+
+		<tr>
+			<td><code>$_SERVER[&quot;REMOTE_ADDR&quot;]</code></td>
+			<td>user's IP address</td>
+			<td><code>&quot;57.170.55.93&quot;</code></td>
+		</tr>
+
+		<tr>
+			<td><code>$_SERVER[&quot;HTTP_USER_AGENT&quot;]</code></td>
+			<td>user's web browser</td>
+			<td><code>&quot;Mozilla/5.0 (Windows; ...&quot;</code></td>
+		</tr>
+
+		<tr>
+			<td><code>$_SERVER[&quot;HTTP_REFERER&quot;]</code></td>
+			<td>where user was before this page</td>
+			<td><code>&quot;http://www.google.com/&quot;</code></td>
+		</tr>
+
+		<tr>
+			<td><code>$_SERVER[&quot;REQUEST_METHOD&quot;]</code></td>
+			<td>HTTP method used to contact server</td>
+			<td><code>&quot;GET&quot;</code> or <code>&quot;POST&quot;</code></td>
+		</tr>
+	</table>
+
+	<ul>
+		<li>
+			call <a href="http://www.php.net/phpinfo"><code>phpinfo();</code></a> to see a complete list
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Emitting partial-page HTML data</h1>
+
+	<pre class="examplecode php">
+<span class="comment"># suppose my web service accepts a &quot;type&quot; query parameter ...</span>
+&lt;?php if ($_GET[&quot;type&quot;] == &quot;html&quot;) { ?&gt;
+	<em>&lt;ul&gt;</em>
+		&lt;?php foreach ($students as $kid) { ?&gt;
+			<em>&lt;li&gt; &lt;?= $kid ?&gt; &lt;/li&gt;</em>
+		&lt;?php } ?&gt;
+	<em>&lt;/ul&gt;</em>
+&lt;?php } ?&gt;
+</pre>
+
+	<ul>
+		<li>
+			some web services do output HTML, but not a complete page
+		</li>
+		<li>
+			the partial-page HTML is meant to be fetched by Ajax and injected into an existing page
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Emitting XML data</h1>
+
+	<pre class="examplecode php">
+...
+header(&quot;Content-type: text/xml&quot;);
+print(&quot;<em>&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;</em>\n&quot;);
+?&gt;<em>&lt;books&gt;</em>
+&lt;?php foreach ($books as $title) { ?&gt;
+	<em>&lt;book title=&quot;&lt;?= $title ?&gt;&quot; /&gt;</em>
+&lt;?php } ?&gt;
+<em>&lt;/books&gt;</em>
+</pre>
+
+	<ul>
+		<li>
+			specify a content type of <code>text/xml</code> or <code>application/xml</code>
+		</li>
+		<li>
+			print an XML prologue (the <code>&lt;?xml</code> line) first
+			<ul>
+				<li>
+					<strong>important:</strong> no whitespace output can precede the prologue; must be <code>print</code>ed
+				</li>
+			</ul>
+		</li>
+		<li>
+			then print each line of XML data/tags as output
+		</li>
+		<li>
+			some PHP libraries automatically generate XML for you from other data (e.g. databases)
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Reporting errors</h1>
+
+	<ul>
+		<li>
+			how does a web service indicate an error to the client?
+			<ul>
+				<li>
+					error messages (<code>print</code>) are not ideal, because they could be confused for normal output
+				</li>
+			</ul>
+		</li>
+		<li>web service should return an HTTP "error code" to the browser, possibly followed by output
+			<ul>
+				<li>
+					these are the codes you see in Firebug's console and in your Ajax request's <code>.status</code> property
+				</li>
+			</ul>
+
+			<table class="standard">
+				<tr>
+					<th class="spaced">HTTP code</th><th>Meaning</th>
+				</tr>
+				<tr>
+					<td>200</td>
+					<td>OK</td>
+				</tr>
+				<tr>
+					<td><a href="http://clsc.net/research/google-302-page-hijack.htm">301-303</a></td>
+					<td>page has moved (permanently or temporarily)</td>
+				</tr>
+				<tr>
+					<td>400</td>
+					<td>illegal request</td>
+				</tr>
+				<tr>
+					<td><a href="http://www.cs.washington.edu/education/courses/cse190d/07sp/lectures/">403</a></td>
+					<td>you are forbidden to access this page</td>
+				</tr>
+				<tr>
+					<td><a href="http://www.homestarrunner.com/404.html">404</a></td>
+					<td>page not found</td>
+				</tr>
+				<tr>
+					<td>500</td>
+					<td>internal server error</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="completelist"><a href="http://en.wikipedia.org/wiki/Http_error_codes">complete list</a></td>
+				</tr>
+			</table>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Using headers for HTTP error codes</h1>
+
+	<pre class="syntaxtemplate php">
+header(&quot;HTTP/1.1  <var>code</var>  <var>description</var>&quot;);
+</pre>
+
+	<pre class="examplecode php">
+if ($_POST[&quot;foo&quot;] != &quot;bar&quot;) {
+	<span class="comment"># I am not happy with the value of foo; this is an error</span>
+	<em>header(&quot;HTTP/1.1 400 Invalid Request&quot;);</em>
+	die(&quot;An HTTP error 400 (invalid request) occurred.&quot;);
+}
+</pre>
+
+	<pre class="examplecode php">
+if (!file_exists($input_file_path)) {
+	<em>header(&quot;HTTP/1.1 404 File Not Found&quot;);</em>
+	die(&quot;HTTP error 404 occurred: File not found ($input_file_path)&quot;);
+}
+</pre>
+
+	<ul>
+		<li>
+			<code>header</code> can also be used to send back HTTP error codes
+
+			<ul>
+				<li><code>header(&quot;HTTP/1.1 403 Forbidden&quot;);</code></li>
+				<li><code>header(&quot;HTTP/1.1 404 File Not Found&quot;);</code></li>
+				<li><code>header(&quot;HTTP/1.1 500 Server Error&quot;);</code></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Checking for mandatory query parameters</h1>
+
+	<pre class="examplecode php">
+function require_params($params) {
+	<span class="comment"># allow calling as a varargs function</span>
+	$params = func_get_args();
+	foreach ($params as $param) {
+		if (!isset($_POST[$param])) {
+			header("HTTP/1.1 400 Invalid Request");
+			die("HTTP/1.1 400 Invalid Request: missing required parameter $param");
+		}
+	}
+}
+</pre>
+
+	<ul>
+		<li>
+			<a href="http://php.net/func_get_args"><code>func_get_args</code></a> function allows a function to accept a varying # of params
+		</li>
+	</ul>
+</div>
+-->			
+
+
+<div class="slide titleslide">
+	<h1>Form Validation</h1>
+
+	<ul>
+		<li>
+			6.1: Form Basics
+		</li>
+		<li>
+			6.2: Form Controls
+		</li>
+		<li>
+			6.3: Submitting Data
+		</li>
+		<li>
+			6.4: Processing Form Data in PHP
+		</li>
+		<li>
+			<strong>Form Validation</strong>
+		</li>
+	</ul>
+</div>			
+
+
+
+
+
+
+
+
+
+
+<div class="slide">
+	<h1>What is form validation?</h1>
+
+	<ul>
+		<li><span class="term">validation</span>: ensuring that form's values are correct</li>
+		<li>some types of validation:
+			<ul>
+				<li>preventing blank values (email address)</li>
+				<li>ensuring the type of values
+					<ul>
+						<li>integer, real number, currency, phone number, Social Security number, postal address, email address, date, credit card number, ...</li>
+					</ul>
+				</li>
+				<li>ensuring the format and range of values (ZIP code must be a 5-digit integer)</li>
+				<li>ensuring that values fit together (user types email twice, and the two must match)</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>A real form that uses validation</h1>
+
+	<div style="text-align: center">
+		<a href="https://online.wamu.com/IdentityManagement/SignUp.aspx"><img src="images/wamu.png" alt="wamu" style="border: 0" /></a>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Client vs. server-side validation</h1>
+
+	<p>
+		Validation can be performed:
+	</p>
+
+	<ul>
+		<li><span class="term">client-side</span> (before the form is submitted)
+			<ul>
+				<li>can lead to a better user experience, but not secure (why not?)</li>
+			</ul>
+		</li>
+		<li><span class="term">server-side</span> (in PHP code, after the form is submitted)
+			<ul>
+				<li>needed for truly secure validation, but slower</li>
+			</ul>
+		</li>
+		<li>both
+			<ul>
+				<li>best mix of convenience and security, but requires most effort to program</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>An example form to be validated</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;form action=&quot;http://foo.com/foo.php&quot; method=&quot;get&quot;&gt;
+	&lt;div&gt;
+		City:  &lt;input <em>name=&quot;city&quot;</em> /&gt; &lt;br /&gt;
+		State: &lt;input <em>name=&quot;state&quot;</em> size=&quot;2&quot; maxlength=&quot;2&quot; /&gt; &lt;br /&gt;
+		ZIP:   &lt;input <em>name=&quot;zip&quot;</em> size=&quot;5&quot; maxlength=&quot;5&quot; /&gt; &lt;br /&gt;
+		&lt;input type=&quot;submit&quot; /&gt;
+	&lt;/div&gt;
+&lt;/form&gt;
+</pre>
+
+		<div class="exampleoutput insertoutput"></div>
+	</div>
+
+	<ul>
+		<li>Let's validate this form's data on the server...</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>One problem: Users submitting HTML content</h1>
+	
+	<div class="exampleoutput">
+		<input type="text" size="24" value="&lt;h1&gt;pwned&lt;/h1&gt;" />
+	</div>
+	
+	<ul>
+		<li>A user might submit information to a form that contains HTML syntax</li>
+		<li>If we're not careful, this HTML will be inserted into our pages (why is this bad?)</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>The <code>htmlspecialchars</code> function</h1>
+
+	<table class="standard">
+		<tr>
+			<td>
+				<a href="http://www.php.net/htmlspecialchars"><code>htmlspecialchars</code></a>
+			</td>
+			<td>
+				returns an HTML-escaped version of a string
+			</td>
+		</tr>
+	</table>
+
+	<ul>
+		<li>text from files / user input / query params might contain &lt;, &gt;, &amp;, etc.</li>
+		<li>we could manually write code to strip out these characters</li>
+		<li>better idea: allow them, but <span class="term">escape</span> them</li>
+	</ul>
+
+	<pre class="php">
+$text = "&lt;p&gt;hi 2 u &amp; me&lt;/p&gt;";
+$text = <em>htmlspecialchars</em>($text);   <span class="comment"># "&amp;lt;p&amp;gt;hi 2 u &amp;amp; me&amp;lt;/p&amp;gt;"</span>
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1>Basic server-side validation code</h1>
+
+	<pre class="examplecode php">
+$city  = $_POST[&quot;city&quot;];
+$state = $_POST[&quot;state&quot;];
+$zip   = $_POST[&quot;zip&quot;];
+<em>if (!$city || strlen($state) != 2 || strlen($zip) != 5) {
+	print &quot;Error, invalid city/state/zip submitted.&quot;;
+}</em>
+</pre>
+
+	<ul>
+		<li><em>basic idea:</em> examine parameter values, and if they are bad, show an error message and abort.  But:
+			<ul>
+				<li>How do you test for integers vs. real numbers vs. strings?</li>
+				<li>How do you test for a valid credit card number?</li>
+				<li>How do you test that a person's name has a middle initial?</li>
+				<li class="incremental">(How do you test whether a given string matches a particular complex format?)</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Regular expressions</h1>
+
+	<pre class="examplecode">
+/^[a-zA-Z_\-]+@(([a-zA-Z_\-])+\.)+[a-zA-Z]{2,4}$/
+</pre>
+
+	<ul>
+		<li><span class="term">regular expression</span> (&quot;regex&quot;): a description of a pattern of text
+			<ul>
+				<li>can test whether a string matches the expression's pattern</li>
+				<li>can use a regex to search/replace characters in a string</li>
+			</ul>
+		</li>
+		<li>regular expressions are extremely powerful but tough to read<br />
+		(the above regular expression matches email addresses)</li>
+		<li>regular expressions occur in many places:
+			<ul>
+				<li>Java: <code>Scanner</code>, <code>String</code>'s <code>split</code> method</li>
+				<li>supported by PHP, JavaScript, and other languages</li>
+				<li>many text editors (TextPad) allow regexes in search/replace</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Basic regular expressions</h1>
+
+	<pre class="examplecode">
+/abc/
+</pre>
+
+	<ul>
+		<li>in PHP, regexes are strings that begin and end with <code>/</code></li>
+		<li>the simplest regexes simply match a particular substring</li>
+		<li>the above regular expression matches any string containing <code>&quot;abc&quot;</code>:
+			<ul>
+				<li>
+					YES:
+					<code>&quot;abc&quot;</code>, 
+					<code>&quot;abcdef&quot;</code>,
+					<code>&quot;defabc&quot;</code>,
+					<code>&quot;.=.abc.=.&quot;</code>, 
+					...
+				</li>
+
+				<li>
+					NO:
+					<code>&quot;fedcba&quot;</code>,
+					<code>&quot;ab c&quot;</code>,
+					<code>&quot;PHP&quot;</code>,
+					...
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Wildcards: <code>.</code></h1>
+
+	<ul>
+		<li>A dot <code>.</code>  matches any character except a <code>\n</code> line break
+			<ul>
+				<li><code>/.oo.y/</code> matches
+					<code>&quot;Doocy&quot;</code>,
+					<code>&quot;goofy&quot;</code>,
+					<code>&quot;LooNy&quot;</code>,
+					...
+					</li>
+			</ul>
+		</li>
+
+		<li>A trailing <code>i</code> at the end of a regex (after the closing <code>/</code>) signifies a case-insensitive match
+			<ul>
+				<li>
+					<code>/mart/i</code> matches
+					<code>&quot;Marty Stepp&quot;</code>,
+					<code>&quot;smart fellow&quot;</code>,
+					<code>&quot;WALMART&quot;</code>,
+					...
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Special characters: <code>|</code>, <code>()</code>, <code>\</code></h1>
+
+	<ul>
+		<li><code>|</code> means <em>OR</em>
+			<ul>
+				<li><code>/abc|def|g/</code> matches <code>&quot;abc&quot;</code>, <code>&quot;def&quot;</code>, or <code>&quot;g&quot;</code></li>
+				<li>There's no <em>AND</em> symbol.  Why not?</li>
+			</ul>
+		</li>
+
+		<li><code>()</code> are for grouping
+			<ul>
+				<li><code>/(Homer|Marge) Simpson/</code> matches <code>&quot;Homer Simpson&quot;</code>
+				or <code>&quot;Marge Simpson&quot;</code></li>
+<!--
+				<li>What does <code>/Homer|Marge|Bart|Lisa|Maggie S/</code> match?</li>
+-->
+			</ul>
+		</li>
+
+		<li><code>\</code> starts an <span class="term">escape sequence</span>
+			<ul>
+				<li>many characters must be escaped to match them literally: <code>/ \ $ . [ ] ( ) ^ * + ?</code></li>
+				<li><code>/&lt;br \/&gt;/</code> matches lines containing <code>&lt;br /&gt;</code> tags</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Quantifiers: <code>*</code>, <code>+</code>, <code>?</code></h1>
+
+	<ul>
+		<li><code>*</code> means 0 or more occurrences
+			<ul>
+				<li><code>/abc*/</code> matches <code>&quot;ab&quot;</code>, <code>&quot;abc&quot;</code>, <code>&quot;abcc&quot;</code>, <code>&quot;abccc&quot;</code>, ...</li>
+				<li><code>/a(bc)*/</code> matches <code>&quot;a&quot;</code>, <code>&quot;abc&quot;</code>, <code>&quot;abcbc&quot;</code>, <code>&quot;abcbcbc&quot;</code>, ...</li>
+				<li><code>/a.*a/</code> matches <code>&quot;aa&quot;</code>, <code>&quot;aba&quot;</code>, <code>&quot;a8qa&quot;</code>, <code>&quot;a!?xyz__9a&quot;</code>, ...</li>
+			</ul>
+		</li>
+
+		<li><code>+</code> means 1 or more occurrences
+			<ul>
+				<li><code>/a(bc)+/</code> matches <code>&quot;abc&quot;</code>, <code>&quot;abcbc&quot;</code>, <code>&quot;abcbcbc&quot;</code>, ...</li>
+				<li><code>/Goo+gle/</code> matches <code>&quot;Google&quot;</code>, <code>&quot;Gooogle&quot;</code>, <code>&quot;Goooogle&quot;</code>, ...</li>
+			</ul>
+		</li>
+
+		<li><code>?</code> means 0 or 1 occurrences
+			<ul>
+				<li><code>/a(bc)?/</code> matches <code>&quot;a&quot;</code> or <code>&quot;abc&quot;</code></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+<h1>More quantifiers: <code>{min,max}</code></h1>
+
+	<ul>
+		<li><code>{<var>min</var>,<var>max</var>}</code> means between <var>min</var> and <var>max</var> occurrences (inclusive)
+			<ul>
+				<li><code>/a(bc){2,4}/</code> matches <code>&quot;abcbc&quot;</code>, <code>&quot;abcbcbc&quot;</code>, or <code>&quot;abcbcbcbc&quot;</code></li>
+			</ul>
+		</li>
+		<li><var>min</var> or <var>max</var> may be omitted to specify any number
+			<ul>
+				<li><code>{2,}</code> means 2 or more</li>
+				<li><code>{,6}</code> means up to 6</li>
+				<li><code>{3}</code> means exactly 3</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Anchors: <code>^</code> and <code>$</code></h1>
+
+	<ul>
+		<li><code>^</code> represents the beginning of the string or line; <br />
+				<code>$</code> represents the end
+
+			<ul>
+				<li>
+					<code>/Jess/</code> matches all strings that contain <code>Jess</code>; <br />
+					<code>/^Jess/</code> matches all strings that <em>start with</em> <code>Jess</code>; <br />
+					<code>/Jess$/</code> matches all strings that <em>end with</em> <code>Jess</code>; <br />
+					<code>/^Jess$/</code> matches the exact string <code>"Jess"</code> only
+				</li>
+				<li>
+					<code>/^Mart.*Stepp$/</code> matches <code>&quot;MartStepp&quot;</code>, <code>&quot;Marty Stepp&quot;</code>, <code>&quot;Martin D Stepp&quot;</code>, ... <br />
+					but NOT <code>&quot;Marty Stepp stinks&quot;</code> or <code>&quot;I H8 Martin Stepp&quot;</code>
+				</li>
+			</ul>
+		</li>
+		<li>
+			(on the other slides, when we say, <code>/PATTERN/</code> matches <code>"text"</code>, we really mean that it matches any string that contains that text)
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Character sets: <code>[]</code></h1>
+
+	<ul>
+		<li>
+			<code>[]</code> group characters into a <span class="term">character set</span>; 						will match any single character from the set
+			<ul>
+				<li><code>/[bcd]art/</code> matches strings containing <code>&quot;bart&quot;</code>, <code>&quot;cart&quot;</code>, and <code>&quot;dart&quot;</code></li>
+				<li>equivalent to <code>/(b|c|d)art/</code> but shorter</li>
+			</ul>
+		</li>
+		<li>inside <code>[]</code>, many of the modifier keys act as normal characters
+			<ul>
+				<li><code>/what[!*?]*/</code> matches <code>&quot;what&quot;</code>, <code>&quot;what!&quot;</code>, <code>&quot;what?**!&quot;</code>, <code>&quot;what??!&quot;</code>, ...</li>
+			</ul>
+		</li>
+
+		<li>What regular expression matches DNA (strings of A, C, G, or T)?
+			<ul>
+				<li class="incremental"><code>/[ACGT]+/</code></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Character ranges: <code>[start-end]</code></h1>
+
+	<ul>
+		<li>inside a character set, specify a range of characters with <code>-</code>
+			<ul>
+				<li><code>/[a-z]/</code> matches any lowercase letter</li>
+				<li><code>/[a-zA-Z0-9]/</code> matches any lower- or uppercase letter or digit</li>
+			</ul>
+		</li>
+		<li>an initial <code>^</code> inside a character set negates it
+			<ul>
+				<li><code>/[^abcd]/</code> matches any character other than a, b, c, or d</li>
+			</ul>
+		</li>
+
+		<li>inside a character set, <code>-</code> must be escaped to be matched
+			<ul>
+			<li><code>/[+\-]?[0-9]+/</code> matches an optional <code>+</code> or <code>-</code>, followed by at least one digit</li>
+			</ul>
+		</li>
+
+		<li>What regular expression matches letter grades such as A, B+, or D- ?
+			<ul>
+				<li class="incremental"><code>/[ABCDF][+\-]?/</code></li>
+			</ul>
+		</li>
+
+<!--
+
+		<li class="incremental">What regular expression would match UW Student IDs?</li>
+		<li class="incremental">What regular expression would match consonants, assuming that the string consists only of lowercase letters?</li>
+-->
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Escape sequences</h1>
+
+	<ul>
+		<li>special escape sequence character sets:
+			<ul>
+				<li>
+					<code>\d</code> matches any digit (same as <code>[0-9]</code>);
+					<code>\D</code> any non-digit (<code>[^0-9]</code>)
+				</li>
+				<li>
+					<code>\w</code> matches any <q>word character</q> (same as <code>[a-zA-Z_0-9]</code>);
+					<code>\W</code> any non-word char
+				</li>
+				<li>
+					<code>\s</code> matches any whitespace character ( , <code>\t</code>, <code>\n</code>, etc.);
+					<code>\S</code> any non-whitespace
+				</li>
+<!--
+				<li><code>\b</code> matches a word boundary (0 chars wide)</li>
+				<li><code>\B</code> matches a non-word boundary</li>
+-->
+			</ul>
+		</li>
+
+		<li>What regular expression matches dollar amounts of at least $100.00 ?
+			<ul>
+				<li class="incremental"><code>/\$\d{3,}\.\d{2}/</code></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><a href="http://www.php.net/pcre">Regular expressions</a> in PHP (<a href="http://www.phpguru.org/downloads/PCRE Cheat Sheet/PHP PCRE Cheat Sheet.pdf">PDF</a>)</h1>
+
+	<ul>
+		<li><a href="http://www.php.net/manual/en/reference.pcre.pattern.syntax.php">regex syntax</a>: strings that begin and end with <code>/</code>, such as <code>&quot;/[AEIOU]+/&quot;</code></li>
+	</ul>
+
+	<table class="standard">
+		<tr>
+			<th>function</th>
+			<th>description</th>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.php.net/preg-match">preg_match</a>(<var>regex</var>, <var>string</var>)</code>
+			</td>
+			<td>
+				returns <code>TRUE</code> if <var>string</var> matches <var>regex</var>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.php.net/preg-replace">preg_replace</a>(<var>regex</var>, <var>replacement</var>, <var>string</var>)</code>
+			</td>
+			<td>
+				returns a new string with all substrings that match <var>regex</var> replaced by <var>replacement</var>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.php.net/preg-split">preg_split</a>(<var>regex</var>, <var>string</var>)</code>
+			</td>
+			<td>
+				returns an array of strings from given <var>string</var> broken apart using given <var>regex</var> as delimiter (like <code>explode</code> but more powerful)
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div class="slide">
+	<h1>PHP form validation w/ regexes</h1>
+
+	<pre class="examplecode php">
+$state = $_POST[&quot;state&quot;];
+if (!<em>preg_match(&quot;/^[A-Z]{2}$/&quot;, $state)</em>) {
+	print "Error, invalid state submitted.";
+}
+</pre>
+
+	<ul>
+		<li><code>preg_match</code> and regexes help you to validate parameters</li>
+		<li>sites often <em>don't</em> want to give a descriptive error message here (why?)</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Regular expression PHP example</h1>
+
+	<pre class="examplecode php">
+<span class="comment"># replace vowels with stars</span>
+$str = &quot;the quick    brown        fox&quot;;
+
+$str = <em>preg_replace</em>(&quot;/[aeiou]/&quot;, &quot;*&quot;, $str);
+                         <span class="comment"># &quot;th* q**ck    br*wn        f*x&quot;</span>
+
+<span class="comment"># break apart into words</span>
+$words = <em>preg_split</em>(&quot;/[ ]+/&quot;, $str);
+                         <span class="comment"># (&quot;th*&quot;, &quot;q**ck&quot;, &quot;br*wn&quot;, &quot;f*x&quot;)</span>
+
+<span class="comment"># capitalize words that had 2+ consecutive vowels</span>
+for ($i = 0; $i &lt; count($words); $i++) {
+	if (<em>preg_match</em>(&quot;/\*{2,}/&quot;, $words[$i])) {
+		$words[$i] = strtoupper($words[$i]);
+	}
+}                        <span class="comment"># (&quot;th*&quot;, &quot;Q**CK&quot;, &quot;br*wn&quot;, &quot;f*x&quot;)</span>
+</pre>
+
+
+</div>
+
+			
+			
+		</div><!-- end div class="presentation" -->
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/06-forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:20 GMT -->
+</html>		

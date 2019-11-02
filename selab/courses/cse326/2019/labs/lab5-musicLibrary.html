@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab5-musicLibrary.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:44 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Lab slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="Hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+
+		<title>CSE3026 Lab 5: Basic PHP</title>
+	</head>
+
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1>
+				<h2>Lab 5: Basic PHP</h2>
+			</div>
+		</div>
+
+		<div class="presentation">
+			<div class="slide">
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Lab 5: Basic PHP</strong></h1>
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+				
+				<p class="license">
+					Except where otherwise noted, the contents of this document are
+					Copyright 2019 Scott Uk-Jin Lee.
+
+					All rights reserved.
+					Any redistribution, reproduction, transmission, or storage of part
+					or all of the contents in any form is prohibited without the author's
+					expressed written permission.
+				</p>
+
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS" /></a>
+				</div>
+			</div>		
+		
+
+<div class="slide">
+	<h1>Lab 5: Basic PHP</h1>
+
+	<p>Lab 5: Basic PHP - modify <q>Music Library</q> page into a dynamic PHP page</p>
+
+    <hr />
+    
+	<p>
+		The <q>Music Library</q> page (<code>music.php</code>) is written to display Scott's MP3s.
+		This page has already been written with the basic HTML and CSS.
+		But the HTML is redundant, and manual page editing is required every time songs are added to the collection.
+	</p>
+
+	<p>
+		In this lab, you will <strong>turn this page into a dynamic PHP page </strong> that removes redundancy and dynamically lists the MP3s on the computer.
+	</p>
+</div>
+
+
+<div class="slide">
+	<h1>Lad 5 exercises</h1>
+    
+	<p>
+		Download the <a class="popup" href="labResources/music.zip"><code>music.zip</code></a> and complete the following exercises.
+	</p>
+
+	<ol>
+		<li>Variable for Song Count</li>
+		<li>Loop for Links</li>
+		<li>Query Parameter</li>
+		<li>Array of Favorite Artists</li>
+		<li>File of Favorite Artists</li>
+		<li>List MP3 Files</li>
+		<li>MP3 Formatting</li>
+		<li>Playlists</li>
+		<li>Ordering/Sorting</li>
+	</ol>
+</div>
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Variable for Song Count</h1>
+
+	<p>
+		Scott has 1234 songs (123 hours of music). <br />
+		Turn this into a PHP variable you can change.
+	</p>
+
+	<ul>
+		<li>
+			Add a variable for the number of songs, and use it in the HTML/PHP code. <br /> 
+			Change its value to something other than 1234, such as 5678.
+			<ul>
+				<li>name the variable as <q><code>song_count</code></q></li>
+			</ul>
+		</li>
+		<li>
+			Express the number of hours of music in terms of your variable. <br />
+			Assume that 10 songs can be played per hour.
+			<ul>
+				<li>hour of music should always be int type.</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div>
+		<img src="images/5/ex1_output.png" alt="expected output" />
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Loop for Links</h1>
+
+	<ul>
+		<li>
+			The five Billboard news links at the top of the page are redundant, so express them using a <code>for</code> loop.
+		</li>
+		<li>
+			You should be able to change your loop bound to get more/fewer page links.
+			<ul>
+				<li>name the loop bound variable as <q><code>news_pages</code></q></li>
+			</ul>			
+		</li>
+		<li>
+			After the modification, the links should still work when you click on them.
+		</li>
+	</ul>
+
+	<div>
+		<img src="images/5/ex2_output.png" alt="expected output" />
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Query Parameter</h1>
+
+	<ul>
+		<li>
+			Add a <strong>GET query parameter</strong> named <q><code>newspages</code></q> for the number of Billboard news links to display.
+		</li>
+
+		<li>
+			If the parameter is not passed, the page defaults to 5 pages.
+		</li>
+	</ul>
+
+	<table>
+		<tr>
+			<td style="padding-right: 2em">
+				<code>music.php?newspages=2</code>
+			</td>
+			<td>
+				<code>music.php?newspages=4</code>
+			</td>
+		</tr>
+		
+		<tr>
+			<td style="vertical-align: top;" >
+				<img src="images/5/ex3a_output.png" alt="expected output" />
+			</td>
+			<td>
+				<img src="images/5/ex3b_output.png" alt="expected output" />
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Array of Favorite Artists</h1>
+
+	<ul>
+		<li>
+			The page lists Scott's favorite artists as a bulleted list.
+		</li>
+		
+		<li>
+			Create an <strong>array</strong> containing the favorite artists' names and use the array to generate the bullets in the list.
+		</li>
+		
+		<li>
+			Test that it's working by adding at least one more favorite artist (e.g. Queen).
+		</li>
+	</ul>
+
+	<div>
+		<img src="images/5/ex4_output.png" alt="expected output" />
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: File of Favorite Artists</h1>
+
+	<ul>
+		<li>
+			Instead of writing your own array of favorite artists, read them from a file, <a class="popup" href="labResources/favorite.txt"><code>favorite.txt</code></a>.
+		</li>
+		
+		<li>
+			Download this file to your machine and read the artists from it, one per line.
+		</li>
+		
+		<li>
+			Make each artist's name a link.
+			
+			<ul>
+				<li>
+					The links have names similar to the artist's name but with underscore.
+				</li>
+				<li>
+					For example, Green Day links to : <br />
+					<code>http://en.wikipedia.org/wiki/<strong>Green_Day</strong></code>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<div>
+		<img src="images/5/ex5_output.png" alt="expected output" />
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: List MP3 Files</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>
+		The page hard-codes the list of MP3 file names.  Change it to read file names from the server.
+	</p>
+
+	<ul>
+		<li>
+			In the downloaded <code>music.zip</code> file, there are several MP3 files under the <code>lab5/musicPHP/songs</code> folder.
+		</li>
+		
+		<li>
+			Comment out the existing list of MP3/playlist file names on the page.
+		</li>
+
+		<li>
+			Write PHP code that looks for the names of all <code>.mp3</code> files in the <code>lab5/musicPHP/songs</code> folder using the <a class="popup" href="http://www.php.net/glob"><code>glob</code></a> function. <br />
+			<em>(for debugging, you may want to <a class="popup" href="http://www.php.net/print_r"><code>print_r</code></a> the array.)</em>
+		</li>
+		<li>
+			Print each file name as an <code>li</code> list item with the <code>class</code> of <code>mp3item</code>.
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		Your MP3 list should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/5/ex6_output.png" alt="expected output" />
+	</div>
+
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: MP3 Formatting</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>
+		Now let's format the MP3 links to look better.
+	</p>
+
+	<ul>
+		<li>
+			Make each item display just the song file name, without the <code>.../songs/</code> folder.
+		</li>
+
+		<li>
+			Make each item be a link to download that song.
+		</li>
+		
+		<li>
+			Display the size of each song file in kilobytes.
+			You can get the size of a file in bytes using the <a class="popup" href="http://php.net/filesize"><code>filesize(<var>filename</var>)</code></a> function.
+			(1 kb = 1024 bytes)
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		Your MP3 list should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/5/ex7_output.png" alt="expected output" />
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Playlists</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>
+		Add code to display the contents of <code>.m3u</code> playlists.
+		A playlist is just a text file containing a list of song file names, one per line.
+		It can also have comment lines that begin with <code>#</code> .  (You can ignore/skip comment lines.)
+		For example:
+
+		<pre class="compressed">
+<span class="comment">#EXTM3U
+#EXTINF:183,Green Day - Basket Case</span>
+<em>basket-case.mp3</em>
+<span class="comment">#EXTINF:168,Blink 182 - All the Small Things</span>
+<em>all-the-small-things.mp3</em>
+</pre>
+	<ul>
+		<li>
+			Write code that searches for all playlist <code>.m3u</code> files in the <code>lab5/musicPHP/songs/</code> directory, and for each one, displays a list of the playlist's songs as a nested list.
+			<ul>
+				<li>use a <code>foreach</code> loop and <code>glob</code> call to search for the M3U files</li>
+				<li>use another <code>foreach</code> loop (nested inside) to read each line of a M3U file</li>
+				<li>use <a class="popup" href="http://www.php.net/strpos"><code>strpos</code></a> function to distinguish comments in M3U file</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		Your page should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/5/ex8_output.png" alt="expected output" />
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Ordering/Sorting</h1>
+
+	<ul>
+		<li>
+			<strong>Reverse order:</strong> Display the playlist in reverse ABC order.  You may want to look at PHP's <a class="popup" href="http://php.net/manual/en/ref.array.php">array functions</a> related to sorting.
+		</li>
+		
+		<li>
+			<strong>Shuffle:</strong> Display the songs for each playlist in a random order each time the page loads.
+		</li>
+
+		<li>
+			<strong>Sort by Size:</strong> Display the songs sorted from largest to smallest size rather than in their default sorted order.  
+			<ul>
+				<li>The largest songs (such as <code>paradise-city.mp3</code>) would go first and smallest songs (such as <code>lucky.mp3</code>) last.</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		The playlist part of your page should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/5/ex9a1_output.png" alt="expected output" />
+		<img src="images/5/ex9a2_output.png" alt="expected output" />
+	</div>
+</div>
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: screenshot</h1>
+
+	<p>
+		Your MP3 list should look like this when you are done:
+	</p>
+
+	<div>
+		<img src="images/5/ex9b_output.png" alt="expected output" />
+	</div>
+</div>
+
+<div class="slide">
+	<h1>If you finish them all...</h1>
+
+	<p>If you finish all the exercises:</p>
+
+	<ol>
+		<li>you can add any other content you like to your page</li>
+		<li><strong>check the correctness</strong> of your page with a TA if necessary</li>
+		<li>submit your <code>music.php</code> file to your <code>Git</code> repository under <code>lab05</code> folder</li>
+	</ol>
+	
+	<p><strong>Great work!</strong></p>
+</div>
+
+
+		</div>
+
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab5-musicLibrary.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:47 GMT -->
+</html>
+

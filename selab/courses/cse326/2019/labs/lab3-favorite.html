@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab3-favorite.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:40 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Lab slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="stylesheet" href="ui/default/labs-slides.css" type="text/css" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+
+		<title>CSE3026 Lab 3: CSS Design &amp; Layout</title>
+	</head>
+
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1>
+				<h2>Lab 3: CSS Design &amp; Layout</h2>
+			</div>
+		</div>
+
+		<div class="presentation">
+			<div class="slide">
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Lab 3: CSS Design &amp; Layout</strong></h1>
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+
+				<p class="license">
+					Except where otherwise noted, the contents of this document are
+					Copyright 2019 Scott Uk-Jin Lee.
+
+					All rights reserved.
+					Any redistribution, reproduction, transmission, or storage of part
+					or all of the contents in any form is prohibited without the author's
+					expressed written permission.
+				</p>
+
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS" /></a>
+				</div>
+			</div>		
+		
+		
+
+<div class="slide">
+	<h1>Lad 3 exercises</h1>
+
+	<p>
+		Lab 3: CSS Design &amp; Layout - style &quot;Scott's Favorite Things&quot; page.
+	</p>
+
+	<ol>
+		<li>Arrange Your Page into Sections</li>
+		<li>Spacing With Padding and Margins, Backgrounds</li>
+		<li>Float, Alignment and Overflow</li>
+		<li>Cosmetic Finishing Touches</li>
+		<li>2nd Column, Related Links</li>
+		<li>Green Highlights</li>
+		<li>Semantically Meaningful Tags</li>
+	</ol>
+
+	<ul>
+		<li>
+			Resources:  <a class="popup" href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector">Firefox Page Inspector</a>, 
+			<a class="popup" href="https://developers.google.com/chrome-developer-tools/">Chrome Dev Tools</a>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Arrange Page into Sections</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>
+		First download the <a class="popup" href="labResources/ScottsFav.html"><code>ScottsFav.html</code></a> file.
+		Then open it in your Textpad++  editor, and also open the HTML page on your hard drive in Firefox or Chrome.  
+	</p>
+
+	<p>
+		Add <code>id</code>s, <code>class</code>es, <code>span</code>s and <code>div</code>s to ogranize the &quot;Scott's Favorite Things&quot; page.  
+		Then, add borders around these sections by creating and editing your <code>layout.css</code>.
+	</p>
+
+	<ul>
+		<li>
+			The <strong>borders</strong> are all <code>5px</code> thick and <code>solid</code>.
+		</li>
+
+		<li>
+			The <strong>colors</strong> are the pre-defined HTML color names, e.g. the red border is the HTML color <code>red</code>.
+		</li>
+
+		<li>
+			<em>Hint:</em> To reduce the needed <code>id</code> and <code>class</code> attributes, consider using CSS <strong>context selectors</strong>.
+		</li>
+	</ul>
+
+	<p>
+		The only major changes to make to the HTML are adding <code>id</code>s, <code>class</code>es, <code>div</code>s, and <code>span</code>s.
+	</p>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: output</h1>
+
+	<p>
+		Your page should look like this when you are done:
+	</p>
+
+	<p class="scrollableEx">
+		<img src="images/3/ex1_output.png" alt="expected output" />
+	</p>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Padding, Margins, Backgrounds</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>
+		Add padding, margins, and backgrounds to the page.  Change only your <code>layout.css</code> file.
+	</p>
+
+	<ul>
+		<li>
+			The box with the <strong>green</strong> border should have a background color of <code>white</code>.<br />
+		</li>
+		<li>
+			The boxes with the <strong>blue</strong> borders should have a background color of <code>#99CCFF</code>.
+
+			<ul>
+				<li>
+					It should have a padding of <code>5px</code> (on all sides) and margin of <code>10px</code> only on the <em>top</em> of the box.
+				</li>
+			</ul>
+		</li>
+		<li>
+			The <strong>overall page content</strong> area should become centered on the page, should have left and right margins of <code>10%</code>, and the following background image:
+			<ul>
+				<li>
+					<img src="images/3/blueTextureBG.jpg" alt="blue textured background image" />
+
+					(right-click and choose "Inspect Element" to find out its URL!)
+					<!--
+					<code style="font-size: smaller">http://www.cs.washington.edu/education/courses/190m/10su/labs/2/images/background.gif</code>
+					-->
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: output</h1>
+
+	<p>
+		This output is Scott's Favorite Things page with padding/margins and backgrounds:
+	</p>
+
+	<p class="scrollableEx">
+		<img src="images/3/ex2_output.png" alt="expected output" />
+	</p>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Float, Align, Overflow</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>
+		Now we'll practice <code>float</code>, <code>overflow</code>, and alignment.  You may have to edit <code>ScottsFav.html</code> code as well as <code>layout.css</code>.
+	</p>
+
+	<ul>
+		<li>
+			The heading text in the <strong>red</strong> box should appear on the <strong>right</strong> side of that section of the page.
+		</li>
+		<li>
+			The text of each favorite thing should be widened so that each line fills the entire width of the section ("fully justified").
+		</li>
+		<li>
+			The favorite thing images should hover on the <strong>right</strong> side next to the surrounding text. The image should stay within the bounds of the blue box; that is, it should not <q>bleed</q> into the other content below it.
+
+			<ul>
+				<li>
+					(<em>Hint:</em> If your boxes are not tall enough to fit the floating elements inside them, see the page 39 - 40 of the Page Layout Lecture Slide.)
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: output</h1>
+
+	<p>
+		This output is Scott's Favorite Things page with floating and alignment:
+	</p>
+
+    <p class="scrollableEx">
+		<img src="images/3/ex3_output.png" alt="expected output" />
+	</p>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Finishing Touches</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<ul>
+		<li>
+			Change the box with the <strong>green</strong> border to have a solid, white, 10px-thick border.
+		</li>
+		<li>
+			Change the boxes with the <strong>blue</strong> border to have a solid, 4px-thick border, in color <code>#1D2475</code>, with a 15px rounded <strong>border radius</strong>.
+		</li>
+		<li>
+			Change the box with the <strong>purple</strong> border to have <em>only</em> a bottom border: blue, dashed, and 2px-thick.
+		</li>
+		<li>
+			Change the box with the <strong>red</strong> border to have a background color of <code>#1D2475</code>, change font color to white, and get rid of its border.
+		</li>
+		<li>
+			Change the font size of the <q>Cars, Sports, and Music</q> area to 14pt, font color to <code>#CCCCCC</code>, and get rid of its border.
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: output</h1>
+
+	<p>
+		This output is Scott's beautified page:
+	</p>
+
+	<p class="scrollableEx">
+		<img src="images/3/ex4_output.png" alt="expected output" />
+	</p>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: 2nd Column, Related Links</h1>
+
+	<p class="readbeforestarting">
+		(See example screenshot on next slide.)
+	</p>
+
+	<p>
+		Add a second column to the layout.  Copy and paste the following code into <code>ScottsFav.html</code>:
+	</p>
+
+	<pre><code>&lt;h1&gt;Links&lt;/h1&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="https://selab.hanyang.ac.kr/"&gt;SE Lab.&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="http://sw.hanyang.ac.kr/"&gt;CSE @ HYU&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="http://www.w3schools.com/"&gt;W3Schools&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="http://www.csszengarden.com/"&gt;CSS Zen Garden&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+	<ul>
+		<li>
+			Use the appropriate layout-related tags/attributes and CSS to make this list into a second, left-aligned column as shown in the screenshot on next slide. The colors, borders, etc. of the list are not important; the focus is on the layout.
+		</li>
+
+		<li>
+			<strong>The layout with a second column must still be a <q>liquid</q> layout</strong> -- that is, all parts of it should adjust in size accordingly when the browser size changes.
+		</li>
+
+		<li>
+			<em>Hint:</em> The second column should be <code>150px</code> wide with <code>#3366CC</code> background color. In addiiton, there should be <code>10px</code> space between two columns. 
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: output</h1>
+
+	<p>
+		This output is Scott's Favorite Things page with the related links list:
+	</p>
+
+	<p class="scrollableEx">
+		<img src="images/3/ex5_output.png" alt="expected output" />
+	</p>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Green highlight</h1>
+
+	<p>
+		Style your CSS so that if you hover over <em>any</em> element (i.e. any header, paragraph, image, etc), the element is highlighted in <code>#A6CE39</code> color.
+	</p>
+
+	<p>
+		Complete this exercise by adding one-selector with one-property to your stylesheet (no commas in selector are allowed!).  
+		Search Google to find out <q>How can one rule apply to all elements?</q>!
+	</p>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber noincrement"></span>: output</h1>
+
+	<p>
+		This output is Scott's Favorite Things page with green highlight:
+	</p>
+
+	<p class="scrollableEx">
+		<img src="images/3/ex6_output.png" alt="expected output" />
+	</p>
+</div>
+
+
+
+<div class="slide">
+	<h1>Ex <span class="exercisenumber"></span>: Semantically Meaningful Tags</h1>
+
+	<p>
+		The new HTML5 introduces more semantic (and descriptive) tags than div and id/class.
+	</p>
+
+	<ul>
+		<li>
+			Change <code>div</code> and <code>id</code>/<code>class</code> tags in your <code>ScottsFav.html</code> to HTML5 semantic tags where possible. 
+			Then save the html as <code>semanticScottsFav.html</code>.
+		</li>
+
+		<li>
+			Make necessary changes to <code>layout.css</code> and save it as <code>semanticLayout.css</code>. 
+			Then, link <code>semanticLayout.css</code> to <code>semanticScottsFav.html</code> instead of old <code>layout.css</code>.
+		</li>
+
+		<li>
+			Compare <code>ScottsFav.html</code> and <code>semanticScottsFav.html</code> in your browser and check whether they have the same style and layout.
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>If you finish them all...</h1>
+
+	<p>If you finish all the exercises:</p>
+
+	<ol>
+		<li>practice the <q>sizing and positioning</q> part of the page layout on your page</li>
+		<li><strong>check the correctness</strong> of your page with a TA if necessary</li>
+		<li>submit your <code>html</code> &amp; <code>css</code> files to your <code>Git</code> repository under <code>lab03</code> folder</li>
+	</ol>
+	
+	<p><strong>Great work!</strong></p>
+</div>
+
+
+
+
+		</div>
+
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/labs/lab3-favorite.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:43 GMT -->
+</html>
+

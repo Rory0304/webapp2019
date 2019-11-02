@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/05-PHP.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:18 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="Hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+		
+		<title>CSE3026 - 05.PHP</title>
+	</head>
+
+	<body>
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1>
+				<h2>05.PHP</h2>
+			</div>
+		</div>
+	
+		<div class="presentation">
+			<div class="slide">			
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>PHP</strong></h1>			
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+							
+				<p class="license"> 				
+					Reproduced with permission of the authors.
+					Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
+					All rights reserved. 
+					Further reproduction or distribution is prohibited without written permission.
+				</p>
+				
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML 5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
+				</div>
+			</div>
+			
+			
+			
+<div class="slide titleslide">
+	<h1>5.1: Server-Side Basics</h1>
+
+	<ul>
+		<li><strong>5.1: Server-Side Basics</strong></li>
+		<li>5.2: PHP Basic Syntax</li>
+		<li>5.3: Embedded PHP</li>
+		<li>5.4: Advanced PHP Syntax</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>URLs and web servers</h1>
+
+	<pre class="example exampleurl url">
+http://<var>server</var>/<var>path</var>/<var>file</var>
+</pre>
+
+	<ul>
+		<li>usually when you type a URL in your browser:
+			<ul>
+				<li>your computer looks up the server's IP address using DNS</li>
+				<li>your browser connects to that IP address and requests the given file</li>
+				<li>the web server software (e.g. Apache) grabs that file from the server's local file system, and sends back its contents to you</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul>
+		<li>some URLs actually specify <em>programs</em> that the web server should run, and then send their output back to you as the result:
+
+	<pre class="smallerFont">
+http://selab.hanyang.ac.kr/courses/cse326/2019/.../quote.php
+</pre>
+
+			<ul>
+				<li>the above URL tells the server <code>selab.hanyang.ac.kr</code> to run the program <a href="examples/05PHP/quote.html"><code>quote.php</code></a> and send back its output</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Server-Side web programming</h1>
+
+	<div style="text-align: center">
+		<img src="images/php_logo.gif" alt="php" style="margin-right: 2em" />
+		<img src="images/javaee.gif" alt="jsp" style="margin-right: 2em" />
+		<img src="images/ruby_on_rails.png" alt="ruby on rails" style="margin-right: 2em" />
+		<img src="images/asp_net.png" alt="asp.net" />
+	</div>
+
+	<ul>
+		<li>server-side pages are programs written using one of many web programming languages/frameworks
+			<ul>
+				<li>
+					examples:
+					<a href="http://php.net/">PHP</a>,
+					<a href="http://java.sun.com/products/jsp/">Java/JSP</a>,
+					<a href="http://www.rubyonrails.org/">Ruby on Rails</a>,
+					<a href="http://www.asp.net/">ASP.NET</a>,
+					<a href="http://www.djangoproject.com/">Python</a>,
+					<a href="http://www.cgi101.com/learn/">Perl</a>
+				</li>
+			</ul>
+		</li>
+		<li>the web server contains software that allows it to run those programs and send back their output</li>
+		<li>each language/framework has its pros and cons
+			<ul>
+				<li>we use PHP for server-side programming in this course</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		What is PHP?
+	</h1>
+
+	<div>
+		<img src="images/php_logo.gif" alt="PHP logo" style="float: right; margin-left: 1em" />
+	</div>
+
+	<ul>
+		<li><span class="term">PHP</span> stands for &quot;PHP Hypertext Preprocessor&quot;</li>
+		<li>a server-side scripting language</li>
+		<li>used to make web pages dynamic:
+			<ul>
+				<li>provide different content depending on context</li>
+				<li>interface with other services: database, e-mail, etc</li>
+				<li>authenticate users</li>
+				<li>process form information</li>
+			</ul>
+		</li>
+		<li>PHP code can be embedded in HTML code</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Lifecycle of a PHP web request
+	</h1>
+
+	<div style="text-align: center"><img src="images/figure_1_server.png" alt="PHP server" style="width: 55%" /></div>
+
+	<ul>
+		<li>browser requests a <code>.html</code> file (<span class="term">static content</span>): server just sends that file</li>
+		<li>browser requests a <code>.php</code> file (<span class="term">dynamic content</span>): server reads it, runs any script code inside it, then sends result across the network
+			<ul>
+				<li>script produces output that becomes the response sent back</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Why PHP?</h1>
+
+	<p>
+		There are many other options for server-side languages: Ruby on Rails, JSP, ASP.NET, etc.  Why choose PHP?
+	</p>
+
+	<ul>
+		<li><a href="http://www.php.net/">free and open source</a>: anyone can run a PHP-enabled server free of charge</li>
+		<li><strong>compatible:</strong> supported by most popular web servers</li>
+		<li><strong>simple:</strong> lots of built-in functionality; familiar syntax</li>
+		<li><strong>available:</strong> can easily be installed on your own computer and installed on most commercial web hosts</li>
+		<li><strong>well-documented:</strong> type <code>php.net/<var>functionName</var></code> in browser Address bar to get docs for any function</li>
+	</ul>
+</div>
+
+
+
+<!--
+			<div class="slide">
+				<h1>Hello, World!</h1>
+
+<pre class="examplecode php">
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
+ &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;Hello world&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot;
+ content=&quot;text/html; charset=iso-8859-1&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+<em>&lt;?php
+print &quot;Hello, World&quot;;
+?&gt;</em>
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+					<li>when a client views the source, only HTML is visible</li>
+
+
+			</div>
+-->
+
+
+
+<div class="slide">
+	<h1>Hello, World!</h1>
+
+	<p>
+		The following contents could go into a file <code>hello.php</code>:
+	</p>
+
+	<div class="example">
+		<pre class="examplecode php">
+<em>&lt;?php</em>
+print &quot;Hello, world!&quot;;
+<em>?&gt;</em>
+</pre>
+
+		<div class="exampleoutput">
+			Hello, world!
+		</div>
+	</div>
+
+	<ul>
+		<li>a block or file of PHP code begins with <code>&lt;?php</code> and ends with <code>?&gt;</code></li>
+		<li>PHP statements, function declarations, etc. appear between these endpoints</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Viewing PHP output</h1>
+
+	<div style="text-align: center">
+		<img src="images/php_output_local.png" alt="PHP local output" />
+		<img src="images/php_output_server.png" alt="PHP server output" />
+	</div>
+
+	<ul>
+		<li>you can't view your <code>.php</code> page on your local hard drive; you'll either see nothing or see the PHP source code</li>
+		<li>if you upload the file to a PHP-enabled web server, requesting the <code>.php</code> file will run the program and send you back its output</li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>5.2: PHP Basic Syntax</h1>
+
+	<ul>
+		<li>
+			5.1: Server-Side Basics
+		</li>
+		<li>
+			<strong>5.2: PHP Basic Syntax</strong>
+		</li>
+		<li>
+			5.3: Embedded PHP
+		</li>
+		<li>
+			5.4: Advanced PHP Syntax
+		</li>
+	</ul>
+</div>
+
+
+
+<!--
+			<div class="slide">
+				<h1>System information: <code><a href="http://www.php.net/phpinfo">phpinfo()</a></code></h1>
+
+<pre class="examplecode php">
+&lt;?php
+<em>phpinfo();</em>
+?&gt;
+</pre>
+
+				<ul>
+					<li>a typical way to test an installation</li>
+					<li>good way to find out where configuration files are</li>
+					<li>describes built-in variables</li>
+					<li>lists which modules are enabled</li>
+				</ul>
+			</div>
+-->
+
+
+
+<div class="slide">
+	<h1>
+		PHP syntax template
+	</h1>
+
+	<pre class="syntaxtemplate php">
+<var>HTML content</var>
+
+  <em>&lt;?php</em>
+    <var>PHP code</var>
+  <em>?&gt;</em>
+
+<var>HTML content</var>
+
+  <em>&lt;?php</em>
+    <var>PHP code</var>
+  <em>?&gt;</em>
+
+<var>HTML content</var> ...
+</pre>
+
+
+	<ul>
+		<li>any contents of a <code>.php</code> file between <code>&lt;?php</code> and <code>?&gt;</code> are executed as PHP code</li>
+		<li>all other contents are output as pure HTML</li>
+		<li>can switch back and forth between HTML and PHP &quot;modes&quot;</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Comments
+	</h1>
+
+	<pre class="syntaxtemplate php">
+<span class="comment"># <var>single-line comment</var></span>
+
+<span class="comment">// <var>single-line comment</var></span>
+
+<span class="comment">/*
+<var>multi-line comment</var>
+*/</span>
+</pre>
+
+	<ul>
+		<li>like Java, but <code>#</code> is also allowed
+			<ul>
+				<li>a lot of PHP code uses <code>#</code> comments instead of <code>//</code></li>
+				<li>we recommend <code>#</code> and will use it in our examples</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Console output: <code><a href="http://www.php.net/print">print</a></code>
+	</h1>
+
+	<div class="example">
+		<pre class="syntaxtemplate php">
+print &quot;<var>text</var>&quot;;
+</pre>
+
+		<pre class="examplecode php">
+print &quot;Hello, World!\n&quot;;
+print &quot;Escape \&quot;chars\&quot; are the SAME as in Java!\n&quot;;
+
+print &quot;You can have
+line breaks in a string.&quot;;
+
+print 'A string can use &quot;single-quotes&quot;.  It\'s cool!';
+</pre>
+
+			<div class="exampleoutput">
+				Hello, World!
+				Escape "chars" are the SAME as in Java!
+				You can have
+				line breaks in a string.
+				A string can use "single-quotes".  It's cool!
+			</div>
+		</div>
+
+
+	<ul>
+		<li>some PHP programmers use the equivalent <code>echo</code> instead of <code>print</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		<a href="http://www.php.net/operators">Arithmetic operators</a>
+	</h1>
+
+	<ul>
+		<li>
+			<code>
+			+ - * / % <br />
+			. ++ -- <br />
+			= += -= *= /= %= .=<br />
+			</code>
+		</li>
+
+		<li>many operators auto-convert types: <code>5 + &quot;7&quot;</code> is <code>12</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><a href="http://us.php.net/math">Math operations</a></h1>
+
+	<pre class="examplecode php">
+$a = 3;
+$b = 4;
+$c = <em>sqrt(pow($a, 2) + pow($b, 2))</em>;
+</pre>
+
+	<table class="standard">
+		<caption>math functions</caption>
+		<tr>
+			<td>	
+				<a href="http://www.php.net/abs"><code>abs</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/ceil"><code>ceil</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/cos"><code>cos</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/floor"><code>floor</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/log"><code>log</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/log10"><code>log10</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/max"><code>max</code></a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="http://www.php.net/min"><code>min</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/pow"><code>pow</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/rand"><code>rand</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/round"><code>round</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/sin"><code>sin</code></a>
+			</td>
+			<td>
+				<a href="http://www.php.net/sqrt"><code>sqrt</code></a>
+			</td>
+			<!--
+			<td>
+				<a href="http://www.php.net/srand"><code>srand</code>
+			</td>
+			-->
+			<td>
+			<a href="http://www.php.net/tan"><code>tan</code></a>
+			</td>
+		</tr>
+	</table>
+
+	<table class="standard">
+		<caption>math constants</caption>
+		<tr>
+			<td>	
+				<code>M_PI</code>
+			</td>
+			<td>
+				<code>M_E</code>
+			</td>
+			<td>
+				<code>M_LN2</code>
+			</td>
+		</tr>
+	</table>
+
+	<ul>
+		<li>the syntax for method calls, parameters, returns is the same as Java</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		<a href="http://www.php.net/variables">Variables</a>
+	</h1>
+
+
+
+	<div class="example">
+		<pre class="syntaxtemplate php">$<var>name</var> = <var>expression</var>;</pre>
+		
+		<pre class="examplecode php">
+$user_name = &quot;PinkHeartLuvr78&quot;;
+$age = 16;
+$drinking_age = $age + 5;
+$this_class_rocks = TRUE;
+</pre>
+	</div>
+
+	<ul>
+		<li>names are case sensitive; separate multiple words with _</li>
+		<li>names always begin with <code>$</code>, on both declaration and usage</li>
+		<li>implicitly declared by assignment (type is not written; a "loosely typed" language)</li>
+	</ul>
+</div>
+
+
+<div class="slide">
+	<h1>
+		Types
+	</h1>
+
+	<ul>
+		<li>basic types:
+			<a href="http://www.php.net/manual/en/language.types.integer.php"><code>int</code></a>,
+			<a href="http://www.php.net/manual/en/language.types.float.php"><code>float</code></a>,
+			<a href="http://www.php.net/manual/en/language.types.boolean.php"><code>boolean</code></a>,
+			<a href="http://www.php.net/manual/en/language.types.string.php"><code>string</code></a>,
+			<a href="http://www.php.net/manual/en/language.types.array.php"><code>array</code></a>,
+			<a href="http://www.php.net/manual/en/language.types.object.php"><code>object</code></a>,
+			<a href="http://www.php.net/manual/en/language.types.null.php"><code>NULL</code></a>
+
+			<ul>
+				<li>test what type a variable is with <code>is_<var>type</var></code> functions, e.g. <a href="http://www.php.net/manual/en/function.is-string.php"><code>is_string</code></a></li>
+				<li><a href="http://www.php.net/gettype"><code>gettype</code></a> function returns a variable's type as a string (not often needed)</li>
+			</ul>
+		</li>
+		<li>PHP <a href="http://www.php.net/language.types.type-juggling">converts between types automatically</a> in many cases:
+			<ul>
+				<li><code>string</code> &rarr; <code>int</code> auto-conversion on <code>+</code> &nbsp;&nbsp;&nbsp;&nbsp; (<code>"1" + 1 == 2</code>)</li>
+				<li><code>int</code> &rarr; <code>float</code> auto-conversion on <code>/</code> &nbsp;&nbsp;&nbsp;&nbsp; (<code>3 / 2 == 1.5</code>)</li>
+			</ul>
+		</li>
+		<li>type-cast with <code>(<var>type</var>)</code>:
+			<ul>
+				<li><code>$age = <em>(int)</em> &quot;21&quot;;</code></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>int</code> and <code>float</code> types</h1>
+
+	<pre class="examplecode php">
+$a = 7 / 2;               <span class="comment"># float: 3.5</span>
+$b = (int) $a;            <span class="comment"># int: 3</span>
+$c = round($a);           <span class="comment"># float: 4.0</span>
+$d = &quot;123&quot;;               <span class="comment"># string: &quot;123&quot;</span>
+$e = (int) $d;            <span class="comment"># int: 123</span>
+</pre>
+
+	<ul>
+		<li><code>int</code> for integers and <code>float</code> for reals</li>
+		<li>division between two <code>int</code> values can produce a <code>float</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>String</code> type</h1>
+
+	<pre class="examplecode php">
+$favorite_food = &quot;Ethiopian&quot;;
+print $favorite_food[2];            <span class="comment"># h</span>
+</pre>
+
+	<ul>
+		<li>zero-based indexing using bracket notation</li>
+		<li>string concatenation operator is <code>.</code> (period), not <code>+</code>
+			<ul>
+				<li><code>5 + &quot;2 turtle doves&quot;</code> produces <code>7</code></li>
+				<li><code>5 . &quot;2 turtle doves&quot;</code> produces <code>&quot;52 turtle doves&quot;</code></li>
+			</ul>
+		</li>
+		<li>can be specified with <code>&quot;&quot;</code> or <code>''</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Interpreted strings</h1>
+
+	<pre class="examplecode php">
+$age = 16;
+<span class="deleted">print &quot;You are &quot; . $age . &quot; years old.\n&quot;;</span>
+print &quot;You are <em>$age</em> years old.\n&quot;;    <span class="comment"># You are 16 years old.</span>
+</pre>
+
+	<ul>
+		<li>strings inside <code>&quot; &quot;</code> are <span class="term">interpreted</span>
+			<ul>
+				<li>variables that appear inside them will have their values inserted into the string</li>
+			</ul>
+		</li>
+		<li>strings inside <code>' '</code> are <em>not</em> interpreted:
+
+			<pre class="examplecode php">
+print 'You are $age years old.\n';    <span class="comment"># You are $age years old.\n</span>
+</pre>
+					
+		</li>
+		<li class="incremental">if necessary to avoid ambiguity, can enclose variable in <code>{}</code>:
+
+			<pre class="examplecode php">
+<span class="deleted">print &quot;Today is your <em class="error">$ageth</em> birthday.\n&quot;;</span>     <span class="comment"># $ageth not found</span>
+print &quot;Today is your <em>{$age}th</em> birthday.\n&quot;;
+</pre>
+
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>String</code> functions</h1>
+
+	<pre class="examplecode php">
+<span class="comment"># index  0123456789012345</span>
+$name = &quot;Stefanie Hatcher&quot;;
+$length = <em>strlen</em>($name);              <span class="comment"># 16</span>
+$cmp = <em>strcmp</em>($name, &quot;Brian Le&quot;);     <span class="comment"># &gt; 0</span>
+$index = <em>strpos</em>($name, &quot;e&quot;);          <span class="comment"># 2</span>
+$first = <em>substr</em>($name, 9, 5);         <span class="comment"># &quot;Hatch&quot;</span>
+$name = <em>strtoupper</em>($name);            <span class="comment"># &quot;STEFANIE HATCHER&quot;</span>
+</pre>
+
+	<table class="standard" style="font-size: smaller">
+		<tr><th class="spaced">Name</th><th>Java Equivalent</th></tr>
+		<tr>
+			<td><a href="http://www.php.net/manual/en/function.strlen.php"><code>strlen</code></a></td>
+			<td><code>length</code></td>
+		</tr>
+
+		<tr>
+			<td><a href="http://www.php.net/manual/en/function.strpos.php"><code>strpos</code></a></td>
+			<td><code>indexOf</code></td>
+		</tr>
+
+		<tr>
+			<td><a href="http://www.php.net/manual/en/function.substr.php"><code>substr</code></a></td>
+			<td><code>substring</code></td>
+		</tr>
+
+		<tr>
+			<td class="spaced"><a href="http://www.php.net/manual/en/function.strtolower.php"><code>strtolower</code></a>, <a href="http://www.php.net/manual/en/function.strtoupper.php"><code>strtoupper</code></a></td>
+			<td><code>toLowerCase</code>, <code>toUpperCase</code></td>
+		</tr>
+
+		<tr>
+			<td><a href="http://www.php.net/manual/en/function.trim.php"><code>trim</code></a></td>
+			<td><code>trim</code></td>
+		</tr>
+
+		<tr>
+			<td><a href="http://www.php.net/manual/en/function.explode.php"><code>explode</code></a>, <a href="http://www.php.net/manual/en/function.implode.php"><code>implode</code></a></td>
+			<td><code>split</code>, <code>join</code></td>
+		</tr>
+
+		<tr>
+			<td><a href="http://www.php.net/manual/en/function.strcmp.php"><code>strcmp</code></a></td>
+			<td><code>compareTo</code></td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		<a href="http://www.php.net/boolean">bool</a> (Boolean) type
+	</h1>
+
+	<pre class="examplecode php">
+$feels_like_summer = FALSE;
+$php_is_rad = TRUE;
+
+$student_count = 217;
+$nonzero = (bool) $student_count;     <span class="comment"># TRUE</span>
+</pre>
+
+	<ul>
+		<li>the following values are considered to be <code>FALSE</code> (all others are <code>TRUE</code>):
+			<ul>
+				<li>
+					<code>0</code> and <code>0.0</code>
+				</li>
+				<li>
+					<code>&quot;&quot;</code>, <code>&quot;0&quot;</code>, and <code>NULL</code> (includes unset variables)</li>
+				<li>arrays with 0 elements</li>
+			</ul>
+		</li>
+		<li>can cast to boolean using <code>(bool)</code></li>
+		<li><code>FALSE</code> prints as an empty string (no output); <code>TRUE</code> prints as a <code>1</code></li>
+	</ul>
+
+	<div class="handout">
+		<ul>
+			<li><code>TRUE</code> and <code>FALSE</code> keywords are case insensitive</li>
+		</ul>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		<a href="http://www.php.net/manual/en/control-structures.for.php"><code>for</code></a> loop
+	</h1>
+
+	<pre class="syntaxtemplate php">
+for (<var>initialization</var>; <var>condition</var>; <var>update</var>) {
+  <var>statements</var>;
+}
+</pre>
+
+	<pre class="examplecode php">
+for ($i = 0; $i &lt; 10; $i++) {
+  print &quot;$i squared is &quot; . $i * $i . &quot;.\n&quot;;
+}
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1><a href="http://www.php.net/manual/en/control-structures.elseif.php"><code>if/else</code></a> statement</h1>
+
+	<pre class="syntaxtemplate php">
+if (<var>condition</var>) {
+  <var>statements</var>;
+} <em>elseif</em> (<var>condition</var>) {
+  <var>statements</var>;
+} else {
+  <var>statements</var>;
+}
+</pre>
+
+	<ul>
+		<li>NOTE: although <code>elseif</code> keyword is much more common, <code>else if</code> is also supported</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		<a href="http://www.php.net/manual/en/control-structures.while.php"><code>while</code></a> loop
+		<span class="sameasjava">(same as Java)</span>
+	</h1>
+
+	<pre class="syntaxtemplate php">
+while (<var>condition</var>) {
+  <var>statements</var>;
+}
+</pre>
+
+	<pre class="syntaxtemplate php">
+do {
+  <var>statements</var>;
+} while (<var>condition</var>);
+</pre>
+
+	<ul>
+		<li><code><a href="http://www.php.net/manual/en/control-structures.break.php">break</a></code> and <code><a href="http://www.php.net/manual/en/control-structures.continue.php">continue</a></code> keywords also behave as in Java</li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>5.3: Embedded PHP</h1>
+
+	<ul>
+		<li>
+			5.1: Server-Side Basics
+		</li>
+		<li>
+			5.2: PHP Basic Syntax
+		</li>
+		<li>
+			<strong>5.3: Embedded PHP</strong>
+		</li>
+		<li>
+			5.4: Advanced PHP Syntax
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Printing HTML tags in PHP = bad style</h1>
+				
+	<pre class="examplecode">
+&lt;?php
+<em class="bad">print &quot;&lt;!DOCTYPE html&gt;\n&quot;;
+print &quot;&lt;html&gt;\n&quot;;
+print &quot;  &lt;head&gt;\n&quot;;
+print &quot;    &lt;title&gt;Geneva's web page&lt;/title&gt;\n&quot;;</em>
+...
+for ($i = 1; $i &lt;= 10; $i++) {
+  <em class="bad">print &quot;&lt;p class=\&quot;count\&quot;&gt; I can count to $i! &lt;/p&gt;\n&quot;;</em>
+}
+?&gt;
+</pre>
+				
+	<ul>
+		<li>printing HTML tags with <code>print</code> statements is bad style and error-prone:
+			<ul>
+				<li>must quote the HTML and escape special characters, e.g. <code>\&quot;</code></li>
+			</ul>
+		</li>
+		<li>but without <code>print</code>, how do we insert dynamic content into the page?</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		PHP expression blocks
+	</h1>
+
+	<pre class="syntaxtemplate php">
+&lt;?= <var>expression</var> ?&gt;
+</pre>
+
+				<div class="example">
+<pre class="examplecode php">
+&lt;h2&gt; The answer is <em>&lt;?= 6 * 7 ?&gt;</em> &lt;/h2&gt;
+</pre>
+
+		<div class="exampleoutput">
+			<h2>The answer is 42</h2>
+		</div>
+	</div>
+
+	<ul>
+		<li>
+			<span class="term">PHP expression block</span>: evaluates and embeds an expression's value into HTML
+		</li>
+		<li>
+			<code>&lt;?= <var>expr</var> ?&gt;</code> &nbsp;&nbsp;&nbsp;is equivalent to&nbsp;&nbsp;&nbsp; <code>&lt;?php print <var>expr</var>; ?&gt;</code>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Expression block example</h1>
+				
+	<pre class="examplecode php">
+&lt;!DOCTYPE html &gt;
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;CSE 3026s: Embedded PHP&lt;/title&gt;&lt;/head&gt;	
+  &lt;body&gt;
+    <em>&lt;?php for ($i = 99; $i &gt;= 1; $i--) { ?&gt;</em>
+      &lt;p&gt; <em>&lt;?= $i ?&gt;</em> bottles of beer on the wall, &lt;br /&gt;
+          <em>&lt;?= $i ?&gt;</em> bottles of beer. &lt;br /&gt;
+          Take one down, pass it around, &lt;br /&gt;
+          <em>&lt;?= $i - 1 ?&gt;</em> bottles of beer on the wall. &lt;/p&gt;
+    <em>&lt;?php } ?&gt;</em>
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1>Common errors: unclosed braces, missing = sign</h1>
+
+	<pre class="examplecode php">
+  &lt;body&gt;
+    &lt;p&gt;Watch how high I can count:
+      &lt;?php for ($i = 1; $i &lt;= 10; $i++) { ?&gt;
+        <em class="bad">&lt;?</em> $i ?&gt;
+    <em class="bad">&lt;/p&gt;</em>
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+	<ul>
+		<li><code>&lt;/body&gt;</code> and <code>&lt;/html&gt;</code> above are inside the <code>for</code> loop, which is never closed</li>	
+		<li>if you forget to close your braces, you'll see an error about 'unexpected <code>$end</code>'</li>
+
+		<li>if you forget <code>=</code> in <code>&lt;?=</code>, the expression does not produce any output</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Complex expression blocks</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+  &lt;body&gt;
+    &lt;?php for ($i = 1; $i &lt;= 3; $i++) { ?&gt;
+      &lt;h<em>&lt;?= $i ?&gt;</em>&gt;This is a level <em>&lt;?= $i ?&gt;</em> heading.&lt;/h<em>&lt;?= $i ?&gt;</em>&gt;
+    &lt;?php } ?&gt;
+  &lt;/body&gt;
+</pre>
+
+		<div class="exampleoutput">
+			<h1>This is a level 1 heading.</h1>
+			<h2>This is a level 2 heading.</h2>
+			<h3>This is a level 3 heading.</h3>
+		</div>
+	</div>
+
+	<ul>
+		<li>expression blocks can even go inside HTML tags and attributes</li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>6.1: Parameterized Pages</h1>
+
+	<ul>
+		<li>
+			5.1: Server-Side Basics
+		</li>
+		<li>
+			5.2: PHP Basic Syntax
+		</li>
+		<li>
+			5.3: Embedded PHP
+		</li>
+		<li>
+			5.4: Advanced PHP Syntax
+		</li>
+		<li>
+			<strong>6.1: Parameterized Pages</strong>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Query strings and parameters
+	</h1>
+
+	<pre class="syntaxtemplate url">
+<var>URL</var><em>?</em><var>name</var><em>=</em><var>value</var><em>&amp;</em><var>name</var><em>=</em><var>value</var>...
+</pre>
+
+	<pre class="url">
+http://www.google.com/search?<em>q=Obama</em>
+
+http://example.com/student_login.php?<em>username=lee</em>&amp;<em>id=1234567</em>
+</pre>
+
+	<ul>
+		<li><span class="term">query string</span>: a set of parameters passed from a browser to a web server
+			<ul>
+				<li>often passed by placing name/value pairs at the end of a URL</li>
+				<li>above, parameter <code>username</code> has value <code>lee</code>, and <code>sid</code> has value <code>1234567</code></li>
+
+			</ul>
+		</li>
+		<li>PHP code on the server can examine and utilize the value of parameters</li>
+		<li>a way for PHP code to produce different output based on values passed by the user</li>
+	</ul>
+</div>
+
+
+
+<!--
+<div class="slide">
+	<h1>
+		Query parameters:
+		<a href="http://us2.php.net/manual/en/reserved.variables.request.php" class="underscorelink"><code>$_REQUEST</code></a>
+	</h1>
+
+	<pre class="examplecode php">
+$user_name = <em>$_REQUEST[&quot;username&quot;]</em>;
+$id_number = (int) <em>$_REQUEST[&quot;id&quot;]</em>;
+$eats_meat = FALSE;
+if (isset(<em>$_REQUEST[&quot;meat&quot;]</em>)) {
+  $eats_meat = TRUE;
+}
+
+</pre>
+
+	<ul>
+		<li>
+			<code>$_REQUEST[&quot;<var>parameter name</var>&quot;]</code> returns a parameter's value as a string
+		</li>
+
+		<li>test whether a given parameter was passed with <code>isset</code></li>
+
+	</ul>
+</div>
+-->
+
+
+<div class="slide">
+	<h1>
+		Query parameters:
+		<a class="popup underscorelink" href="http://us2.php.net/manual/en/reserved.variables.get.php"><code>$_GET</code></a>
+	</h1>
+
+	<pre class="examplecode php">
+$user_name = <em>$_GET[&quot;username&quot;]</em>;
+$id_number = (int) <em>$_GET[&quot;id&quot;]</em>;
+$eats_meat = FALSE;
+if (isset(<em>$_GET[&quot;meat&quot;]</em>)) {
+  $eats_meat = TRUE;
+}
+</pre>
+
+	<ul>
+		<li>
+			<code>$_GET[&quot;<var>parameter name</var>&quot;]</code> returns an HTTP GET parameter's value as a string
+		</li>
+		<li>parameters specified as <code>http://....?<var>name</var>=<var>value</var>&amp;<var>name</var>=<var>value</var></code> are GET parameters</li>
+		<li>can test whether a given parameter was passed with <code>isset</code></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Example: Exponents</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+$base = <em>$_GET[&quot;base&quot;]</em>;
+$exp = <em>$_GET[&quot;exponent&quot;]</em>;
+$result = pow($base, $exp);
+print "$base ^ $exp = $result";
+</pre>
+
+<pre class="exampleurl url">
+exponent.php?<em>base=3</em>&<em>exponent=4</em>
+</pre>
+
+		<div class="exampleoutput">
+			3 ^ 4 = 81
+		</div>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Example: Print all parameters</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+&lt;?php <em>foreach ($_GET as $param =&gt; $value) {</em> ?&gt;
+  &lt;p&gt;Parameter <em>&lt;?= $param ?&gt;</em> has value <em>&lt;?= $value ?&gt;</em>&lt;/p&gt;
+&lt;?php <em>}</em> ?&gt;
+</pre>
+
+		<pre class="exampleurl url">
+print_params.php?<em>name=Scott+Lee</em>&<em>sid=1234567</em>
+</pre>
+
+		<div class="exampleoutput">				
+			<p>Parameter name has value Scott Lee</p>
+			<p>Parameter sid has value 1234567</p>
+		</div>
+	</div>
+
+	<ul>
+		<li>
+			or call <code>print_r</code> or <code>var_dump</code> on <code>$_GET</code> for debugging
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>5.4: Advanced PHP Syntax</h1>
+
+	<ul>
+		<li>
+			5.1: Server-Side Basics
+		</li>
+		<li>
+			5.2: PHP Basic Syntax
+		</li>
+		<li>
+			5.3: Embedded PHP
+		</li>
+		<li>
+			<strong>5.4: Advanced PHP Syntax</strong>
+		</li>
+		<li>
+			6.1: Parameterized Pages
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		<a href="http://www.php.net/manual/en/language.types.array.php">Arrays</a>
+	</h1>
+
+	<pre class="syntaxtemplate php">
+$<var>name</var> = array();                         <span class="comment"># create</span>
+$<var>name</var> = array(<var>value0</var>, <var>value1</var>, <var>...</var>, <var>valueN</var>);
+
+$<var>name</var>[<var>index</var>]                              <span class="comment"># get element value</span>
+$<var>name</var>[<var>index</var>] = <var>value</var>;                      <span class="comment"># set element value</span>
+$<var>name</var>[] = <var>value</var>;                          <span class="comment"># append</span>
+</pre>
+
+<pre class="examplecode php">
+$a = array();     <span class="comment"># empty array (length 0)</span>
+$a[0] = 23;       <span class="comment"># stores 23 at index 0 (length 1)</span>
+$a2 = array(&quot;some&quot;, &quot;strings&quot;, &quot;in&quot;, &quot;an&quot;, &quot;array&quot;);
+$a2[] = &quot;Ooh!&quot;;   <span class="comment"># add string to end (at index 5)</span>
+</pre>
+
+	<ul>
+		<li>to append, use bracket notation without specifying an index</li>
+		<li>element type is not specified; can mix types</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Array functions</h1>
+
+	<table class="standard">
+		<tr>
+			<th>
+				function name(s)
+			</th>
+			<th>
+				description
+			</th>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/count"><code>count</code></a>
+			</td>
+			<td>
+				number of elements in the array
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a class="underscorelink" href="http://www.php.net/print_r"><code>print_r</code></a>
+			</td>
+			<td>
+				print array's contents
+			</td>
+		</tr>
+
+
+		<tr>
+			<td>
+				<a class="underscorelink" href="http://www.php.net/array-pop"><code>array_pop</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-push"><code>array_push</code></a>, <br />
+				<a class="underscorelink" href="http://www.php.net/array-shift"><code>array_shift</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-unshift"><code>array_unshift</code></a>
+			</td>
+			<td>
+				using array as a stack/queue
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a class="underscorelink" href="http://www.php.net/in-array"><code>in_array</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-search"><code>array_search</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-reverse"><code>array_reverse</code></a>, <br />
+				<a href="http://www.php.net/sort"><code>sort</code></a>,
+				<a href="http://www.php.net/rsort"><code>rsort</code></a>,
+				<a href="http://www.php.net/shuffle"><code>shuffle</code></a>
+			</td>
+			<td>
+				searching and reordering
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a class="underscorelink" href="http://www.php.net/array-fill"><code>array_fill</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-merge"><code>array_merge</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-intersect"><code>array_intersect</code></a>, <br />
+				<a class="underscorelink" href="http://www.php.net/array-diff"><code>array_diff</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-slice"><code>array_slice</code></a>,
+				<a href="http://www.php.net/range"><code>range</code></a>
+			</td>
+			<td>
+				creating, filling, filtering
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a class="underscorelink" href="http://www.php.net/array-sum"><code>array_sum</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-product"><code>array_product</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-unique"><code>array_unique</code></a>, <br />
+				<a class="underscorelink" href="http://www.php.net/array-unique"><code>array_filter</code></a>,
+				<a class="underscorelink" href="http://www.php.net/array-reduce"><code>array_reduce</code></a>
+			</td>
+			<td>
+				processing elements
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div class="slide">
+	<h1>Array function example</h1>
+
+	<pre class="examplecode php">$tas = array(&quot;MD&quot;, &quot;BH&quot;, &quot;KK&quot;, &quot;HM&quot;, &quot;JP&quot;);
+for ($i = 0; $i &lt; <em>count</em>($tas); $i++) {
+  $tas[$i] = strtolower($tas[$i]);
+}                                 <span class="comment"># (&quot;md&quot;, &quot;bh&quot;, &quot;kk&quot;, &quot;hm&quot;, &quot;jp&quot;)</span>
+$morgan = <em>array_shift</em>($tas);      <span class="comment"># (&quot;bh&quot;, &quot;kk&quot;, &quot;hm&quot;, &quot;jp&quot;)</span>
+<em>array_pop</em>($tas);                  <span class="comment"># (&quot;bh&quot;, &quot;kk&quot;, &quot;hm&quot;)</span>
+<em>array_push</em>($tas, &quot;ms&quot;);           <span class="comment"># (&quot;bh&quot;, &quot;kk&quot;, &quot;hm&quot;, &quot;ms&quot;)</span>
+<em>array_reverse</em>($tas);              <span class="comment"># (&quot;ms&quot;, &quot;hm&quot;, &quot;kk&quot;, &quot;bh&quot;)</span>
+<em>sort</em>($tas);                       <span class="comment"># (&quot;bh&quot;, &quot;hm&quot;, &quot;kk&quot;, &quot;ms&quot;)</span>
+$best = <em>array_slice</em>($tas, 1, 2);  <span class="comment"># (&quot;hm&quot;, &quot;kk&quot;)</span>
+</pre>
+
+	<ul>
+		<li>
+			the array in PHP replaces many other collections in Java
+			<ul>
+				<li>
+					list, stack, queue, set, map, ...
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		The <code>foreach</code> loop
+	</h1>
+
+<pre class="syntaxtemplate php">foreach ($<var>array</var> as $<var>variableName</var>) {
+  <var>...</var>
+}
+</pre>
+
+<pre class="examplecode php">$stooges = array(&quot;Larry&quot;, &quot;Moe&quot;, &quot;Curly&quot;, &quot;Shemp&quot;);
+<span class="deleted">for ($i = 0; $i &lt; count($stooges); $i++) {
+  print &quot;Moe slaps {$stooges[$i]}\n&quot;;
+}</span>
+<em>foreach ($stooges as $stooge) {</em>
+  print &quot;Moe slaps $stooge\n&quot;;  <span class="comment"># even himself!</span>
+<em>}</em>
+</pre>
+
+	<ul>
+		<li>a convenient way to loop over each element of an array without indexes</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Splitting/joining strings</h1>
+
+	<pre class="syntaxtemplate php">$<var>array</var> = explode(<var>delimiter</var>, <var>string</var>);
+$<var>string</var> = implode(<var>delimiter</var>, <var>array</var>);
+</pre>
+
+	<pre class="examplecode php">$s  = &quot;CSE 3026&quot;;
+$a  = <em>explode(&quot; &quot;, $s);</em>     <span class="comment"># (&quot;CSE&quot;, &quot;3026&quot;)</span>
+$s2 = <em>implode(&quot;...&quot;, $a);</em>   <span class="comment"># &quot;CSE...3026&quot;</span>
+</pre>
+
+	<ul>
+		<li><code>explode</code> and <code>implode</code> convert between strings and arrays</li>
+		<li>for more complex string splitting, you can use <span class="term">regular expressions</span> (later)</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Example with <code>explode</code></h1>
+
+	<div class="filename">contents of input file <code>names.txt</code></div>
+
+	<pre class="inputfile">
+Martin D Stepp
+Jessica K Miller
+Victoria R Kirst
+</pre>
+
+	<div class="example">
+		<pre class="examplecode php">
+foreach (file(&quot;names.txt&quot;) as $name) {
+  $tokens = <em>explode(&quot; &quot;, $name)</em>;
+  ?&gt;
+  &lt;p&gt; author: &lt;?= $tokens[2] ?&gt;, &lt;?= $tokens[0] ?&gt; &lt;/p&gt;
+  &lt;?php
+}
+</pre>
+
+		<div class="exampleoutput">
+			<p> author: Stepp, Marty </p>
+			<p> author: Miller, Jessica </p>
+			<p> author: Kirst, Victoria </p>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Functions
+	</h1>
+
+	<pre class="syntaxtemplate php">
+function <var>name</var>(<var>parameterName</var>, <var>...</var>, <var>parameterName</var>) {
+  <var>statements</var>;
+}
+</pre>
+
+	<pre class="examplecode php">
+function bmi($weight, $height) {
+  $result = 703 * $weight / $height / $height;
+  return $result;
+}
+</pre>
+
+	<ul>
+		<li>parameter types and return types are not written</li>
+		<li>a function with no <code>return</code> statements is implicitly "void"</li>
+		<li>can be declared in any PHP block, at start/end/middle of code</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Calling functions</h1>
+
+	<pre class="syntaxtemplate php">
+<var>name</var>(<var>expression</var>, <var>...</var>, <var>expression</var>);
+</pre>
+
+<pre class="examplecode php">
+$w = 163;  <span class="comment"># pounds</span>
+$h = 70;   <span class="comment"># inches</span>
+$my_bmi = <em>bmi($w, $h)</em>;
+</pre>
+
+	<ul>
+		<li>if the wrong number of parameters are passed, it's an error</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Variable scope: global and local vars</h1>
+				
+	<pre class="examplecode php">
+$school = &quot;HYU&quot;;                  <span class="comment"># global</span>
+...
+
+function downgrade() {
+  <em>global $school;</em>
+  $suffix = &quot;(Wisconsin)&quot;;        <span class="comment"># local</span>
+
+  $school = &quot;$school $suffix&quot;;
+  print &quot;$school\n&quot;;
+}
+</pre>
+
+	<ul>
+		<li>variables declared in a function are <span class="term">local</span> to that function; others are <span class="term">global</span></li>
+		<li>if a function wants to use a global variable, it must have a <code>global</code> statement
+			<ul>
+				<li>but don't abuse this; mostly you should use parameters</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Default parameter values</h1>
+
+	<pre class="syntaxtemplate php">
+function <var>name</var>(<var>parameterName</var> = <var>value</var>, <var>...</var>, <var>parameterName</var> = <var>value</var>) {
+  <var>statements</var>;
+}
+</pre>
+
+	<pre class="examplecode php">
+function print_separated($str, <em>$separator = &quot;, &quot;</em>) {
+  if (strlen($str) &gt; 0) {
+    print $str[0];
+    for ($i = 1; $i &lt; strlen($str); $i++) {
+      print $separator . $str[$i];
+    }
+  }
+}
+</pre>
+
+	<pre class="examplecode php">
+print_separated(&quot;hello&quot;);        <span class="comment"># h, e, l, l, o</span>
+print_separated(&quot;hello&quot;<em>, &quot;-&quot;</em>);   <span class="comment"># h-e-l-l-o</span>
+</pre>
+
+	<ul>
+		<li>if no value is passed, the default will be used (defaults must come last)</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>NULL</code></h1>
+
+	<pre class="examplecode php">
+$name = &quot;Victoria&quot;;
+$name = <em>NULL</em>;
+if (<em>isset($name)</em>) {
+  print &quot;This line isn't going to be reached.\n&quot;;
+}
+</pre>
+
+	<ul>
+		<li>a variable is <code>NULL</code> if
+			<ul>
+				<li>it has not been set to any value (undefined variables)</li>
+				<li>it has been assigned the constant <code>NULL</code></li>
+				<li>it has been deleted using the <code><a href="http://www.php.net/unset">unset</a></code> function</li>
+			</ul>
+		</li>
+		<li>can test if a variable is <code>NULL</code> using the <a href="http://www.php.net/isset"><code>isset</code></a> function</li>
+		<li><code>NULL</code> prints as an empty string (no output)</li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>5.4: PHP File Input</h1>
+
+	<ul>
+		<li>
+			5.1: Server-Side Basics
+		</li>
+		<li>
+			5.2: PHP Basic Syntax
+		</li>
+		<li>
+			5.3: Embedded PHP
+		</li>
+		<li>
+			<strong>5.4: Advanced PHP Syntax</strong>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		PHP file I/O functions
+	</h1>
+
+	<table class="standard">
+		<tr>
+			<th>
+				function name(s)
+			</th>
+			<th>
+				category
+			</th>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/file"><code><em>file</em></code></a>, 
+				<a class="underscorelink" href="http://www.php.net/file_get_contents"><code><em>file_get_contents</em></code></a>, <br />
+				<a class="underscorelink" href="http://www.php.net/file_put_contents"><code><em>file_put_contents</em></code></a>
+			</td>
+			<td>
+				reading/writing entire files
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/basename"><code><em>basename</em></code></a>, 
+				<a class="underscorelink" href="http://www.php.net/file_exists"><code>file_exists</code></a>, 
+				<a href="http://www.php.net/filesize"><code>filesize</code></a>,  <br />
+				<a href="http://www.php.net/fileperms"><code>fileperms</code></a>, 
+				<a href="http://www.php.net/filemtime"><code>filemtime</code></a>, 
+				<a class="underscorelink" href="http://www.php.net/is_dir"><code>is_dir</code></a>, <br />
+				<a class="underscorelink" href="http://www.php.net/is_readable"><code>is_readable</code></a>,
+				<a class="underscorelink" href="http://www.php.net/is_writable"><code>is_writable</code></a>,
+				<a class="underscorelink" href="http://www.php.net/disk_free_space"><code>disk_free_space</code></a>
+			</td>
+			<td>
+				asking for information
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/copy"><code>copy</code></a>, 
+				<a href="http://www.php.net/rename"><code>rename</code></a>, 
+				<a href="http://www.php.net/unlink"><code>unlink</code></a>,
+				<a href="http://www.php.net/chmod"><code>chmod</code></a>, <br />
+				<a href="http://www.php.net/chgrp"><code>chgrp</code></a>, 
+				<a href="http://www.php.net/chown"><code>chown</code></a>,
+				<a href="http://www.php.net/mkdir"><code>mkdir</code></a>, 
+				<a href="http://www.php.net/rmdir"><code>rmdir</code></a>
+			</td>
+			<td>
+				manipulating files and directories
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.php.net/glob"><code><em>glob</em></code></a>,
+				<a href="http://www.php.net/scandir"><code><em>scandir</em></code></a>
+			</td>
+			<td>
+				reading directories
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div class="slide">
+	<h1>Reading/writing files</h1>
+
+	<table class="standard">
+		<tr>
+			<th>contents of <code>foo.txt</code></th>
+			<th><code>file(&quot;foo.txt&quot;)</code></th>
+			<th><code>file_get_contents(&quot;foo.txt&quot;)</code></th>
+		</tr>
+		<tr>
+			<td>
+				<pre>
+Hello
+how r u?
+
+I'm fine
+</pre>
+			</td>
+			<td>
+				<pre>
+array(
+	&quot;Hello\n&quot;,     <span class="comment"># 0</span>
+	&quot;how r u?\n&quot;,  <span class="comment"># 1</span>
+	&quot;\n&quot;,          <span class="comment"># 2</span>
+	&quot;I'm fine\n&quot;   <span class="comment"># 3</span>
+)
+</pre>
+			</td>
+			<td>
+				<pre>
+&quot;Hello\n
+how r u?\n      <span class="comment"># a single</span>
+\n              <span class="comment"># string</span>
+I'm fine\n&quot;
+</pre>
+			</td>
+		</tr>
+	</table>
+
+	<ul>
+		<li><a class="underscorelink" href="http://www.php.net/file"><code>file</code></a> function returns lines of a file as an array (<code>\n</code> at end of each)</li>
+		<li><a class="underscorelink" href="http://www.php.net/file_get_contents"><code>file_get_contents</code></a> returns entire contents of a file as a single string
+			<ul>
+				<li>
+					<a class="underscorelink" href="http://www.php.net/file_put_contents"><code>file_put_contents</code></a> writes a string into a file
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Reading/writing an entire file</h1>
+
+	<pre class="examplecode php"><span class="comment"># reverse a file</span>
+$text = <em>file_get_contents(&quot;poem.txt&quot;)</em>;
+$text = strrev($text);
+<em>file_put_contents(&quot;poem.txt&quot;, $text)</em>;
+</pre>
+
+	<ul>
+		<li><a class="underscorelink" href="http://www.php.net/file_get_contents"><code>file_get_contents</code></a> returns entire contents of a file as a string
+			<ul>
+				<li>if the file doesn't exist, you will get a warning and an empty return string</li>
+			</ul>
+		</li>
+		<li><a class="underscorelink" href="http://www.php.net/file_put_contents"><code>file_put_contents</code></a> writes a string into a file, replacing its old contents
+			<ul>
+				<li>if the file doesn't exist, it will be created</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Appending to a file</h1>
+
+	<pre class="examplecode php"><span class="comment"># add a line to a file</span>
+$new_text = &quot;P.S. ILY, GTG TTYL!~&quot;;
+file_put_contents(&quot;poem.txt&quot;, $new_text<em>, FILE_APPEND</em>);
+</pre>
+
+	<table class="standard">
+		<tr>
+			<th>old contents</th>
+			<th>new contents</th>
+		</tr>
+
+		<tr>
+			<td>
+				<pre>
+Roses are red,
+Violets are blue.
+All my base,
+Are belong to you.
+</pre>
+			</td>
+			<td>
+				<pre>
+Roses are red,
+Violets are blue.
+All my base,
+Are belong to you.
+P.S. ILY, GTG TTYL!~
+</pre>
+			</td>
+		</tr>
+	</table>
+
+	<ul>
+		<li><a class="underscorelink" href="http://www.php.net/file_put_contents"><code>file_put_contents</code></a> can be called with an optional third parameter to append (add to the end) rather than overwrite</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>The <a href="http://www.php.net/file"><code>file</code></a> function</h1>
+
+<pre class="examplecode php"><span class="comment"># display lines of file as a bulleted list</span>
+$lines = <em>file(&quot;todolist.txt&quot;)</em>;
+foreach ($lines as $line) {   <span class="comment"># for ($i = 0; $i &lt; count($lines); $i++)</span>
+  print &quot;&lt;li&gt;$line&lt;/li&gt;\n&quot;;
+}
+</pre>
+
+	<ul>
+		<li><a href="http://www.php.net/file"><code>file</code></a> returns the lines of a file as an array of strings
+		<li>
+			each ends with <code>\n</code> ; to strip it, use an optional second parameter:
+			<pre class="examplecode php">
+$lines = file(&quot;todolist.txt&quot;, <em>FILE_IGNORE_NEW_LINES</em>);
+</pre>
+		</li>
+		<li>common idiom: <code>foreach</code> or <code>for</code> loop over lines of file</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Unpacking an array: <code>list</code></h1>
+
+	<pre class="syntaxtemplate php">
+list($<var>var1</var>, ..., $<var>varN</var>) = <var>array</var>;
+</pre>
+
+	<div class="filename">contents of input file <code>personal.txt</code></div>
+
+	<pre class="inputfile">
+Marty Stepp
+(206) 685 2181
+570-86-7326
+</pre>
+
+	<pre class="examplecode php">
+<em>list</em>($name, $phone, $ssn) = <em>file</em>(&quot;personal.txt&quot;);
+<var>...</var>
+<em>list</em>($area_code, $prefix, $suffix) = explode(&quot; &quot;, $phone);
+</pre>
+
+	<ul>
+		<li>
+			the odd <a href="http://www.php.net/list"><code>list</code></a> function "unpacks" an array into a set of variables you declare
+		</li>
+		<li>
+			when you know a file's exact length/format, use <code>file</code> and <code>list</code> to unpack it
+		</li>
+	</ul>
+</div>
+			
+			
+
+<div class="slide">
+	<h1>Reading directories</h1>
+
+	<table class="standard">
+		<tr>
+			<th>function</th>
+			<th>description</th>
+		</tr>
+
+		<tr>
+			<td><a href="http://www.php.net/glob"><code>glob</code></a></td>
+			<td>returns an array of all file names that match a given pattern <br />
+				(returns a file path and name, such as <code>&quot;foo/bar/myfile.txt&quot;</code>)
+			</td>
+		</tr>
+		
+		<tr>
+			<td><a href="http://www.php.net/scandir"><code>scandir</code></a></td>
+			<td>returns an array of all file names in a given directory <br />
+				(returns just the file names, such as <code>&quot;myfile.txt&quot;</code>)
+			</td>
+		</tr>
+	</table>
+
+	<ul>
+		<li>
+			<code>glob</code> can accept a general path with the <code>*</code> wildcard character (more powerful)
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>glob</code> example</h1>
+
+	<pre class="examplecode php">
+<span class="comment"># reverse all poems in the poetry directory</span>
+$poems = <em>glob(&quot;poetry/poem*.dat&quot;)</em>;
+foreach ($poems as $poemfile) {
+  $text = file_get_contents($poemfile);
+  file_put_contents($poemfile, strrev($text));
+  print &quot;&lt;p&gt;I just reversed &quot; . <em>basename($poemfile)</em> . &quot;&lt;/p&gt;\n&quot;;
+}
+</pre>
+				
+	<ul>
+		<li>
+			<code>glob</code> can match a "wildcard" path with the <code>*</code> character
+			<ul>
+				<li>
+					<code>glob(&quot;foo/bar/<em>*.doc</em>&quot;)</code> returns all <code>.doc</code> files in the <code>foo/bar</code> subdirectory
+				</li>
+				<li>
+					<code>glob(&quot;<em>food*</em>&quot;)</code> returns all files whose names begin with &quot;food&quot;
+				</li>
+				<!--
+				<li>
+					<code>glob(&quot;<em>lecture*</em>/<em>slides*.ppt</em>&quot;)</code> examines all directories whose names begin with <code>lecture</code> and grabs all files whose names begin with &quot;slides&quot; and end with &quot;.ppt&quot;
+				</li>
+				-->
+			</ul>
+		</li>
+		<li>
+			the <code>basename</code> function strips any leading directory from a file path
+			<ul>
+				<li>
+					<code>basename(&quot;foo/bar/baz.txt&quot;)</code> returns <code>&quot;baz.txt&quot;</code>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><code>scandir</code> example</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+&lt;ul&gt;
+  &lt;?php foreach (<em>scandir(&quot;taxes/old&quot;)</em> as $filename) { ?&gt;
+    &lt;li&gt;&lt;?= $filename ?&gt;&lt;/li&gt;
+  &lt;?php } ?&gt;
+&lt;/ul&gt;
+</pre>
+
+		<div class="exampleoutput" style="font-size: smaller">
+			<ul>
+				<li style="margin: 0em">
+					.
+				</li>
+				<li style="margin: 0em">
+					..
+				</li>
+				<li style="margin: 0em">
+					2007_w2.pdf
+				</li>
+				<li style="margin: 0em">
+					2006_1099.doc
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<ul>
+		<li><code>scandir</code> includes current directory (<code>&quot;.&quot;</code>) and parent (<code>&quot;..&quot;</code>) in the array</li>
+		<li>
+			don't need <code>basename</code> with <code>scandir</code>; returns file names only without directory
+		</li>
+	</ul>
+</div>
+
+
+			
+<div class="slide">
+	<h1>Why use classes and objects?</h1>
+
+	<ul>
+		<li>PHP is a primarily procedural language</li>
+		<li>small programs are easily written without adding any classes or objects</li>
+		<li>larger programs, however, become cluttered with so many disorganized functions</li>
+		<li>grouping <em>related data and behavior</em> into objects helps manage size and complexity</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Constructing and using objects</h1>
+
+	<pre class="syntaxtemplate php">
+<span class="comment"># construct an object</span>
+$<var>name</var> = new <var>ClassName</var>(<var>parameters</var>);
+
+<span class="comment"># access an object's field (if the field is public)</span>
+$<var>name</var>-&gt;<var>fieldName</var>
+
+<span class="comment"># call an object's method</span>
+$<var>name</var>-&gt;<var>methodName</var>(<var>parameters</var>);
+</pre>
+
+	<pre class="examplecode php">
+$zip = new ZipArchive();
+$zip-&gt;open(&quot;moviefiles.zip&quot;);
+$zip-&gt;extractTo(&quot;images/&quot;);
+$zip-&gt;close();
+</pre>
+
+	<ul>
+		<li>the above code <a href="http://www.php.net/zip">unzips a file</a></li>
+		<li>test whether a class is installed with <a class="underscorelink" href="http://www.php.net/class_exists"><code>class_exists</code></a></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Object example: Fetch file from web</h1>
+
+	<pre class="examplecode php">
+<span class="comment"># create an HTTP request to fetch student.php</span>
+$req = <em>new HttpRequest(&quot;student.php&quot;, HttpRequest::METH_GET);</em>
+$params = array(&quot;first_name&quot; =&gt; $fname, &quot;last_name&quot; =&gt; $lname);
+<em>$req-&gt;addPostFields($params);</em>
+
+<span class="comment"># send request and examine result</span>
+<em>$req-&gt;send();</em>
+$http_result_code = <em>$req-&gt;getResponseCode()</em>;   <span class="comment"># 200 means OK</span>
+print &quot;$http_result_code\n&quot;;
+print <em>$req-&gt;getResponseBody()</em>;
+</pre>
+
+	<ul>
+		<li>PHP's <a href="http://www.php.net/manual/en/class.httprequest.php"><code>HttpRequest</code></a> object can fetch a document from the web</li>
+	</ul>
+
+</div>
+
+
+
+<div class="slide">
+	<h1>Class declaration syntax</h1>
+
+	<pre class="syntaxtemplate php">
+class <var>ClassName</var> {
+  <span class="comment"># fields - data inside each object</span>
+  public $<var>name</var>;    <span class="comment"># public field</span>
+  private $<var>name</var>;   <span class="comment"># private field</span>
+	
+  <span class="comment"># constructor - initializes each object's state</span>
+  public function <em>__construct</em>(<var>parameters</var>) {
+    <var>statement(s)</var>;
+  }
+	
+  <span class="comment"># method - behavior of each object</span>
+  public function <var>name</var>(<var>parameters</var>) {
+    <var>statements</var>;
+  }
+}
+</pre>
+
+	<ul>
+		<li>inside a constructor or method, refer to the current object as <code>$this</code></li>
+	</ul>
+
+</div>
+
+
+
+<div class="slide">
+	<h1>Class example</h1>
+
+	<pre class="examplecode php">
+&lt;?php
+class Point {
+  public $x;
+  public $y;
+	
+  <span class="comment"># equivalent of a Java constructor</span>
+  public function __construct($x, $y) {
+    $this-&gt;x = $x;
+    $this-&gt;y = $y;
+  }
+	
+  public function distance($p) {
+    $dx = $this-&gt;x - $p-&gt;x;
+    $dy = $this-&gt;y - $p-&gt;y;
+    return sqrt($dx * $dx + $dy * $dy);
+  }
+	
+  <span class="comment"># equivalent of Java's toString method</span>
+  public function __toString() {
+    return &quot;(&quot; . $this-&gt;x . &quot;, &quot; . $this-&gt;y . &quot;)&quot;;
+  }
+}
+?&gt;
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1>Class usage example</h1>
+
+	<div class="example">
+		<pre class="examplecode php">
+&lt;?php
+<span class="comment"># this code could go into a file named use_point.php</span>
+include(&quot;Point.php&quot;);
+
+<em>$p1 = new Point(0, 0);</em>
+<em>$p2 = new Point(4, 3);</em>
+print &quot;Distance between <em>$p1</em> and <em>$p2</em> is &quot; . <em>$p1-&gt;distance($p2)</em> . &quot;\n\n&quot;;
+
+var_dump(<em>$p2</em>);   <span class="comment"># var_dump prints detailed state of an object</span>
+?&gt;
+</pre>
+
+		<pre class="exampleoutput php">
+Distance between (0, 0) and (4, 3) is 5
+
+object(Point)[2]
+  public 'x' => int 4
+  public 'y' => int 3
+</pre>
+	</div>
+
+	<ul>
+		<li>
+			<code>$p1</code> and <code>$p2</code> are <a href="http://www.php.net/manual/en/language.oop5.references.php">references</a> to <code>Point</code> objects
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Basic <a href="http://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.extends">inheritance</a></h1>
+
+	<pre class="syntaxtemplate php">
+class <var>ClassName</var> extends <var>ClassName</var> {
+	<var>...</var>
+}
+</pre>
+
+	<pre class="examplecode php">
+class Point3D extends Point {
+  public $z;
+	
+  public function __construct($x, $y, $z) {
+    parent::__construct($x, $y);
+    $this->z = $z;
+  }
+	
+  ...
+}
+</pre>
+
+	<ul>
+		<li>the given class will inherit all data and behavior from <var>ClassName</var></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1><a href="http://www.php.net/manual/en/language.oop5.static.php">Static</a> methods, fields, and <a href="http://www.php.net/manual/en/language.oop5.constants.php">constants</a></h1>
+
+	<pre class="syntaxtemplate php">
+<em>static</em> $name = <var>value</var>;    <span class="comment"># declaring a static field</span>
+<em>const</em> $name = <var>value</var>;     <span class="comment"># declaring a static constant</span>
+</pre>
+
+	<pre class="syntaxtemplate php">
+<span class="comment"># declaring a static method</span>
+public <em>static</em> function <var>name</var>(<var>parameters</var>) {
+  <var>statements</var>;
+}
+</pre>
+
+	<pre class="syntaxtemplate php">
+<var>ClassName</var>::<var>methodName</var>(<var>parameters</var>);  <span class="comment"># calling a static method (outside class)</span>
+self::<var>methodName</var>(<var>parameters</var>);       <span class="comment"># calling a static method (within class)</span>
+</pre>
+
+	<ul>
+		<li>
+			static fields/methods are shared throughout a class rather than replicated in every object
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		<a href="http://www.php.net/manual/en/language.oop5.abstract.php">Abstract classes</a> and
+		<a href="http://www.php.net/manual/en/language.oop5.interfaces.php">interfaces</a>
+	</h1>
+
+	<pre class="syntaxtemplate php">
+<em>interface</em> <var>InterfaceName</var> {
+  public function <var>name</var>(<var>parameters</var>)<em>;</em>
+  public function <var>name</var>(<var>parameters</var>)<em>;</em>
+  ...
+}
+
+class <var>ClassName</var> <em>implements</em> <var>InterfaceName</var> { ...
+</pre>
+
+	<pre class="syntaxtemplate php">
+<em>abstract</em> class <var>ClassName</var> {
+  <em>abstract</em> public function <var>name</var>(<var>parameters</var>)<em>;</em>
+  ...
+}
+</pre>
+
+	<ul>
+		<li>
+			<span class="term">interfaces</span> are supertypes that specify method headers without implementations
+			<ul>
+				<li>
+					cannot be instantiated; cannot contain function bodies or fields
+				</li>
+				<li>
+					enables polymorphism between subtypes without sharing implementation code
+				</li>
+			</ul>
+		</li>
+		<li>
+			<span class="term">abstract classes</span> are like interfaces, but you can specify fields, constructors, methods
+			<ul>
+				<li>
+					also cannot be instantiated; enables polymorphism with sharing of implementation code
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+			
+
+		</div><!-- end div class="presentation" -->
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/05-PHP.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:20 GMT -->
+</html>		

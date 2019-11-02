@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/09-dom.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:24 GMT -->
+<head>
+		<!-- metadata -->
+		<meta charset="utf-8" />
+		<meta name="author" content="Scott Uk-Jin Lee" />
+		<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
+		<meta name="keywords" content="Hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+		
+		<!-- style sheet links -->
+		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
+		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+
+		<!-- S5 JS -->
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
+		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<script src="resources/slides.js" type="text/javascript"></script>
+		<script src="ui/default/slides.js" type="text/javascript"></script>
+		
+		<title>CSE3026 - 09. Document Object Model (DOM)</title>
+	</head>
+
+		<div class="layout">
+			<div id="controls"><!-- DO NOT EDIT --></div>
+			<div id="currentSlide"><!-- DO NOT EDIT --></div>
+			<div id="header"></div>
+			<div id="footer">
+				<h1>CSE3026: Web Application Development</h1>
+				<h2>09. Document Object Model (DOM)</h2>
+			</div>
+		</div>
+	
+		<div class="presentation">
+			<div class="slide">			
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Document Object Model (DOM)</strong></h1>			
+				<br/>
+				<h2>Scott Uk-Jin Lee</h2>
+							
+				<p class="license"> 				
+					Reproduced with permission of the authors.
+					Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
+					All rights reserved. 
+					Further reproduction or distribution is prohibited without written permission.
+				</p>
+				
+				<div class="w3c">
+					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML 5" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
+				</div>
+			</div>
+			
+			
+			
+			
+<div class="slide titleslide">
+	<h1>9.1: Global DOM Objects</h1>
+
+	<ul>
+		<li>
+			<strong>9.1: Global DOM Objects</strong>
+		</li>
+		<li>
+			9.2: The DOM Tree
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>The six global DOM objects</h1>
+
+	<p>Every Javascript program can refer to the following global objects:</p>
+
+	<table class="standard">
+		<tr>
+			<th>name</th><th>description</th>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/jsref/dom_obj_document.asp">document</a></code>
+			</td>
+			<td>
+				current HTML page and its content
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/jsref/obj_history.asp">history</a></code>
+			</td>
+			<td>
+				list of pages the user has visited
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/jsref/obj_location.asp">location</a></code>
+			</td>
+			<td>
+				URL of the current HTML page
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/jsref/obj_navigator.asp">navigator</a></code>
+			</td>
+			<td>
+				info about the web browser you are using
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/jsref/obj_screen.asp">screen</a></code>
+			</td>
+			<td>
+				info about the screen area occupied by the browser
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/jsref/obj_window.asp">window</a></code>
+			</td>
+			<td>
+				the browser window
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div class="slide">
+	<h1>The <a href="http://www.w3schools.com/jsref/obj_window.asp"><code>window</code></a> object</h1>
+
+	<p class="description">
+		the entire browser window; the top-level object in DOM hierarchy
+	</p>
+
+	<ul>
+		<li>technically, all global code and variables become part of the <code>window</code> object</li>
+
+		<li>properties:
+			<ul>
+				<li>
+				<a href="http://www.w3schools.com/jsref/dom_obj_document.asp"><code>document</code></a>, 
+				<a href="http://www.w3schools.com/jsref/obj_history.asp"><code>history</code></a>, 
+				<a href="http://www.w3schools.com/jsref/obj_location.asp"><code>location</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_win_name.asp"><code>name</code></a>
+				</li>
+			</ul>
+		</li>
+
+		<li>methods:
+			<ul>
+				<li>
+					<a href="http://www.w3schools.com/jsref/met_win_alert.asp"><code>alert</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_confirm.asp"><code>confirm</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_prompt.asp"><code>prompt</code></a> (popup boxes)
+				</li>
+
+				<li>
+					<a href="http://www.w3schools.com/jsref/met_win_setInterval.asp"><code>setInterval</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_setTimeout.asp"><code>setTimeout</code></a>,
+					<a href="http://www.w3schools.com/jsref/met_win_clearInterval.asp"><code>clearInterval</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_clearTimeout.asp"><code>clearTimeout</code></a> (timers)
+				</li>
+
+				<li>
+					<a href="http://www.w3schools.com/jsref/met_win_open.asp"><code>open</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_close.asp"><code>close</code></a> (popping up new browser windows)
+				</li>
+
+				<li>
+					<a href="http://www.w3schools.com/jsref/met_win_blur.asp"><code>blur</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_focus.asp"><code>focus</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_moveBy.asp"><code>moveBy</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_moveTo.asp"><code>moveTo</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_print.asp"><code>print</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_resizeBy.asp"><code>resizeBy</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_resizeTo.asp"><code>resizeTo</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_scrollBy.asp"><code>scrollBy</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_win_scrollTo.asp"><code>scrollTo</code></a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Popup windows with <code>window.open</code></h1>
+	
+	<pre class="examplecode js">
+<em>window.open</em>(&quot;http://foo.com/bar.html&quot;, &quot;My Foo Window&quot;,
+            &quot;width=900,height=600,scrollbars=1&quot;);
+</pre>
+
+	<hr class="spacedrule" />
+
+	<ul>
+		<li><a href="http://www.w3schools.com/jsref/met_win_open.asp"><code>window.open</code></a> pops up a new browser window</li>
+		<li>THIS method is the cause of all the terrible popups on the web!</li>
+		<li>some popup blocker software will prevent this method from running</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>The <a href="http://www.w3schools.com/jsref/dom_obj_document.asp"><code>document</code></a> object</h1>
+
+	<p class="description">
+		the current web page and the elements inside it
+	</p>
+
+	<ul>
+		<li>properties:
+			<ul>
+				<li>
+				<a href="http://www.w3schools.com/jsref/coll_doc_anchors.asp"><code>anchors</code></a>, 
+				<code>body</code>, 
+				<a href="http://www.w3schools.com/jsref/prop_doc_cookie.asp"><code>cookie</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_doc_domain.asp"><code>domain</code></a>, 
+				<a href="http://www.w3schools.com/jsref/coll_doc_forms.asp"><code>forms</code></a>, 
+				<a href="http://www.w3schools.com/jsref/coll_doc_images.asp"><code>images</code></a>, 
+				<a href="http://www.w3schools.com/jsref/coll_doc_links.asp"><code>links</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_doc_referrer.asp"><code>referrer</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_doc_title.asp"><code>title</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_doc_url.asp"><code>URL</code></a>
+				</li>
+			</ul>
+		</li>
+
+		<li>methods:
+			<ul>
+				<li><a href="http://www.w3schools.com/jsref/met_doc_getelementbyid.asp"><code>getElementById</code></a></li>
+				<li><a href="http://www.w3schools.com/jsref/met_doc_getelementsbyname.asp"><code>getElementsByName</code></a></li>
+				<li><a href="http://www.w3schools.com/jsref/met_doc_getelementsbytagname.asp"><code>getElementsByTagName</code></a></li>
+				<li>
+					<a href="http://www.w3schools.com/jsref/met_doc_close.asp"><code>close</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_doc_open.asp"><code>open</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_doc_write.asp"><code>write</code></a>, 
+					<a href="http://www.w3schools.com/jsref/met_doc_writeln.asp"><code>writeln</code></a>
+				</li>
+			</ul>
+		</li>
+		<li><a href="http://www.w3schools.com/jsref/dom_obj_document.asp">complete list</a></li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>The <a href="http://www.w3schools.com/jsref/obj_location.asp"><code>location</code></a> object</h1>
+
+	<p class="description">
+		the URL of the current web page
+	</p>
+
+	<ul>
+		<li>properties:
+			<ul>
+				<li>
+				<a href="http://www.w3schools.com/jsref/prop_loc_host.asp"><code>host</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_loc_hostname.asp"><code>hostname</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_loc_href.asp"><code>href</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_loc_pathname.asp"><code>pathname</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_loc_port.asp"><code>port</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_loc_protocol.asp"><code>protocol</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_loc_search.asp"><code>search</code></a>
+				</li>
+			</ul>
+		</li>
+
+		<li>methods:
+			<ul>
+				<li>
+				<a href="http://www.w3schools.com/jsref/met_loc_assign.asp"><code>assign</code></a>, 
+				<a href="http://www.w3schools.com/jsref/met_loc_reload.asp"><code>reload</code></a>, 
+				<a href="http://www.w3schools.com/jsref/met_loc_replace.asp"><code>replace</code></a>
+				</li>
+			</ul>
+		</li>
+		<li><a href="http://www.w3schools.com/jsref/obj_location.asp">complete list</a></li>
+	</ul>
+
+</div>
+
+
+
+<div class="slide">
+	<h1>The <a href="http://www.w3schools.com/jsref/obj_navigator.asp"><code>navigator</code></a> object</h1>
+
+	<p class="description">
+		information about the web browser application
+	</p>
+
+	<ul>
+		<li>properties:
+			<ul>
+				<li>
+					<a href="http://www.w3schools.com/jsref/prop_nav_appname.asp"><code>appName</code></a>, 
+					<a href="http://www.w3schools.com/jsref/prop_nav_appversion.asp"><code>appVersion</code></a>, 
+					<a href="http://www.w3schools.com/jsref/prop_nav_language.asp"><code>language</code></a>, 
+					<a href="http://www.w3schools.com/jsref/prop_nav_cookieenabled.asp"><code>cookieEnabled</code></a>, 
+					<a href="http://www.w3schools.com/jsref/prop_nav_platform.asp"><code>platform</code></a>, 
+					<a href="http://www.w3schools.com/jsref/prop_nav_useragent.asp"><code>userAgent</code></a>
+				</li>
+				<li><a href="http://www.w3schools.com/jsref/obj_navigator.asp">complete list</a></li>
+			</ul>
+		</li>
+
+		<li>
+			Some web programmers examine the <code>navigator</code> object to see what browser is being used, and write browser-specific scripts and hacks:
+
+			<pre class="examplecode js">
+if (navigator.appName === &quot;Microsoft Internet Explorer&quot;) { ...
+</pre>
+
+			<ul>
+				<li>(this is poor style; you should not need to do this)</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>The <a href="http://www.w3schools.com/jsref/obj_screen.asp"><code>screen</code></a> object</h1>
+
+	<p class="description">
+		information about the client's display screen
+	</p>
+
+	<ul>
+		<li>properties:
+			<ul>
+				<li>
+				<a href="http://www.w3schools.com/jsref/prop_screen_availheight.asp"><code>availHeight</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_screen_availwidth.asp"><code>availWidth</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_screen_colordepth.asp"><code>colorDepth</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_screen_height.asp"><code>height</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_screen_pixeldepth.asp"><code>pixelDepth</code></a>, 
+				<a href="http://www.w3schools.com/jsref/prop_screen_width.asp"><code>width</code></a>
+				</li>
+				<li><a href="http://www.w3schools.com/jsref/obj_screen.asp">complete list</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>The <a href="http://www.w3schools.com/jsref/obj_history.asp"><code>history</code></a> object</h1>
+
+	<p class="description">
+		the list of sites the browser has visited in this window
+	</p>
+
+	<ul>
+		<li>properties:
+			<ul>
+				<li>
+				<a href="http://www.w3schools.com/jsref/prop_his_length.asp"><code>length</code></a>
+				</li>
+			</ul>
+		</li>
+
+		<li>methods:
+			<ul>
+				<li>
+				<a href="http://www.w3schools.com/jsref/met_his_back.asp"><code>back</code></a>, 
+				<a href="http://www.w3schools.com/jsref/met_his_forward.asp"><code>forward</code></a>, 
+				<a href="http://www.w3schools.com/jsref/met_his_go.asp"><code>go</code></a>
+				</li>
+			</ul>
+		</li>
+		<li><a href="http://www.w3schools.com/jsref/obj_history.asp">complete list</a></li>
+		<li>sometimes the browser won't let scripts view <code>history</code> properties, for security</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Unobtrusive JavaScript
+	</h1>
+
+	<ul>
+		<li>JavaScript event code seen previously was <em>obtrusive</em>, in the HTML; this is bad style</li>
+		<li>now we'll see how to write <a href="http://en.wikipedia.org/wiki/Unobtrusive_JavaScript"><em>unobtrusive</em> JavaScript</a> code
+			<ul>
+				<li>HTML with minimal JavaScript inside</li>
+				<li>uses the DOM to attach and execute all JavaScript functions</li>
+			</ul>
+		</li>
+		<li>allows <a href="http://alistapart.com/articles/behavioralseparation">separation</a> of web site into 3 major categories:
+			<ul>
+				<li><span class="term">content</span> (HTML) - what is it?</li>
+				<li><span class="term">presentation</span> (CSS) - how does it look?</li>
+				<li><span class="term">behavior</span> (JavaScript) - how does it respond to user interaction?</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Obtrusive event handlers (bad)</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;button <em class="bad">onclick=&quot;okayClick();&quot;</em>&gt;OK&lt;/button&gt;
+</pre>
+
+		<pre class="examplecode js">
+<span class="comment">// called when OK button is clicked</span>
+function okayClick() {
+	alert(&quot;booyah&quot;);
+}
+</pre>
+
+		<div class="exampleoutput insertoutput"></div>
+	</div>
+
+	<ul>
+		<li>this is bad style (HTML is cluttered with JS code)</li>
+		<li>goal: remove all JavaScript code from the HTML body</li>
+	</ul>
+</div>
+
+
+
+
+<div class="slide">
+	<h1>Attaching an event handler in JavaScript code</h1>
+
+	<pre class="syntaxtemplate js">
+<span class="comment">// where <var>element</var> is a DOM element object</span>
+<var>element</var>.on<var>event</var> = <var>function</var>;
+</pre>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;button <em>id=&quot;ok&quot;</em>&gt;OK&lt;/button&gt;
+</pre>
+		
+		<pre class="examplecode js">
+var okButton = document.getElementById(&quot;ok&quot;);
+okButton.<em>onclick</em> = <em>okayClick</em>;
+</pre>
+
+		<div class="exampleoutput insertoutput"></div>
+	</div>
+
+	<ul>
+		<li>it is legal to attach event handlers to elements' DOM objects in your JavaScript code
+			<ul>
+				<li>
+					notice that you do <strong>not</strong> put parentheses after the function's name
+				</li>
+			</ul>
+		</li>
+		<li>this is better style than attaching them in the HTML</li>
+		<li>Where should we put the above code?</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>When does my code run?</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;html&gt;
+	&lt;head&gt;
+		<em>&lt;script src=&quot;myfile.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</em>
+	&lt;/head&gt;
+	&lt;body&gt; ... &lt;/body&gt; &lt;/html&gt;
+</pre>
+
+		<pre class="examplecode examplecode2 examplecodelast js">
+<span class="comment">// global code</span>
+var x = 3;
+function f(n) { return n + 1; }
+function g(n) { return n - 1; }
+x = f(x);
+</pre>
+	</div>
+
+	<ul>
+		<li>your file's JS code runs the moment the browser loads the <code>script</code> tag
+			<ul>
+				<li>
+					any variables are declared immediately
+				</li>
+				<li>
+					any functions are declared but not called, unless your global code explicitly calls them
+				</li>
+			</ul>
+		</li>
+		<li class="incremental">at this point in time, the browser has not yet read your page's <code>body</code>
+			<ul>
+				<li>
+					none of the DOM objects for tags on the page have been created yet
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>A failed attempt at being unobtrusive</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;html&gt;
+	&lt;head&gt;
+		<em>&lt;script src=&quot;myfile.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</em>
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div&gt;&lt;button id=&quot;ok&quot;&gt;OK&lt;/button&gt;&lt;/div&gt;
+</pre>
+
+		<pre class="examplecode examplecode2 examplecodelast js">
+<span class="comment">// global code</span>
+<em class="bad">document.getElementById(&quot;ok&quot;).onclick = okayClick;</em>   <span class="comment">// error: null</span>
+</pre>
+	</div>
+
+	<ul>
+		<li>problem: global JS code runs the moment the script is loaded</li>
+		<li>script in <code>head</code> is processed before page's <code>body</code> has loaded
+			<ul>
+				<li>no elements are available yet or can be accessed yet via the DOM</li>
+			</ul>
+		</li>
+		<li>we need a way to attach the handler after the page has loaded...</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		The <code>window.onload</code> event
+	</h1>
+
+	<pre class="syntaxtemplate js">
+<span class="comment">// this will run once the page has finished loading</span>
+function <var>functionName</var>() {
+	<var>element</var>.<var>event</var> = <var>functionName</var>;
+	<var>element</var>.<var>event</var> = <var>functionName</var>;
+	...
+}
+
+<em>window.onload = <var>functionName</var>;</em>   <span class="comment">// global code</span>
+</pre>
+
+	<ul>
+		<li>we want to attach our event handlers right after the page is done loading
+			<ul>
+				<li>there is a global event called <code>window.onload</code> event that occurs at that moment</li>
+			</ul>
+		</li>
+		<li>in <code>window.onload</code> handler we attach all the other handlers to run when events occur</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>An unobtrusive event handler</h1>
+
+	<div class="example">
+		<pre class="examplecode html">
+&lt;button id=&quot;ok&quot;&gt;OK&lt;/button&gt;   <span class="comment">&lt;!-- look Ma, no JavaScript! --&gt;</span>
+</pre>
+
+		<pre class="examplecode examplecode2 js">
+<span class="comment">// called when page loads; sets up event handlers</span>
+function pageLoad() {
+	document.getElementById(&quot;ok&quot;).onclick = okayClick;
+}
+
+function okayClick() {
+	alert(&quot;booyah&quot;);
+}
+
+<em>window.onload = pageLoad;</em>  <span class="comment">// global code</span>
+</pre>
+
+		<div class="exampleoutput">
+			<button onclick="alert('booyah');">OK</button>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Common unobtrusive JS errors</h1>
+
+	<ul>
+		<li>many students mistakenly write <code>()</code> when attaching the handler
+
+			<pre class="examplecode js">
+window.onload = pageLoad<del>()</del>;
+window.onload = <em>pageLoad</em>;
+
+okButton.onclick = okayClick<del>()</del>;
+okButton.onclick = <em>okayClick</em>;
+</pre>
+
+			<ul>
+				<li>our <span class="term">JSLint</span> checker will catch this mistake</li>
+			</ul>
+		</li>
+
+		<li>event names are all lowercase, not capitalized like most variables
+
+			<pre class="examplecode js">
+window.<del>onLoad</del> = pageLoad;
+window.<em>onload</em> = pageLoad;
+</pre>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Anonymous functions
+	</h1>
+
+	<pre class="syntaxtemplate js">
+function(<var>parameters</var>) {
+	<var>statements</var>;
+}
+</pre>
+
+	<ul>
+		<li>JavaScript allows you to declare <span class="term">anonymous functions</span></li>
+		<li>quickly creates a function without giving it a name</li>
+		<li>can be stored as a variable, attached as an event handler, etc.</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Anonymous function example</h1>
+
+	<div class="example">
+		<pre class="examplecode js">
+window.onload = <em>function() {</em>
+	var okButton = document.getElementById(&quot;ok&quot;);
+	okButton.onclick = okayClick;
+<em>};</em>
+
+function okayClick() {
+	alert(&quot;booyah&quot;);
+}
+</pre>
+
+		<div class="exampleoutput">
+			<button onclick="alert('booyah');">OK</button>
+		</div>
+	</div>
+
+	<ul>
+		<li>or the following is also legal (though harder to read and bad style):</li>
+	</ul>
+
+	<pre class="examplecode js">
+window.onload = <em>function() {</em>
+	var okButton = document.getElementById(&quot;ok&quot;);
+	okButton.onclick = <em>function() {</em>
+		alert(&quot;booyah&quot;);
+	<em>};</em>
+<em>};</em>
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Unobtrusive styling
+	</h1>
+
+	<pre class="examplecode js">
+function okayClick() {
+	<del>this.style.color = &quot;red&quot;;</del>
+	this.<em>className = &quot;highlighted&quot;</em>;
+}
+</pre>
+
+	<pre class="examplecode css">
+.<em>highlighted</em> { color: red; }
+</pre>
+				
+	<ul>
+		<li>well-written JavaScript code should contain as little CSS as possible</li>
+		<li>use JS to set CSS classes/IDs on elements</li>
+		<li>define the styles of those classes/IDs in your CSS file</li>
+	</ul>
+</div>
+
+
+
+<div class="slide titleslide">
+	<h1>9.2: The Dom Tree</h1>
+
+	<ul>
+		<li>
+			9.1: Global DOM Objects
+		</li>
+		<li>
+			<strong>9.2: The DOM Tree</strong>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>Complex DOM manipulation problems</h1>
+
+	<p>
+		How would we do each of the following in JavaScript code?  Each involves modifying each one of a group of elements ...
+	</p>
+
+	<ul>
+		<li>When the Go button is clicked, reposition all the <code>div</code>s of class <code>puzzle</code> to random x/y locations.</li>
+		<li>When the user hovers over the maze boundary, turn all maze walls red.</li>
+		<li>Change every other item in the <code>ul</code> list with <code>id</code> of <code>TAs</code> to have a gray background.</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		The DOM tree
+	</h1>
+
+	<div class="figure">
+		<img src="images/dom_tree.gif" alt="DOM tree" />
+	</div>
+
+	<ul>
+		<li>
+			The elements of a page are nested into a tree-like structure of objects
+			<ul>
+				<li>
+					the DOM has properties and methods for traversing this tree
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Types of DOM nodes
+	</h1>
+
+	<pre class="examplecode html">
+&lt;p&gt;
+	This is a paragraph of text with a 
+	&lt;a href=&quot;/path/page.html&quot;&gt;link in it&lt;/a&gt;.
+&lt;/p&gt;
+</pre>
+	
+	<div class="rightfigure" style="width: 33%">
+		<img src="images/figure_4_dom_tree.png" alt="DOM Tree" style="width: 100%" />
+	</div>
+	
+	<ul>
+		<li><img src="images/element_node.png" alt="element node" />
+		<strong>element nodes</strong> (HTML tag)
+			<ul>
+				<li>can have children and/or attributes</li>
+			</ul>
+		</li>
+
+		<li><img src="images/text_node.png" alt="text node" />
+		<strong>text nodes</strong> (text in a block element)
+		</li>
+
+		<li><img src="images/attribute_node.png" alt="attribute node" />
+		<strong>attribute nodes</strong> (attribute/value pair)
+			<ul>
+				<li>text/attributes are children in an element node</li>
+				<li>cannot have children or attributes</li>
+				<li>not usually shown when drawing the DOM tree</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Traversing the DOM tree
+	</h1>
+
+	<p>
+		every node's DOM object has the following properties:
+	</p>
+
+	<table class="standard">
+		<tr>
+			<th>
+				name(s)
+			</th>
+			<th>
+				description
+			</th>
+		</tr>
+
+		<tr>
+			<td>
+				<code>firstChild</code>, <code>lastChild</code>
+			</td>
+			<td>
+				start/end of this node's list of children
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code>childNodes</code>
+			</td>
+			<td>
+				array of all this node's children
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code>nextSibling</code>, <code>previousSibling</code>
+			</td>
+			<td>
+				neighboring nodes with the same parent
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code>parentNode</code>
+			</td>
+			<td>
+				the element that contains this node
+			</td>
+		</tr>
+	</table>
+
+	<ul>
+		<li><a href="http://www.w3schools.com/dom/dom_node.asp">complete list of DOM node properties</a></li>
+		<li><a href="http://www.w3schools.com/dom/dom_mozilla_vs_ie.asp">browser incompatiblity information</a> (IE6 sucks)</li>
+
+		<!--
+		<li><a href="http://www.w3schools.com/dom/dom_nodes_info.asp">other properties</a>: <code>nodeName</code>, <code>nodeType</code>, <code>nodeValue</code></li>
+		-->
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>DOM tree traversal example</h1>
+
+	<pre class="examplecode html">
+&lt;p id=&quot;foo&quot;&gt;This is a paragraph of text with a 
+	&lt;a href=&quot;/path/to/another/page.html&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;
+</pre>
+
+	<div class="centerfigure">
+		<img src="images/figure_5_tree_structure.png" alt="navigate tree" style="width: 38%" />
+	</div>
+</div>
+
+
+
+<div class="slide">
+	<h1>Element vs. text nodes</h1>
+
+	<pre class="examplecode html">
+&lt;div&gt;
+	&lt;p&gt;
+		This is a paragraph of text with a 
+		&lt;a href=&quot;page.html&quot;&gt;link&lt;/a&gt;.
+	&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+				
+	<ul>
+		<li>Q: How many children does the <code>div</code> above have?</li>
+		<li class="incremental">A: 3
+			<ul>
+				<li>an element node representing the &lt;p&gt;</li>
+				<li>two <em>text nodes</em> representing <code>&quot;\n\t&quot;</code> (before/after the paragraph)</li>
+			</ul>
+		</li>
+		<li>
+			Q: How many children does the paragraph have?  The <code>a</code> tag?
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Selecting groups of DOM objects
+	</h1>
+
+	<ul>
+		<li>
+			methods in <code>document</code> and other DOM objects (* = HTML5):
+		</li>
+	</ul>
+
+	<table class="standard">
+		<tr>
+			<th>
+				name
+			</th>
+			<th>
+				description
+			</th>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.w3schools.com/jsref/met_doc_getelementsbytagname.asp"><code>getElementsByTagName</code></a>
+			</td>
+			<td>
+				returns array of descendents with the given tag, such as <code>&quot;div&quot;</code>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="http://www.w3schools.com/jsref/met_doc_getelementsbyname.asp"><code>getElementsByName</code></a>
+			</td>
+			<td>
+				returns array of descendents with the given <code>name</code> attribute (mostly useful for accessing form controls)
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="https://developer.mozilla.org/en/DOM/Element.querySelector"><code>querySelector</code></a>  *
+			</td>
+			<td>
+				returns the first element that would be matched by the given CSS selector string
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<a href="https://developer.mozilla.org/en/DOM/Element.querySelectorAll"><code>querySelectorAll</code></a>  *
+			</td>
+			<td>
+				returns an array of all elements that would be matched by the given CSS selector string
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div class="slide">
+	<h1>Getting all elements of a certain type</h1>
+
+	<p>
+			highlight all paragraphs in the document:
+	</p>
+
+	<pre class="examplecode js">
+var allParas = <em>document.querySelectorAll</em>(&quot;p&quot;);
+for (var i = 0; i &lt; allParas.length; i++) {
+	allParas[i].style.backgroundColor = &quot;yellow&quot;;
+}
+</pre>
+
+	<pre class="html">
+&lt;body&gt;
+	<em>&lt;p&gt;This is the first paragraph&lt;/p&gt;
+	&lt;p&gt;This is the second paragraph&lt;/p&gt;
+	&lt;p&gt;You get the idea...&lt;/p&gt;</em>
+&lt;/body&gt;
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1>Complex selectors</h1>
+
+	<p>
+		highlight all paragraphs inside of the section with ID <code>&quot;address&quot;</code>:
+	</p>
+
+	<pre class="examplecode js">
+<span class="comment">// var addrParas = document.getElementById(&quot;address&quot;).getElementsByTagName(&quot;p&quot;);</span>
+var addrParas = <em>document.querySelectorAll</em>(&quot;#address p&quot;);
+for (var i = 0; i &lt; addrParas.length; i++) {
+	addrParas[i].style.backgroundColor = &quot;yellow&quot;;
+}
+</pre>
+
+	<pre class="html"><code>&lt;p&gt;This won't be returned!&lt;/p&gt;
+&lt;div id=&quot;address&quot;&gt;
+	<em>&lt;p&gt;1234 Street&lt;/p&gt;
+	&lt;p&gt;Atlanta, GA&lt;/p&gt;</em>
+&lt;/div&gt;</code></pre>
+
+</div>
+
+
+
+<div class="slide">
+	<h1>
+		Creating new nodes
+	</h1>
+
+	<table class="standard">
+		<tr>
+			<th>
+				name
+			</th>
+			<th>
+				description
+			</th>
+		</tr>
+
+		<tr>
+			<td>
+				<code>document.createElement(&quot;<var>tag</var>&quot;)</code>
+			</td>
+			<td>
+				creates and returns a new empty DOM node representing an element of that type
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code>document.createTextNode(&quot;<var>text</var>&quot;)</code>
+			</td>
+			<td>
+				creates and returns a text node containing given text
+			</td>
+		</tr>
+	</table>
+
+	<pre class="examplecode js">
+<span class="comment">// create a new &lt;h2&gt; node</span>
+var newHeading = <em>document.createElement(&quot;h2&quot;)</em>;
+newHeading.innerHTML = &quot;This is a heading&quot;;
+newHeading.style.color = &quot;green&quot;;
+</pre>
+
+	<ul>
+		<li>merely creating a node does not add it to the page</li>
+		<li>you must add the new node as a child of an existing element on the page...</li>
+	</ul>
+</div>
+
+
+
+<div class="slide" id="thisslide" onclick="var p = document.createElement('p'); p.innerHTML = 'A paragraph!';  this.appendChild(p);">
+	<h1>Modifying the DOM tree</h1>
+
+	<p>Every DOM element object has these methods:</p>
+
+	<table class="standard">
+		<tr>
+			<th>
+				name
+			</th>
+			<th>
+				description
+			</th>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/dom/met_node_appendchild.asp">appendChild</a>(<var>node</var>)</code>
+			</td>
+			<td>
+				places given node at end of this node's child list
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/dom/met_node_insertbefore.asp">insertBefore</a>(<var>new</var>,&nbsp;<var>old</var>)</code>
+			</td>
+			<td>
+				places the given new node in this node's child list just before <code>old</code> child
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/dom/met_node_removechild.asp">removeChild</a>(<var>node</var>)</code>
+			</td>
+			<td>
+				removes given node from this node's child list
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<code><a href="http://www.w3schools.com/dom/met_node_replacechild.asp">replaceChild</a>(<var>new</var>,&nbsp;<var>old</var>)</code>
+			</td>
+			<td>
+				replaces given child with new node
+			</td>
+		</tr>
+	</table>
+
+	<pre class="examplecode js">
+var p = <em>document.getElementById(document.createElement(&quot;p&quot;))</em>;
+p.innerHTML = &quot;A paragraph!&quot;;
+<em>document.getElementById(&quot;main&quot;).appendChild(p)</em>;
+</pre>
+</div>
+
+
+
+<div class="slide">
+	<h1>Removing a node from the page</h1>
+
+	<pre class="examplecode js" onclick="var li = document.getElementById('killme'); li.parentNode.removeChild(li);">
+function slideClick() {
+	var bullets = document.getElementsByTagName("li");
+	for (var i = 0; i &lt; bullets.length; i++) {
+		if (bullets[i].innerHTML.indexOf("children") >= 0) {
+			<em>bullets[i].parentNode.removeChild(bullets[i]);</em>
+		}
+	}
+}
+</pre>
+
+	<ul>
+		<li id="killme">
+			each DOM object has a <code>removeChild</code> method to remove its children from the page
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="slide">
+	<h1>DOM versus <code>innerHTML</code> hacking</h1>
+
+	<p>Why not just code the previous example this way?</p>
+
+	<pre class="examplecode js">
+function slideClick() {
+	document.getElementById(&quot;thisslide&quot;).<em>innerHTML += &quot;&lt;p&gt;A paragraph!&lt;/p&gt;&quot;</em>;
+}
+</pre>
+
+	<div class="incremental">
+		<ul>
+			<li>Imagine that the new node is more complex:
+				<ul>
+					<li>ugly: bad style on many levels (e.g. JS code embedded within HTML)</li>
+					<li>error-prone: must carefully distinguish <code>&quot;</code> and <code>'</code></li>
+					<li>can only add at beginning or end, not in middle of child list</li>
+				</ul>
+			</li>
+		</ul>
+
+<pre class="examplecode js">
+function slideClick() {
+	this.innerHTML += <em>&quot;&lt;p style='color: red; " +
+			&quot;margin-left: 50px;' &quot; +
+			&quot;onclick='myOnClick();'&gt;&quot; +
+			&quot;A paragraph!&lt;/p&gt;&quot;</em>;
+}
+</pre>
+
+	</div>
+</div>
+
+			
+			
+			
+
+		</div><!-- end div class="presentation" -->
+	</body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/09-dom.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:26 GMT -->
+</html>		
