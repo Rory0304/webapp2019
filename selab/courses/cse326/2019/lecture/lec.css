@@ -1,0 +1,103 @@
+body {
+  margin : 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  scrollbar-face-color: blue;
+}
+
+/* css for right (slide) section */
+.presentation {
+  margin : auto;
+}
+
+.slide {
+  font-size: 13pt;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+/* css for left section */
+
+.layout {
+  width : 25%;
+  position: fixed;
+  overflow: hidden;
+}
+
+#side {
+  width : 93%;
+  height : 100%;
+  float: left;
+}
+
+#controls {
+  display: inline-block;
+  width : 100%;
+}
+
+#navaLinks {
+  font-family: 'Nanum Gothic', sans-serif;
+  display: inline-block;
+  width : 80%;
+}
+
+#buttons {
+  width : 20%;
+  display: inline-block;
+}
+
+#buttons a img{
+  width : 23px;
+  height: 23px;
+  margin-right: 3px;
+  float: right;
+}
+
+#index {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-top: 2px solid #B2B2B3;
+  border-bottom: 2px solid #B2B2B3;
+  padding-left: 0;
+}
+
+a:link, a:visited {
+  color: #414141;
+  text-decoration: none;
+}
+
+#index li:hover {
+  background-color: #BEBEBE;
+}
+
+#footer {
+  font-size: 9pt;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 10vh;
+}
+
+#fold {
+  width: 7%;
+  background-color: #414141;
+  height: 100%;
+  float: left;
+  font-family: 'Nanum Gothic', sans-serif;
+  color: white;
+}
+
+#fold p {
+  margin-top: 45vh;
+}
+
+body::-webkit-scrollbar{width: 16px;}
+body::-webkit-scrollbar-track {background-color:white;}
+body::-webkit-scrollbar-thumb {background-color:#414141;border-radius: 5px;}
+body::-webkit-scrollbar-thumb:hover {background: #555;}
+body::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+width:16px;height:16px;background:#414141;}
+#index::-webkit-scrollbar{width: 16px;}
+#index::-webkit-scrollbar-track {background-color:white;}
+#index::-webkit-scrollbar-thumb {background-color:#BEBEBE;border-radius: 5px;}
+#index::-webkit-scrollbar-thumb:hover {background: #555;}
+#index::-webkit-scrollbar-button:start:dec rement,::-webkit-scrollbar-button:end:increment {
+width:16px;height:16px;background:#BEBEBE;}
