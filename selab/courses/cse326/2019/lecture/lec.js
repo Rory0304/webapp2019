@@ -1,5 +1,3 @@
-var INDENT = "    ";
-
 var OBO = false;
 var smax = 1;
 var snum = 0;
@@ -44,7 +42,7 @@ function editHtml() {
    '</div> <a href="javascript:sideFold()"> <div id="fold"><p>&rsaquo;</p></div> </a>';
 }
 
-var slideIndexMap = [];
+var indexLeng = 0;
 
 function slideLabel() {
     var slideColl = GetElementsWithClassName('*', 'slide');
@@ -78,13 +76,14 @@ function slideLabel() {
 
         var li = document.createElement("li");
         li.innerText = value;
+        li.id = 'index' + n;
 
         var link = document.createElement("a");
-        link.href = '#slide' + n;
+        link.href = 'javascript:junmp('+n+')';
         link.appendChild(li);
 
         index.appendChild(link);
-        slideIndexMap[n] = n;
+        indexLeng = indexLeng+1;
       }
 }
 
@@ -94,9 +93,9 @@ function createControls() {
 
     controlsDiv.innerHTML = //'<form action="#" id="controlForm">' +
     '<div id="navaLinks">' +
-    '<a accesskey="z" id="prev" title="Previous Slide" href="javascript:go(-1);">&lsaquo;<\/a>' +
+    '<a accesskey="z" id="prev" title="Previous Slide" href="javascript:oneByOne(-1);">&lsaquo;<\/a>' +
     '<span id="slideNum"> </span>' +
-    '<a accesskey="x" id="next" title="Next Slide" href="javascript:go(1);">&rsaquo;<\/a></div>' +
+    '<a accesskey="x" id="next" title="Next Slide" href="javascript:oneByOne(1);">&rsaquo;<\/a></div>' +
     '<div id = "buttons">' +
     '<a href="javascript:customize();" /> <img src = "images/font.png"/> </a>' +
     '<a href="javascript:oneByOne(0);" /> <img src = "images/vertical.png"/> </a></div>';
@@ -136,18 +135,25 @@ function currentSlide() {
     sn.innerHTML = '<span id="snHere">' + snum + '<\/span> ' +
         '<span id="snSep">\/<\/span> ' +
         '<span id="snTotal">' + (smax-1) + '<\/span>';
-
-    if (snum == 0) {
-        location.hash = "";
-    } else {
-        location.hash = "slide" + snum;
-    }
 }
 
-function oneByOne(num) {
+function jump(n) {
+  if (OBO == false) {
+    location.href = '#index' + n;
+  }
+  else {
+
+  }
+}
+
+function oneByOne(n) {
+  console.log(n);
+  console.log(snum);
+  var num = snum + n;
+  console.log(num);
   var slide = document.getElementsByClassName("slide");
-  if (OBO == true) {
-    for (var i=0;i<slideIndexMap.length;i++) {
+  if (OBO == true && n == 0) {
+    for (var i=0;i<indexLeng;i++) {
       if (i != num) {
         slide[i].style.display = 'block';
       }
@@ -156,17 +162,22 @@ function oneByOne(num) {
       }
     }
     OBO = false;
-    return ;
+    trackPage();
   }
-  for (var i=0;i<slideIndexMap.length;i++) {
-    if (i != num) {
-      slide[i].style.display = 'none';
-    }
-    else {
-      slide[i].style.fontSize = '17pt';
+  else {
+    OBO = true;
+    snum = num;
+    viewport()
+    for (var j=0;j<indexLeng;j++) {
+      if (j != num) {
+        slide[j].style.display = 'none';
+      }
+      else {
+        slide[j].style.display = 'block';
+        slide[j].style.fontSize = '17pt';
+      }
     }
   }
-  OBO = true;
 }
 
 function layoutResizing() {
@@ -182,6 +193,26 @@ function detectResize() {
   });
 }
 
+function trackPage() {
+  jQuery(function($){
+    $(window).bind("scroll", function() {
+      if (OBO == true)
+        return;
+      var view = $(".presentation > div").withinviewport();
+      if (typeof view[0] != 'undefined')
+        snum = parseInt(view[0].id.replace(/[^0-9]/g,''));
+      console.log("track"+snum);
+      viewport()
+    });
+  });
+}
+
+
+function viewport() {
+  var sn = document.getElementById('snHere');
+  sn.innerText = snum;
+}
+
 function startup() {
   editHtml();
   createControls();
@@ -189,6 +220,7 @@ function startup() {
   currentSlide();
   detectResize();
   pptResizing();
+  trackPage();
 }
 
 window.onload = startup;
