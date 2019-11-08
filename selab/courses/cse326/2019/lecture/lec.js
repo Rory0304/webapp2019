@@ -1,9 +1,9 @@
-var INDENT = "    ";
-
 var OBO = false;
 var smax = 1;
 var snum = 0;
+var indexLeng = 0;
 
+// function for function get ready
 function nodeValue(node) {
     var result = "";
     if (node.nodeType == 1) {
@@ -34,6 +34,9 @@ function GetElementsWithClassName(elementName,className) {
     return elemColl;
 }
 
+// function that do the actual work
+
+//function for edit html structure
 function editHtml() {
   var layoutDiv = document.getElementsByClassName("layout");
   var layoutArr = (layoutDiv[0].innerHTML).split(/\n/g);
@@ -44,7 +47,20 @@ function editHtml() {
    '</div> <a href="javascript:sideFold()"> <div id="fold"><p>&rsaquo;</p></div> </a>';
 }
 
-var slideIndexMap = [];
+function createControls() {
+    var controlsDiv = document.getElementById("controls");
+    if (!controlsDiv) return;
+
+    controlsDiv.innerHTML = //'<form action="#" id="controlForm">' +
+    '<div id="navaLinks">' +
+    '<a accesskey="z" id="prev" title="Previous Slide" href="javascript:point(-1);">&lsaquo;<\/a>' +
+    '<span id="slideNum"> </span>' +
+    '<a accesskey="x" id="next" title="Next Slide" href="javascript:point(1);">&rsaquo;<\/a></div>' +
+    '<div id = "buttons">' +
+    '<a href="javascript:customize();" /> <img src = "images/font.png"/> </a>' +
+    '<a href="javascript:oneByOne(0);" /> <img src = "images/vertical.png"/> </a></div>';
+    //+ '<\/form>';
+}
 
 function slideLabel() {
     var slideColl = GetElementsWithClassName('*', 'slide');
@@ -78,31 +94,28 @@ function slideLabel() {
 
         var li = document.createElement("li");
         li.innerText = value;
+        li.id = 'index' + n;
 
         var link = document.createElement("a");
-        link.href = '#slide' + n;
+        link.href = 'javascript:jump('+n+')';
         link.appendChild(li);
 
         index.appendChild(link);
-        slideIndexMap[n] = n;
+        indexLeng = indexLeng+1;
       }
 }
 
-function createControls() {
-    var controlsDiv = document.getElementById("controls");
-    if (!controlsDiv) return;
+function currentSlide() {
+    var sn = document.getElementById('slideNum');
 
-    controlsDiv.innerHTML = //'<form action="#" id="controlForm">' +
-    '<div id="navaLinks">' +
-    '<a accesskey="z" id="prev" title="Previous Slide" href="javascript:go(-1);">&lsaquo;<\/a>' +
-    '<span id="slideNum"> </span>' +
-    '<a accesskey="x" id="next" title="Next Slide" href="javascript:go(1);">&rsaquo;<\/a></div>' +
-    '<div id = "buttons">' +
-    '<a href="javascript:customize();" /> <img src = "images/font.png"/> </a>' +
-    '<a href="javascript:oneByOne(0);" /> <img src = "images/vertical.png"/> </a></div>';
-    //+ '<\/form>';
+    sn.innerHTML = '<span id="snHere">' + snum + '<\/span> ' +
+        '<span id="snSep">\/<\/span> ' +
+        '<span id="snTotal">' + (smax-1) + '<\/span>';
 }
 
+//function for specific func
+
+//function for fold something
 function fold(id){
     var elem = document.getElementById(id);
     if(elem.style.display=='none'){
@@ -110,11 +123,6 @@ function fold(id){
     }else{
       elem.style.display = 'none';
     }
-}
-
-function sideFold() {
-  fold('side');
-  pptResizing();
 }
 
 function pptResizing() {
@@ -130,45 +138,32 @@ function pptResizing() {
   }
 }
 
-function currentSlide() {
-    var sn = document.getElementById('slideNum');
-
-    sn.innerHTML = '<span id="snHere">' + snum + '<\/span> ' +
-        '<span id="snSep">\/<\/span> ' +
-        '<span id="snTotal">' + (smax-1) + '<\/span>';
-
-    if (snum == 0) {
-        location.hash = "";
-    } else {
-        location.hash = "slide" + snum;
-    }
+function sideFold() {
+  fold('side');
+  pptResizing();
 }
 
-function oneByOne(num) {
-  var slide = document.getElementsByClassName("slide");
-  if (OBO == true) {
-    for (var i=0;i<slideIndexMap.length;i++) {
-      if (i != num) {
-        slide[i].style.display = 'block';
-      }
-      else {
-        slide[i].style.fontSize = '13pt';
-      }
-    }
-    OBO = false;
-    return ;
-  }
-  for (var i=0;i<slideIndexMap.length;i++) {
-    if (i != num) {
-      slide[i].style.display = 'none';
-    }
-    else {
-      slide[i].style.fontSize = '17pt';
-    }
-  }
-  OBO = true;
+// function for tracking scoll
+function viewport() {
+  var sn = document.getElementById('snHere');
+  sn.innerText = snum;
 }
 
+function trackPage() {
+  jQuery(function($){
+    $(window).bind("scroll", function() {
+      if (OBO == true)
+        return;
+      var view = $(".presentation > div").withinviewport();
+      if (typeof view[0] != 'undefined')
+        snum = parseInt(view[0].id.replace(/[^0-9]/g,''));
+      console.log("track"+snum);
+      viewport()
+    });
+  });
+}
+
+// function for detect resizing browser
 function layoutResizing() {
   var lOut = document.getElementsByClassName("layout");
   lOut[0].style.height = window.innerHeight + 'px';
@@ -182,6 +177,57 @@ function detectResize() {
   });
 }
 
+//function for change layout to one-by-one
+function oneByOne(n) {
+  var num = snum + n;
+  var slide = document.getElementsByClassName("slide");
+  if (OBO == true && n == 0) {
+    for (var i=0;i<indexLeng;i++) {
+      if (i != num) {
+        slide[i].style.display = 'block';
+      }
+      else {
+        slide[i].style.fontSize = '13pt';
+      }
+    }
+    OBO = false;
+    trackPage();
+  }
+  else {
+    OBO = true;
+    snum = num;
+    viewport()
+    for (var j=0;j<indexLeng;j++) {
+      if (j != num) {
+        slide[j].style.display = 'none';
+      }
+      else {
+        slide[j].style.display = 'block';
+        slide[j].style.fontSize = '17pt';
+      }
+    }
+  }
+}
+
+//function for index
+function jump(n) {
+  if (!OBO) {
+    location.replace('#slide' + n);
+  }
+  else {
+    oneByOne(n-snum);
+  }
+}
+
+function point(n) {
+  if (!OBO) {
+    location.replace('#slide' + (snum +n));
+  }
+  else {
+    oneByOne(n);
+  }
+}
+
 function startup() {
   editHtml();
   createControls();
@@ -189,6 +235,7 @@ function startup() {
   currentSlide();
   detectResize();
   pptResizing();
+  trackPage();
 }
 
 window.onload = startup;

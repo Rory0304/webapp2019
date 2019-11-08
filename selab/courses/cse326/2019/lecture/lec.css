@@ -8,6 +8,7 @@ body {
 /* css for right (slide) section */
 .presentation {
   margin : auto;
+  overflow: hidden;
 }
 
 .slide {
@@ -38,11 +39,11 @@ body {
 #navaLinks {
   font-family: 'Nanum Gothic', sans-serif;
   display: inline-block;
-  width : 80%;
+  width : 50%;
 }
 
 #buttons {
-  width : 20%;
+  width : 50%;
   display: inline-block;
 }
 
@@ -87,6 +88,10 @@ a:link, a:visited {
 
 #fold p {
   margin-top: 45vh;
+}
+
+.active {
+  background-color: blue;
 }
 
 body::-webkit-scrollbar{width: 16px;}
