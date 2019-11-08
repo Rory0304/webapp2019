@@ -63,12 +63,13 @@ nav{
 	z-index: 1;
 	position: absolute;
 	background-color: #f2f2f2;
+	/* border-radius: 0px 0px 5px 5px; */
 }
 
-#logo, header[role="banner"] #menu li, #contact, div[role="login"] {
+#logo, header[role="banner"] #menu li{
 	background-color: #00abd9;
 	border-radius: 10px;
-	margin: 2.5px 5px;
+	margin: 5px 5px 0px;
 }
 
 header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
@@ -79,7 +80,7 @@ header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav
 	display: block;
 }
 
-header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, .selected, div[role="login"] a:hover{
+header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, .selected {
 	background-color: #70c8e9;
 	border-radius: 10px;
 }
