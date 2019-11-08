@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	
+
 <!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/03-css.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:13 GMT -->
 <head>
 		<!-- metadata -->
@@ -9,7 +9,7 @@
 		<meta name="author" content="Scott Uk-Jin Lee" />
 		<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
 		<meta name="keywords" content="hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
-		
+
 		<!-- style sheet links -->
 		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
 		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
@@ -22,7 +22,7 @@
 		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
 		<script src="resources/slides.js" type="text/javascript"></script>
 		<script src="ui/default/slides.js" type="text/javascript"></script>
-		
+
 		<title>CSE3026 - CSS for Styling</title>
 	</head>
 
@@ -36,26 +36,26 @@
 				<h2>03.CSS for Styling</h2>
 			</div>
 		</div>
-	
+
 		<div class="presentation">
-			<div class="slide">			
-				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>CSS for Styling</strong></h1>			
+			<div class="slide">
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>CSS for Styling</strong></h1>
 				<br/>
 				<h2>Scott Uk-Jin Lee</h2>
-							
-				<p class="license"> 				
+
+				<p class="license">
 					Reproduced with permission of the authors.
 					Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
-					All rights reserved. 
+					All rights reserved.
 					Further reproduction or distribution is prohibited without written permission.
 				</p>
-				
+
 				<div class="w3c">
 					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML 5" /></a>
 					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
 				</div>
 			</div>
-			
+
 
 <div class="slide titleslide">
 	<h1>3.1: Basic CSS</h1>
@@ -596,7 +596,7 @@ p {
 				decorations such as underlining
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<code><a href="http://www.w3schools.com/cssref/pr_text_text-indent.asp">text-indent</a></code>
@@ -605,7 +605,7 @@ p {
 				indents the first letter of each paragraph
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<code><a href="http://www.w3schools.com/cssref/css3_pr_text-shadow.asp">text-shadow</a></code>
@@ -615,7 +615,7 @@ p {
 				<img src="images/css3-logo-icon-small.gif" alt="css3" width="24" height="24" />
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<code><a href="http://www.w3schools.com/cssref/pr_dim_line-height.asp">line-height</a></code>, <br />
@@ -623,7 +623,7 @@ p {
 				<code><a href="http://www.w3schools.com/cssref/pr_text_letter-spacing.asp">letter-spacing</a></code>
 			</td>
 			<td>
-				gaps between the various portions of the text				
+				gaps between the various portions of the text
 			</td>
 		</tr>
 
@@ -923,10 +923,10 @@ td { background-color: yellow; text-align: center; width: 30%; }
 		<li>all standard CSS styles can be applied to a table, row, or cell</li>
 		<li>table specific CSS properties:
 			<ul>
-				<li><a href="http://www.w3schools.com/cssref/pr_tab_border-collapse.asp"><code>border-collapse</code></a>, 
-					<a href="http://www.w3schools.com/cssref/pr_tab_border-spacing.asp"><code>border-spacing</code></a>, 
-					<a href="http://www.w3schools.com/cssref/pr_tab_caption-side.asp"><code>caption-side</code></a>, 
-					<a href="http://www.w3schools.com/cssref/pr_tab_empty-cells.asp"><code>empty-cells</code></a>, 
+				<li><a href="http://www.w3schools.com/cssref/pr_tab_border-collapse.asp"><code>border-collapse</code></a>,
+					<a href="http://www.w3schools.com/cssref/pr_tab_border-spacing.asp"><code>border-spacing</code></a>,
+					<a href="http://www.w3schools.com/cssref/pr_tab_caption-side.asp"><code>caption-side</code></a>,
+					<a href="http://www.w3schools.com/cssref/pr_tab_empty-cells.asp"><code>empty-cells</code></a>,
 					<a href="http://www.w3schools.com/cssref/pr_tab_table-layout.asp"><code>table-layout</code></a></li>
 			</ul>
 		</li>
@@ -995,8 +995,8 @@ table { <em>border-collapse: collapse;</em> }
 
 
 <div class="slide">
-	<h1>Column styles: 
-		<a href="http://www.w3schools.com/tags/tag_col.asp"><code>&lt;col&gt;</code></a>, 
+	<h1>Column styles:
+		<a href="http://www.w3schools.com/tags/tag_col.asp"><code>&lt;col&gt;</code></a>,
 		<a href="http://www.w3schools.com/tags/tag_colgroup.asp"><code>&lt;colgroup&gt;</code></a>
 	</h1>
 
@@ -1005,7 +1005,7 @@ table { <em>border-collapse: collapse;</em> }
 &lt;table&gt;
   <em>&lt;col class=&quot;urgent&quot; /&gt;
   &lt;colgroup class=&quot;highlight&quot; span=&quot;2&quot;&gt;&lt;/colgroup&gt;</em>
-	
+
   &lt;tr&gt;&lt;th&gt;Column 1&lt;/th&gt;&lt;th&gt;Column 2&lt;/th&gt;&lt;th&gt;Column 3&lt;/th&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;1,1&lt;/td&gt;&lt;td&gt;1,2&lt;/td&gt;&lt;td&gt;1,3&lt;/td&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;2,1&lt;/td&gt;&lt;td&gt;2,2&lt;/td&gt;&lt;td&gt;2,3&lt;/td&gt;&lt;/tr&gt;
@@ -1448,4 +1448,4 @@ a<em>:hover</em>   { color: #FF00FF; }      <span class="comment">/* mouse over 
 	</body>
 
 <!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/03-css.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:14 GMT -->
-</html>		
+</html>
