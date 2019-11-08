@@ -44,7 +44,8 @@ function editHtml() {
    layoutArr[1] +
    '<div id="navList"><ul id="index" ><\/ul><\/div>' +
    layoutArr[4] + layoutArr[5] + layoutArr[6] +layoutArr[7] +
-   '</div> <a href="javascript:sideFold()"> <div id="fold"><p>&rsaquo;</p></div> </a>';
+   '</div> <div id="line"> </div>' +
+   '<a href="javascript:sideFold()"> <div id="fold"><p>&rsaquo;</p></div> </a>';
 }
 
 function createControls() {
