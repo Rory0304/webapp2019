@@ -26,7 +26,8 @@ body {
 }
 
 #side {
-  width : 93%;
+  padding-top: 5px;
+  width : 92%;
   height : 100%;
   float: left;
 }
@@ -40,11 +41,13 @@ body {
   font-family: 'Nanum Gothic', sans-serif;
   display: inline-block;
   width : 50%;
+  font-weight: bold;
 }
 
 #buttons {
   width : 50%;
   display: inline-block;
+  vertical-align: top;
 }
 
 #buttons a img{
@@ -57,9 +60,12 @@ body {
 #index {
   overflow-y: scroll;
   overflow-x: hidden;
-  border-top: 2px solid #B2B2B3;
-  border-bottom: 2px solid #B2B2B3;
+  border-top: 1px solid #B2B2B3;
+  border-bottom: 1px solid #B2B2B3;
+  border-radius: 5px;
   padding-left: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 a:link, a:visited {
@@ -77,32 +83,36 @@ a:link, a:visited {
   margin-top: 10vh;
 }
 
+#line {
+  height:100%;
+  width:2px;
+  margin-left: 1%;
+  background-color: #BEBEBE;
+  float:left;
+}
+
 #fold {
-  width: 7%;
-  background-color: #414141;
+  width: 6%;
   height: 100%;
   float: left;
   font-family: 'Nanum Gothic', sans-serif;
-  color: white;
+  color: #414141;
 }
 
 #fold p {
   margin-top: 45vh;
 }
 
-.active {
-  background-color: blue;
-}
-
-body::-webkit-scrollbar{width: 16px;}
+/*css for scroll (in webkit)*/
+body::-webkit-scrollbar{width: 10px;}
 body::-webkit-scrollbar-track {background-color:white;}
 body::-webkit-scrollbar-thumb {background-color:#414141;border-radius: 5px;}
 body::-webkit-scrollbar-thumb:hover {background: #555;}
 body::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
-width:16px;height:16px;background:#414141;}
-#index::-webkit-scrollbar{width: 16px;}
+height:10px; background:white;}
+#index::-webkit-scrollbar{width: 5px;}
 #index::-webkit-scrollbar-track {background-color:white;}
-#index::-webkit-scrollbar-thumb {background-color:#BEBEBE;border-radius: 5px;}
+#index::-webkit-scrollbar-thumb {background-color:#BEBEBE;border-radius: 10px;}
 #index::-webkit-scrollbar-thumb:hover {background: #555;}
-#index::-webkit-scrollbar-button:start:dec rement,::-webkit-scrollbar-button:end:increment {
-width:16px;height:16px;background:#BEBEBE;}
+#index::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+height:5px; background:white;}
