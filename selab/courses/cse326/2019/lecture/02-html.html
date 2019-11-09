@@ -4,157 +4,160 @@
 
 <!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/02-html.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:54 GMT -->
 <head>
-		<!-- metadata -->
-		<meta charset="utf-8" />
-		<meta name="author" content="Scott Uk-Jin Lee" />
-		<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
-		<meta name="keywords" content="hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
+	<!-- metadata -->
+	<meta charset="utf-8" />
+	<meta name="author" content="Scott Uk-Jin Lee" />
+	<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
+	<meta name="keywords" content="hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
 
-		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+	<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
 
-		<script src="resources/slides.js" type="text/javascript"></script>
-		<link rel="stylesheet" href="lec.css" type="text/css" />
-		<script src="lec.js" type="text/javascript"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Open+Sans|Raleway&display=swap" rel="stylesheet">
+	<script src="resources/slides.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="lec.css" type="text/css" />
+	<script src="lec.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Open+Sans|Raleway&display=swap" rel="stylesheet">
 
-		<!-- FROM https://github.com/patik/within-viewport -->
-		<script src="withinviewport.js"></script>
-		<script src="jquery.withinviewport.js"></script>
+	<!-- FROM https://github.com/patik/within-viewport -->
+	<script src="withinviewport.js"></script>
+	<script src="jquery.withinviewport.js"></script>
 
-		<title>CSE3026 - Basic HTML</title>
-	</head>
+	<title>CSE3026 - Basic HTML</title>
+</head>
 
-	<body>
-		<div class="layout">
-			<div id="controls"><!-- DO NOT EDIT --></div>
-			<div id="currentSlide"><!-- DO NOT EDIT --></div>
-			<div id="header"></div>
-			<div id="footer">
-				<h1>CSE3026: Web Application Development</h1>
-				<h2>02.Basic HTML</h2>
+<body>
+
+
+	<div class="layout">
+		<div id="controls"><!-- DO NOT EDIT --></div>
+		<div id="currentSlide"><!-- DO NOT EDIT --></div>
+		<div id="header"></div>
+		<div id="footer">
+			<h1>CSE3026: Web Application Development</h1>
+			<h2>02.Basic HTML</h2>
+		</div>
+	</div>
+
+
+	<div class="presentation">
+		<div class="slide">
+			<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Basic HTML</strong></h1>
+			<br/>
+			<h2>Scott Uk-Jin Lee</h2>
+
+			<p class="license">
+				Reproduced with permission of the authors.
+				Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
+				All rights reserved.
+				Further reproduction or distribution is prohibited without written permission.
+			</p>
+
+			<div class="w3c">
+				<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML5" /></a>
+				<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
 			</div>
 		</div>
 
-		<div class="presentation">
-			<div class="slide">
-				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>Basic HTML</strong></h1>
-				<br/>
-				<h2>Scott Uk-Jin Lee</h2>
 
-				<p class="license">
-					Reproduced with permission of the authors.
-					Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
-					All rights reserved.
-					Further reproduction or distribution is prohibited without written permission.
-				</p>
+		<div class="slide titleslide">
+			<h1>2.1: Basic HTML</h1>
 
-				<div class="w3c">
-					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML5" /></a>
-					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
-				</div>
-			</div>
+			<ul>
+				<li><strong>2.1: Basic HTML</strong></li>
+				<li>2.2: More HTML Elements</li>
+				<li>2.3: Web Standards</li>
+			</ul>
+		</div>
 
+		<div class="slide">
+			<h1>Hypertext Markup Language (<a href="http://www.w3schools.com/html/default.asp">HTML</a>)</h1>
 
-			<div class="slide titleslide">
-				<h1>2.1: Basic HTML</h1>
-
-				<ul>
-					<li><strong>2.1: Basic HTML</strong></li>
-					<li>2.2: More HTML Elements</li>
-					<li>2.3: Web Standards</li>
-				</ul>
-			</div>
-
-			<div class="slide">
-				<h1>Hypertext Markup Language (<a href="http://www.w3schools.com/html/default.asp">HTML</a>)</h1>
-
-				<ul>
-					<li>describes the <em>content</em> and structure of information on a web page
-						<ul>
-							<li>not the same as the <em>presentation</em> (appearance on screen)</li>
-						</ul>
-					</li>
-					<li>surrounds text content with opening and closing <span class="term">tags</span></li>
-					<li>each tag's name is called an <span class="term">element</span>
-						<ul>
-							<li>syntax: <code>&lt;</code><var>element</var><code>&gt;</code> <var>content</var> <code>&lt;/</code><var>element</var><code>&gt;</code></li>
-							<li>example: <code><em>&lt;p&gt;</em>This is a paragraph<em>&lt;/p&gt;</em></code></li>
-						</ul>
-					</li>
-					<li>most whitespace is insignificant in HTML
-						<ul>
-							<li>ignored or collapsed to a single space</li>
-						</ul>
-					</li>
-					<li>we will use a newer version called HTML5</li>
-				</ul>
-			</div>
+			<ul>
+				<li>describes the <em>content</em> and structure of information on a web page
+					<ul>
+						<li>not the same as the <em>presentation</em> (appearance on screen)</li>
+					</ul>
+				</li>
+				<li>surrounds text content with opening and closing <span class="term">tags</span></li>
+				<li>each tag's name is called an <span class="term">element</span>
+					<ul>
+						<li>syntax: <code>&lt;</code><var>element</var><code>&gt;</code> <var>content</var> <code>&lt;/</code><var>element</var><code>&gt;</code></li>
+						<li>example: <code><em>&lt;p&gt;</em>This is a paragraph<em>&lt;/p&gt;</em></code></li>
+					</ul>
+				</li>
+				<li>most whitespace is insignificant in HTML
+					<ul>
+						<li>ignored or collapsed to a single space</li>
+					</ul>
+				</li>
+				<li>we will use a newer version called HTML5</li>
+			</ul>
+		</div>
 
 
-			<div class="slide">
-				<h1>Structure of an HTML page</h1>
+		<div class="slide">
+			<h1>Structure of an HTML page</h1>
 
 			<pre class="syntaxtemplate html">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-	&lt;head&gt;
-		<var>information about the page</var>
-	&lt;/head&gt;
+				&lt;!DOCTYPE html&gt;
+				&lt;html&gt;
+				&lt;head&gt;
+				<var>information about the page</var>
+				&lt;/head&gt;
 
-	&lt;body&gt;
-		<var>page contents</var>
-	&lt;/body&gt;
-&lt;/html&gt;
-</pre>
+				&lt;body&gt;
+				<var>page contents</var>
+				&lt;/body&gt;
+				&lt;/html&gt;
+			</pre>
 
-				<ul>
-					<li>the <span class="term">header</span> describes the page and the <span class="term">body</span> contains the page's contents</li>
-					<li>an HTML page is saved into a file ending with extension <code>.html</code></li>
-					<li><code>DOCTYPE</code> tag tells browser to interpret our page's code as HTML5, the latest/greatest version of the language</li>
-				</ul>
-			</div>
+			<ul>
+				<li>the <span class="term">header</span> describes the page and the <span class="term">body</span> contains the page's contents</li>
+				<li>an HTML page is saved into a file ending with extension <code>.html</code></li>
+				<li><code>DOCTYPE</code> tag tells browser to interpret our page's code as HTML5, the latest/greatest version of the language</li>
+			</ul>
+		</div>
 
 
-			<div class="slide">
-				<h1>Page title: <a href="http://www.w3schools.com/tags/tag_title.asp"><code>&lt;title&gt;</code></a></h1>
+		<div class="slide">
+			<h1>Page title: <a href="http://www.w3schools.com/tags/tag_title.asp"><code>&lt;title&gt;</code></a></h1>
 
-				<p class="description">describes the title of the web page</p>
+			<p class="description">describes the title of the web page</p>
 
+			<pre class="examplecode html">
+				<em>&lt;title&gt;</em>Chapter 2: HTML Basics<em>&lt;/title&gt;</em>
+			</pre>
+
+			<ul>
+				<li>placed within the <code>head</code> of the page</li>
+				<li>displayed in the web browser's title bar and when bookmarking the page</li>
+			</ul>
+		</div>
+
+
+
+		<div class="slide">
+			<h1>Paragraph: <a href="http://www.w3schools.com/tags/tag_p.asp"><code>&lt;p&gt;</code></a></h1>
+
+			<p class="description">paragraphs of text (block)</p>
+
+			<div class="example">
 				<pre class="examplecode html">
-<em>&lt;title&gt;</em>Chapter 2: HTML Basics<em>&lt;/title&gt;</em>
-</pre>
+					<em>&lt;p&gt;</em>You're not your job.
+					You're not how much money you have in the bank.
+					You're not the car you drive.   You're not the contents
+					of your wallet. You're not your         khakis.  You're
+					the all-singing, all-dancing crap of the world.<em>&lt;/p&gt;</em>
+				</pre>
 
-				<ul>
-					<li>placed within the <code>head</code> of the page</li>
-					<li>displayed in the web browser's title bar and when bookmarking the page</li>
-				</ul>
+				<div class="exampleoutput insertoutput"></div>
 			</div>
-
-
-
-			<div class="slide">
-				<h1>Paragraph: <a href="http://www.w3schools.com/tags/tag_p.asp"><code>&lt;p&gt;</code></a></h1>
-
-				<p class="description">paragraphs of text (block)</p>
-
-				<div class="example">
-					<pre class="examplecode html">
-						<em>&lt;p&gt;</em>You're not your job.
-						You're not how much money you have in the bank.
-						You're not the car you drive.   You're not the contents
-						of your wallet. You're not your         khakis.  You're
-						   the all-singing, all-dancing crap of the world.<em>&lt;/p&gt;</em>
-					</pre>
-
-					<div class="exampleoutput insertoutput"></div>
-				</div>
 
 					<!--
 					<p>
 						You're not your job. You're not how much money you have in the bank.  You're not the car you drive. You're not the contents of your wallet. You're not your khakis. You're the all-singing, all-dancing crap of the world.
 					</p>
-					-->
+				-->
 
 				<ul>
 					<li>placed within the <code>body</code> of the page</li>
@@ -167,132 +170,132 @@
 				<h1>
 					Headings:
 					<a href="http://www.w3schools.com/tags/tag_hn.asp"><code>&lt;h1&gt;</code>,
-																	   <code>&lt;h2&gt;</code>, ...,
-																	   <code>&lt;h6&gt;</code></a>
-				</h1>
+						<code>&lt;h2&gt;</code>, ...,
+						<code>&lt;h6&gt;</code></a>
+					</h1>
 
-				<p class="description">headings to separate major areas of the page (block)</p>
+					<p class="description">headings to separate major areas of the page (block)</p>
 
-				<div class="example">
-					<pre class="examplecode html">
-						<em>&lt;h1&gt;</em>University of Whoville<em>&lt;/h1&gt;</em>
-						<em>&lt;h2&gt;</em>Department of Computer Science<em>&lt;/h2&gt;</em>
-						<em>&lt;h3&gt;</em>Sponsored by Micro$oft<em>&lt;/h3&gt;</em>
-					</pre>
+					<div class="example">
+						<pre class="examplecode html">
+							<em>&lt;h1&gt;</em>University of Whoville<em>&lt;/h1&gt;</em>
+							<em>&lt;h2&gt;</em>Department of Computer Science<em>&lt;/h2&gt;</em>
+							<em>&lt;h3&gt;</em>Sponsored by Micro$oft<em>&lt;/h3&gt;</em>
+						</pre>
 
-					<div class="exampleoutput insertoutput"></div>
+						<div class="exampleoutput insertoutput"></div>
+					</div>
+
+					<ul>
+						<li><a href="http://www.w3schools.com/tags/tryit.asp?filename=tryhtml_headers">More heading examples</a></li>
+					</ul>
 				</div>
 
-				<ul>
-					<li><a href="http://www.w3schools.com/tags/tryit.asp?filename=tryhtml_headers">More heading examples</a></li>
-				</ul>
-			</div>
 
 
+				<div class="slide">
+					<h1>
+						Horizontal rule:
+						<a href="http://www.w3schools.com/tags/tag_hr.asp"><code>&lt;hr&gt;</code></a>
+					</h1>
 
-			<div class="slide">
-				<h1>
-					Horizontal rule:
-					<a href="http://www.w3schools.com/tags/tag_hr.asp"><code>&lt;hr&gt;</code></a>
-				</h1>
+					<p class="description">a horizontal line to visually separate sections of a page (block)</p>
 
-				<p class="description">a horizontal line to visually separate sections of a page (block)</p>
+					<div class="example">
+						<pre class="examplecode html">
+							&lt;p&gt;First paragraph&lt;/p&gt;
+							<em>&lt;hr /&gt;</em>
+							&lt;p&gt;Second paragraph&lt;/p&gt;
+						</pre>
 
-				<div class="example">
-					<pre class="examplecode html">
-						&lt;p&gt;First paragraph&lt;/p&gt;
-						<em>&lt;hr /&gt;</em>
-						&lt;p&gt;Second paragraph&lt;/p&gt;
-					</pre>
+						<div class="exampleoutput insertoutput"></div>
+					</div>
 
-					<div class="exampleoutput insertoutput"></div>
+					<ul>
+						<li>should be immediately closed with <code> /&gt;</code></li>
+					</ul>
 				</div>
 
-				<ul>
-					<li>should be immediately closed with <code> /&gt;</code></li>
-				</ul>
-			</div>
 
+				<div class="slide">
+					<h1>More about HTML tags</h1>
 
-			<div class="slide">
-				<h1>More about HTML tags</h1>
+					<ul>
+						<li>some tags can contain additional information called <span class="term">attributes</span>
+							<ul>
+								<li>syntax: <code>&lt;</code><var>element</var> <var>attribute</var><code>=&quot;</code><var>value</var><code>"</code> <var>attribute</var><code>=&quot;</code><var>value</var><code>"&gt;</code> <var>content</var> <code>&lt;/</code><var>element</var><code>&gt;</code></li>
+								<li>example: <code>&lt;a <em>href="page2.html"</em>&gt;Next page&lt;/a&gt;</code></li>
+							</ul>
+						</li>
 
-				<ul>
-					<li>some tags can contain additional information called <span class="term">attributes</span>
-						<ul>
-							<li>syntax: <code>&lt;</code><var>element</var> <var>attribute</var><code>=&quot;</code><var>value</var><code>"</code> <var>attribute</var><code>=&quot;</code><var>value</var><code>"&gt;</code> <var>content</var> <code>&lt;/</code><var>element</var><code>&gt;</code></li>
-							<li>example: <code>&lt;a <em>href="page2.html"</em>&gt;Next page&lt;/a&gt;</code></li>
-						</ul>
-					</li>
-
-					<li>some tags don't contain content; can be opened and closed in one tag
-						<ul>
-							<li>syntax: <code>&lt;</code><var>element</var> <var>attribute</var><code>=&quot;</code><var>value</var><code>"</code> <var>attribute</var><code>=&quot;</code><var>value</var><code>" /&gt;</code></li>
-							<li>example: <code>&lt;hr <em>/&gt;</em></code></li>
-							<li>example: <code>&lt;img src="bunny.jpg" alt="pic from Easter" <em>/&gt;</em></code></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-
-
-			<div class="slide">
-				<h1>
-					Links:
-					<a href="http://www.w3schools.com/tags/tag_a.asp"><code>&lt;a&gt;</code></a>
-				</h1>
-
-				<p class="description">links, or &quot;anchors&quot;, to other pages (inline)</p>
-
-				<div class="example">
-			<pre class="examplecode html">
-				&lt;p&gt;
-				  Search <em>
-				  &lt;a href=&quot;http://www.google.com/&quot;&gt;</em>Google<em>&lt;/a&gt;</em> or our
-				  <em>&lt;a href=&quot;lectures.html&quot;</em>&gt;Lecture Notes<em>&lt;/a&gt;</em>.
-				&lt;/p&gt;
-</pre>
-
-					<div class="exampleoutput insertoutput"></div>
+						<li>some tags don't contain content; can be opened and closed in one tag
+							<ul>
+								<li>syntax: <code>&lt;</code><var>element</var> <var>attribute</var><code>=&quot;</code><var>value</var><code>"</code> <var>attribute</var><code>=&quot;</code><var>value</var><code>" /&gt;</code></li>
+								<li>example: <code>&lt;hr <em>/&gt;</em></code></li>
+								<li>example: <code>&lt;img src="bunny.jpg" alt="pic from Easter" <em>/&gt;</em></code></li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 
-				<ul>
-					<li>uses the <code>href</code> attribute to specify the destination URL
-						<ul>
-							<li>
-								can be <span class="term">absolute</span> (to another web site) or
-								<span class="term">relative</span> (to another page on this site)
-							</li>
-						</ul>
-					</li>
-					<li>anchors are inline elements; must be placed in a block element such as <code>p</code> or <code>h1</code></li>
-				</ul>
-			</div>
 
+				<div class="slide">
+					<h1>
+						Links:
+						<a href="http://www.w3schools.com/tags/tag_a.asp"><code>&lt;a&gt;</code></a>
+					</h1>
 
-			<div class="slide">
-				<h1>Block and inline elements </h1>
+					<p class="description">links, or &quot;anchors&quot;, to other pages (inline)</p>
 
-				<div class="centerfigure">
-					<img src="images/layout2.png" alt="elements" />
+					<div class="example">
+						<pre class="examplecode html">
+							&lt;p&gt;
+							Search <em>
+							&lt;a href=&quot;http://www.google.com/&quot;&gt;</em>Google<em>&lt;/a&gt;</em> or our
+							<em>&lt;a href=&quot;lectures.html&quot;</em>&gt;Lecture Notes<em>&lt;/a&gt;</em>.
+							&lt;/p&gt;
+						</pre>
+
+						<div class="exampleoutput insertoutput"></div>
+					</div>
+
+					<ul>
+						<li>uses the <code>href</code> attribute to specify the destination URL
+							<ul>
+								<li>
+									can be <span class="term">absolute</span> (to another web site) or
+									<span class="term">relative</span> (to another page on this site)
+								</li>
+							</ul>
+						</li>
+						<li>anchors are inline elements; must be placed in a block element such as <code>p</code> or <code>h1</code></li>
+					</ul>
 				</div>
 
-				<ul>
-					<li><span class="term"><a href="http://htmlhelp.com/reference/html40/block.html">block</a></span> elements contain an entire large region of content
-						<ul>
-							<li>examples: paragraphs, lists, table cells</li>
-							<li>the browser places a margin of whitespace between block elements for separation</li>
-						</ul>
-					</li>
-					<li><span class="term"><a href="http://www.cs.sfu.ca/CC/165/sbrown1/wdgxhtml10/inline.html">inline</a></span> elements affect a small amount of content
-						<ul>
-							<li>examples: bold text, code fragments, images</li>
-							<li>the browser allows many inline elements to appear on the same line</li>
-							<li>must be nested inside a block element</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+
+				<div class="slide">
+					<h1>Block and inline elements </h1>
+
+					<div class="centerfigure">
+						<img src="images/layout2.png" alt="elements" />
+					</div>
+
+					<ul>
+						<li><span class="term"><a href="http://htmlhelp.com/reference/html40/block.html">block</a></span> elements contain an entire large region of content
+							<ul>
+								<li>examples: paragraphs, lists, table cells</li>
+								<li>the browser places a margin of whitespace between block elements for separation</li>
+							</ul>
+						</li>
+						<li><span class="term"><a href="http://www.cs.sfu.ca/CC/165/sbrown1/wdgxhtml10/inline.html">inline</a></span> elements affect a small amount of content
+							<ul>
+								<li>examples: bold text, code fragments, images</li>
+								<li>the browser allows many inline elements to appear on the same line</li>
+								<li>must be nested inside a block element</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 
 			<!-- ***
 			a picture would be nice here
@@ -320,15 +323,15 @@
 
 				<div class="example">
 					<pre class="examplecode html">
-<em>&lt;img src=&quot;images/gollum.jpg&quot; alt=&quot;Gollum from LOTR&quot; /&gt;</em>
-</pre>
+						<em>&lt;img src=&quot;images/gollum.jpg&quot; alt=&quot;Gollum from LOTR&quot; /&gt;</em>
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
 
 				<ul>
-				<li>the <code>src</code> attribute specifies the image URL</li>
-				<li>HTML5 also requires an <code>alt</code> attribute describing the image</li>
+					<li>the <code>src</code> attribute specifies the image URL</li>
+					<li>HTML5 also requires an <code>alt</code> attribute describing the image</li>
 				</ul>
 			</div>
 
@@ -338,11 +341,11 @@
 
 				<div class="example">
 					<pre class="examplecode html">
-<em>&lt;a href=&quot;http://theonering.net/&quot;&gt;</em>
-  &lt;img src=&quot;images/gandalf.jpg&quot; alt=&quot;Gandalf from LOTR&quot;
-   <em>title=&quot;You shall not pass!&quot;</em> /&gt;
-<em>&lt;/a&gt;</em>
-</pre>
+						<em>&lt;a href=&quot;http://theonering.net/&quot;&gt;</em>
+						&lt;img src=&quot;images/gandalf.jpg&quot; alt=&quot;Gandalf from LOTR&quot;
+						<em>title=&quot;You shall not pass!&quot;</em> /&gt;
+						<em>&lt;/a&gt;</em>
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -364,10 +367,10 @@
 
 				<div class="example">
 					<pre class="examplecode html">
-&lt;p&gt;Teddy said it was a hat, <em>&lt;br /&gt;</em> So I put it on.&lt;/p&gt;
-&lt;p&gt;Now Daddy's sayin', <em>&lt;br /&gt;</em> Where the
-heck's the toilet plunger gone?&lt;/p&gt;
-</pre>
+						&lt;p&gt;Teddy said it was a hat, <em>&lt;br /&gt;</em> So I put it on.&lt;/p&gt;
+						&lt;p&gt;Now Daddy's sayin', <em>&lt;br /&gt;</em> Where the
+						heck's the toilet plunger gone?&lt;/p&gt;
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -400,11 +403,11 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html">
-&lt;p&gt;
-  HTML is <em>&lt;em&gt;</em>really<em>&lt;/em&gt;</em>,
-  <em>&lt;strong&gt;</em>REALLY<em>&lt;/strong&gt;</em> fun!
-&lt;/p&gt;
-</pre>
+						&lt;p&gt;
+						HTML is <em>&lt;em&gt;</em>really<em>&lt;/em&gt;</em>,
+						<em>&lt;strong&gt;</em>REALLY<em>&lt;/strong&gt;</em> fun!
+						&lt;/p&gt;
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -419,11 +422,11 @@ heck's the toilet plunger gone?&lt;/p&gt;
 				<h1>Nesting tags</h1>
 
 				<pre class="examplecode html badcode">
-&lt;p&gt;
-  HTML is &lt;em&gt;really,
-  &lt;strong&gt;REALLY<em class="bad">&lt;/em&gt;</em> lots of&lt;/strong&gt; fun!
-&lt;/p&gt;
-</pre>
+					&lt;p&gt;
+					HTML is &lt;em&gt;really,
+					&lt;strong&gt;REALLY<em class="bad">&lt;/em&gt;</em> lots of&lt;/strong&gt; fun!
+					&lt;/p&gt;
+				</pre>
 
 				<ul>
 					<li>tags must be correctly nested
@@ -449,10 +452,10 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html">
-<span class="comment">&lt;!-- My web page, by Suzy Student
-     CSE3026, 2nd Semester 2025    --&gt;</span>
-&lt;p&gt;CSE courses are <span class="comment">&lt;!-- NOT --&gt;</span> a lot of fun!&lt;/p&gt;
-</pre>
+						<span class="comment">&lt;!-- My web page, by Suzy Student
+						CSE3026, 2nd Semester 2025    --&gt;</span>
+						&lt;p&gt;CSE courses are <span class="comment">&lt;!-- NOT --&gt;</span> a lot of fun!&lt;/p&gt;
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -492,12 +495,12 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html">
-<em>&lt;ul&gt;</em>
-  <em>&lt;li&gt;</em>No shoes<em>&lt;/li&gt;</em>
-  <em>&lt;li&gt;</em>No shirt<em>&lt;/li&gt;</em>
-  <em>&lt;li&gt;</em>No problem!<em>&lt;/li&gt;</em>
-<em>&lt;/ul&gt;</em>
-</pre>
+						<em>&lt;ul&gt;</em>
+						<em>&lt;li&gt;</em>No shoes<em>&lt;/li&gt;</em>
+						<em>&lt;li&gt;</em>No shirt<em>&lt;/li&gt;</em>
+						<em>&lt;li&gt;</em>No problem!<em>&lt;/li&gt;</em>
+						<em>&lt;/ul&gt;</em>
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -514,21 +517,21 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode exampleleftcolumn html">
-&lt;ul&gt;
-  &lt;li&gt;Simpsons:
-    <em>&lt;ul&gt;</em>
-      <em>&lt;li&gt;</em>Homer<em>&lt;/li&gt;</em>
-      <em>&lt;li&gt;</em>Marge<em>&lt;/li&gt;</em>
-    <em>&lt;/ul&gt;</em>
-  &lt;/li&gt;
-  &lt;li&gt;Family Guy:
-    <em>&lt;ul&gt;</em>
-      <em>&lt;li&gt;</em>Peter<em>&lt;/li&gt;</em>
-      <em>&lt;li&gt;</em>Lois<em>&lt;/li&gt;</em>
-    <em>&lt;/ul&gt;</em>
-  &lt;/li&gt;
-&lt;/ul&gt;
-</pre>
+						&lt;ul&gt;
+						&lt;li&gt;Simpsons:
+						<em>&lt;ul&gt;</em>
+						<em>&lt;li&gt;</em>Homer<em>&lt;/li&gt;</em>
+						<em>&lt;li&gt;</em>Marge<em>&lt;/li&gt;</em>
+						<em>&lt;/ul&gt;</em>
+						&lt;/li&gt;
+						&lt;li&gt;Family Guy:
+						<em>&lt;ul&gt;</em>
+						<em>&lt;li&gt;</em>Peter<em>&lt;/li&gt;</em>
+						<em>&lt;li&gt;</em>Lois<em>&lt;/li&gt;</em>
+						<em>&lt;/ul&gt;</em>
+						&lt;/li&gt;
+						&lt;/ul&gt;
+					</pre>
 
 					<div class="exampleoutput examplerightcolumn insertoutput"></div>
 				</div>
@@ -545,13 +548,13 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html"><!-- exampleleftcolumn -->
-&lt;p&gt;RIAA business model:&lt;/p&gt;
-<em>&lt;ol&gt;</em>
-  <em>&lt;li&gt;</em>Sue customers<em>&lt;/li&gt;</em>
-  <em>&lt;li&gt;</em>???<em>&lt;/li&gt;</em>
-  <em>&lt;li&gt;</em>Profit!<em>&lt;/li&gt;</em>
-<em>&lt;/ol&gt;</em>
-</pre>
+						&lt;p&gt;RIAA business model:&lt;/p&gt;
+						<em>&lt;ol&gt;</em>
+						<em>&lt;li&gt;</em>Sue customers<em>&lt;/li&gt;</em>
+						<em>&lt;li&gt;</em>???<em>&lt;/li&gt;</em>
+						<em>&lt;li&gt;</em>Profit!<em>&lt;/li&gt;</em>
+						<em>&lt;/ol&gt;</em>
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div><!-- examplerightcolumn -->
 				</div>
@@ -577,13 +580,13 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html">
-<em>&lt;dl&gt;</em>
-  <em>&lt;dt&gt;</em>newbie<em>&lt;/dt&gt; &lt;dd&gt;</em>one who does not have mad skills<em>&lt;/dd&gt;</em>
-  <em>&lt;dt&gt;</em>own<em>&lt;/dt&gt; &lt;dd&gt;</em>to soundly defeat
-    (e.g. I owned that newbie!)<em>&lt;/dd&gt;</em>
-  <em>&lt;dt&gt;</em>frag<em>&lt;/dt&gt; &lt;dd&gt;</em>a kill in a shooting game<em>&lt;/dd&gt;</em>
-<em>&lt;/dl&gt;</em>
-</pre>
+						<em>&lt;dl&gt;</em>
+						<em>&lt;dt&gt;</em>newbie<em>&lt;/dt&gt; &lt;dd&gt;</em>one who does not have mad skills<em>&lt;/dd&gt;</em>
+						<em>&lt;dt&gt;</em>own<em>&lt;/dt&gt; &lt;dd&gt;</em>to soundly defeat
+						(e.g. I owned that newbie!)<em>&lt;/dd&gt;</em>
+						<em>&lt;dt&gt;</em>frag<em>&lt;/dt&gt; &lt;dd&gt;</em>a kill in a shooting game<em>&lt;/dd&gt;</em>
+						<em>&lt;/dl&gt;</em>
+					</pre>
 
 					<div class="exampleoutput insertoutput" style="font-size: smaller;"></div>
 				</div>
@@ -602,13 +605,13 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html">
-&lt;p&gt;As Lincoln said in his famous Gettysburg Address:&lt;/p&gt;
-<em>&lt;blockquote&gt;</em>
-  &lt;p&gt;Fourscore and seven years ago, our fathers brought forth
-    on this continent a new nation, conceived in liberty, and
-    dedicated to the proposition that all men are created equal.&lt;/p&gt;
-<em>&lt;/blockquote&gt;</em>
-</pre>
+						&lt;p&gt;As Lincoln said in his famous Gettysburg Address:&lt;/p&gt;
+						<em>&lt;blockquote&gt;</em>
+						&lt;p&gt;Fourscore and seven years ago, our fathers brought forth
+						on this continent a new nation, conceived in liberty, and
+						dedicated to the proposition that all men are created equal.&lt;/p&gt;
+						<em>&lt;/blockquote&gt;</em>
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -623,8 +626,8 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html">
-&lt;p&gt;Quoth the Raven, <em>&lt;q&gt;</em>Nevermore.<em>&lt;/q&gt;</em>&lt;/p&gt;
-</pre>
+						&lt;p&gt;Quoth the Raven, <em>&lt;q&gt;</em>Nevermore.<em>&lt;/q&gt;</em>&lt;/p&gt;
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -679,12 +682,12 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html" style="font-size: smaller;">
-<em>&amp;lt;</em>p<em>&amp;gt;
-  &amp;lt;</em>a href=<em>&amp;quot;</em>http://google.com/search?q=marty<em>&amp;amp;</em>ie=utf-8<em>&amp;quot;&amp;gt;</em>
-    Search Google for Marty
-  <em>&amp;lt;</em>/a<em>&amp;gt;
-&amp;lt;</em>/p<em>&amp;gt;</em>
-</pre>
+						<em>&amp;lt;</em>p<em>&amp;gt;
+						&amp;lt;</em>a href=<em>&amp;quot;</em>http://google.com/search?q=marty<em>&amp;amp;</em>ie=utf-8<em>&amp;quot;&amp;gt;</em>
+						Search Google for Marty
+						<em>&amp;lt;</em>/a<em>&amp;gt;
+						&amp;lt;</em>/p<em>&amp;gt;</em>
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -707,11 +710,11 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html">
-&lt;p&gt;
-  <em>&lt;del&gt;</em>Final Exam<em>&lt;/del&gt;</em> <em>&lt;ins&gt;</em>Midterm<em>&lt;/ins&gt;</em> is on
-  <em>&lt;del&gt;</em>Dec 10-15<em>&lt;/del&gt;</em> <em>&lt;ins&gt;</em>Oct 10-11<em>&lt;/ins&gt;</em>.
-&lt;/p&gt;
-</pre>
+						&lt;p&gt;
+						<em>&lt;del&gt;</em>Final Exam<em>&lt;/del&gt;</em> <em>&lt;ins&gt;</em>Midterm<em>&lt;/ins&gt;</em> is on
+						<em>&lt;del&gt;</em>Dec 10-15<em>&lt;/del&gt;</em> <em>&lt;ins&gt;</em>Oct 10-11<em>&lt;/ins&gt;</em>.
+						&lt;/p&gt;
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -730,11 +733,11 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html">
-&lt;p&gt;
-  Safe divers always remember to check their
-  <em>&lt;abbr title="Self-Contained Underwater Breathing Apparatus"&gt;</em>SCUBA<em>&lt;/abbr&gt;</em> gear.
-&lt;/p&gt;
-</pre>
+						&lt;p&gt;
+						Safe divers always remember to check their
+						<em>&lt;abbr title="Self-Contained Underwater Breathing Apparatus"&gt;</em>SCUBA<em>&lt;/abbr&gt;</em> gear.
+						&lt;/p&gt;
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -747,17 +750,17 @@ heck's the toilet plunger gone?&lt;/p&gt;
 					<a href="http://www.w3schools.com/tags/tag_code.asp"><code>&lt;code&gt;</code></a>
 				</h1>
 
-			<p class="description">
-				a short section of computer code (usually shown in a fixed-width font)
-			</p>
+				<p class="description">
+					a short section of computer code (usually shown in a fixed-width font)
+				</p>
 
 				<div class="example">
 					<pre class="examplecode html">
-&lt;p&gt;
-  The <em>&lt;code&gt;</em>ul<em>&lt;/code&gt;</em> and <em>&lt;code&gt;</em>ol<em>&lt;/code&gt;</em>
-  tags make lists.
-&lt;/p&gt;
-</pre>
+						&lt;p&gt;
+						The <em>&lt;code&gt;</em>ul<em>&lt;/code&gt;</em> and <em>&lt;code&gt;</em>ol<em>&lt;/code&gt;</em>
+						tags make lists.
+						&lt;/p&gt;
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -775,12 +778,12 @@ heck's the toilet plunger gone?&lt;/p&gt;
 
 				<div class="example">
 					<pre class="examplecode html">
-<em>&lt;pre&gt;</em>
-         Steve Jobs speaks loudly
-            reality distortion
-           Apple fans bow down
-<em>&lt;/pre&gt;</em>
-</pre>
+						<em>&lt;pre&gt;</em>
+						Steve Jobs speaks loudly
+						reality distortion
+						Apple fans bow down
+						<em>&lt;/pre&gt;</em>
+					</pre>
 
 					<div class="exampleoutput insertoutput"></div>
 				</div>
@@ -805,481 +808,481 @@ heck's the toilet plunger gone?&lt;/p&gt;
 				</p>
 
 <!-- &lt;<em>meta</em> http-equiv=&quot;Content-Type&quot;
-	    content=&quot;text/html; charset=utf-8&quot; /&gt; -->
-				<pre class="examplecode html">
-&lt;<em>meta</em> charset=&quot;utf-8&quot; /&gt;
-&lt;<em>meta</em> name=&quot;description&quot;
-    content=&quot;Authors' web site for Building Java Programs.&quot; /&gt;
-&lt;<em>meta</em> name=&quot;keywords&quot; content=&quot;java, textbook&quot; /&gt;
-</pre>
+	content=&quot;text/html; charset=utf-8&quot; /&gt; -->
+	<pre class="examplecode html">
+		&lt;<em>meta</em> charset=&quot;utf-8&quot; /&gt;
+		&lt;<em>meta</em> name=&quot;description&quot;
+		content=&quot;Authors' web site for Building Java Programs.&quot; /&gt;
+		&lt;<em>meta</em> name=&quot;keywords&quot; content=&quot;java, textbook&quot; /&gt;
+	</pre>
 
-				<ul>
-					<li>placed <strong>in the <code>head</code></strong> section of your HTML page</li>
-					<li><code>meta</code> tags often have both the <code>name</code> and <code>content</code> attributes
-						<ul>
-							<li>some <code>meta</code> tags use the <code>http-equiv</code> attribute instead of <code>name</code></li>
-						</ul>
-					</li>
+	<ul>
+		<li>placed <strong>in the <code>head</code></strong> section of your HTML page</li>
+		<li><code>meta</code> tags often have both the <code>name</code> and <code>content</code> attributes
+			<ul>
+				<li>some <code>meta</code> tags use the <code>http-equiv</code> attribute instead of <code>name</code></li>
+			</ul>
+		</li>
 					<!--
 					<li>using a <code>meta</code> tag <code>Content-Type</code> stops validator &quot;tentatively valid&quot; warnings
 					</li>
-					-->
-				</ul>
+				-->
+			</ul>
+		</div>
+
+
+
+		<div class="slide">
+			<h1>Favorites icon (&quot;favicon&quot;)</h1>
+
+			<pre class="syntaxtemplate html">
+				&lt;link href=&quot;<var>filename</var>&quot; type=&quot;<var>MIME type</var>&quot; rel=&quot;shortcut icon&quot; /&gt;
+			</pre>
+
+			<div class="example">
+				<pre class="examplecode html">
+					&lt;link href=&quot;yahoo.gif&quot; type=&quot;image/gif&quot; rel=&quot;shortcut icon&quot; /&gt;
+				</pre>
+
+				<div class="exampleoutput">
+					<img src="images/favicon1.gif" alt="favicon" /> <img src="images/favicon2.gif" alt="favicon" />
+				</div>
 			</div>
 
-
-
-			<div class="slide">
-				<h1>Favorites icon (&quot;favicon&quot;)</h1>
-
-				<pre class="syntaxtemplate html">
-&lt;link href=&quot;<var>filename</var>&quot; type=&quot;<var>MIME type</var>&quot; rel=&quot;shortcut icon&quot; /&gt;
-</pre>
-
-				<div class="example">
-					<pre class="examplecode html">
-&lt;link href=&quot;yahoo.gif&quot; type=&quot;image/gif&quot; rel=&quot;shortcut icon&quot; /&gt;
-</pre>
-
-					<div class="exampleoutput">
-						<img src="images/favicon1.gif" alt="favicon" /> <img src="images/favicon2.gif" alt="favicon" />
-					</div>
-				</div>
-
-				<ul>
-					<li>the <code>link</code> tag, placed in the <code>head</code> section, attaches another file to the page
-						<ul>
-							<li>in this case, an icon to be placed in the browser title bar and bookmarks</li>
-						</ul>
-					</li>
+			<ul>
+				<li>the <code>link</code> tag, placed in the <code>head</code> section, attaches another file to the page
+					<ul>
+						<li>in this case, an icon to be placed in the browser title bar and bookmarks</li>
+					</ul>
+				</li>
 					<!--
 					<li>IE6: Doesn't work; must put a file <code>favicon.ico</code> in the root of the web server (<a href="http://www.clickfire.com/viewpoints/articles/favicons.php">info</a>)</li>
-					-->
-				</ul>
-			</div>
+				-->
+			</ul>
+		</div>
 
 
 
-			<div class="slide">
-				<h1>HTML tables:
-					<a href="http://www.w3schools.com/tags/tag_table.asp"><code>&lt;table&gt;</code></a>,
-					<a href="http://www.w3schools.com/tags/tag_tr.asp"><code>&lt;tr&gt;</code></a>,
-					<a href="http://www.w3schools.com/tags/tag_td.asp"><code>&lt;td&gt;</code></a>
-				</h1>
+		<div class="slide">
+			<h1>HTML tables:
+				<a href="http://www.w3schools.com/tags/tag_table.asp"><code>&lt;table&gt;</code></a>,
+				<a href="http://www.w3schools.com/tags/tag_tr.asp"><code>&lt;tr&gt;</code></a>,
+				<a href="http://www.w3schools.com/tags/tag_td.asp"><code>&lt;td&gt;</code></a>
+			</h1>
 
-				<p class="description">
-					A 2D table of rows and columns of data (block element)
-				</p>
+			<p class="description">
+				A 2D table of rows and columns of data (block element)
+			</p>
 
-				<div class="example">
-					<pre class="examplecode html">
-&lt;table&gt;
-  &lt;tr&gt;&lt;td&gt;1,1&lt;/td&gt;&lt;td&gt;1,2 okay&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;2,1 real wide&lt;/td&gt;&lt;td&gt;2,2&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
-</pre>
+			<div class="example">
+				<pre class="examplecode html">
+					&lt;table&gt;
+					&lt;tr&gt;&lt;td&gt;1,1&lt;/td&gt;&lt;td&gt;1,2 okay&lt;/td&gt;&lt;/tr&gt;
+					&lt;tr&gt;&lt;td&gt;2,1 real wide&lt;/td&gt;&lt;td&gt;2,2&lt;/td&gt;&lt;/tr&gt;
+					&lt;/table&gt;
+				</pre>
 
-					<div class="exampleoutput">
-						<table>
-							<tr><td>1,1</td><td>1,2 okay</td></tr>
-							<tr><td>2,1 real wide</td><td>2,2</td></tr>
-						</table>
-					</div>
+				<div class="exampleoutput">
+					<table>
+						<tr><td>1,1</td><td>1,2 okay</td></tr>
+						<tr><td>2,1 real wide</td><td>2,2</td></tr>
+					</table>
 				</div>
-
-				<ul>
-					<li><code>table</code> defines the overall table, <code>tr</code> each row, and <code>td</code> each cell's data</li>
-					<li>tables are useful for displaying large row/column data sets</li>
-					<li>
-						NOTE: tables are sometimes used by novices for web page layout, but this is not proper semantic HTML and should be avoided
-					</li>
-				</ul>
 			</div>
 
+			<ul>
+				<li><code>table</code> defines the overall table, <code>tr</code> each row, and <code>td</code> each cell's data</li>
+				<li>tables are useful for displaying large row/column data sets</li>
+				<li>
+					NOTE: tables are sometimes used by novices for web page layout, but this is not proper semantic HTML and should be avoided
+				</li>
+			</ul>
+		</div>
 
 
-			<div class="slide">
-				<h1>Table headers, captions:
-					<a href="http://www.w3schools.com/tags/tag_th.asp"><code>&lt;th&gt;</code></a>,
-					<a href="http://www.w3schools.com/tags/tag_caption.asp"><code>&lt;caption&gt;</code></a>
-				</h1>
 
-				<div class="example">
-					<pre class="examplecode html">
-&lt;table&gt;
-  <em>&lt;caption&gt;</em>My important data<em>&lt;/caption&gt;</em>
-  &lt;tr&gt;<em>&lt;th&gt;</em>Column 1<em>&lt;/th&gt;</em><em>&lt;th&gt;</em>Column 2<em>&lt;/th&gt;</em>&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;1,1&lt;/td&gt;&lt;td&gt;1,2 okay&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;2,1 real wide&lt;/td&gt;&lt;td&gt;2,2&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
-</pre>
+		<div class="slide">
+			<h1>Table headers, captions:
+				<a href="http://www.w3schools.com/tags/tag_th.asp"><code>&lt;th&gt;</code></a>,
+				<a href="http://www.w3schools.com/tags/tag_caption.asp"><code>&lt;caption&gt;</code></a>
+			</h1>
 
-					<div class="exampleoutput">
-						<table>
-							<caption>My important data</caption>
-							<tr><th>Column 1</th><th>Column 2</th></tr>
-							<tr><td>1,1</td><td>1,2 okay</td></tr>
-							<tr><td>2,1 real wide</td><td>2,2</td></tr>
-						</table>
-					</div>
+			<div class="example">
+				<pre class="examplecode html">
+					&lt;table&gt;
+					<em>&lt;caption&gt;</em>My important data<em>&lt;/caption&gt;</em>
+					&lt;tr&gt;<em>&lt;th&gt;</em>Column 1<em>&lt;/th&gt;</em><em>&lt;th&gt;</em>Column 2<em>&lt;/th&gt;</em>&lt;/tr&gt;
+					&lt;tr&gt;&lt;td&gt;1,1&lt;/td&gt;&lt;td&gt;1,2 okay&lt;/td&gt;&lt;/tr&gt;
+					&lt;tr&gt;&lt;td&gt;2,1 real wide&lt;/td&gt;&lt;td&gt;2,2&lt;/td&gt;&lt;/tr&gt;
+					&lt;/table&gt;
+				</pre>
+
+				<div class="exampleoutput">
+					<table>
+						<caption>My important data</caption>
+						<tr><th>Column 1</th><th>Column 2</th></tr>
+						<tr><td>1,1</td><td>1,2 okay</td></tr>
+						<tr><td>2,1 real wide</td><td>2,2</td></tr>
+					</table>
 				</div>
-
-				<ul>
-					<li><code>th</code> cells in a row are considered headers; by default, they appear bold</li>
-					<li>a <code>caption</code> at the start of the table labels its meaning</li>
-				</ul>
 			</div>
 
-
-
-			<div class="slide titleslide">
-				<h1>2.3: Web Standards</h1>
-
-				<ul>
-					<li>2.1: Basic HTML</li>
-					<li>2.2: More HTML Elements</li>
-					<li><strong>2.3: Web Standards</strong></li>
-				</ul>
-			</div>
+			<ul>
+				<li><code>th</code> cells in a row are considered headers; by default, they appear bold</li>
+				<li>a <code>caption</code> at the start of the table labels its meaning</li>
+			</ul>
+		</div>
 
 
 
-			<div class="slide">
-				<h1>
-					Web Standards
-				</h1>
+		<div class="slide titleslide">
+			<h1>2.3: Web Standards</h1>
 
-				<ul>
-					<li>
-						It is important to write proper HTML code and follow proper syntax.
-					</li>
-
-					<li>Why use valid HTML and web standards?
-						<ul>
-							<li>more rigid and structured language</li>
-							<li>more interoperable across different web browsers</li>
-							<li>more likely that our pages will display correctly in the future</li>
-							<li>can be interchanged with other XML data: <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a> (graphics), <a href="http://en.wikipedia.org/wiki/MathML">MathML</a>, <a href="http://en.wikipedia.org/wiki/MusicXML">MusicML</a>, <a href="http://en.wikipedia.org/wiki/List_of_XML_markup_languages">etc.</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+			<ul>
+				<li>2.1: Basic HTML</li>
+				<li>2.2: More HTML Elements</li>
+				<li><strong>2.3: Web Standards</strong></li>
+			</ul>
+		</div>
 
 
 
-			<div class="slide">
-				<h1>
-					W3C HTML Validator
-				</h1>
+		<div class="slide">
+			<h1>
+				Web Standards
+			</h1>
 
-				<div class="example">
-					<pre class="examplecode html">
-&lt;p&gt;
-  <em>&lt;a href=&quot;https://validator.w3.org/check/referer&quot;&gt;
-    &lt;img src=&quot;images/w3c-html.png&quot; alt=&quot;Validate&quot; /&gt;
-  &lt;/a&gt;</em>
-&lt;/p&gt;
-</pre>
+			<ul>
+				<li>
+					It is important to write proper HTML code and follow proper syntax.
+				</li>
 
-					<div class="exampleoutput">
-						<p>
-							<a href="https://validator.w3.org/check/referer">
-								<img src="images/w3c-html.png" alt="Validate" />
-							</a>
-						</p>
-					</div>
-				</div>
-
-				<ul>
-					<li><a href="http://validator.w3.org/">validator.w3.org</a></li>
-					<li>checks your HTML code to make sure it follows the official HTML syntax</li>
-					<li>more picky than the browser, which may render bad HTML correctly</li>
-				</ul>
-			</div>
-
-
-
-			<div class="slide">
-				<h1>What is HTML 5?</h1>
-
-				<ul>
-					<li>
-						a new W3C standard version of the HTML markup language
-						<img src="images/w3c-logo.png" alt="w3c" style="height: 30px" />
-					</li>
-					<li>
-						successor to HTML 4.01 and XHTML 1.1
-					</li>
-					<li>
-						balance between too-loose-ness of HTML 4 and too-strict-ness of XHTML
-					</li>
-					<li>
-						reduces the browser's need for plugins to display content, e.g. multimedia
-					</li>
-					<li>
-						make web content more rich, semantically meaningful, descriptive, accessible
-					</li>
-					<li>
-						more easily enable the web as an application platform (Web 2.0)
-					</li>
-				</ul>
-			</div>
-
-
-
-			<div class="slide">
-				<h1>What's <a class="popup" href="http://www.w3schools.com/html/html5_intro.asp">new</a> in HTML 5?</h1>
-
-				<ul>
-					<li>
-						semantic <a class="popup" href="http://www.w3schools.com/html/html5_semantic_elements.asp"><strong>elements</strong></a>: <code>nav</code>, <code>aside</code>, <code>header</code>, <code>footer</code>, <code>section</code>, <code>aside</code>, <code>article</code>
-					</li>
-					<li>
-						<img src="images/input-type-datetime.png" alt="date/time" style="float: right; margin-left: 1em" />
-						<strong>Forms</strong> 2.0: sliders, search bars, color/number/email/url/date/time, placeholders, ... <br />
-						<img src="images/input-type-range.png" alt="slider" />
-						<img src="images/input-type-search.png" alt="search" style="margin-left: 50px" />
-						<img src="images/input-type-number.png" alt="number" style="margin-left: 50px" />
-					</li>
-					<li>
-						<strong><code>audio</code></strong> and <strong><code>video</code></strong> tags for embedding multimedia <br />
-						<img src="images/html5-video.jpg" alt="video" style="width: 200px" />
-					</li>
-					<li>
-						<strong><code>canvas</code></strong> tag for drawing 2D shapes in HTML/JS (like <code>DrawingPanel</code>)
-						(ref
-						<a class="popup" href="http://thinkvitamin.com/dev/html-5-dev/how-to-draw-with-html-5-canvas/">1</a>,
-						<a class="popup" href="https://simon.html5.org/dump/html5-canvas-cheat-sheet.html">2</a>,
-						<a class="popup" href="https://developer.mozilla.org/en/canvas_tutorial">3</a>) <br />
-						<img src="images/html5-canvas.png" alt="canvas" />
-					</li>
-				</ul>
-			</div>
-
-
-
-			<div class="slide">
-				<h1>What's new, continued</h1>
-
-				<ul>
-					<li>
-						<a class="popup" href="http://en.wikipedia.org/wiki/Semantic_Web">semantic web</a> / microdata <strong>attributes</strong>: <code>rel="..."</code>, <code>itemscope</code>, <code>itemtype</code>, <code>itemprop</code> <br />
-
-						<img src="images/microdata.png" alt="microdata" />
-					</li>
-					<li>
-						<img src="images/svg-lion.gif" alt="SVG" style="float: right; margin-left: 1em" />
-						<strong>accessibility</strong> features ("<a href="http://standardssuck.org/aria-in-html5">ARIA</a>")
-					</li>
-					<li>
-						embedding of rich XML-like formats such as <a href="http://en.wikipedia.org/wiki/Svg"><strong>SVG</strong></a> vector graphics
-					</li>
-					<li>
-						other stuff: offline apps, geolocation, cross-document messaging, MIME type registration, history management, ...
-					</li>
-				</ul>
-			</div>
-
-
-
-			<div class="slide noprint">
-				<h1>Multimedia is fun</h1>
-
-				<iframe width="425" height="350" src="https://www.youtube.com/embed/eKgPY1adc0A" ></iframe>
-			</div>
-
-
-
-			<div class="slide">
-				<h1>File formats</h1>
-
-				<ul>
-					<li>some differ in features (animation, 5.1 stereo, transparency)</li>
-					<li>many multimedia formats use <a href="http://en.wikipedia.org/wiki/Data_compression"><span class="term">compression</span></a> to reduce file size
-						<ul>
-							<li>compression algorithms are also called <a href="http://en.wikipedia.org/wiki/Codec"><span class="term">codecs</span></a> (<a href="http://en.wikipedia.org/wiki/List_of_codecs">list</a>)</li>
-							<li>some compression algorithms are &quot;lossless&quot;, others are &quot;lossy&quot;</li>
-
-						</ul>
-					</li>
-					<li>some formats are patented (unusable in free software)</li>
-					<li>some formats are <a href="http://en.wikipedia.org/wiki/Encryption"><span class="term">encrypted</span></a> to protect information inside
-						<ul>
-							<li><a href="http://en.wikipedia.org/wiki/Digital_rights_management">Digital Rights Management</a> (DRM) restricts what user can do with file</li>
-							<li>can be broken: DVD (<a href="http://en.wikipedia.org/wiki/DeCSS">DeCSS</a>), HD DVD (09f911029d74e35bd84156c5635688c0)</li>
-
-						</ul>
-					</li>
-					<li>some formats are <span class="term"><a href="http://en.wikipedia.org/wiki/Streaming_media">streaming</a></span> (can play while downloading)</li>
-				</ul>
-
-				<div class="handout">
+				<li>Why use valid HTML and web standards?
 					<ul>
-						<li>comparisons of formats: <a href="http://en.wikipedia.org/wiki/Comparison_of_container_formats">audio/video containers</a></li>
+						<li>more rigid and structured language</li>
+						<li>more interoperable across different web browsers</li>
+						<li>more likely that our pages will display correctly in the future</li>
+						<li>can be interchanged with other XML data: <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a> (graphics), <a href="http://en.wikipedia.org/wiki/MathML">MathML</a>, <a href="http://en.wikipedia.org/wiki/MusicXML">MusicML</a>, <a href="http://en.wikipedia.org/wiki/List_of_XML_markup_languages">etc.</a></li>
 					</ul>
+				</li>
+			</ul>
+		</div>
+
+
+
+		<div class="slide">
+			<h1>
+				W3C HTML Validator
+			</h1>
+
+			<div class="example">
+				<pre class="examplecode html">
+					&lt;p&gt;
+					<em>&lt;a href=&quot;https://validator.w3.org/check/referer&quot;&gt;
+						&lt;img src=&quot;images/w3c-html.png&quot; alt=&quot;Validate&quot; /&gt;
+					&lt;/a&gt;</em>
+					&lt;/p&gt;
+				</pre>
+
+				<div class="exampleoutput">
+					<p>
+						<a href="https://validator.w3.org/check/referer">
+							<img src="images/w3c-html.png" alt="Validate" />
+						</a>
+					</p>
 				</div>
 			</div>
 
+			<ul>
+				<li><a href="http://validator.w3.org/">validator.w3.org</a></li>
+				<li>checks your HTML code to make sure it follows the official HTML syntax</li>
+				<li>more picky than the browser, which may render bad HTML correctly</li>
+			</ul>
+		</div>
 
 
-			<div class="slide">
-				<h1>Image file formats</h1>
 
+		<div class="slide">
+			<h1>What is HTML 5?</h1>
+
+			<ul>
+				<li>
+					a new W3C standard version of the HTML markup language
+					<img src="images/w3c-logo.png" alt="w3c" style="height: 30px" />
+				</li>
+				<li>
+					successor to HTML 4.01 and XHTML 1.1
+				</li>
+				<li>
+					balance between too-loose-ness of HTML 4 and too-strict-ness of XHTML
+				</li>
+				<li>
+					reduces the browser's need for plugins to display content, e.g. multimedia
+				</li>
+				<li>
+					make web content more rich, semantically meaningful, descriptive, accessible
+				</li>
+				<li>
+					more easily enable the web as an application platform (Web 2.0)
+				</li>
+			</ul>
+		</div>
+
+
+
+		<div class="slide">
+			<h1>What's <a class="popup" href="http://www.w3schools.com/html/html5_intro.asp">new</a> in HTML 5?</h1>
+
+			<ul>
+				<li>
+					semantic <a class="popup" href="http://www.w3schools.com/html/html5_semantic_elements.asp"><strong>elements</strong></a>: <code>nav</code>, <code>aside</code>, <code>header</code>, <code>footer</code>, <code>section</code>, <code>aside</code>, <code>article</code>
+				</li>
+				<li>
+					<img src="images/input-type-datetime.png" alt="date/time" style="float: right; margin-left: 1em" />
+					<strong>Forms</strong> 2.0: sliders, search bars, color/number/email/url/date/time, placeholders, ... <br />
+					<img src="images/input-type-range.png" alt="slider" />
+					<img src="images/input-type-search.png" alt="search" style="margin-left: 50px" />
+					<img src="images/input-type-number.png" alt="number" style="margin-left: 50px" />
+				</li>
+				<li>
+					<strong><code>audio</code></strong> and <strong><code>video</code></strong> tags for embedding multimedia <br />
+					<img src="images/html5-video.jpg" alt="video" style="width: 200px" />
+				</li>
+				<li>
+					<strong><code>canvas</code></strong> tag for drawing 2D shapes in HTML/JS (like <code>DrawingPanel</code>)
+					(ref
+					<a class="popup" href="http://thinkvitamin.com/dev/html-5-dev/how-to-draw-with-html-5-canvas/">1</a>,
+					<a class="popup" href="https://simon.html5.org/dump/html5-canvas-cheat-sheet.html">2</a>,
+					<a class="popup" href="https://developer.mozilla.org/en/canvas_tutorial">3</a>) <br />
+					<img src="images/html5-canvas.png" alt="canvas" />
+				</li>
+			</ul>
+		</div>
+
+
+
+		<div class="slide">
+			<h1>What's new, continued</h1>
+
+			<ul>
+				<li>
+					<a class="popup" href="http://en.wikipedia.org/wiki/Semantic_Web">semantic web</a> / microdata <strong>attributes</strong>: <code>rel="..."</code>, <code>itemscope</code>, <code>itemtype</code>, <code>itemprop</code> <br />
+
+					<img src="images/microdata.png" alt="microdata" />
+				</li>
+				<li>
+					<img src="images/svg-lion.gif" alt="SVG" style="float: right; margin-left: 1em" />
+					<strong>accessibility</strong> features ("<a href="http://standardssuck.org/aria-in-html5">ARIA</a>")
+				</li>
+				<li>
+					embedding of rich XML-like formats such as <a href="http://en.wikipedia.org/wiki/Svg"><strong>SVG</strong></a> vector graphics
+				</li>
+				<li>
+					other stuff: offline apps, geolocation, cross-document messaging, MIME type registration, history management, ...
+				</li>
+			</ul>
+		</div>
+
+
+
+		<div class="slide noprint">
+			<h1>Multimedia is fun</h1>
+
+			<iframe width="425" height="350" src="https://www.youtube.com/embed/eKgPY1adc0A" ></iframe>
+		</div>
+
+
+
+		<div class="slide">
+			<h1>File formats</h1>
+
+			<ul>
+				<li>some differ in features (animation, 5.1 stereo, transparency)</li>
+				<li>many multimedia formats use <a href="http://en.wikipedia.org/wiki/Data_compression"><span class="term">compression</span></a> to reduce file size
+					<ul>
+						<li>compression algorithms are also called <a href="http://en.wikipedia.org/wiki/Codec"><span class="term">codecs</span></a> (<a href="http://en.wikipedia.org/wiki/List_of_codecs">list</a>)</li>
+						<li>some compression algorithms are &quot;lossless&quot;, others are &quot;lossy&quot;</li>
+
+					</ul>
+				</li>
+				<li>some formats are patented (unusable in free software)</li>
+				<li>some formats are <a href="http://en.wikipedia.org/wiki/Encryption"><span class="term">encrypted</span></a> to protect information inside
+					<ul>
+						<li><a href="http://en.wikipedia.org/wiki/Digital_rights_management">Digital Rights Management</a> (DRM) restricts what user can do with file</li>
+						<li>can be broken: DVD (<a href="http://en.wikipedia.org/wiki/DeCSS">DeCSS</a>), HD DVD (09f911029d74e35bd84156c5635688c0)</li>
+
+					</ul>
+				</li>
+				<li>some formats are <span class="term"><a href="http://en.wikipedia.org/wiki/Streaming_media">streaming</a></span> (can play while downloading)</li>
+			</ul>
+
+			<div class="handout">
 				<ul>
-					<li><a href="http://en.wikipedia.org/wiki/Jpeg">JPEG</a> : uses &quot;<a href="http://en.wikipedia.org/wiki/Lossy_compression">lossy compression</a>&quot;; small file size; good for photos</li>
-					<li><a href="http://en.wikipedia.org/wiki/Gif">GIF</a> : 256 colors; LZW <a href="http://en.wikipedia.org/wiki/Run_length_encoding">run-length encoding</a> lossless compression
-						<ul>
-							<li>allows <span class="term">transparency</span> (can see behind parts of image)</li>
-							<li>possible to create animated GIFs</li>
-						</ul>
-					</li>
-					<li><a href="http://en.wikipedia.org/wiki/Png">PNG</a> : free format created to avoid patent and color issues in GIF format; lossless compression, transparency</li>
-					<li>others: <a href="http://en.wikipedia.org/wiki/Tiff">TIFF</a>, <a href="http://en.wikipedia.org/wiki/Bitmap">BMP</a></li>
-					<li>image format comparisons: <a href="http://paleo.org/BKsamples/">text</a>, <a href="http://philip.greenspun.com/wtr/img-format/">photo</a>, <a href="http://en.wikipedia.org/wiki/Png">PNG</a></li>
+					<li>comparisons of formats: <a href="http://en.wikipedia.org/wiki/Comparison_of_container_formats">audio/video containers</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+
+		<div class="slide">
+			<h1>Image file formats</h1>
+
+			<ul>
+				<li><a href="http://en.wikipedia.org/wiki/Jpeg">JPEG</a> : uses &quot;<a href="http://en.wikipedia.org/wiki/Lossy_compression">lossy compression</a>&quot;; small file size; good for photos</li>
+				<li><a href="http://en.wikipedia.org/wiki/Gif">GIF</a> : 256 colors; LZW <a href="http://en.wikipedia.org/wiki/Run_length_encoding">run-length encoding</a> lossless compression
+					<ul>
+						<li>allows <span class="term">transparency</span> (can see behind parts of image)</li>
+						<li>possible to create animated GIFs</li>
+					</ul>
+				</li>
+				<li><a href="http://en.wikipedia.org/wiki/Png">PNG</a> : free format created to avoid patent and color issues in GIF format; lossless compression, transparency</li>
+				<li>others: <a href="http://en.wikipedia.org/wiki/Tiff">TIFF</a>, <a href="http://en.wikipedia.org/wiki/Bitmap">BMP</a></li>
+				<li>image format comparisons: <a href="http://paleo.org/BKsamples/">text</a>, <a href="http://philip.greenspun.com/wtr/img-format/">photo</a>, <a href="http://en.wikipedia.org/wiki/Png">PNG</a></li>
 
 					<!--
 					http://www.ahuka.com/htmllevel1/optimizegif.html
 					http://www.ahuka.com/htmllevel1/optimizejpg.html
 					http://www.ahuka.com/htmllevel1/images.html
-					-->
-				</ul>
-			</div>
+				-->
+			</ul>
+		</div>
 
 
 
-			<div class="slide">
-				<h1>Raster and vector graphics</h1>
+		<div class="slide">
+			<h1>Raster and vector graphics</h1>
 
-				<ul>
-					<li>the image formats on the previous slide are <span class="term">raster</span> or <span class="term">bitmap</span> formats
-						<ul>
-							<li>they describe the pixels that should be drawn on the screen</li>
-						</ul>
-					</li>
-					<li><a href="http://en.wikipedia.org/wiki/Vector_graphics">vector</a> graphics formats such as <a href="http://en.wikipedia.org/wiki/SVG">SVG</a> describe shapes/lines rather than pixels
-						<ul>
-							<li>advantage: infinite precision; good for zooming, printing</li>
-							<li>disadvantage: not supported on all platforms; computationally expensive</li>
-						</ul>
-					</li>
-				</ul>
-
-				<div style="margin-top: 30px; text-align: center">
-					<img src="images/bitmap_vector.png" alt="bitmap vs. vector" />
-				</div>
-			</div>
-
-
-
-			<div class="slide">
-				<h1>Audio file formats</h1>
-
-				<ul>
-					<li><a href="http://en.wikipedia.org/wiki/Mp3">MP3</a> : uses lossy compression that eliminates inaudible sounds</li>
-					<li><a href="http://en.wikipedia.org/wiki/Advanced_Audio_Coding">AAC</a> : Apple's iTunes audio file format</li>
-					<li><a href="http://en.wikipedia.org/wiki/Windows_Media_Audio">WMA</a> / ASF: Microsoft Windows Media Audio format</li>
-					<li><a href="http://en.wikipedia.org/wiki/Ogg">OGG</a> : Linux hippie audio/video format</li>
-					<li><a href="http://en.wikipedia.org/wiki/RealAudio">RA</a> / RM / RAM : Real Audio format</li>
-					<li>other formats: <a href="http://en.wikipedia.org/wiki/Wav">WAV</a> (MS), <a href="http://en.wikipedia.org/wiki/Au_file_format">AU</a> (Sun), <a href="http://en.wikipedia.org/wiki/Aiff">AIFF</a> / SND (Apple), <a href="http://en.wikipedia.org/wiki/Flac">FLAC</a></li>
-					<li>Sequenced Music: <a href="http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface#MIDI_file_formats">MID</a>, <a href="http://en.wikipedia.org/wiki/MOD_(file_format)">MOD</a></li>
-				</ul>
-
-				<div class="handout">
+			<ul>
+				<li>the image formats on the previous slide are <span class="term">raster</span> or <span class="term">bitmap</span> formats
 					<ul>
-						<li><a href="http://en.wikipedia.org/wiki/Comparison_of_audio_codecs">comparison of formats</a></li>
+						<li>they describe the pixels that should be drawn on the screen</li>
 					</ul>
-				</div>
-			</div>
-
-
-
-			<div class="slide">
-				<h1>Video file formats</h1>
-
-				<ul>
-					<li><a href="http://en.wikipedia.org/wiki/Mpeg">MPEG</a> : Motion Picture standard video format
-						<ul>
-							<li><a href="http://en.wikipedia.org/wiki/Dvd">DVDs</a> are encoded using MPEG-2</li>
-							<li><a href="http://en.wikipedia.org/wiki/HD_DVD">HD DVDs</a> are often compressed with MPEG-4 (<a href="http://en.wikipedia.org/wiki/H.264">H.264</a>) codec</li>
-						</ul>
-					</li>
-					<li><a href="http://en.wikipedia.org/wiki/.mov">MOV</a> : Apple's QuickTime movie format</li>
-					<li><a href="http://en.wikipedia.org/wiki/Wmv">WMV</a> / ASF : Microsoft's Windows Media Video format</li>
-					<li><a href="http://en.wikipedia.org/wiki/Audio_Video_Interleave">AVI</a> : classic Microsoft video format that can be encoded in many ways</li>
-					<li><a href="http://en.wikipedia.org/wiki/Swf">SWF</a> / FLC : Macromedia Flash multimedia format</li>
-					<li><a href="http://en.wikipedia.org/wiki/Real_Video">RV</a> : Real Video format</li>
-				</ul>
-
-				<div class="handout">
+				</li>
+				<li><a href="http://en.wikipedia.org/wiki/Vector_graphics">vector</a> graphics formats such as <a href="http://en.wikipedia.org/wiki/SVG">SVG</a> describe shapes/lines rather than pixels
 					<ul>
-						<li>
-							comparisons of formats: <a href="http://www.uwm.edu/~price/video_file_format_comparison.html">1</a>,
-							<a href="http://en.wikipedia.org/wiki/Comparison_of_video_codecs">2</a>
-						</li>
+						<li>advantage: infinite precision; good for zooming, printing</li>
+						<li>disadvantage: not supported on all platforms; computationally expensive</li>
 					</ul>
-				</div>
+				</li>
+			</ul>
+
+			<div style="margin-top: 30px; text-align: center">
+				<img src="images/bitmap_vector.png" alt="bitmap vs. vector" />
 			</div>
+		</div>
 
 
 
-			<div class="slide">
-				<h1><a href="http://en.wikipedia.org/wiki/Macromedia_flash">Flash</a></h1>
+		<div class="slide">
+			<h1>Audio file formats</h1>
 
+			<ul>
+				<li><a href="http://en.wikipedia.org/wiki/Mp3">MP3</a> : uses lossy compression that eliminates inaudible sounds</li>
+				<li><a href="http://en.wikipedia.org/wiki/Advanced_Audio_Coding">AAC</a> : Apple's iTunes audio file format</li>
+				<li><a href="http://en.wikipedia.org/wiki/Windows_Media_Audio">WMA</a> / ASF: Microsoft Windows Media Audio format</li>
+				<li><a href="http://en.wikipedia.org/wiki/Ogg">OGG</a> : Linux hippie audio/video format</li>
+				<li><a href="http://en.wikipedia.org/wiki/RealAudio">RA</a> / RM / RAM : Real Audio format</li>
+				<li>other formats: <a href="http://en.wikipedia.org/wiki/Wav">WAV</a> (MS), <a href="http://en.wikipedia.org/wiki/Au_file_format">AU</a> (Sun), <a href="http://en.wikipedia.org/wiki/Aiff">AIFF</a> / SND (Apple), <a href="http://en.wikipedia.org/wiki/Flac">FLAC</a></li>
+				<li>Sequenced Music: <a href="http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface#MIDI_file_formats">MID</a>, <a href="http://en.wikipedia.org/wiki/MOD_(file_format)">MOD</a></li>
+			</ul>
+
+			<div class="handout">
 				<ul>
-					<li>format for graphics, video, audio developed by Macromedia/Adobe</li>
-					<li>widely used for many reasons:
-						<ul>
-							<li>supported in most major platforms/browsers</li>
-							<li>lightweight</li>
-							<li>can produce impressive interactive animated content</li>
-						</ul>
-					</li>
-					<li>downside: proprietary; editing software costs money (viewer is free)</li>
-					<li>examples: <a class="newwindow" href="examples/multimedia/duckhunt.swf">Duck Hunt</a>, <a href="http://www.homestarrunner.com/">Homestar Runner</a></li>
+					<li><a href="http://en.wikipedia.org/wiki/Comparison_of_audio_codecs">comparison of formats</a></li>
 				</ul>
 			</div>
+		</div>
 
 
-			<div class="slide">
-				<h1>Linking to multimedia files</h1>
 
-				<pre class="example html">
-<em>&lt;a href=&quot;video.avi&quot;&gt;</em>My video<em>&lt;/a&gt;</em>
-</pre>
+		<div class="slide">
+			<h1>Video file formats</h1>
 
+			<ul>
+				<li><a href="http://en.wikipedia.org/wiki/Mpeg">MPEG</a> : Motion Picture standard video format
+					<ul>
+						<li><a href="http://en.wikipedia.org/wiki/Dvd">DVDs</a> are encoded using MPEG-2</li>
+						<li><a href="http://en.wikipedia.org/wiki/HD_DVD">HD DVDs</a> are often compressed with MPEG-4 (<a href="http://en.wikipedia.org/wiki/H.264">H.264</a>) codec</li>
+					</ul>
+				</li>
+				<li><a href="http://en.wikipedia.org/wiki/.mov">MOV</a> : Apple's QuickTime movie format</li>
+				<li><a href="http://en.wikipedia.org/wiki/Wmv">WMV</a> / ASF : Microsoft's Windows Media Video format</li>
+				<li><a href="http://en.wikipedia.org/wiki/Audio_Video_Interleave">AVI</a> : classic Microsoft video format that can be encoded in many ways</li>
+				<li><a href="http://en.wikipedia.org/wiki/Swf">SWF</a> / FLC : Macromedia Flash multimedia format</li>
+				<li><a href="http://en.wikipedia.org/wiki/Real_Video">RV</a> : Real Video format</li>
+			</ul>
+
+			<div class="handout">
 				<ul>
-					<li>browser has a list of default applications to associate with each file type</li>
-					<li>if it has an associated app, it will run it</li>
-					<li>some file types are displayed within the browser using <span class="term">plugins</span></li>
-					<li>if it doesn't know what to do, it will just download the file</li>
-					<li>try it yourself: <a class="newwindow" href="examples/multimedia/developers.mpeg">MPG</a>, <a class="newwindow" href="examples/multimedia/win98.qt">MOV</a>, <a class="newwindow" href="examples/multimedia/powerglove.wmv">WMV</a>, <a class="newwindow" href="examples/multimedia/flintstones.rm">RM</a>, <a class="newwindow" href="examples/multimedia/duckhunt.swf">SWF</a>, <a class="newwindow" href="examples/multimedia/winxp.wav">WAV</a>, <a class="newwindow" href="examples/multimedia/town.mid">MID</a></li>
-				</ul>
-			</div>
-
-
-
-			<div class="slide">
-				<h1>File types and browser plugins</h1>
-
-				<ul>
-					<li><span class="term">plugin</span>: helper app launched within the browser to view certain file types
-						<ul>
-							<li>examples: Flash player, QuickTime, Windows Media Player, Acrobat Reader, Java</li>
-						</ul>
-
-					</li>
-					<li><a class="newwindow" href="about:plugins">about:plugins</a> URL will show you list of plugins in Firefox</li>
-					<li>enter preferences, then choose Content, File Types, Manage...
-						<ul>
-							<li>can change which app/plugin will be used to open particular file types</li>
-						</ul>
+					<li>
+						comparisons of formats: <a href="http://www.uwm.edu/~price/video_file_format_comparison.html">1</a>,
+						<a href="http://en.wikipedia.org/wiki/Comparison_of_video_codecs">2</a>
 					</li>
 				</ul>
-
-				<div style="text-align: center">
-					<img src="images/plugins_list.png" alt="browser plugins" />
-				</div>
 			</div>
+		</div>
+
+
+
+		<div class="slide">
+			<h1><a href="http://en.wikipedia.org/wiki/Macromedia_flash">Flash</a></h1>
+
+			<ul>
+				<li>format for graphics, video, audio developed by Macromedia/Adobe</li>
+				<li>widely used for many reasons:
+					<ul>
+						<li>supported in most major platforms/browsers</li>
+						<li>lightweight</li>
+						<li>can produce impressive interactive animated content</li>
+					</ul>
+				</li>
+				<li>downside: proprietary; editing software costs money (viewer is free)</li>
+				<li>examples: <a class="newwindow" href="examples/multimedia/duckhunt.swf">Duck Hunt</a>, <a href="http://www.homestarrunner.com/">Homestar Runner</a></li>
+			</ul>
+		</div>
+
+
+		<div class="slide">
+			<h1>Linking to multimedia files</h1>
+
+			<pre class="example html">
+				<em>&lt;a href=&quot;video.avi&quot;&gt;</em>My video<em>&lt;/a&gt;</em>
+			</pre>
+
+			<ul>
+				<li>browser has a list of default applications to associate with each file type</li>
+				<li>if it has an associated app, it will run it</li>
+				<li>some file types are displayed within the browser using <span class="term">plugins</span></li>
+				<li>if it doesn't know what to do, it will just download the file</li>
+				<li>try it yourself: <a class="newwindow" href="examples/multimedia/developers.mpeg">MPG</a>, <a class="newwindow" href="examples/multimedia/win98.qt">MOV</a>, <a class="newwindow" href="examples/multimedia/powerglove.wmv">WMV</a>, <a class="newwindow" href="examples/multimedia/flintstones.rm">RM</a>, <a class="newwindow" href="examples/multimedia/duckhunt.swf">SWF</a>, <a class="newwindow" href="examples/multimedia/winxp.wav">WAV</a>, <a class="newwindow" href="examples/multimedia/town.mid">MID</a></li>
+			</ul>
+		</div>
+
+
+
+		<div class="slide">
+			<h1>File types and browser plugins</h1>
+
+			<ul>
+				<li><span class="term">plugin</span>: helper app launched within the browser to view certain file types
+					<ul>
+						<li>examples: Flash player, QuickTime, Windows Media Player, Acrobat Reader, Java</li>
+					</ul>
+
+				</li>
+				<li><a class="newwindow" href="about:plugins">about:plugins</a> URL will show you list of plugins in Firefox</li>
+				<li>enter preferences, then choose Content, File Types, Manage...
+					<ul>
+						<li>can change which app/plugin will be used to open particular file types</li>
+					</ul>
+				</li>
+			</ul>
+
+			<div style="text-align: center">
+				<img src="images/plugins_list.png" alt="browser plugins" />
+			</div>
+		</div>
 
 
 
@@ -1434,63 +1437,63 @@ heck's the toilet plunger gone?&lt;/p&gt;
 					<li>embeds a YouTube video in the page area called <code>videoarea</code></li>
 				</ul>
 			</div>
-			-->
+		-->
 
 
 
-			<div class="slide">
-				<h1>HTML 5 embedding a <a class="popup" href="http://diveintohtml5.org/video.html">video</a></h1>
+		<div class="slide">
+			<h1>HTML 5 embedding a <a class="popup" href="http://diveintohtml5.org/video.html">video</a></h1>
 
-				<pre class="examplecode html">
-&lt;video src=&quot;video.ogv&quot; width=&quot;425&quot; height=&quot;350&quot;&gt;&lt;/video&gt;
-</pre>
+			<pre class="examplecode html">
+				&lt;video src=&quot;video.ogv&quot; width=&quot;425&quot; height=&quot;350&quot;&gt;&lt;/video&gt;
+			</pre>
 
-				<ul>
-					<li>
-						yes, please
-					</li>
-					<li>
-						it'll also be easy to manipulate (play/pause/stop/etc.) the video via the JS DOM
-					</li>
-					<li>
-						one drawback: drama over codecs such as MPEG 4 / H.264, Ogg Theora / VP3, WebM, AVI
-					</li>
-				</ul>
-			</div>
-
-
-
-			<div class="slide">
-				<h1>Embedded objects: <code><a href="http://www.w3schools.com/tags/tag_object.asp">&lt;object&gt;</a></code></h1>
-
-				<pre class="example html">
-&lt;object data=&quot;video.avi&quot; type=&quot;video/avi&quot;&gt;&lt;/object&gt;
-</pre>
-
-				<ul>
-					<li>this is how you used to embed a video prior to HTML5</li>
-					<li>attributes: <code>archive</code>, <code>classid</code>, <code>codebase</code>, <code>codetype</code>, <strong><code>data</code></strong>, <code>declare</code>, <strong><code>height</code></strong>, <code>name</code>, <code>standby</code>, <strong><code>type</code></strong>, <code>usemap</code>, <strong><code>width</code></strong></li>
-					<li><code>type</code> attribute specifies file's <a href="https://www.sitepoint.com/web-foundations/mime-types-complete-list/">MIME type</a></li>
-					<!-- <li>IE6 requires non-standard <code><a href="http://en.wikipedia.org/wiki/Clsid">classid</a></code> attribute to specify which plugin to use (<a href="http://www.castlecops.com/CLSID.html">list</a>)</li> -->
-				</ul>
-			</div>
+			<ul>
+				<li>
+					yes, please
+				</li>
+				<li>
+					it'll also be easy to manipulate (play/pause/stop/etc.) the video via the JS DOM
+				</li>
+				<li>
+					one drawback: drama over codecs such as MPEG 4 / H.264, Ogg Theora / VP3, WebM, AVI
+				</li>
+			</ul>
+		</div>
 
 
 
-			<div class="slide">
-				<h1>Parameters: <code><a href="http://www.w3schools.com/tags/tag_param.asp">&lt;param&gt;</a></code></h1>
+		<div class="slide">
+			<h1>Embedded objects: <code><a href="http://www.w3schools.com/tags/tag_object.asp">&lt;object&gt;</a></code></h1>
 
-				<pre class="example html">
-&lt;object data="duckhunt.mp4" width=&quot;100&quot; height=&quot;50&quot;&gt;
-  <em>&lt;param name=&quot;autoplay&quot; value=&quot;true&quot; /&gt;</em>
-&lt;/object&gt;
-</pre>
+			<pre class="example html">
+				&lt;object data=&quot;video.avi&quot; type=&quot;video/avi&quot;&gt;&lt;/object&gt;
+			</pre>
 
-				<ul>
-					<li>indicates a parameter to be passed to the embedded object</li>
-					<li>required <code>name</code> and <code>value</code> attributes tell the object what parameter this is and what value it should have</li>
-				</ul>
-			</div>
+			<ul>
+				<li>this is how you used to embed a video prior to HTML5</li>
+				<li>attributes: <code>archive</code>, <code>classid</code>, <code>codebase</code>, <code>codetype</code>, <strong><code>data</code></strong>, <code>declare</code>, <strong><code>height</code></strong>, <code>name</code>, <code>standby</code>, <strong><code>type</code></strong>, <code>usemap</code>, <strong><code>width</code></strong></li>
+				<li><code>type</code> attribute specifies file's <a href="https://www.sitepoint.com/web-foundations/mime-types-complete-list/">MIME type</a></li>
+				<!-- <li>IE6 requires non-standard <code><a href="http://en.wikipedia.org/wiki/Clsid">classid</a></code> attribute to specify which plugin to use (<a href="http://www.castlecops.com/CLSID.html">list</a>)</li> -->
+			</ul>
+		</div>
+
+
+
+		<div class="slide">
+			<h1>Parameters: <code><a href="http://www.w3schools.com/tags/tag_param.asp">&lt;param&gt;</a></code></h1>
+
+			<pre class="example html">
+				&lt;object data="duckhunt.mp4" width=&quot;100&quot; height=&quot;50&quot;&gt;
+				<em>&lt;param name=&quot;autoplay&quot; value=&quot;true&quot; /&gt;</em>
+				&lt;/object&gt;
+			</pre>
+
+			<ul>
+				<li>indicates a parameter to be passed to the embedded object</li>
+				<li>required <code>name</code> and <code>value</code> attributes tell the object what parameter this is and what value it should have</li>
+			</ul>
+		</div>
 
 
 <!--
@@ -1520,34 +1523,34 @@ heck's the toilet plunger gone?&lt;/p&gt;
 					<li>this code, unlike the code on YouTube's pages, is HTML5-compliant</li>
 				</ul>
 			</div>
--->
+		-->
 
-			<div class="slide">
-				<h1>Embedding a YouTube video</h1>
+		<div class="slide">
+			<h1>Embedding a YouTube video</h1>
 
-				<pre class="example html">
-&lt;iframe width=&quot;<var>width</var>&quot; height=&quot;<var>height</var>&quot;
- src=&quot;<var>videoURL</var>&quot;&gt;
-&lt;/iframe&gt;
-</pre>
+			<pre class="example html">
+				&lt;iframe width=&quot;<var>width</var>&quot; height=&quot;<var>height</var>&quot;
+				src=&quot;<var>videoURL</var>&quot;&gt;
+				&lt;/iframe&gt;
+			</pre>
 
-				<pre class="html">
-&lt;iframe width=&quot;<em>425</em>&quot; height=&quot;<em>350</em>&quot;
- src=&quot;<em>http://www.youtube.com/embed/eKgPY1adc0A</em>&quot;&gt;
-&lt;/iframe&gt;
-</pre>
+			<pre class="html">
+				&lt;iframe width=&quot;<em>425</em>&quot; height=&quot;<em>350</em>&quot;
+				src=&quot;<em>http://www.youtube.com/embed/eKgPY1adc0A</em>&quot;&gt;
+				&lt;/iframe&gt;
+			</pre>
 				<!--
                                 <hr />
 
                                 <ul>
                                     <li>this code, unlike the code on YouTube's pages, is HTML5-compliant</li>
                                 </ul>
-                                -->
-			</div>
+                            -->
+                        </div>
 
 
-		</div><!-- end div class="presentation" -->
-	</body>
+                    </div><!-- end div class="presentation" -->
+                </body>
 
-<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/02-html.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:12 GMT -->
-</html>
+                <!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/02-html.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:12 GMT -->
+                </html>

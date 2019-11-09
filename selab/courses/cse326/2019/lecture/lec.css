@@ -17,6 +17,11 @@ body {
   padding-bottom: 25px;
 }
 
+#slide0 h1{
+  background-color: #DADADA;
+  padding: 10px;
+  margin-right: 10px;
+} 
 /* css for left section */
 
 .layout {
@@ -25,12 +30,36 @@ body {
   overflow: hidden;
 }
 
+#custom{
+  overflow: hidden;
+  display: none;
+}
+
+#navList{
+  float: left;
+}
+
+#controls{
+  background-color:  #34495e;
+  color: white;
+}
+
 #side {
-  padding-top: 5px;
+  /*  padding-top: 5px;*/
   width : 92%;
   height : 100%;
   float: left;
+  background-color: #34495e;
 }
+
+
+/*#custom-side{
+  width : 92%;
+  height: 100%;
+  overflow: hidden;
+  float: right;
+  background-color: blue;
+}*/
 
 #controls {
   display: inline-block;
@@ -60,20 +89,23 @@ body {
 #index {
   overflow-y: scroll;
   overflow-x: hidden;
-  border-top: 1px solid #B2B2B3;
-  border-bottom: 1px solid #B2B2B3;
+  border-radius: 5px;
   padding-left: 0;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
 a:link, a:visited {
-  color: #414141;
+  color: #abb4be;
   text-decoration: none;
 }
 
+#index li{
+  padding: 10px;
+}
+
 #index li:hover {
-  background-color: #BEBEBE;
+  background-color: black;
 }
 
 #footer {
@@ -82,36 +114,44 @@ a:link, a:visited {
   margin-top: 10vh;
 }
 
-#line {
+/*#line {
   height:100%;
   width:2px;
   margin-left: 1%;
   background-color: #BEBEBE;
   float:left;
-}
+}*/
 
 #fold {
-  width: 6%;
   height: 100%;
   float: left;
   font-family: 'Nanum Gothic', sans-serif;
-  color: #414141;
+  /*color: #414141;*/
+  color: white;
+  background-color: black;
+  opacity: 0.2;
+
 }
 
 #fold p {
   margin-top: 45vh;
+  padding: 3px;
+}
+
+#footer{
+  clear: both;
 }
 
 /*css for scroll (in webkit)*/
-body::-webkit-scrollbar{width: 10px;}
+body::-webkit-scrollbar{width: 13px;}
 body::-webkit-scrollbar-track {background-color:white;}
 body::-webkit-scrollbar-thumb {background-color:#414141;border-radius: 5px;}
 body::-webkit-scrollbar-thumb:hover {background: #555;}
 body::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
-height:10px; background:white;}
-#index::-webkit-scrollbar{width: 5px;}
-#index::-webkit-scrollbar-track {background-color:white;}
-#index::-webkit-scrollbar-thumb {background-color:#BEBEBE;border-radius: 10px;}
-#index::-webkit-scrollbar-thumb:hover {background: #555;}
-#index::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
-height:5px; background:white;}
+  height:10px; background:white;}
+  #index::-webkit-scrollbar{width: 8px;}
+  #index::-webkit-scrollbar-track {background-color:#34495e;}
+  #index::-webkit-scrollbar-thumb {background-color:#0088cc;border-radius: 10px;}
+  #index::-webkit-scrollbar-thumb:hover {background: #0088cc;}
+  #index::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    height:5px; background:#34495e;}
