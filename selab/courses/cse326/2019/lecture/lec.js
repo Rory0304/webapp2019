@@ -43,10 +43,10 @@ function editHtml() {
   var layoutArr = (layoutDiv[0].innerHTML).split(/\n/g);
   layoutDiv[0].innerHTML = '<div id="side">' +
    layoutArr[1] +
-   '<div id="navList"><ul id="index" ><\/ul><\/div>' +
-   layoutArr[4] + layoutArr[5] + layoutArr[6] +layoutArr[7] +
-   '</div> <div id="line"> </div>' +
-   '<a href="javascript:sideFold()"> <div id="fold"><p>&rsaquo;</p></div> </a>';
+   '<div id="navList"><ul id="index" ><\/ul><\/div>' + '<div id="custom"><div id="background"></div> '+
+  '<div id="font"><select id="fontselect" name="selectFontFamily" onchange="fontupdate();"><option> Serif </option><option> Tahoma </option><option> Arial </option></select></div></div>' + 
+   layoutArr[4] + layoutArr[5] + layoutArr[6] + layoutArr[7]
+   +'</div><div id="line"> </div>' +  '<a href="javascript:sideFold()"> <div id="fold"><p>||</p></div> </a>';
 }
 
 function createControls() {
@@ -141,6 +141,11 @@ function pptResizing() {
 
 function sideFold() {
   fold('side');
+  pptResizing();
+}
+
+function customFold() {
+  fold('custom');
   pptResizing();
 }
 
@@ -259,6 +264,21 @@ function keys(event) {
           oneByOne(smax-1-snum);
           break;
     }
+  
+function customize(){
+  var custom = document.getElementById("custom");
+  var layout = document.getElementsByClassName("layout");
+  var navList = document.getElementById("navList");
+  if(custom.style.display == ''){
+    custom.style.display = 'block';
+    layout[0].style.width = "50%";
+    navList.style.width = "50%";
+  }
+  else{
+   custom.style.display = '';
+   layout[0].style.width = "25%";
+   navList.style.width = '';
+  }
 }
 
 //function for index
