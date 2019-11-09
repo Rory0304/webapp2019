@@ -1,3 +1,4 @@
+
 body {
   margin : 0;
   padding: 0;
@@ -28,6 +29,7 @@ body {
   width : 25%;
   position: fixed;
   overflow: hidden;
+  -webkit-transition: width 0.6s;
 }
 
 #custom{
@@ -35,7 +37,7 @@ body {
   overflow: hidden;
   display: none;
   color : white;
-/*  margin-left: 2px;*/
+  /*  margin-left: 2px;*/
 }
 
 #font{
@@ -59,8 +61,10 @@ body {
 pre{
   background-color: #f5f5f5;
 }
+
 #navList{
   float: left;
+  margin-bottom: 30px;
 }
 
 #controls{
@@ -74,11 +78,13 @@ pre{
   height : 100%;
   float: left;
   background-color: #34495e;
+  /*-webkit-transition: width 0.6s;*/
 }
 
 #controls {
   display: inline-block;
   width : 100%;
+  background-color: black;
 }
 
 #navaLinks {
@@ -95,10 +101,16 @@ pre{
 }
 
 #buttons a img{
-  width : 23px;
-  height: 23px;
-  margin-right: 3px;
+  width : 25px;
+  height: 25px;
+  margin-right: 6px;
+  margin-top: 3px;
+  padding: 2px;
   float: right;
+}
+
+#sideNum{
+  margin-top: 3px;
 }
 
 #index {
@@ -106,8 +118,8 @@ pre{
   overflow-x: hidden;
   border-radius: 5px;
   padding-left: 0;
-  padding-top: 5px;
   padding-bottom: 5px;
+  margin: 0;
 }
 
 a:link, a:visited {
@@ -127,6 +139,7 @@ a:link, a:visited {
   font-size: 9pt;
   font-family: 'Raleway', sans-serif;
   margin-top: 10vh;
+  color: white;
 }
 
 /*#line {
@@ -135,38 +148,38 @@ a:link, a:visited {
   margin-left: 1%;
   background-color: #BEBEBE;
   float:left;
-}*/
+  }*/
 
-#fold {
-  height: 100%;
-  float: left;
-  font-family: 'Nanum Gothic', sans-serif;
-  /*color: #414141;*/
-  color: white;
-  background-color: black;
-  opacity: 0.2;
+  #fold {
+    height: 100%;
+    float: left;
+    font-family: 'Nanum Gothic', sans-serif;
+    /*color: #414141;*/
+    color: white;
+    background-color: black;
+    opacity: 0.2;
 
-}
+  }
 
-#fold p {
-  margin-top: 45vh;
-  padding: 3px;
-}
+  #fold p {
+    margin-top: 45vh;
+    padding: 3px;
+  }
 
-#footer{
-  clear: both;
-}
+  #footer{
+    clear: both;
+  }
 
-/*css for scroll (in webkit)*/
-body::-webkit-scrollbar{width: 13px;}
-body::-webkit-scrollbar-track {background-color:white;}
-body::-webkit-scrollbar-thumb {background-color:#414141;border-radius: 5px;}
-body::-webkit-scrollbar-thumb:hover {background: #555;}
-body::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
-  height:10px; background:white;}
-  #index::-webkit-scrollbar{width: 8px;}
-  #index::-webkit-scrollbar-track {background-color:#34495e;}
-  #index::-webkit-scrollbar-thumb {background-color:#0088cc;border-radius: 10px;}
-  #index::-webkit-scrollbar-thumb:hover {background: #0088cc;}
-  #index::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
-    height:5px; background:#34495e;}
+  /*css for scroll (in webkit)*/
+  body::-webkit-scrollbar{width: 13px;}
+  body::-webkit-scrollbar-track {background-color:white;}
+  body::-webkit-scrollbar-thumb {background-color:#414141;border-radius: 5px;}
+  body::-webkit-scrollbar-thumb:hover {background: #555;}
+  body::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    height:10px; background:white;}
+    #index::-webkit-scrollbar{width: 10px;}
+    #index::-webkit-scrollbar-track {background-color:#34495e;}
+    #index::-webkit-scrollbar-thumb {background-color:#0088cc;border-radius: 10px;}
+    #index::-webkit-scrollbar-thumb:hover {background: #0088cc;}
+    #index::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+      height:5px; background:#34495e;}

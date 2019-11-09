@@ -59,8 +59,8 @@ function createControls() {
     '<span id="slideNum"> </span>' +
     '<a id="next" title="Next Slide" href="javascript:point(1);">&rsaquo;<\/a></div>' +
     '<div id = "buttons">' +
-    '<a href="javascript:customize();" /> <img src = "images/font.png"/> </a>' +
-    '<a href="javascript:oneByOne(0);" /> <img src = "images/vertical.png"/> </a></div>';
+    '<a href="javascript:customize();" /> <img src = "images/custom1.png"/> </a>' +
+    '<a href="javascript:oneByOne(0);" /> <img src = "images/vertical1.png"/> </a></div>';
     //+ '<\/form>';
   }
 
@@ -89,9 +89,9 @@ function createControls() {
 
         otext = otext.replace(/\r/g, "");
         otext = otext.replace(/\n/g, "");
-        var value = n + ':' + otext ;
+        var value = n + '. ' + otext ;
         if (hasClass(obj, 'titleslide') || hasClass(obj, 'lecturetitle')) {
-          value = n + " : === " + otext + " ===";
+          value = n + " . === " + otext + " ===";
         }
 
         var li = document.createElement("li");
@@ -308,11 +308,12 @@ function fontupdate(value){
  if(value==2){
    var fontsize = document.getElementById("fontsizeSlect").value;
    var slides =  document.getElementsByClassName("slide");
+   slides[0].style.fontSize
    var i;
    for (i = 0; i < slides.length; i++) {
     slides[i].style.fontSize = fontsize;
-   }
   }
+}
 }
 
 //function for index
