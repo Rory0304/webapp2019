@@ -44,7 +44,7 @@ function editHtml() {
   layoutDiv[0].innerHTML = '<div id="side">' +
    layoutArr[1] +
    '<div id="navList"><ul id="index" ><\/ul><\/div>' + '<div id="custom"><div id="background"></div> '+
-  '<div id="font"><select id="fontselect" name="selectFontFamily" onchange="fontupdate();"><option> Serif </option><option> Tahoma </option><option> Arial </option></select></div></div>' + 
+  '<div id="font"><select id="fontselect" name="selectFontFamily" onchange="fontupdate();"><option> Serif </option><option> Tahoma </option><option> Arial </option></select></div></div>' +
    layoutArr[4] + layoutArr[5] + layoutArr[6] + layoutArr[7]
    +'</div><div id="line"> </div>' +  '<a href="javascript:sideFold()"> <div id="fold"><p>||</p></div> </a>';
 }
@@ -264,7 +264,8 @@ function keys(event) {
           oneByOne(smax-1-snum);
           break;
     }
-  
+}
+
 function customize(){
   var custom = document.getElementById("custom");
   var layout = document.getElementsByClassName("layout");
