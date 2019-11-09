@@ -1,7 +1,8 @@
+//some of function is from original 'selap'page "slides.js"
+
 var OBO = false;
 var smax = 1;
 var snum = 0;
-var indexLeng = 0;
 
 // function for function get ready
 function nodeValue(node) {
@@ -54,9 +55,9 @@ function createControls() {
 
     controlsDiv.innerHTML = //'<form action="#" id="controlForm">' +
     '<div id="navaLinks">' +
-    '<a accesskey="z" id="prev" title="Previous Slide" href="javascript:point(-1);">&lsaquo;<\/a>' +
+    '<a id="prev" title="Previous Slide" href="javascript:point(-1);">&lsaquo;<\/a>' +
     '<span id="slideNum"> </span>' +
-    '<a accesskey="x" id="next" title="Next Slide" href="javascript:point(1);">&rsaquo;<\/a></div>' +
+    '<a id="next" title="Next Slide" href="javascript:point(1);">&rsaquo;<\/a></div>' +
     '<div id = "buttons">' +
     '<a href="javascript:customize();" /> <img src = "images/font.png"/> </a>' +
     '<a href="javascript:oneByOne(0);" /> <img src = "images/vertical.png"/> </a></div>';
@@ -102,7 +103,6 @@ function slideLabel() {
         link.appendChild(li);
 
         index.appendChild(link);
-        indexLeng = indexLeng+1;
       }
 }
 
@@ -158,7 +158,6 @@ function trackPage() {
       var view = $(".presentation > div").withinviewport();
       if (typeof view[0] != 'undefined')
         snum = parseInt(view[0].id.replace(/[^0-9]/g,''));
-      console.log("track"+snum);
       viewport()
     });
   });
@@ -181,9 +180,11 @@ function detectResize() {
 //function for change layout to one-by-one
 function oneByOne(n) {
   var num = snum + n;
+  if (num >= smax || num < 0)
+    return ;
   var slide = document.getElementsByClassName("slide");
   if (OBO == true && n == 0) {
-    for (var i=0;i<indexLeng;i++) {
+    for (var i=0;i<smax;i++) {
       if (i != num) {
         slide[i].style.display = 'block';
       }
@@ -199,7 +200,7 @@ function oneByOne(n) {
     OBO = true;
     snum = num;
     viewport()
-    for (var j=0;j<indexLeng;j++) {
+    for (var j=0;j<smax;j++) {
       if (j != num) {
         slide[j].style.display = 'none';
       }
@@ -209,6 +210,55 @@ function oneByOne(n) {
       }
     }
   }
+}
+
+function standardizeEvent(event) {
+    var e = event || window.event;
+    // e.which = e.button || e.which;
+    if (!e.keyCode) {
+        try {
+            e.keyCode = e.which;
+        } catch (ex) {}
+    }
+    if (!e.srcElement) {
+        try {
+            e.srcElement = e.target;
+        } catch (ex) {}
+    }
+    return e;
+}
+
+// 'keys' code adapted from MozPoint (http://mozpoint.mozdev.org/)
+function keys(event) {
+  if (OBO == false)
+    return;
+
+    event = standardizeEvent(event);
+    var modifierKey = event.ctrlKey || event.altKey || event.metaKey;
+
+    switch (event.keyCode) {
+      case 32: // spacebar
+      case 34: // page down
+      case 39: // rightkey
+      case 40: // downkey
+          if (!modifierKey) {
+            oneByOne(1);
+          }
+          break;
+      case 33: // page up
+      case 37: // leftkey
+      case 38: // upkey
+          if (!modifierKey) {
+            oneByOne(-1);
+          }
+          break;
+      case 36: // home
+          oneByOne(-snum);
+          break;
+      case 35: // end
+          oneByOne(smax-1-snum);
+          break;
+    }
 }
 
 //function for index
@@ -238,6 +288,7 @@ function startup() {
   detectResize();
   pptResizing();
   trackPage();
+  document.onkeydown = keys;
 }
 
 window.onload = startup;
