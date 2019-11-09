@@ -193,6 +193,7 @@ function oneByOne(n) {
     }
     OBO = false;
     trackPage();
+    location.replace("#slide"+num);
   }
   else {
     OBO = true;
