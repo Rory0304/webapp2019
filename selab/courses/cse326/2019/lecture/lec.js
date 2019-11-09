@@ -43,9 +43,16 @@ function editHtml() {
   layoutDiv[0].innerHTML = '<div id="side">' +
    layoutArr[1] +
    '<div id="navList"><ul id="index" ><\/ul><\/div>' +
-   layoutArr[4] + layoutArr[5] + layoutArr[6] +layoutArr[7] +
-   '</div> <div id="line"> </div>' +
-   '<a href="javascript:sideFold()"> <div id="fold"><p>&rsaquo;</p></div> </a>';
+   layoutArr[4] + layoutArr[5] + layoutArr[6] +layoutArr[7] + 
+   '</div> <div id="custom"><div id="background"></div><div id="font"></div></div><div id="line"> </div>' + 
+   '<a href="javascript:sideFold()"> <div id="fold"><p>||</p></div> </a>';
+  // var layoutArr = (layoutDiv[0].innerHTML).split(/\n/g);
+  // layoutDiv[0].innerHTML = '<div id="side">' +
+  //  layoutArr[1] +
+  //  '<div id="navList"><ul id="index" ><\/ul><\/div>' +
+  //  layoutArr[4] + layoutArr[5] + layoutArr[6] +layoutArr[7] +
+  //  '</div>' + '<div id="custom"><div id="background"></div> <div id="font"></div></div>' + '<div id="line">'
+  //  '<a href="javascript:sideFold()"> <div id="fold"><p>&rsaquo;</p></div></a></div>' + '</div>';
 }
 
 function createControls() {
@@ -144,6 +151,11 @@ function sideFold() {
   pptResizing();
 }
 
+function customFold() {
+  fold('custom');
+  pptResizing();
+}
+
 // function for tracking scoll
 function viewport() {
   var sn = document.getElementById('snHere');
@@ -208,6 +220,24 @@ function oneByOne(n) {
         slide[j].style.fontSize = '17pt';
       }
     }
+  }
+}
+
+function customize(){
+  x = document.getElementById("custom");
+  var y = document.getElementsByClassName("layout");
+  var z = document.getElementById("index");
+  if(x.style.display == ''){
+    x.style.display = 'block';
+    y[0].style.width = "55%";
+    z.style.width = "50%";
+
+
+  }
+  else{
+   x.style.display = '';
+   y[0].style.width = "25%";
+   z.style.width = ''; 
   }
 }
 
