@@ -31,10 +31,12 @@ body {
 }
 
 #custom{
-  width : 25%;
   overflow: hidden;
-  float: left;
   display: none;
+}
+
+#navList{
+  float: left;
 }
 
 #controls{
@@ -121,7 +123,6 @@ a:link, a:visited {
 }*/
 
 #fold {
-  width: 5%;
   height: 100%;
   float: left;
   font-family: 'Nanum Gothic', sans-serif;
@@ -135,6 +136,10 @@ a:link, a:visited {
 #fold p {
   margin-top: 45vh;
   padding: 3px;
+}
+
+#footer{
+  clear: both;
 }
 
 /*css for scroll (in webkit)*/
