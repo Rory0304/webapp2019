@@ -31,10 +31,34 @@ body {
 }
 
 #custom{
+  width: 50%;
   overflow: hidden;
   display: none;
+  color : white;
+/*  margin-left: 2px;*/
 }
 
+#font{
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+#font select{
+  width: 200px;
+  height: 30px;
+  border: 6px solid transparent;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#font select option{
+  padding: 5px;
+  font-size: 15px;
+}
+
+pre{
+  background-color: #f5f5f5;
+}
 #navList{
   float: left;
 }
@@ -51,15 +75,6 @@ body {
   float: left;
   background-color: #34495e;
 }
-
-
-/*#custom-side{
-  width : 92%;
-  height: 100%;
-  overflow: hidden;
-  float: right;
-  background-color: blue;
-}*/
 
 #controls {
   display: inline-block;
