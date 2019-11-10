@@ -213,7 +213,7 @@ function oneByOne(n) {
       else {
         slide[j].style.display = 'block';
         var check = document.getElementById("fontsizeSlect");
-        if(check.selectedIndex==""){
+        if(check.selectedIndex==-1){
           slide[j].style.fontSize = '17pt'; 
         }     
       }
