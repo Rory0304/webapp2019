@@ -212,9 +212,10 @@ function oneByOne(n) {
       }
       else {
         slide[j].style.display = 'block';
-        if(document.getElementById("fontsizeSlect").value =='0'){
-          slide[j].style.fontSize = '17pt';
-        }
+        var check = document.getElementById("fontsizeSlect");
+        if(check.selectedIndex==""){
+          slide[j].style.fontSize = '17pt'; 
+        }     
       }
     }
   }
@@ -278,7 +279,6 @@ function customize(){
     custom.style.display = 'block';
     layout[0].style.width = "50%";
     navList.style.width = "50%";
-    font();
   }
   else{
    custom.style.display = '';
@@ -346,6 +346,7 @@ function startup() {
   detectResize();
   pptResizing();
   trackPage();
+  font();
   document.onkeydown = keys;
 }
 
