@@ -202,6 +202,7 @@ function oneByOne(n) {
     location.replace("#slide"+num);
   }
   else {
+    //가로
     OBO = true;
     snum = num;
     viewport()
@@ -211,7 +212,9 @@ function oneByOne(n) {
       }
       else {
         slide[j].style.display = 'block';
-        slide[j].style.fontSize = '17pt';
+        if(document.getElementById("fontsizeSlect").value =='0'){
+          slide[j].style.fontSize = '17pt';
+        }
       }
     }
   }
