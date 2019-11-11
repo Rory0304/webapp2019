@@ -43,7 +43,7 @@ function editHtml() {
   var layoutArr = (layoutDiv[0].innerHTML).split(/\n/g);
   layoutDiv[0].innerHTML = '<div id="side">' +
   layoutArr[1] +
-  '<div id="navList"><ul id="index" ><\/ul><\/div>' + '<div id="custom"><div id="background"></div> '+
+  '<div id="navList"><ul id="index" ><\/ul><\/div>' + '<div id="customize"><div id="background"></div> '+
   '<div id="font"></div></div>' +
   layoutArr[4] + layoutArr[5] + layoutArr[6] + layoutArr[7]
   +'</div><div id="line"> </div>' +  '<a href="javascript:sideFold()"> <div id="fold"><p>||</p></div> </a>';
@@ -272,7 +272,7 @@ function keys(event) {
 
 //function for showing customized page
 function customize(){
-  var custom = document.getElementById("custom");
+  var custom = document.getElementById("customize");
   var layout = document.getElementsByClassName("layout");
   var navList = document.getElementById("navList");
   if(custom.style.display == ''){
@@ -292,15 +292,20 @@ function font(){
   var fontdiv = document.getElementById("font");
   fontdiv.innerHTML = '<p>Font</p>' + 
   '<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1);">' + 
-  '<option> Serif </option><option> Tahoma </option><option> Arial </option><option>Monospace</option>' + 
-  '<option>Roboto</option><option>Times New Roman</option><option>Garamond</option>' +
-  '<option>Comic Sans MS</option><option>Courier</option><option>Impact</otpion></select>' + 
+  '<option style="font-family:Serif" value="serif"> Serif </option><option style="font-family:Tahoma" value="tahoma"> Tahoma </option>'+
+  '<option style="font-family:Arial" value="arial"> Arial </option><option style="font-family:Monospace" value="mono">Monospace</option>' + 
+  '<option style="font-family:Roboto" value="roboto">Roboto</option><option style="font-family:Times New Roman" value="newroman">Times New Roman</option>' + 
+  '<option style="font-family:Garamond" value="garamond">Garamond</option><option style="font-family:Comic Sans MS" value="comic">Comic Sans MS</option>' + 
+  '<option style="font-family:Courier" value="courier">Courier</option><option style="font-family:Impact" value="impact">Impact</otpion></select>' + 
   '<p>Font Size</p>' + 
   '<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate(2);">' + 
-  '<option>10px</option><option>12px</option><option>14px</option><option>16px</option><option>18px</option>' + 
-  '<option>20px</option><option>22px</option><option>24px</option><option>26px</option><option>28px</option>' + 
-  '<option>30px</option></select>'
-  ; 
+  '<option>10pt</option><option>12pt</option><option>14pt</option><option>16pt</option><option>18pt</option>' + 
+  '<option>20pt</option><option>22pt</option><option>24pt</option><option>26pt</option><option>28pt</option>' + 
+  '<option>30pt</option></select>' +
+  '<p>Title Color</p>' + 
+  '<input type="text" id="custom" />' + 
+  '<p>Contents Color</p>' + 
+  '<input type="text" id="custom1" />'
 }
 
 function fontupdate(value){
@@ -311,12 +316,44 @@ function fontupdate(value){
  if(value==2){
    var fontsize = document.getElementById("fontsizeSlect").value;
    var slides =  document.getElementsByClassName("slide");
-   slides[0].style.fontSize
    var i;
    for (i = 0; i < slides.length; i++) {
     slides[i].style.fontSize = fontsize;
   }
 }
+
+}
+
+function colorpicker(){
+
+  jQuery(function($){
+    $("#custom").spectrum({
+      color: "black",
+      showPalette: true,
+      palette: [
+      ['black', 'white', 'blanchedalmond'],
+      ['rgb(255, 128, 0);', 'hsv 100 70 50', 'lightyellow']
+      ],
+      change: function(color){
+
+        $(".presentation h1").css("color",color.toHexString());
+      }
+    });
+  });
+
+  jQuery(function($){
+    $("#custom1").spectrum({
+      color: "black",
+      showPalette: true,
+      palette: [
+      ['black', 'white', 'blanchedalmond'],
+      ['rgb(255, 128, 0);', 'hsv 100 70 50', 'lightyellow']
+      ],
+      change: function(color){
+        $(".presentation:not(h1)").css("color",color.toHexString());
+      }
+    });
+  });
 }
 
 //function for index
@@ -347,6 +384,7 @@ function startup() {
   pptResizing();
   trackPage();
   font();
+  colorpicker();
   document.onkeydown = keys;
 }
 
