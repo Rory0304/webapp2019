@@ -22,6 +22,7 @@ body {
   background-color: #DADADA;
   padding: 10px;
   margin-right: 10px;
+  color: black;
 } 
 /* css for left section */
 
@@ -32,7 +33,7 @@ body {
   -webkit-transition: width 0.6s;
 }
 
-#custom{
+#customize{
   width: 50%;
   overflow: hidden;
   display: none;
