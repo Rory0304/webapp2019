@@ -46,7 +46,7 @@ function editHtml() {
   '<div id="navList"><ul id="index" ><\/ul><\/div>' + '<div id="customize"><div id="background"></div> '+
   '<div id="font"></div></div>' +
   layoutArr[4] + layoutArr[5] + layoutArr[6] + layoutArr[7]
-  +'</div><div id="line"> </div>' +  '<a href="javascript:sideFold()"> <div id="fold"><p>||</p></div> </a>';
+  +'</div><a href="javascript:sideFold()"> <div id="fold"><p>||</p></div> </a>';
 }
 
 function createControls() {
@@ -134,8 +134,8 @@ function pptResizing() {
     ppt[0].style.width = 90 + '%';
   }
   else {
-    ppt[0].style.marginLeft = 30 + '%';
-    ppt[0].style.width = 70 + '%';
+    ppt[0].style.marginLeft = 25 + '%';
+    ppt[0].style.width = 75 + '%';
   }
 }
 
@@ -146,7 +146,6 @@ function sideFold() {
 
 function customFold() {
   fold('custom');
-  pptResizing();
 }
 
 // function for tracking scoll
@@ -214,8 +213,8 @@ function oneByOne(n) {
         slide[j].style.display = 'block';
         var check = document.getElementById("fontsizeSlect");
         if(check.selectedIndex==-1){
-          slide[j].style.fontSize = '17pt'; 
-        }     
+          slide[j].style.fontSize = '17pt';
+        }
       }
     }
   }
@@ -290,21 +289,21 @@ function customize(){
 function font(){
 
   var fontdiv = document.getElementById("font");
-  fontdiv.innerHTML = '<p>Font</p>' + 
-  '<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1);">' + 
+  fontdiv.innerHTML = '<p>Font</p>' +
+  '<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1);">' +
   '<option style="font-family:Serif" value="serif"> Serif </option><option style="font-family:Tahoma" value="tahoma"> Tahoma </option>'+
-  '<option style="font-family:Arial" value="arial"> Arial </option><option style="font-family:Monospace" value="mono">Monospace</option>' + 
-  '<option style="font-family:Roboto" value="roboto">Roboto</option><option style="font-family:Times New Roman" value="newroman">Times New Roman</option>' + 
-  '<option style="font-family:Garamond" value="garamond">Garamond</option><option style="font-family:Comic Sans MS" value="comic">Comic Sans MS</option>' + 
-  '<option style="font-family:Courier" value="courier">Courier</option><option style="font-family:Impact" value="impact">Impact</otpion></select>' + 
-  '<p>Font Size</p>' + 
-  '<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate(2);">' + 
-  '<option>10pt</option><option>12pt</option><option>14pt</option><option>16pt</option><option>18pt</option>' + 
-  '<option>20pt</option><option>22pt</option><option>24pt</option><option>26pt</option><option>28pt</option>' + 
+  '<option style="font-family:Arial" value="arial"> Arial </option><option style="font-family:Monospace" value="mono">Monospace</option>' +
+  '<option style="font-family:Roboto" value="roboto">Roboto</option><option style="font-family:Times New Roman" value="newroman">Times New Roman</option>' +
+  '<option style="font-family:Garamond" value="garamond">Garamond</option><option style="font-family:Comic Sans MS" value="comic">Comic Sans MS</option>' +
+  '<option style="font-family:Courier" value="courier">Courier</option><option style="font-family:Impact" value="impact">Impact</otpion></select>' +
+  '<p>Font Size</p>' +
+  '<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate(2);">' +
+  '<option>10pt</option><option>12pt</option><option>14pt</option><option>16pt</option><option>18pt</option>' +
+  '<option>20pt</option><option>22pt</option><option>24pt</option><option>26pt</option><option>28pt</option>' +
   '<option>30pt</option></select>' +
-  '<p>Title Color</p>' + 
-  '<input type="text" id="custom" />' + 
-  '<p>Contents Color</p>' + 
+  '<p>Title Color</p>' +
+  '<input type="text" id="custom" />' +
+  '<p>Contents Color</p>' +
   '<input type="text" id="custom1" />'
 }
 
