@@ -37,24 +37,22 @@ h2 {
 
 .container {
 	padding: 0;
-	margin: 0 auto;
-	width:auto;
 }
 
 .contents {
 	font-size: 15px;
-	width: 1145px;
+	width: 65%;
 	margin: 0 auto;
-	margin-bottom: 40px
+	margin-bottom: 40px;
 }
 
 header[role="banner"] {
-	height: 52px;
+	height: 57px;
 	width: 1145px;
 	margin: 0 auto;
 	/*min-width: 1280px;  width(.container) */
 	/*background-color: #00abd9; #3399CC; */
-	line-height: 52px;
+	line-height: 57px;
 }
 
 nav{
@@ -134,11 +132,11 @@ header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selecte
 }
 
 #logo a{
-	height: 52px;
+	height: 57px;
 	margin-left: 10px;
 }
 
 #logo a img{
 	width: 100px;
-	margin-top: 9px;
+	vertical-align: middle;
 }
