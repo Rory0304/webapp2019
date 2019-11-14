@@ -1,6 +1,5 @@
 #slides, #problems {
   font-size: 15px;
-  width: 1145px;
   margin: 0 auto;
   display: none;
 }
@@ -23,7 +22,7 @@ h1 {
 }
 
 #lecture, #lab {
-	width: 570px;
+  width: 50%;
 	display: inline-block;
 	vertical-align: top;
 }
@@ -47,12 +46,10 @@ h1 {
 */
 
 tr>th:first-child, tr>td:first-child {
-	width: 85px;
 	border-right: 1px solid #dfdfdf;
 }
 
 #slides th.title, #slides td.title {
-	width: 486px;
 	height: 48px;
 }
 
