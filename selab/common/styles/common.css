@@ -9,7 +9,7 @@ html{
 }
 
 body {
-	background-color: #f2f2f2;
+	background-color: white;
 	font-family: "Roboto", "Nanum Gothic", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 
@@ -50,6 +50,8 @@ header[role="banner"] {
 	height: 57px;
 	width: 1145px;
 	margin: 0 auto;
+	padding-top: 5px;
+	margin-bottom: 10px;
 	/*min-width: 1280px;  width(.container) */
 	/*background-color: #00abd9; #3399CC; */
 	line-height: 57px;
@@ -60,26 +62,39 @@ nav{
 	height: 57px;
 	z-index: 1;
 	position: absolute;
-	background-color: #f2f2f2;
+	/* background-color: #f2f2f2; */
 }
 
-#logo, header[role="banner"] #menu li, #contact, div[role="login"] {
-	background-color: #00abd9;
-	border-radius: 10px;
+#logo {
+	color: #fe4a49;
+	/* border-radius: 10px; */
 	margin: 2.5px 5px;
 }
 
+header[role="banner"] #menu li, #contact, div[role="login"] {
+	margin: 2.5px 5px;
+	color: #fe4a49;
+	font-weight: bold;
+}
+
 header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
-	padding: 0 8px;
+	padding: 0 13px;
 	font-size: 18px;
-	font-weight: 400;
-	color: white;
+	font-weight: bold;
+	color: #fe4a49;
 	display: block;
 }
 
+header[role="banner"] div[role="login"] a:hover {
+	  background-color: #fe4a49;
+		color: white;
+}
+
 header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, .selected, div[role="login"] a:hover{
-	background-color: #70c8e9;
-	border-radius: 10px;
+  background-color: #fe4a49;
+	color: white;
+	/* background-color: #70c8e9; */
+	/* border-radius: 10px; */
 }
 
  footer[role="contentinfo"] {
