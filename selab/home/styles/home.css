@@ -15,7 +15,6 @@ h1{
 	font-size: 20px;
 	font-weight: 400;
 	color: white;
-	background-color: #00abd9;
 	float: left;
 	margin: 0;
 	text-align: center;
@@ -29,8 +28,4 @@ h1{
 	float: 0;
 	line-height: 458px;
 
-}
-
-.menu a:hover{
-	background-color: #70c8e9;
 }
