@@ -18,7 +18,7 @@
 }
 
 .human img{
-	float: left;	
+	float: left;
 
 }
 
@@ -58,14 +58,7 @@
 }
 
 .photo{
-	width: 140px;
-	height: 175px;
-}
-
-#interest{
-	float: right;
-	width: 550px;
-	height: 175px;
+	width: 15%;
 }
 
 #interest li{
@@ -78,8 +71,7 @@
 	margin: 0px 0px 0px 12px;
 }
 
-#info{
+#about {
 	float: left;
-	width: 435px;
-	height: 175px;
+	height: 350px;
 }

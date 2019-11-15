@@ -291,11 +291,11 @@ function font(){
   var fontdiv = document.getElementById("font");
   fontdiv.innerHTML = '<p>Font</p>' +
   '<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1);">' +
-  '<option style="font-family:Serif" value="serif"> Serif </option><option style="font-family:Tahoma" value="tahoma"> Tahoma </option>'+
-  '<option style="font-family:Arial" value="arial"> Arial </option><option style="font-family:Monospace" value="mono">Monospace</option>' +
-  '<option style="font-family:Roboto" value="roboto">Roboto</option><option style="font-family:Times New Roman" value="newroman">Times New Roman</option>' +
-  '<option style="font-family:Garamond" value="garamond">Garamond</option><option style="font-family:Comic Sans MS" value="comic">Comic Sans MS</option>' +
-  '<option style="font-family:Courier" value="courier">Courier</option><option style="font-family:Impact" value="impact">Impact</otpion></select>' +
+  '<option style="font-family:Serif" value="serif"> Serif </option><option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>'+
+  '<option style="font-family:Arial" value="Arial"> Arial </option><option style="font-family:Monospace" value="Monospace">Monospace</option>' +
+  '<option style="font-family:Roboto" value="Roboto">Roboto</option><option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>' +
+  '<option style="font-family:Garamond" value="Garamond">Garamond</option><option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>' +
+  '<option style="font-family:Courier" value="Courier">Courier</option><option style="font-family:Impact" value="Impact">Impact</otpion></select>' +
   '<p>Font Size</p>' +
   '<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate(2);">' +
   '<option>10pt</option><option>12pt</option><option>14pt</option><option>16pt</option><option>18pt</option>' +
