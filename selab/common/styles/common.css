@@ -24,7 +24,7 @@ a {
 
 h1 {
 	font-size: 60px;
-	color: #00abd9;
+	color: #ff6860;
 	margin: 20px 0 5px 0;
 }
 
@@ -59,7 +59,7 @@ header[role="banner"] {
 
 nav{
 	width: 1145px;
-	height: 57px;
+	height: 62px;
 	z-index: 1;
 	position: absolute;
 	/* background-color: #f2f2f2; */

@@ -2,10 +2,6 @@
   background-color: #765D69;
 }
 
-#res:hover, #gal:hover, #pub:hover, #mem:hover, #not:hover, #cou:hover {
-	background-color: black;
-}
-
 #not {
 	background-color: #FCD0BA;
 }

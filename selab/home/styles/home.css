@@ -27,5 +27,8 @@ h1{
 	margin: 0;
 	float: 0;
 	line-height: 458px;
+}
 
+#res:hover, #gal:hover, #pub:hover, #mem:hover, #not:hover, #cou:hover {
+	background-color: black;
 }
