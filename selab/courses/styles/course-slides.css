@@ -25,6 +25,7 @@ h1 {
   width: 50%;
 	display: inline-block;
 	vertical-align: top;
+  float: left;
 }
 
 #slides th, #problems th {
@@ -47,6 +48,10 @@ h1 {
 
 tr>th:first-child, tr>td:first-child {
 	border-right: 1px solid #dfdfdf;
+}
+
+#slides table {
+      width: 100%;
 }
 
 #slides th.title, #slides td.title {

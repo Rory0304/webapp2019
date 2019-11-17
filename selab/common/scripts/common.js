@@ -18,4 +18,18 @@ $(document).ready(function () {
     });
   });
   })();
+
+  settingClose();
 });
+
+function settingShow() {
+  jQuery(function($) {
+    $('.setting-tab').show();
+  });
+};
+
+function settingClose() {
+  jQuery(function($) {
+    $('.setting-tab').hide();
+  });
+};
