@@ -28,7 +28,7 @@
 }
 
 #main ul{
-	list-style-image: url("../images/list-img.png");
+	list-style : square;
 	float: left;
 }
 

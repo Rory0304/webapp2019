@@ -43,7 +43,7 @@
 }
 
 .contents .header li {
-	background-color: #8bcbe3;
+	background-color: #C4C4C4;
 	height: 43px;
 	font-size: 20px;
 	line-height: 40px;
@@ -56,7 +56,7 @@
 }
 
 .contents .entry:nth-child(odd) li {
-	background-color: #edf7fa;
+	background-color: #f5f5f5;
 }
 
 .important{
