@@ -16,14 +16,16 @@
       $rows = $db->query($check);
 			$results = $rows->fetchAll();
 			foreach($results as $result) {
-				if ($result[id] == $id)
+				if ($result[id] == $id) {
 					if ($result[password] == $pw)
 						Header("Location:index.html"); //프로젝트에는 실제 index.html 경로를 입력
 					else
 						Header("Location:index4e7d.html"); // 위와 마찬가지
+				}
+				else
+					Header("Location:index4e7d.html"); // 위와 마찬가지
 			}
-			else
-				Header("Location:index4e7d.html"); // 위와 마찬가지
+
     }
     catch (PDOException $ex) {
     ?>
