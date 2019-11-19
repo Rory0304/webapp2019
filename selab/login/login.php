@@ -7,6 +7,8 @@
 
 	<body>
     <?php
+		session_start();
+		$sign = false;
     try {
       $db = new PDO("mysql:dbname=user;host=localhost","test","test"); //프로젝트에는 실제 mysql의 id, password 입력
       $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -17,15 +19,20 @@
 			$results = $rows->fetchAll();
 			foreach($results as $result) {
 				if ($result[id] == $id) {
-					if ($result[password] == $pw)
-						Header("Location:index.html"); //프로젝트에는 실제 index.html 경로를 입력
-					else
-						Header("Location:index4e7d.html"); // 위와 마찬가지
-				}
-				else
+					if ($result[password] == $pw) {
+						$_SESSION['ID'] = $id;
+						$_SESSION['PW'] = $pw;
+						Header("Location:../index.php"); //프로젝트에는 실제 index.html 경로를 입력
+						$sign = true;
+						break;
+					}
 					Header("Location:index4e7d.html"); // 위와 마찬가지
+					$sign = true;
+					break;
+				}
 			}
-
+			if ($sign == false)
+				Header("Location:index4e7d.html"); // 위와 마찬가지
     }
     catch (PDOException $ex) {
     ?>

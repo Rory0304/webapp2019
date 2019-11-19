@@ -66,9 +66,16 @@
 					  <input type="text" id="custom1" />
 					</div>
 				</div>
+				<?php
+				session_start();
+				if (isset($_SESSION['ID']) && isset($_SESSION['PW'])) { ?>
+					<div role="login" class="pull-right">
+						<a href="login/index4e7d.html?source=/index.php">LOGOUT</a>
+					</div> <?php }
+				else { ?>
 				<div role="login" class="pull-right">
 					<a href="login/index4e7d.html?source=/index.php">LOGIN</a>
-				</div>
+				</div> <?php } ?>
 				<a id="contact" href="contact/index.html" class='pull-right'>CONTACT</a>
 			</nav>
 		</div>
