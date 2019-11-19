@@ -46,12 +46,16 @@ td:last-child{
 }
 
 .active{
-	background-color: #ffeceb !important;
 	cursor: pointer;
 }
 
+.active a {
+	color: #ff6860 !important;
+	font-weight: bold;
+}
+
 .hovered{
-	background-color: #83D9FF !important;
+	background-color: #404040 !important;
 }
 
 tr:nth-child(odd) td{
@@ -61,7 +65,7 @@ tr:nth-child(odd) td{
 .circle {
 	width: 20px;
 	height: 20px;
-	background-color: #65D4D2;
+	background-color: #858585;
 	-moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;

@@ -126,7 +126,7 @@ select {
 	display: none
 }
 #page-bar {
-    width: 1140px;
+    width: 100%;
     line-height: 20px;
     overflow: hidden;
     text-align: center;
@@ -144,7 +144,7 @@ select {
 #hl{
 	height: 5px;
   	padding: 0px;
-	background-color: #70c8e9;
+	background-color: #C4C4C4;
   	clear: both;
 }
 
@@ -155,7 +155,7 @@ select {
   height: 48px;
   line-height: 48px; /* height(#class a) */ /* for vertical align */
   text-align: center;
-  background-color: #70c8e9;
+  background-color: #C4C4C4;
   font-size: 20px;
   font-weight: 300;
   color: white;
@@ -168,7 +168,7 @@ select {
 }
 .back{
 	padding: 10px;
-	background-color: #edf7fa;
+	background-color: #f5f5f5;
 	margin-bottom: 10px;
 }
 .first-tab{
