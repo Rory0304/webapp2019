@@ -5,8 +5,8 @@
 	display: none;
 }
 .contents h3{
-	background-color: #8bcbe3;
-	color: white;
+	background-color: #C4C4C4;
+	color: #404040;
 	font-size: 20px;
 	padding: 10px;
 	margin-bottom:10px;
@@ -31,7 +31,7 @@ input[type=radio]{display:none;}
 .contents .subject li{
 	margin: 5px;
 	font-size: 18px;
-	list-style-image: url('../../members/images/list-img.png');
+	list-style : square;
 }
 #long{
 	height: 230px;
@@ -156,7 +156,7 @@ input[type=radio]{display:none;}
 #hl{
 	height: 5px;
   padding: 0px;
-	background-color: #70c8e9;
+	background-color: #C4C4C4;
   clear: both;
 }
 
@@ -164,7 +164,7 @@ input[type=radio]{display:none;}
   height: 48px;
   line-height: 48px; /* height(#class a) */ /* for vertical align */
   text-align: center;
-  background-color: #70c8e9;
+  background-color: #C4C4C4;
   font-size: 20px;
   font-weight: 300;
   color: white;

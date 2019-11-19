@@ -10,7 +10,7 @@
 table th{
 	height: 45px;
 	vertical-align: middle;
-	background-color: #8bcbe3;
+	background-color: #C4C4C4;
 	color: white;
 	border-bottom: 3px solid #dfdfdf;
 	text-align: center;
@@ -20,7 +20,7 @@ table td{
 	height: 40px;
 	vertical-align: middle;
 	padding: 0px;
-	background-color: #edf7fa;
+	background-color: #f5f5f5;
 	text-align: center;
 }
 #second_table th{
@@ -46,7 +46,7 @@ td:last-child{
 }
 
 .active{
-	background-color: #63D5F7 !important;
+	background-color: #ffeceb !important;
 	cursor: pointer;
 }
 

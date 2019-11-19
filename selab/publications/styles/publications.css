@@ -11,7 +11,7 @@ table{
 }
 
 table th{
-  background-color: #D3EDF5;
+  background-color: #C4C4C4;
   height: 30px;
   vertical-align: middle;
   font-family: 'Abel', "Nanum Gothic", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
@@ -23,7 +23,7 @@ table th{
 }
 
 #publications tr:nth-child(even) td {
-	background-color: #edf7fa;
+	background-color: #f5f5f5;
 }
 
 #publications td{
@@ -37,7 +37,7 @@ table th{
 #hl{
 	height: 5px;
   padding: 0px;
-	background-color: #70c8e9;
+	background-color: #C4C4C4;
   clear: both;
 }
 
@@ -45,7 +45,7 @@ table th{
   height: 48px;
   line-height: 48px; /* height(#class a) */ /* for vertical align */
   text-align: center;
-  background-color: #70c8e9;
+  background-color: #C4C4C4;
   font-size: 20px;
   font-weight: 300;
   color: white;
