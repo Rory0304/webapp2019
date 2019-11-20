@@ -1,28 +1,3 @@
-// "use strict";
-
-// $(document).ready(function () {
-//   var $body = $('body');
-//   var $main = $('main[role="main"]');
-//   (function () {
-//     // make the calendar be scrollable
-//     var layoutHeight = $body.height() - $main.height();
-//     $(window).resize(function () {
-//       $main.height($(window).height() - layoutHeight);
-//     });
-//     $(window).resize();
-//   })();
-//   (function(){
-//     $(window).scroll(function(){
-//       $('nav').css({
-//         'top': $(this).scrollTop()
-//       });
-//     });
-//   })();
-
-//   settingClose();
-// });
-
-
 function settingview(){
   var setting = document.getElementById("settingtab");
 
@@ -55,11 +30,11 @@ function font(){
 //add name
 function background(){
   var backgrounddiv = document.getElementById("background");
-  backgrounddiv.innerHTML = '<p>Background</p>' + 
-  '<select id="backselect" name="selectBackground" onchange="backupdate();">' + 
+  backgrounddiv.innerHTML = '<p>Background</p>' +
+  '<select id="backselect" name="selectBackground" onchange="backupdate();">' +
   '<option value="1"> Theme1 </option>' +
-  '<option value="2"> Theme2</option>' + 
-  '<option value="3" data-style="background-image: url(../home/styles/theme3.css)"> Theme3 </option>' + 
+  '<option value="2"> Theme2</option>' +
+  '<option value="3" data-style="background-image: url(../home/styles/theme3.css)"> Theme3 </option>' +
   '<option value="4" data-style="background-image: url(../home/styles/theme4.css)"> Theme4 </option>' +
   '<option value="5" data-style="background-image: url(../home/styles/theme5.css)"> Theme5 </option></select>'
 }
@@ -80,9 +55,43 @@ function fontupdate(value){
   backcss.href=('home/styles/theme' + back +'.css');
  }
 
+function navigation() {
+  jQuery(function($) {
+    var nav = $(':radio[name="nav"]:checked').val();
+    $("input:radio[name=nav]").click(function() {
+      var nav = $(':radio[name="nav"]:checked').val();
+      if(nav == "top") {
+        $("#menu").css("display", "");
+        $("#nav").css("display", "none");
+      }
+      else if(nav == "left") {
+        $("#menu").css("display", "none");
+        $("#nav").css({"display":"", "left":"15px", "right":"", "top":"100px"});
+      }
+      else {
+        $("#menu").css("display", "none");
+        $("#nav").css({"display":"", "left":"","right":"15px", "top":"100px"});
+      }
+    })
+    if(nav == "top") {
+      $("#menu").css("display", "");
+      $("#nav").css("display", "none");
+    }
+    else if(nav == "left") {
+      $("#menu").css("display", "none");
+      $("#nav").css({"display":"", "left":"15px", "right":"", "top":"100px"});
+    }
+    else {
+      $("#menu").css("display", "none");
+      $("#nav").css({"display":"", "left":"","right":"15px", "top":"100px"});
+    }
+  });
+}
+
 function startup() {
   font();
   background();
+  navigation();
 }
 
 window.onload = startup;
