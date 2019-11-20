@@ -12,7 +12,7 @@
 	margin-bottom:10px;
 }
 /*íƒ­ë°” css ì‹œìž‘*/
-input[type=radio]{display:none;}
+/* input[type=radio]{display:none;} */
 #first ~ #researches{display:none;}
 #first:checked ~ #researches{display: block;}
 
