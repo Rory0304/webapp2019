@@ -82,7 +82,7 @@ header[role="banner"] #menu li, #contact, div[role="login"] {
 }
 
 header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
-	padding: 0 13px;
+	padding: 0 10px;
 	font-size: 18px;
 	font-weight: bold;
 	color: #fe4a49;
@@ -161,7 +161,6 @@ footer[role="contentinfo"] p {
 }
 
 #settingtab {
-
 	background-color: #f9f9f9;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	position: fixed;
@@ -173,6 +172,7 @@ footer[role="contentinfo"] p {
 	height: 450px;
 	display: none;
 	padding-left: 15px;
+	z-index: 99999;
 }
 
 #settingtab p {
@@ -200,3 +200,29 @@ select #backselect option[value="1"]{
 	background: url("../images/thm1.png") 0 0 no-repeat;
 }
 
+#nav {
+	height: 100%;
+	background-color: #f9f9f9;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	position: fixed;
+  width: 14%;
+	color: white;
+	list-style-type: none;
+	font-size: 20px;
+	line-height: normal;
+	overflow: hidden;
+	padding-top: 25px;
+}
+
+#nav div.nav-list {
+	padding: 20px 2px 20px 16px;
+}
+
+#nav div.nav-list:hover {
+	background-color: #afafaf;
+	font-size: 25px;
+}
+
+#nav #logo {
+	text-align: center;
+}
