@@ -15,8 +15,8 @@
 	<script type="text/javascript" src="common/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="common/scripts/buffered-keyup.js"></script>
 	<script type="text/javascript" src="common/scripts/common.js"></script>
-	<script type="text/javascript" src="home/scripts/home.js"></script>
 	<script type="text/javascript" src="home/scripts/unslider.js"></script>
+	<script type="text/javascript" src="home/scripts/changeOrder.js"></script>
 
 
 </head>
@@ -27,14 +27,6 @@
 			<div id="logo" class="pull-left">
 				<a href="index.html"><img src="common/images/selab_logo_S.png" /></a>
 			</div>
-				<!-- <ul id="menu" class="inline-list pull-left">
-					<li class="pull-left"><a href="notice/index.html" >NOTICE</a></li>
-					<li class="pull-left"><a href="members/index.html" >MEMBERS</a></li>
-					<li class="pull-left"><a href="research/index.html" >RESEARCH</a></li>
-					<li class="pull-left"><a href="publications/index.html" >PUBLICATIONS</a></li>
-					<li class="pull-left"><a href="courses/index.html" >COURSES</a></li>
-					<li class="pull-left"><a href="gallery/index.html" >GALLERY</a></li>
-				</ul> -->
 
 			<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="https://img.icons8.com/ios/30/000000/settings.png"></a>
 
@@ -46,62 +38,30 @@
 				<div id="font"></div>
 				<div id="background"></div>
 			</div>
-				
+
 			<div role="login" class="pull-right">
 				<a href="login/index4e7d.html?source=/index.php">LOGIN</a>
 			</div>
 
-			<a id="contact" href="contact/index.html" class='pull-right'>CONTACT</a>	
+			<a id="contact" href="contact/index.html" class='pull-right'>CONTACT</a>
 		</nav>
 	</header>
 
 	<main role="main">
 		<div class="container">
-				<!-- <div class="contents"> -->
-				<!-- <div class="banner">
-					<ul>
-						<li id="img1"></li>
-						<li id="img2"></li>
-						<li id="img3"></li>
-					</ul>
-				</div> -->
-				<!-- <div id="notices" class="pull-left">
-					<h2><a href="notice/index.html">NOTICE</a></h2>
-					<ul id="board">
-					</ul>
-				</div>
-				<div id="courses" class="pull-left">
-					<h2>COURSES</h2>
-					<ul>
-						<li><a href="courses/cse326/2019/index.html">CSE326 Web Application Development</a></li>
-					</ul>
-				</div> -->
 			<div class="menu">
-				<div id = 'ind'>
-				<!-- 	<img class="imgslide" src="home/images/1.png">
-					<img class="imgslide" src="home/images/2.png">
-					<img class="imgslide" src="home/images/3.png"> -->
-					<a href="index.html"><img src="common/images/selab_logo_S_2.png" /></a>
+				<a id = 'ind' href="index.html"><img src="common/images/selab_logo_S_2.png" /></a>
+				<div id ="sortable">
+					<a id='not' href="notice/index.html">NOTICE</a>
+					<a id='mem' href="members/index.html">MEMBERS</a>
+					<a id='res' href="research/index.html" >RESEARCH</a>
+					<a id='pub' href="publications/index.html" >PUBLICATIONS</a>
+					<a id='cou' href="courses/index.html" >COURSES</a>
+					<a id='gal' href="gallery/index.html" >GALLERY</a>
 				</div>
-				<a id='not' href="notice/index.html">NOTICE</a>
-				<a id='mem' href="members/index.html">MEMBERS</a>
-				<a id='res' href="research/index.html" >RESEARCH</a>
-				<a id='pub' href="publications/index.html" >PUBLICATIONS</a>
-				<a id='cou' href="courses/index.html" >COURSES</a>
-				<a id='gal' href="gallery/index.html" >GALLERY</a>
 			</div>
 		</div>
 	</main>
-	
-	<div class="menu">
-		<div><a href="index.html"><img src="common/images/selab_logo_S.png" /></a></div>
-		<a href="notice/index.html">NOTICE</a>
-		<a href="members/index.html">MEMBERS</a>
-		<a href="research/index.html" >RESEARCH</a>
-		<a href="publications/index.html" >PUBLICATIONS</a>
-		<a href="courses/index.html" >COURSES</a>
-		<a href="gallery/index.html" >GALLERY</a>
-	</div>
 </main>
 
 
