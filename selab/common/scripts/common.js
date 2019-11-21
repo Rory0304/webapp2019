@@ -88,10 +88,14 @@ function navigation() {
   });
 }
 
+$(function(){
+	$( "#menu ul" ).sortable();
+})
+
 function startup() {
   font();
   background();
-  navigation();
+  // navigation();
 }
 
 window.onload = startup;
