@@ -61,29 +61,35 @@ function navigation() {
     $("input:radio[name=nav]").click(function() {
       var nav = $(':radio[name="nav"]:checked').val();
       if(nav == "top") {
-        $("#menu").css("display", "");
+        $("header").css("display", "");
         $("#nav").css("display", "none");
+        $(".main-container").css("top", "124px");
       }
       else if(nav == "left") {
-        $("#menu").css("display", "none");
-        $("#nav").css({"display":"", "left":"15px", "right":"", "top":"100px"});
+        $("header").css("display", "none");
+        $("#nav").css({"display":"", "right":""});
+        $(".main-container").css("top", "0");
       }
       else {
-        $("#menu").css("display", "none");
-        $("#nav").css({"display":"", "left":"","right":"15px", "top":"100px"});
+        $("header").css("display", "none");
+        $("#nav").css({"display":"", "right":"0"});
+        $(".main-container").css("top", "0");
       }
     })
     if(nav == "top") {
-      $("#menu").css("display", "");
+      $("header").css("display", "");
       $("#nav").css("display", "none");
+      $(".main-container").css("top", "124px");
     }
     else if(nav == "left") {
-      $("#menu").css("display", "none");
-      $("#nav").css({"display":"", "left":"15px", "right":"", "top":"100px"});
+      $("header").css("display", "none");
+      $("#nav").css({"display":"", "right":""});
+      $(".main-container").css("top", "0");
     }
     else {
-      $("#menu").css("display", "none");
-      $("#nav").css({"display":"", "left":"","right":"15px", "top":"100px"});
+      $("header").css("display", "none");
+      $("#nav").css({"display":"", "right":"0"});
+      $(".main-container").css("top", "0");
     }
   });
 }
@@ -95,7 +101,9 @@ $(function(){
 function startup() {
   font();
   background();
-  // navigation();
+  var setting = document.getElementById("settingtab");
+  setting.style.display="none";
+  navigation();
 }
 
 window.onload = startup;
