@@ -41,18 +41,25 @@ h2 {
 	padding: 0;
 }
 
+.main-container {
+	position: fixed;
+	width: 100%;
+	z-index: -1;
+	overflow: scroll;
+}
+
 .contents {
 	font-size: 15px;
 	width: 65%;
 	margin: 0 auto;
 	margin-bottom: 40px;
-	margin-top: 140px;
 }
 
 header {
 	position: fixed;
 	width: 100%;
 	top :0;
+	/* z-index: 1; */
 }
 
 nav {
@@ -85,7 +92,7 @@ nav img{
 	color: #fe4a49;
 	/* border-radius: 10px; */
 	margin: 2.5px 5px;
-	float: left;
+	/* float: left; */
 }
 
 header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
@@ -166,6 +173,7 @@ footer[role="contentinfo"] p {
 	display: none;
 	padding-left: 15px;
 	z-index: 99999;
+	line-height: 52px;
 }
 
 #settingtab p {
@@ -218,4 +226,19 @@ select #backselect option[value="1"]{
 
 #nav #logo {
 	text-align: center;
+}
+
+#nav .nav-list-bottom {
+	line-height: 52px;
+	margin-left: 5px;
+}
+
+#nav .nav-list-bottom a {
+	padding: 0 15px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fe4a49;
+	display: block;
+	color: #fe4a49;
+	float: left;
 }
