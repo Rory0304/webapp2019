@@ -9,7 +9,9 @@ html{
 }
 
 body {
-	background-color: #f2f2f2;
+	margin: 0;
+	padding: 0;
+	background-color: #fff4d1;
 	font-family: "Nanum Gothic", "Malgun Gothic", sans-serif;
 }
 
@@ -25,7 +27,7 @@ a {
 h1 {
 	font-size: 60px;
 	color: #ff6860;
-	margin: 20px 0 5px 0;
+	margin: 15px 0;
 }
 
 h2 {
@@ -44,28 +46,38 @@ h2 {
 	width: 65%;
 	margin: 0 auto;
 	margin-bottom: 40px;
+	margin-top: 140px;
 }
 
-header[role="banner"] {
-	height: 57px;
-	width: 1145px;
-	margin: 0 auto;
-	padding-top: 5px;
-	margin-bottom: 10px;
+header {
+	position: fixed;
+	width: 100%;
+	top :0;
+}
+
+nav {
+	height: 52px;
+	width: 100%;
 	/*min-width: 1280px;  width(.container) */
-	/*background-color: #00abd9; #3399CC; */
-	line-height: 57px;
+	background-color: white;
+	line-height: 52px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	overflow: hidden;
 }
 
-nav{
-	width: 1145px;
-	height: 62px;
-	z-index: 1;
-	position: absolute;
-	/* background-color: #f2f2f2; */
+#menu {
+	height: 52px;
+	width: 100%;
+	/*min-width: 1280px;  width(.container) */
+	background-color: rgba(232, 232, 232, .9);
+	line-height: 52px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	overflow: hidden;
 }
 
-#setting img{
+nav img{
 	vertical-align: text-bottom;
 }
 
@@ -73,32 +85,22 @@ nav{
 	color: #fe4a49;
 	/* border-radius: 10px; */
 	margin: 2.5px 5px;
-}
-
-header[role="banner"] #menu li, #contact, div[role="login"] {
-	margin: 2.5px 5px;
-	color: #fe4a49;
-	font-weight: bold;
+	float: left;
 }
 
 header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
-	padding: 0 10px;
+	padding: 0 15px;
 	font-size: 18px;
 	font-weight: bold;
 	color: #fe4a49;
 	display: block;
+	color: #fe4a49;
+	margin: 0 5px;
 }
 
-header[role="banner"] div[role="login"] a:hover {
-	  background-color: #fe4a49;
-		color: white;
-}
-
-header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, .selected, div[role="login"] a:hover{
+header[role="banner"] div[role="login"] a:hover, header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, #setting:hover, .selected, div[role="login"] a:hover{
   background-color: #fe4a49;
 	color: white;
-	/* background-color: #70c8e9; */
-	/* border-radius: 10px; */
 }
 
 footer[role="contentinfo"] {
@@ -127,10 +129,6 @@ footer[role="contentinfo"] p {
 	color:rgb(139, 139, 139);
 }
 
-.pull-left {
-	float: left;
-}
-
 .pull-right {
 	float: right;
 }
@@ -150,13 +148,8 @@ footer[role="contentinfo"] p {
 	font-size: 0;
 }
 
-#logo a{
-	height: 57px;
-	margin-left: 10px;
-}
-
 #logo a img{
-	width: 100px;
+	width: 60px;
 	vertical-align: middle;
 }
 
