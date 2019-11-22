@@ -13,7 +13,6 @@ function fontupdate(value){
   if(value==1){
    var font = document.getElementById("fontselect").value;
    document.getElementById("main").style.fontFamily = font;
-   document.getElementById("sampleC").style.fontFamily = font;
   }
   if(value==2){
     var fontsize = document.getElementById("fontsizeSlect").value;
@@ -71,8 +70,6 @@ $(function(){
 })
 
 function startup() {
-  font();
-  background();
   var setting = document.getElementById("settingtab");
   setting.style.display="none";
   navigation();
