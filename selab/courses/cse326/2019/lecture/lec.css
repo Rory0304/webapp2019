@@ -93,12 +93,12 @@ pre{
 #navaLinks {
   font-family: 'Nanum Gothic', sans-serif;
   display: inline-block;
-  width : 50%;
+  width : 49%;
   font-weight: bold;
 }
 
 #buttons {
-  width : 50%;
+  width : 49%;
   display: inline-block;
   vertical-align: top;
 }
@@ -138,40 +138,24 @@ a:link, a:visited {
   background-color: black;
 }
 
-#footer {
-  font-size: 9pt;
-  font-family: 'Raleway', sans-serif;
-  margin-top: 10vh;
+#fold {
+  height: 100%;
+  float: left;
+  font-family: 'Nanum Gothic', sans-serif;
+  /*color: #414141;*/
   color: white;
+  background-color: black;
+  opacity: 0.2;
 }
 
-/*#line {
-  height:100%;
-  width:2px;
-  margin-left: 1%;
-  background-color: #BEBEBE;
-  float:left;
-  }*/
+#fold p {
+  margin-top: 45vh;
+  padding: 3px;
+}
 
-  #fold {
-    height: 100%;
-    float: left;
-    font-family: 'Nanum Gothic', sans-serif;
-    /*color: #414141;*/
-    color: white;
-    background-color: black;
-    opacity: 0.2;
-
-  }
-
-  #fold p {
-    margin-top: 45vh;
-    padding: 3px;
-  }
-
-  #footer{
-    clear: both;
-  }
+#footer{
+  clear: both;
+}
 
   /*css for scroll (in webkit)*/
   body::-webkit-scrollbar{width: 13px;}
