@@ -1,12 +1,11 @@
 function settingview(){
   var setting = document.getElementById("settingtab");
+  setting.style.width = "100%";
+}
 
-  if(setting.style.display=="none"){
-    setting.style.display="block";
-  }
-  else{
-    setting.style.display="none";
-  }
+function closesetting() {
+  var setting = document.getElementById("settingtab");
+  setting.style.width = "0%";
 }
 
 
@@ -71,8 +70,6 @@ $(function(){
 })
 
 function startup() {
-  var setting = document.getElementById("settingtab");
-  setting.style.display="none";
   navigation();
 }
 
