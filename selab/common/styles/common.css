@@ -42,24 +42,23 @@ h2 {
 }
 
 .main-container {
-	position: fixed;
 	width: 100%;
-	z-index: -1;
 	overflow: scroll;
+	margin-top: 120px;
 }
 
 .contents {
 	font-size: 15px;
 	width: 65%;
 	margin: 0 auto;
-	margin-bottom: 40px;
+	/* margin-bottom: 40px; */
 }
 
 header {
 	position: fixed;
 	width: 100%;
 	top :0;
-	/* z-index: 1; */
+	z-index: 9;
 }
 
 nav {
@@ -198,6 +197,7 @@ footer[role="contentinfo"] p {
 	background-color: #fff4d1;
 	margin: 0 auto;
 	padding: 0;
+	overflow: hidden;
 }
 
 #SampleH {
@@ -224,6 +224,7 @@ footer[role="contentinfo"] p {
 #sampleC {
 	margin: 0 auto;
 	width: 200px;
+	font-size: 5pt;
 }
 
 #sampleC h1{
@@ -234,7 +235,6 @@ footer[role="contentinfo"] p {
 #sampleC p {
 	background-color: white;
 	color: black;
-	font-size: 5pt;
 	height: 80px;
 	padding: 5px;
 }
@@ -260,9 +260,8 @@ select #backselect option[value="1"]{
 	background: url("../images/thm1.png") 0 0 no-repeat;
 }
 
-#nav {
+#sideNav {
 	height: 100%;
-	background-color: #f9f9f9;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	position: fixed;
 	color: white;
@@ -270,33 +269,42 @@ select #backselect option[value="1"]{
 	font-size: 20px;
 	line-height: normal;
 	/* overflow: hidden; */
-	padding-top: 25px;
+	display: none;
 }
 
-#nav div.nav-list {
+#sideNav div.nav-list {
 	padding: 20px 2px 20px 16px;
 }
 
-#nav div.nav-list:hover {
+#sideNav div.nav-list:hover {
 	background-color: #afafaf;
 }
 
-#nav #logo {
+#sideLogo {
 	text-align: center;
 	float: none;
 }
 
-#nav .nav-list-right {
-	float: right;
+#sideLogo img {
+	width: 40px;
 }
 
-#nav .nav-list-left {
-	line-height: 52px;
-	margin-left: 5px;
+#sideNav .nav-list-right {
 	float: left;
+	background-color: rgb(232, 232, 232);
+	height: 100%;
+	padding-top: 25px;
 }
 
-#nav .nav-list-left a {
+#sideNav .nav-list-left {
+	line-height: 52px;
+	padding-left: 5px;
+	float: left;
+	background-color: white;
+	height: 100%;
+}
+
+#sideNav .nav-list-left a {
 	padding: 0 15px;
 	font-size: 18px;
 	font-weight: bold;
