@@ -41,18 +41,25 @@ h2 {
 	padding: 0;
 }
 
+.main-container {
+	position: fixed;
+	width: 100%;
+	z-index: -1;
+	overflow: scroll;
+}
+
 .contents {
 	font-size: 15px;
 	width: 65%;
 	margin: 0 auto;
 	margin-bottom: 40px;
-	margin-top: 140px;
 }
 
 header {
 	position: fixed;
 	width: 100%;
 	top :0;
+	/* z-index: 1; */
 }
 
 nav {
@@ -166,6 +173,7 @@ footer[role="contentinfo"] p {
 	display: none;
 	padding-left: 15px;
 	z-index: 99999;
+	line-height: 52px;
 }
 
 #settingtab p {
@@ -205,6 +213,7 @@ select #backselect option[value="1"]{
 	line-height: normal;
 	overflow: hidden;
 	padding-top: 25px;
+	min-width: 220px;
 }
 
 #nav div.nav-list {
@@ -213,9 +222,30 @@ select #backselect option[value="1"]{
 
 #nav div.nav-list:hover {
 	background-color: #afafaf;
-	font-size: 25px;
 }
 
 #nav #logo {
 	text-align: center;
+	float: none;
+}
+
+#nav .nav-list-right {
+	float: right;
+}
+
+#nav .nav-list-left {
+	line-height: 52px;
+	margin-left: 5px;
+	float: left;
+}
+
+#nav .nav-list-left a {
+	padding: 0 15px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #fe4a49;
+	display: block;
+	color: #fe4a49;
+	float: left;
+	vertical-align: text-bottom;
 }
