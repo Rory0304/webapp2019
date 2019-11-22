@@ -3,7 +3,7 @@
 }
 
 #main a{
-    color: rgb(0, 113, 216);
+    color: #ff6860;
 }
 
 #main a:hover{
@@ -46,7 +46,7 @@ font-size: 30px;
     width: 100%;
     padding-left: 10px;
 
-    background-color:rgb(211, 237, 245);
+    background-color: #f5f5f5;
     color: black;
     line-height: 52px;
     height: 52px;
@@ -69,14 +69,14 @@ font-size: 30px;
 }
 
 #main ul{
-    list-style-image: url("../images/list-img.png");
+    list-style : square;
 }
 
 #tab div {
   height: 48px;
   line-height: 48px; /* height(#class a) */ /* for vertical align */
   text-align: center;
-  background-color: #70c8e9;
+  background-color: #C4C4C4;
   font-size: 20px;
   font-weight: 300;
   color: white;
@@ -109,7 +109,7 @@ font-size: 30px;
 #hl{
     height: 5px;
   padding: 0px;
-    background-color: #70c8e9;
+    background-color: #C4C4C4;
   clear: both;
 }
 

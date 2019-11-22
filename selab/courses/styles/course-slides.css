@@ -5,7 +5,7 @@
 }
 
 #slides a, #problems a {
-    color: rgb(0, 113, 216);
+    color: #ff6860;
     font-size: 15px;
 
 }
@@ -17,7 +17,7 @@
 
 h1 {
 	font-size: 60px;
-	color: #00abd9;
+	color: #ff6860;
 	margin: 20px 0 5px 0;
 }
 
@@ -29,7 +29,7 @@ h1 {
 }
 
 #slides th, #problems th {
-	background-color: #8bcbe3;
+	background-color: #C4C4C4;
 	height: 52px;
 	font-size: 20px;
 	color: white;
@@ -71,7 +71,7 @@ tr>th:first-child, tr>td:first-child {
 }
 
 #slides tr:nth-child(odd) td, #problems tr:nth-child(odd) td {
-	background-color: #edf7fa;
+	background-color: #f5f5f5;
 }
 
 /*

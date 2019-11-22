@@ -289,7 +289,9 @@ function customize(){
 function font(){
 
   var fontdiv = document.getElementById("font");
-  fontdiv.innerHTML = '<p>Font</p>' +
+  fontdiv.innerHTML = 
+  '<form action="save.php" method="POST">' +
+  '<p>Font</p>' +
   '<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1);">' +
   '<option style="font-family:Serif" value="serif"> Serif </option><option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>'+
   '<option style="font-family:Arial" value="Arial"> Arial </option><option style="font-family:Monospace" value="Monospace">Monospace</option>' +
@@ -302,9 +304,11 @@ function font(){
   '<option>20pt</option><option>22pt</option><option>24pt</option><option>26pt</option><option>28pt</option>' +
   '<option>30pt</option></select>' +
   '<p>Title Color</p>' +
-  '<input type="text" id="custom" />' +
+  '<input type="text" name="titlecolor" id="custom" />' +
   '<p>Contents Color</p>' +
-  '<input type="text" id="custom1" />'
+  '<input type="text" name="contentscolor" id="custom1" />' +
+  '<input type="submit" value="SAVE"/>' +
+  '</form>'
 }
 
 function fontupdate(value){
@@ -333,11 +337,13 @@ function colorpicker(){
       ['black', 'white', 'blanchedalmond'],
       ['rgb(255, 128, 0);', 'hsv 100 70 50', 'lightyellow']
       ],
+      
       change: function(color){
 
         $(".presentation h1").css("color",color.toHexString());
       }
     });
+    document.getElementById("custom").value = color.toHexString();
   });
 
   jQuery(function($){
@@ -352,6 +358,7 @@ function colorpicker(){
         $(".presentation:not(h1)").css("color",color.toHexString());
       }
     });
+    document.getElementById("custom1").value = color.toHexString();
   });
 }
 
