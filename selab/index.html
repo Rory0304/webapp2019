@@ -29,24 +29,86 @@
 				<a href="index.html"><img src="common/images/selab_logo_S.png" alt="logo"/></a>
 			</div>
 
-			<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="common/images/color_lens-24px.svg" alt="customize"> </a>
+			<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="common/images/color_lens-24px.svg" alt="customize"/> </a>
 
 			<div id="settingtab">
-				<p>Navigation</p>
-				<input type="radio" name="nav" value="top" checked="checked" /> Top
-				<input type="radio" name="nav" value="left" /> Left
-				<input type="radio" name="nav" value="right" /> Right
-				<div id="font"></div>
-				<div id="background"></div>
+				<div id="font">
+					<p>Font</p>
+					<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1)">
+						<option style="font-family:Serif" value="serif"> Serif </option>
+						<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
+						<option style="font-family:Arial" value="Arial"> Arial </option>
+						<option style="font-family:Monospace" value="Monospace">Monospace</option>
+						<option style="font-family:Roboto" value="Roboto">Roboto</option>
+						<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
+						<option style="font-family:Garamond" value="Garamond">Garamond</option>
+						<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+						<option style="font-family:Courier" value="Courier">Courier</option>
+						<option style="font-family:Impact" value="Impact">Impact</option>
+					</select>
+					<p>Font Size</p>
+						<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate(2)">
+							<option>10pt</option>
+							<option>12pt</option>
+							<option>14pt</option>
+							<option>16pt</option>
+							<option>18pt</option>
+							<option>20pt</option>
+							<option>22pt</option>
+							<option>24pt</option>
+							<option>26pt</option>
+							<option>28pt</option>
+						</select>
+				</div>
+
+
+				<div id="background">
+					<p>Background</p>
+					<select id="backselect" name="selectBackground" onchange="backupdate();">
+						<option value="1"> Theme1 </option>
+						<option value="2"> Theme2</option>
+						<option value="3"> Theme3 </option>
+						<option value="4"> Theme4 </option> 
+						<option value="5"> Theme5 </option>
+					</select>
+				</div>
 			</div>
 
 			<div role="login" class="pull-right">
 				<a href="login/index4e7d.html?source=/index.php"> <img src="common/images/vpn_key-24px.svg" alt="login"> </a>
 			</div>
-
 			<a id="contact" href="contact/index.html" class='pull-right'> <img src="common/images/phone-24px.svg" alt="contact"> </a>
+
 		</nav>
 	</header>
+
+	<div id="settingtab">
+		<div id="sample">
+			<div id="samplePage">
+				<div id="SampleH">
+					<div id="SampleH1">
+						<p>[lab];</p>
+					</div>
+					<div id="SampleH2">
+						<p>notice members research ...</p>
+					</div>
+				</div>
+				<div id="sampleC">
+					<h1>sample</h1>
+					<p>This is sample to help your costomizing. I hope you satisfied whith our wepsite.</p>
+				</div>
+			</div>
+		</div>
+		<div id="option">
+			<p>Navigation</p>
+			<input type="radio" name="nav" value="top" checked="checked" /> Top
+			<input type="radio" name="nav" value="left" /> Left
+			<input type="radio" name="nav" value="right" /> Right
+			<div id="font"></div>
+			<div id="background"></div>
+		</div>
+		<a href="javascript:void(0)" class="closebtn" onclick="closesetting()">&times;</a>
+	</div>
 
 	<main role="main">
 		<div class="container">
@@ -63,13 +125,28 @@
       </div>
     </div>
  </main>
+		<div id="main">
+			<div class="container">
+				<div class="menu">
+					<a id = 'ind' href="index.html"><img src="common/images/selab_logo_S_2.png" /></a>
+					<div id ="sortable">
+						<a id='not' href="notice/index.html">NOTICE</a>
+						<a id='mem' href="members/index.html">MEMBERS</a>
+						<a id='res' href="research/index.html" >RESEARCH</a>
+						<a id='pub' href="publications/index.html" >PUBLICATIONS</a>
+						<a id='cou' href="courses/index.html" >COURSES</a>
+						<a id='gal' href="gallery/index.html" >GALLERY</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
- <footer role="contentinfo">
-   <div class="container">
-     <p>COPYRIGHT 2014 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
-   </div>
-  </footer>
-</body>
+		<footer role="contentinfo">
+			<div class="container">
+				<p>COPYRIGHT 2014 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
+			</div>
+		</footer>
+	</body>
 
-<!-- Mirrored from selab.hanyang.ac.kr/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:16 GMT -->
-</html>
+	<!-- Mirrored from selab.hanyang.ac.kr/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:16 GMT -->
+	</html>

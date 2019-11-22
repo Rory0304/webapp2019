@@ -26,6 +26,11 @@ body {
   margin-right: 10px;
   color: black;
 }
+
+
+pre{
+  overflow: auto;
+}
 /* css for left section */
 
 .layout {

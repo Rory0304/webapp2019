@@ -17,7 +17,7 @@
 	<link rel="shortcut icon" href="common/images/SelabFavicon.png" type="image/png">
 	<link rel="stylesheet" href="home/styles/home.css" type="text/css" />
 	<link rel="stylesheet" href="home/styles/theme3.css" type="text/css" />
-
+ 
 	<script type="text/javascript" src="common/scripts/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="common/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="common/scripts/buffered-keyup.js"></script>
@@ -28,6 +28,18 @@
 </head>
 
 <body>
+	<?php
+		session_start();
+		$id = $_SESSION['ID'];
+		print($_SESSION['ID']);
+		?>
+		<script type="text/javascript"> 
+			alert("5678");
+			alert("<?php echo $id; ?>");
+		</script>
+		<?php
+	?>
+	
 	<header role="banner">
 		<div class="container">
 			<nav role="navigation">
@@ -40,7 +52,7 @@
 					<li class="pull-left"><a href="courses/index.html" >COURSES</a></li>
 					<li class="pull-left"><a href="gallery/index.html" >GALLERY</a></li>
 				</ul> -->
-				<div id="setting" href"" class='pull-right'>
+				<div id="setting" href="" class='pull-right'>
 					<input type="button" class="setting" value="SETTING" onclick="settingShow()" />
 					<div class="setting-tab">
 						<input type="button" value="close" onclick="settingClose()" />
@@ -67,7 +79,7 @@
 					</div>
 				</div>
 				<?php
-				session_start();
+				
 				if (isset($_SESSION['ID']) && isset($_SESSION['PW'])) { ?>
 					<div role="login" class="pull-right">
 						<a href="login/index4e7d.html?source=/index.php">LOGOUT</a>
@@ -120,6 +132,7 @@
 			<p>COPYRIGHT 2014 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
 		</div>
 	</footer>
+	
 </body>
 
 <!-- Mirrored from selab.hanyang.ac.kr/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:16 GMT -->
