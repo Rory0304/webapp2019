@@ -70,8 +70,6 @@ $(function(){
 })
 
 function startup() {
-  var setting = document.getElementById("settingtab");
-  setting.style.display="none";
   navigation();
 }
 
