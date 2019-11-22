@@ -37,33 +37,6 @@ function GetElementsWithClassName(elementName,className) {
 
 // function that do the actual work
 
-//function for edit html structure
-function editHtml() {
-  var layoutDiv = document.getElementsByClassName("layout");
-  var layoutArr = (layoutDiv[0].innerHTML).split(/\n/g);
-  layoutDiv[0].innerHTML = '<div id="side">' +
-  layoutArr[1] +
-  '<div id="navList"><ul id="index" ><\/ul><\/div>' + '<div id="customize"><div id="background"></div> '+
-  '<div id="font"></div></div>' +
-  layoutArr[4] + layoutArr[5] + layoutArr[6] + layoutArr[7]
-  +'</div><a href="javascript:sideFold()"> <div id="fold"><p>||</p></div> </a>';
-}
-
-function createControls() {
-  var controlsDiv = document.getElementById("controls");
-  if (!controlsDiv) return;
-
-    controlsDiv.innerHTML = //'<form action="#" id="controlForm">' +
-    '<div id="navaLinks">' +
-    '<a id="prev" title="Previous Slide" href="javascript:point(-1);">&lsaquo;<\/a>' +
-    '<span id="slideNum"> </span>' +
-    '<a id="next" title="Next Slide" href="javascript:point(1);">&rsaquo;<\/a></div>' +
-    '<div id = "buttons">' +
-    '<a href="javascript:customize();" /> <img src = "images/custom1.png"/> </a>' +
-    '<a href="javascript:oneByOne(0);" /> <img src = "images/vertical1.png"/> </a></div>';
-    //+ '<\/form>';
-  }
-
   function slideLabel() {
     var slideColl = GetElementsWithClassName('*', 'slide');
     var index = document.getElementById('index');
@@ -106,13 +79,13 @@ function createControls() {
       }
     }
 
-    function currentSlide() {
-      var sn = document.getElementById('slideNum');
+function currentSlide() {
+  var sn = document.getElementById('slideNum');
 
-      sn.innerHTML = '<span id="snHere">' + snum + '<\/span> ' +
-      '<span id="snSep">\/<\/span> ' +
-      '<span id="snTotal">' + (smax-1) + '<\/span>';
-    }
+  sn.innerHTML = '<span id="snHere">' + snum + '<\/span> ' +
+  '<span id="snSep">\/<\/span> ' +
+  '<span id="snTotal">' + (smax-1) + '<\/span>';
+}
 
 //function for specific func
 
@@ -286,31 +259,6 @@ function customize(){
  }
 }
 
-function font(){
-
-  var fontdiv = document.getElementById("font");
-  fontdiv.innerHTML = 
-  '<form action="save.php" method="POST">' +
-  '<p>Font</p>' +
-  '<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1);">' +
-  '<option style="font-family:Serif" value="serif"> Serif </option><option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>'+
-  '<option style="font-family:Arial" value="Arial"> Arial </option><option style="font-family:Monospace" value="Monospace">Monospace</option>' +
-  '<option style="font-family:Roboto" value="Roboto">Roboto</option><option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>' +
-  '<option style="font-family:Garamond" value="Garamond">Garamond</option><option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>' +
-  '<option style="font-family:Courier" value="Courier">Courier</option><option style="font-family:Impact" value="Impact">Impact</otpion></select>' +
-  '<p>Font Size</p>' +
-  '<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate(2);">' +
-  '<option>10pt</option><option>12pt</option><option>14pt</option><option>16pt</option><option>18pt</option>' +
-  '<option>20pt</option><option>22pt</option><option>24pt</option><option>26pt</option><option>28pt</option>' +
-  '<option>30pt</option></select>' +
-  '<p>Title Color</p>' +
-  '<input type="text" name="titlecolor" id="custom" />' +
-  '<p>Contents Color</p>' +
-  '<input type="text" name="contentscolor" id="custom1" />' +
-  '<input type="submit" value="SAVE"/>' +
-  '</form>'
-}
-
 function fontupdate(value){
   if(value==1){
    var font = document.getElementById("fontselect").value;
@@ -382,14 +330,11 @@ function point(n) {
 }
 
 function startup() {
-  editHtml();
-  createControls();
   slideLabel();
   currentSlide();
   detectResize();
   pptResizing();
   trackPage();
-  font();
   colorpicker();
   document.onkeydown = keys;
 }
