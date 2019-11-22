@@ -92,7 +92,7 @@ nav img{
 	color: #fe4a49;
 	/* border-radius: 10px; */
 	margin: 2.5px 5px;
-	/* float: left; */
+	float: left;
 }
 
 header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
@@ -213,6 +213,7 @@ select #backselect option[value="1"]{
 	line-height: normal;
 	overflow: hidden;
 	padding-top: 25px;
+	min-width: 220px;
 }
 
 #nav div.nav-list {
@@ -221,19 +222,24 @@ select #backselect option[value="1"]{
 
 #nav div.nav-list:hover {
 	background-color: #afafaf;
-	font-size: 25px;
 }
 
 #nav #logo {
 	text-align: center;
+	float: none;
 }
 
-#nav .nav-list-bottom {
+#nav .nav-list-right {
+	float: right;
+}
+
+#nav .nav-list-left {
 	line-height: 52px;
 	margin-left: 5px;
+	float: left;
 }
 
-#nav .nav-list-bottom a {
+#nav .nav-list-left a {
 	padding: 0 15px;
 	font-size: 18px;
 	font-weight: bold;
@@ -241,4 +247,5 @@ select #backselect option[value="1"]{
 	display: block;
 	color: #fe4a49;
 	float: left;
+	vertical-align: text-bottom;
 }

@@ -61,33 +61,33 @@ function navigation() {
     $("input:radio[name=nav]").click(function() {
       var nav = $(':radio[name="nav"]:checked').val();
       if(nav == "top") {
-        $("header").css("display", "");
+        $(".header").css("display", "");
         $("#nav").css("display", "none");
         $(".main-container").css("top", "124px");
       }
       else if(nav == "left") {
-        $("header").css("display", "none");
+        $(".header").css("display", "none");
         $("#nav").css({"display":"", "right":""});
         $(".main-container").css("top", "0");
       }
       else {
-        $("header").css("display", "none");
+        $(".header").css("display", "none");
         $("#nav").css({"display":"", "right":"0"});
         $(".main-container").css("top", "0");
       }
     })
     if(nav == "top") {
-      $("header").css("display", "");
+      $(".header").css("display", "");
       $("#nav").css("display", "none");
       $(".main-container").css("top", "124px");
     }
     else if(nav == "left") {
-      $("header").css("display", "none");
+      $(".header").css("display", "none");
       $("#nav").css({"display":"", "right":""});
       $(".main-container").css("top", "0");
     }
     else {
-      $("header").css("display", "none");
+      $(".header").css("display", "none");
       $("#nav").css({"display":"", "right":"0"});
       $(".main-container").css("top", "0");
     }
