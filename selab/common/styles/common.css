@@ -76,7 +76,6 @@ nav {
 #menu {
 	height: 52px;
 	width: 100%;
-	/*min-width: 1280px;  width(.container) */
 	background-color: rgba(232, 232, 232, .9);
 	line-height: 52px;
 	padding-top: 5px;
@@ -97,7 +96,7 @@ nav img{
 
 header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
 	padding: 0 15px;
-	font-size: 18px;
+	/*font-size: 18px;*/
 	font-weight: bold;
 	color: #fe4a49;
 	display: block;
@@ -106,7 +105,7 @@ header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav
 }
 
 header[role="banner"] div[role="login"] a:hover, header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, #setting:hover, .selected, div[role="login"] a:hover{
-  background-color: #fe4a49;
+  	background-color: #fe4a49;
 	color: white;
 }
 
@@ -115,7 +114,6 @@ footer[role="contentinfo"] {
 	width: 1145px;
 	margin: 0 auto;
 	/*min-width: 1280px;  width(.container) */
-
 	line-height: 30px;
 }
 
