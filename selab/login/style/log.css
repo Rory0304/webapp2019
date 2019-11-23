@@ -73,3 +73,10 @@ input[type=text], input[type=password] {
   margin-top: 10px;
   border-top: 1px solid #ccc;
 }
+
+.sign {
+  height: 100%;
+  width: 60%;
+  background-color: white;
+  float: left;
+}
