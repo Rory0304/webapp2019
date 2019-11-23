@@ -104,7 +104,7 @@ header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav
 }
 
 header[role="banner"] div[role="login"] a:hover, header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, #setting:hover, .selected, div[role="login"] a:hover{
-  	background-color: #fe4a49;
+  background-color: #fe4a49;
 	color: white;
 }
 
@@ -169,6 +169,7 @@ footer[role="contentinfo"] p {
   overflow-x: hidden;
 	color: white;
   transition: 0.5s;
+	line-height: 40px;
 }
 
 #settingtab .closebtn {
@@ -273,7 +274,7 @@ select #backselect option[value="1"]{
 }
 
 #sideNav div.nav-list {
-	padding: 20px 2px 20px 16px;
+	padding: 20px 16px;
 }
 
 #sideNav div.nav-list:hover {
@@ -312,4 +313,8 @@ select #backselect option[value="1"]{
 	display: block;
 	float: left;
 	vertical-align: text-bottom;
+}
+
+#sideNav .nav-list-left a#sideSetting:hover, #sideNav .nav-list-left div[role=login]:hover, #sideNav .nav-list-left a#sideContact:hover {
+	background-color: #fe4a49;
 }

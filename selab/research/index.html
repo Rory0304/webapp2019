@@ -69,6 +69,10 @@
 
 			<div id="option">
 				<div id="font">
+					<p>Navigation</p>
+					<input type="radio" name="nav" value="top" checked="checked" /> Top
+					<input type="radio" name="nav" value="left" /> Left
+					<input type="radio" name="nav" value="right" /> Right
 					<p>Font</p>
 					<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1)">
 						<option style="font-family:Serif" value="serif"> Serif </option>
@@ -111,40 +115,38 @@
 		</div>
 
 		<main role="main">
-			<div class="main-container container">
-
-				<div id="nav">
-					<div id="logo"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
-					<div class="nav-list-left">
-						<a id="setting" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
-
-						<div role="login">
-							<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
-						</div>
-
-						<a id="contact" href="../contact/index.html"> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
+			<div id="sideNav">
+				<div class="nav-list-left">
+					<div id="sideLogo"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
+					<a id="sideSetting" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
+					<div role="login">
+						<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
 					</div>
-					<div class="nav-list-right">
-	  				<div class="nav-list">
-	  					<a href="../notice/index.html" >NOTICE</a>
-	  				</div>
-	  				<div class="nav-list">
-	  					<a href="../members/index.html" >MEMBERS</a>
-	  				</div>
-	  				<div class="nav-list">
-	  					<a href="../research/index.html" >RESEARCH</a>
-	  				</div>
-	  				<div class="nav-list">
-	  					<a href="../publications/index.html" >PUBLICATIONS</a>
-	  				</div>
-	  				<div class="nav-list">
-	  					<a href="../courses/index.html" >COURSES</a>
-	  				</div>
-	  				<div class="nav-list">
-	  					<a href="../gallery/index.html" >GALLERY</a>
-	  				</div>
+					<a id="sideContact" href="../contact/index.html"> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
+				</div>
+				<div class="nav-list-right">
+					<div class="nav-list">
+						<a href="../notice/index.html" >NOTICE</a>
+					</div>
+					<div class="nav-list">
+						<a href="../members/index.html" >MEMBERS</a>
+					</div>
+					<div class="nav-list">
+						<a href="../research/index.html" >RESEARCH</a>
+					</div>
+					<div class="nav-list">
+						<a href="../publications/index.html" >PUBLICATIONS</a>
+					</div>
+					<div class="nav-list">
+						<a href="../courses/index.html" >COURSES</a>
+					</div>
+					<div class="nav-list">
+						<a href="../gallery/index.html" >GALLERY</a>
 					</div>
 				</div>
+			</div>
+
+			<div class="main-container container">
 				<div class="contents">
 					<h1>RESEARCH</h1>
 					<div id="tab">
