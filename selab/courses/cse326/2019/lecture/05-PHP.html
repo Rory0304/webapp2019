@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	
+
 <!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/05-PHP.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:18 GMT -->
 <head>
 		<!-- metadata -->
@@ -9,54 +9,96 @@
 		<meta name="author" content="Scott Uk-Jin Lee" />
 		<meta name="description" content="Web lecture slides for CSE3026: Web Application Development." />
 		<meta name="keywords" content="Hanyang university, cse3026, web application development, lecture, html, css, javascript, dom, ajax, xml, php, jsp" />
-		
-		<!-- style sheet links -->
-		<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="screen" id="slideProj" />
-		<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
-		<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
-		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
 
-		<!-- S5 JS -->
-		<script src="../../../../../ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js" type="text/javascript"></script>
-		<script src="../../../../../ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js" type="text/javascript"></script>
+		<link rel="shortcut icon" href="images/SelabFavicon.png" type="image/png" />
+		<link rel="stylesheet" href="css_js/lec.css" type="text/css" />
+
 		<script src="resources/slides.js" type="text/javascript"></script>
-		<script src="ui/default/slides.js" type="text/javascript"></script>
-		
+		<script src="css_js/lec.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Open+Sans|Raleway&display=swap" rel="stylesheet">
+
+		<!-- FROM https://github.com/patik/within-viewport -->
+		<script src="css_js/withinviewport.js"></script>
+		<script src="css_js/jquery.withinviewport.js"></script>
+
+		<!-- FROM https://github.com/bgrins/spectrum -->
+		<script src='css_js/spectrum.js'></script>
+		<link rel='stylesheet' href='css_js/spectrum.css' />
+
 		<title>CSE3026 - 05.PHP</title>
 	</head>
 
 	<body>
 		<div class="layout">
-			<div id="controls"><!-- DO NOT EDIT --></div>
-			<div id="currentSlide"><!-- DO NOT EDIT --></div>
-			<div id="header"></div>
-			<div id="footer">
-				<h1>CSE3026: Web Application Development</h1>
-				<h2>05.PHP</h2>
+			<div id="side">
+				<div id="controls">
+					<div id="navaLinks">
+						<a id="prev" title="Previous Slide" href="javascript:point(-1);">&lsaquo;</a>
+						<span id="slideNum"> </span>
+						<a id="next" title="Next Slide" href="javascript:point(1);">&rsaquo;</a>
+					</div>
+					<div id = "buttons">
+						<a href="javascript:customize();" /> <img src = "images/custom1.png"/> </a>
+						<a href="javascript:oneByOne(0);" /> <img src = "images/vertical1.png"/> </a>
+					</div>
+				</div>
+				<div id="navList">
+					<ul id="index" ></ul>
+				</div>
+				<div id="customize">
+					<div id="background"></div>
+					<div id="font">
+						<p>Font</p>
+						<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1);">
+						<option style="font-family:Serif" value="serif"> Serif </option>
+						<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
+						<option style="font-family:Arial" value="Arial"> Arial </option>
+						<option style="font-family:Monospace" value="Monospace">Monospace</option>
+						<option style="font-family:Roboto" value="Roboto">Roboto</option>
+						<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
+						<option style="font-family:Garamond" value="Garamond">Garamond</option>
+						<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+						<option style="font-family:Courier" value="Courier">Courier</option>
+						<option style="font-family:Impact" value="Impact">Impact</otpion></select>
+						<p>Font Size</p>
+						<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate(2);">
+						<option>10pt</option><option>12pt</option><option>14pt</option><option>16pt</option><option>18pt</option>
+						<option>20pt</option><option>22pt</option><option>24pt</option><option>26pt</option><option>28pt</option>
+						<option>30pt</option></select>
+						<p>Title Color</p>
+						<input type="text" id="custom" />
+						<p>Contents Color</p>
+						<input type="text" id="custom1" />
+					</div>
+				</div>
 			</div>
+			<a href="javascript:sideFold()">
+				<div id="fold"><p>||</p></div>
+			</a>
 		</div>
-	
+
 		<div class="presentation">
-			<div class="slide">			
-				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>PHP</strong></h1>			
+			<div class="slide">
+				<h1><span class="smallerFont">CSE3026: Web Application Development</span> <br/> <strong>PHP</strong></h1>
 				<br/>
 				<h2>Scott Uk-Jin Lee</h2>
-							
-				<p class="license"> 				
+
+				<p class="license">
 					Reproduced with permission of the authors.
 					Copyright 2012 Marty Stepp, Jessica Miller, and Victoria Kirst.
-					All rights reserved. 
+					All rights reserved.
 					Further reproduction or distribution is prohibited without written permission.
 				</p>
-				
+
 				<div class="w3c">
 					<a href="https://validator.w3.org/check/referer"><img src="images/w3c-html.png" alt="Valid HTML 5" /></a>
 					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="images/w3c-css.png" alt="Valid CSS!" /></a>
 				</div>
 			</div>
-			
-			
-			
+
+
+
 <div class="slide titleslide">
 	<h1>5.1: Server-Side Basics</h1>
 
@@ -444,7 +486,7 @@ $c = <em>sqrt(pow($a, 2) + pow($b, 2))</em>;
 	<table class="standard">
 		<caption>math functions</caption>
 		<tr>
-			<td>	
+			<td>
 				<a href="http://www.php.net/abs"><code>abs</code></a>
 			</td>
 			<td>
@@ -499,7 +541,7 @@ $c = <em>sqrt(pow($a, 2) + pow($b, 2))</em>;
 	<table class="standard">
 		<caption>math constants</caption>
 		<tr>
-			<td>	
+			<td>
 				<code>M_PI</code>
 			</td>
 			<td>
@@ -527,7 +569,7 @@ $c = <em>sqrt(pow($a, 2) + pow($b, 2))</em>;
 
 	<div class="example">
 		<pre class="syntaxtemplate php">$<var>name</var> = <var>expression</var>;</pre>
-		
+
 		<pre class="examplecode php">
 $user_name = &quot;PinkHeartLuvr78&quot;;
 $age = 16;
@@ -641,7 +683,7 @@ print &quot;You are <em>$age</em> years old.\n&quot;;    <span class="comment">#
 			<pre class="examplecode php">
 print 'You are $age years old.\n';    <span class="comment"># You are $age years old.\n</span>
 </pre>
-					
+
 		</li>
 		<li class="incremental">if necessary to avoid ambiguity, can enclose variable in <code>{}</code>:
 
@@ -835,7 +877,7 @@ do {
 
 <div class="slide">
 	<h1>Printing HTML tags in PHP = bad style</h1>
-				
+
 	<pre class="examplecode">
 &lt;?php
 <em class="bad">print &quot;&lt;!DOCTYPE html&gt;\n&quot;;
@@ -848,7 +890,7 @@ for ($i = 1; $i &lt;= 10; $i++) {
 }
 ?&gt;
 </pre>
-				
+
 	<ul>
 		<li>printing HTML tags with <code>print</code> statements is bad style and error-prone:
 			<ul>
@@ -894,11 +936,11 @@ for ($i = 1; $i &lt;= 10; $i++) {
 
 <div class="slide">
 	<h1>Expression block example</h1>
-				
+
 	<pre class="examplecode php">
 &lt;!DOCTYPE html &gt;
 &lt;html&gt;
-  &lt;head&gt;&lt;title&gt;CSE 3026s: Embedded PHP&lt;/title&gt;&lt;/head&gt;	
+  &lt;head&gt;&lt;title&gt;CSE 3026s: Embedded PHP&lt;/title&gt;&lt;/head&gt;
   &lt;body&gt;
     <em>&lt;?php for ($i = 99; $i &gt;= 1; $i--) { ?&gt;</em>
       &lt;p&gt; <em>&lt;?= $i ?&gt;</em> bottles of beer on the wall, &lt;br /&gt;
@@ -927,7 +969,7 @@ for ($i = 1; $i &lt;= 10; $i++) {
 </pre>
 
 	<ul>
-		<li><code>&lt;/body&gt;</code> and <code>&lt;/html&gt;</code> above are inside the <code>for</code> loop, which is never closed</li>	
+		<li><code>&lt;/body&gt;</code> and <code>&lt;/html&gt;</code> above are inside the <code>for</code> loop, which is never closed</li>
 		<li>if you forget to close your braces, you'll see an error about 'unexpected <code>$end</code>'</li>
 
 		<li>if you forget <code>=</code> in <code>&lt;?=</code>, the expression does not produce any output</li>
@@ -1108,7 +1150,7 @@ exponent.php?<em>base=3</em>&<em>exponent=4</em>
 print_params.php?<em>name=Scott+Lee</em>&<em>sid=1234567</em>
 </pre>
 
-		<div class="exampleoutput">				
+		<div class="exampleoutput">
 			<p>Parameter name has value Scott Lee</p>
 			<p>Parameter sid has value 1234567</p>
 		</div>
@@ -1420,7 +1462,7 @@ $my_bmi = <em>bmi($w, $h)</em>;
 
 <div class="slide">
 	<h1>Variable scope: global and local vars</h1>
-				
+
 	<pre class="examplecode php">
 $school = &quot;HYU&quot;;                  <span class="comment"># global</span>
 ...
@@ -1542,7 +1584,7 @@ if (<em>isset($name)</em>) {
 
 		<tr>
 			<td>
-				<a href="http://www.php.net/file"><code><em>file</em></code></a>, 
+				<a href="http://www.php.net/file"><code><em>file</em></code></a>,
 				<a class="underscorelink" href="http://www.php.net/file_get_contents"><code><em>file_get_contents</em></code></a>, <br />
 				<a class="underscorelink" href="http://www.php.net/file_put_contents"><code><em>file_put_contents</em></code></a>
 			</td>
@@ -1553,11 +1595,11 @@ if (<em>isset($name)</em>) {
 
 		<tr>
 			<td>
-				<a href="http://www.php.net/basename"><code><em>basename</em></code></a>, 
-				<a class="underscorelink" href="http://www.php.net/file_exists"><code>file_exists</code></a>, 
+				<a href="http://www.php.net/basename"><code><em>basename</em></code></a>,
+				<a class="underscorelink" href="http://www.php.net/file_exists"><code>file_exists</code></a>,
 				<a href="http://www.php.net/filesize"><code>filesize</code></a>,  <br />
-				<a href="http://www.php.net/fileperms"><code>fileperms</code></a>, 
-				<a href="http://www.php.net/filemtime"><code>filemtime</code></a>, 
+				<a href="http://www.php.net/fileperms"><code>fileperms</code></a>,
+				<a href="http://www.php.net/filemtime"><code>filemtime</code></a>,
 				<a class="underscorelink" href="http://www.php.net/is_dir"><code>is_dir</code></a>, <br />
 				<a class="underscorelink" href="http://www.php.net/is_readable"><code>is_readable</code></a>,
 				<a class="underscorelink" href="http://www.php.net/is_writable"><code>is_writable</code></a>,
@@ -1570,13 +1612,13 @@ if (<em>isset($name)</em>) {
 
 		<tr>
 			<td>
-				<a href="http://www.php.net/copy"><code>copy</code></a>, 
-				<a href="http://www.php.net/rename"><code>rename</code></a>, 
+				<a href="http://www.php.net/copy"><code>copy</code></a>,
+				<a href="http://www.php.net/rename"><code>rename</code></a>,
 				<a href="http://www.php.net/unlink"><code>unlink</code></a>,
 				<a href="http://www.php.net/chmod"><code>chmod</code></a>, <br />
-				<a href="http://www.php.net/chgrp"><code>chgrp</code></a>, 
+				<a href="http://www.php.net/chgrp"><code>chgrp</code></a>,
 				<a href="http://www.php.net/chown"><code>chown</code></a>,
-				<a href="http://www.php.net/mkdir"><code>mkdir</code></a>, 
+				<a href="http://www.php.net/mkdir"><code>mkdir</code></a>,
 				<a href="http://www.php.net/rmdir"><code>rmdir</code></a>
 			</td>
 			<td>
@@ -1772,8 +1814,8 @@ Marty Stepp
 		</li>
 	</ul>
 </div>
-			
-			
+
+
 
 <div class="slide">
 	<h1>Reading directories</h1>
@@ -1790,7 +1832,7 @@ Marty Stepp
 				(returns a file path and name, such as <code>&quot;foo/bar/myfile.txt&quot;</code>)
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td><a href="http://www.php.net/scandir"><code>scandir</code></a></td>
 			<td>returns an array of all file names in a given directory <br />
@@ -1820,7 +1862,7 @@ foreach ($poems as $poemfile) {
   print &quot;&lt;p&gt;I just reversed &quot; . <em>basename($poemfile)</em> . &quot;&lt;/p&gt;\n&quot;;
 }
 </pre>
-				
+
 	<ul>
 		<li>
 			<code>glob</code> can match a "wildcard" path with the <code>*</code> character
@@ -1890,7 +1932,7 @@ foreach ($poems as $poemfile) {
 </div>
 
 
-			
+
 <div class="slide">
 	<h1>Why use classes and objects?</h1>
 
@@ -1965,12 +2007,12 @@ class <var>ClassName</var> {
   <span class="comment"># fields - data inside each object</span>
   public $<var>name</var>;    <span class="comment"># public field</span>
   private $<var>name</var>;   <span class="comment"># private field</span>
-	
+
   <span class="comment"># constructor - initializes each object's state</span>
   public function <em>__construct</em>(<var>parameters</var>) {
     <var>statement(s)</var>;
   }
-	
+
   <span class="comment"># method - behavior of each object</span>
   public function <var>name</var>(<var>parameters</var>) {
     <var>statements</var>;
@@ -1994,19 +2036,19 @@ class <var>ClassName</var> {
 class Point {
   public $x;
   public $y;
-	
+
   <span class="comment"># equivalent of a Java constructor</span>
   public function __construct($x, $y) {
     $this-&gt;x = $x;
     $this-&gt;y = $y;
   }
-	
+
   public function distance($p) {
     $dx = $this-&gt;x - $p-&gt;x;
     $dy = $this-&gt;y - $p-&gt;y;
     return sqrt($dx * $dx + $dy * $dy);
   }
-	
+
   <span class="comment"># equivalent of Java's toString method</span>
   public function __toString() {
     return &quot;(&quot; . $this-&gt;x . &quot;, &quot; . $this-&gt;y . &quot;)&quot;;
@@ -2065,12 +2107,12 @@ class <var>ClassName</var> extends <var>ClassName</var> {
 	<pre class="examplecode php">
 class Point3D extends Point {
   public $z;
-	
+
   public function __construct($x, $y, $z) {
     parent::__construct($x, $y);
     $this->z = $z;
   }
-	
+
   ...
 }
 </pre>
@@ -2158,10 +2200,10 @@ class <var>ClassName</var> <em>implements</em> <var>InterfaceName</var> { ...
 </div>
 
 
-			
+
 
 		</div><!-- end div class="presentation" -->
 	</body>
 
 <!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/lecture/05-PHP.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:39:20 GMT -->
-</html>		
+</html>

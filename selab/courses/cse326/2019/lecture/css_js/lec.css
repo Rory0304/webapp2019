@@ -1,0 +1,177 @@
+
+body {
+  margin : 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  scrollbar-face-color: blue;
+}
+
+/* css for right (slide) section */
+.presentation {
+  margin : auto;
+  overflow: hidden;
+}
+
+.slide {
+  font-size: 13pt;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#slide0 h1{
+  background-color: #DADADA;
+  padding: 10px;
+  margin-right: 10px;
+  color: black;
+}
+
+
+pre{
+  overflow: auto;
+}
+/* css for left section */
+
+.layout {
+  width : 25%;
+  position: fixed;
+  overflow: hidden;
+  -webkit-transition: width 0.6s;
+}
+
+#customize{
+  width: 50%;
+  overflow: hidden;
+  display: none;
+  color : white;
+  /*  margin-left: 2px;*/
+}
+
+#font{
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+#font select{
+  width: 80%;
+  height: 30px;
+  border: 6px solid transparent;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#font select option{
+  padding: 5px;
+  font-size: 15px;
+}
+
+pre{
+  background-color: #f5f5f5;
+}
+
+#navList{
+  float: left;
+  margin-bottom: 30px;
+}
+
+#controls{
+  background-color:  #34495e;
+  color: white;
+}
+
+#side {
+  /*  padding-top: 5px;*/
+  width : 92%;
+  height : 100%;
+  float: left;
+  background-color: #34495e;
+  /*-webkit-transition: width 0.6s;*/
+}
+
+#controls {
+  display: inline-block;
+  width : 100%;
+  background-color: black;
+}
+
+#navaLinks {
+  font-family: 'Nanum Gothic', sans-serif;
+  display: inline-block;
+  width : 49%;
+  font-weight: bold;
+}
+
+#buttons {
+  width : 49%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#buttons a img{
+  width : 25px;
+  height: 25px;
+  margin-right: 6px;
+  margin-top: 3px;
+  padding: 2px;
+  float: right;
+}
+
+#sideNum{
+  margin-top: 3px;
+}
+
+#index {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 5px;
+  padding-left: 0;
+  padding-bottom: 5px;
+  margin: 0;
+}
+
+a:link, a:visited {
+  color: #abb4be;
+  text-decoration: none;
+}
+
+#index li{
+  padding: 10px;
+}
+
+#index li:hover {
+  background-color: black;
+}
+
+#fold {
+  height: 100%;
+  float: left;
+  font-family: 'Nanum Gothic', sans-serif;
+  /*color: #414141;*/
+  color: white;
+  background-color: black;
+  opacity: 0.2;
+}
+
+#fold p {
+  margin-top: 45vh;
+  padding: 3px;
+}
+
+#footer{
+  clear: both;
+}
+
+  /*css for scroll (in webkit)*/
+  body::-webkit-scrollbar{width: 13px;}
+  body::-webkit-scrollbar-track {background-color:white;}
+  body::-webkit-scrollbar-thumb {background-color:#414141;border-radius: 5px;}
+  body::-webkit-scrollbar-thumb:hover {background: #555;}
+  body::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    height:10px; background:white;}
+    #index::-webkit-scrollbar{width: 10px;}
+    #index::-webkit-scrollbar-track {background-color:#34495e;}
+    #index::-webkit-scrollbar-thumb {background-color:#0088cc;border-radius: 10px;}
+    #index::-webkit-scrollbar-thumb:hover {background: #0088cc;}
+    #index::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+      height:5px; background:#34495e;}
