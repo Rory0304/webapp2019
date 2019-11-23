@@ -29,7 +29,7 @@ table th{
 #publications td{
 	text-align: left;
   font-size: 16px;
-  line-height: 20px;
+ /* line-height: 20px;*/
 	vertical-align: middle;
   padding: 10px;
 }

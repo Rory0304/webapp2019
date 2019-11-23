@@ -56,7 +56,7 @@
 		<div id="option">
 			<div id="font">
 				<p>Font</p>
-				<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1)">
+				<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
 					<option style="font-family:Serif" value="serif"> Serif </option>
 					<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
 					<option style="font-family:Arial" value="Arial"> Arial </option>
@@ -69,18 +69,13 @@
 					<option style="font-family:Impact" value="Impact">Impact</option>
 				</select>
 				<p>Font Size</p>
-					<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate(2)">
-						<option>10pt</option>
-						<option>12pt</option>
-						<option>14pt</option>
-						<option>16pt</option>
-						<option>18pt</option>
-						<option>20pt</option>
-						<option>22pt</option>
-						<option>24pt</option>
-						<option>26pt</option>
-						<option>28pt</option>
-					</select>
+				<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('home')">
+					<option style="font-size: 15px">Small</option>
+					<option style="font-size: 20px" selected>Normal</option>
+					<option style="font-size: 25px">Medium</option>
+					<option style="font-size: 30px">Large</option>
+					<option style="font-size: 35px">Huge</option>
+				</select>
 			</div>
 			<div id="background">
 				<p>Background</p>
@@ -96,28 +91,28 @@
 		<a href="javascript:void(0)" class="closebtn" onclick="closesetting()">&times;</a>
 	</div>
 
-		<div id="main">
-			<div class="container">
-				<div class="menu">
-					<a id = 'ind' href="index.html"><img src="common/images/selab_logo_S_2.png" /></a>
-					<div id ="sortable">
-						<a id='not' href="notice/index.html">NOTICE</a>
-						<a id='mem' href="members/index.html">MEMBERS</a>
-						<a id='res' href="research/index.html" >RESEARCH</a>
-						<a id='pub' href="publications/index.html" >PUBLICATIONS</a>
-						<a id='cou' href="courses/index.html" >COURSES</a>
-						<a id='gal' href="gallery/index.html" >GALLERY</a>
-					</div>
+	<div id="main">
+		<div class="container">
+			<div class="menu">
+				<a id = 'ind' href="index.html"><img src="common/images/selab_logo_S_2.png" /></a>
+				<div id ="sortable">
+					<a id='not' href="notice/index.html">NOTICE</a>
+					<a id='mem' href="members/index.html">MEMBERS</a>
+					<a id='res' href="research/index.html" >RESEARCH</a>
+					<a id='pub' href="publications/index.html" >PUBLICATIONS</a>
+					<a id='cou' href="courses/index.html" >COURSES</a>
+					<a id='gal' href="gallery/index.html" >GALLERY</a>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<footer role="contentinfo">
-			<div class="container">
-				<p>COPYRIGHT 2014 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
-			</div>
-		</footer>
-	</body>
+	<footer role="contentinfo">
+		<div class="container">
+			<p>COPYRIGHT 2014 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
+		</div>
+	</footer>
+</body>
 
-	<!-- Mirrored from selab.hanyang.ac.kr/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:16 GMT -->
-	</html>
+<!-- Mirrored from selab.hanyang.ac.kr/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:16 GMT -->
+</html>
