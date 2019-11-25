@@ -1,540 +1,535 @@
 <!DOCTYPE html>
 <!-- saved from url=(0036)https://selab.hanyang.ac.kr/gallery/ -->
 <html class="gr__selab_hanyang_ac_kr">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Software Engineering Lab - Gallery</title>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Software Engineering Lab - Gallery</title>
 		<!--[if IE]>
 		<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link rel="stylesheet" href="../common/styles/reset-1.6.1.css" type="text/css" />
-		<link rel="stylesheet" href="../common/styles/jquery-ui.css" type="text/css" />
-		<link rel="stylesheet" href="../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" />
-		<link rel="stylesheet" href="../common/styles/common.css" type="text/css" />
-		<link rel="shortcut icon" href="../common/images/SelabFavicon.png" type="image/png">
-		<link rel="stylesheet" href="styles/gallery.css" type="text/css">
-		<link rel="stylesheet" href="styles/lightbox.css" type="text/css">
+	<![endif]-->
+	<link rel="stylesheet" href="../common/styles/reset-1.6.1.css" type="text/css" />
+	<link rel="stylesheet" href="../common/styles/jquery-ui.css" type="text/css" />
+	<link rel="stylesheet" href="../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="../common/styles/common.css" type="text/css" />
+	<link rel="shortcut icon" href="../common/images/SelabFavicon.png" type="image/png">
+	<link rel="stylesheet" href="styles/gallery.css" type="text/css">
+	<link rel="stylesheet" href="styles/lightbox.css" type="text/css">
 
-		<script type="text/javascript" src="../common/scripts/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript" src="../common/scripts/jquery-ui.js"></script>
-		<script type="text/javascript" src="../common/scripts/buffered-keyup.js"></script>
-		<script type="text/javascript" src="../common/scripts/common.js"></script>
-		<script type="text/javascript" src="scripts/gallery.js"></script>
-		<script type="text/javascript" src="scripts/lightbox-2.6.min.js"></script>
-	</head>
+	<script type="text/javascript" src="../common/scripts/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../common/scripts/jquery-ui.js"></script>
+	<script type="text/javascript" src="../common/scripts/buffered-keyup.js"></script>
+	<script type="text/javascript" src="../common/scripts/common.js"></script>
+	<script type="text/javascript" src="scripts/gallery.js"></script>
+	<script type="text/javascript" src="scripts/lightbox-2.6.min.js"></script>
+</head>
 
-	<body>
-		<header role="banner" class="header">
-			<div class="container">
-				<nav>
-					<div id="logo" class="pull-left">
-						<a href="../index.html"><img src="../common/images/selab_logo_S.png" alt="logo"/></a>
+<body>
+	<header role="banner" class="header">
+		<div class="container">
+			<nav>
+				<div id="logo" class="pull-left">
+					<a href="../index.html"><img src="../common/images/selab_logo_S.png" alt="logo"/></a>
+				</div>
+				<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
+				<div role="login" class="pull-right">
+					<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
+				</div>
+				<a id="contact" href="../contact/index.html" class='pull-right'> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
+			</nav>
+			<div id="menu">
+				<ul class="inline-list pull-left">
+					<li><a href="../notice/index.html" >NOTICE</a></li>
+					<li><a href="../members/index.html" >MEMBERS</a></li>
+					<li><a href="../research/index.html" >RESEARCH</a></li>
+					<li><a href="../publications/index.html" >PUBLICATIONS</a></li>
+					<li><a href="../courses/index.html" >COURSES</a></li>
+					<li><a href="../gallery/index.html" >GALLERY</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+
+	<div id="settingtab">
+		<a href="javascript:void(0)" class="closebtn" onclick="closesetting()">&times;</a>
+		<div id="sample">
+			<div id="samplePage">
+				<div id="SampleH">
+					<div id="SampleH1">
+						<p>[lab];</p>
 					</div>
-					<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
-					<div role="login" class="pull-right">
-						<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
+					<div id="SampleH2">
+						<p>notice members research ...</p>
 					</div>
-					<a id="contact" href="../contact/index.html" class='pull-right'> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
-				</nav>
-				<div id="menu">
-					<ul class="inline-list pull-left">
-						<li><a href="../notice/index.html" >NOTICE</a></li>
-						<li><a href="../members/index.html" >MEMBERS</a></li>
-						<li><a href="../research/index.html" >RESEARCH</a></li>
-						<li><a href="../publications/index.html" >PUBLICATIONS</a></li>
-						<li><a href="../courses/index.html" >COURSES</a></li>
-						<li><a href="../gallery/index.html" >GALLERY</a></li>
-					</ul>
+				</div>
+				<div id="sampleC">
+					<h1>sample</h1>
+					<p>This is sample to help your costomizing. I hope you satisfied whith our wepsite.</p>
 				</div>
 			</div>
-		</header>
-
-		<div id="settingtab">
-			<div id="sample">
-				<div id="samplePage">
-					<div id="SampleH">
-						<div id="SampleH1">
-							<p>[lab];</p>
-						</div>
-						<div id="SampleH2">
-							<p>notice members research ...</p>
-						</div>
-					</div>
-					<div id="sampleC">
-						<h1>sample</h1>
-						<p>This is sample to help your costomizing. I hope you satisfied whith our wepsite.</p>
-					</div>
-				</div>
-			</div>
-
-			<div id="option">
-				<div id="font">
-					<p>Navigation</p>
-					<input type="radio" name="nav" value="top" checked="checked" /> Top
-					<input type="radio" name="nav" value="left" /> Left
-					<input type="radio" name="nav" value="right" /> Right
-					<p>Font</p>
-					<select id="fontselect" name="selectFontFamily" onchange="fontupdate(1)">
-						<option style="font-family:Serif" value="serif"> Serif </option>
-						<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
-						<option style="font-family:Arial" value="Arial"> Arial </option>
-						<option style="font-family:Monospace" value="Monospace">Monospace</option>
-						<option style="font-family:Roboto" value="Roboto">Roboto</option>
-						<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
-						<option style="font-family:Garamond" value="Garamond">Garamond</option>
-						<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
-						<option style="font-family:Courier" value="Courier">Courier</option>
-						<option style="font-family:Impact" value="Impact">Impact</option>
-					</select>
-					<p>Font Size</p>
-						<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate(2)">
-							<option>10pt</option>
-							<option>12pt</option>
-							<option>14pt</option>
-							<option>16pt</option>
-							<option>18pt</option>
-							<option>20pt</option>
-							<option>22pt</option>
-							<option>24pt</option>
-							<option>26pt</option>
-							<option>28pt</option>
-						</select>
-				</div>
-				<div id="background">
-					<p>Background</p>
-					<select id="backselect" name="selectBackground" onchange="backupdate();">
-						<option value="1"> Theme1 </option>
-						<option value="2"> Theme2</option>
-						<option value="3"> Theme3 </option>
-						<option value="4"> Theme4 </option>
-						<option value="5"> Theme5 </option>
-					</select>
-				</div>
-			</div>
-			<a href="javascript:void(0)" class="closebtn" onclick="closesetting()">&times;</a>
 		</div>
 
-		<main role="main">
-			<div id="sideNav">
-				<div class="nav-list-left">
-					<div id="sideLogo"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
-					<a id="sideSetting" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
-					<div role="login">
-						<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
-					</div>
-					<a id="sideContact" href="../contact/index.html"> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
-				</div>
-				<div class="nav-list-right">
-					<div class="nav-list">
-						<a href="../notice/index.html" >NOTICE</a>
-					</div>
-					<div class="nav-list">
-						<a href="../members/index.html" >MEMBERS</a>
-					</div>
-					<div class="nav-list">
-						<a href="../research/index.html" >RESEARCH</a>
-					</div>
-					<div class="nav-list">
-						<a href="../publications/index.html" >PUBLICATIONS</a>
-					</div>
-					<div class="nav-list">
-						<a href="../courses/index.html" >COURSES</a>
-					</div>
-					<div class="nav-list">
-						<a href="../gallery/index.html" >GALLERY</a>
-					</div>
-				</div>
+		<div id="option">
+			<div id="font">
+				<p>Navigation</p>
+				<input type="radio" name="nav" value="top" checked="checked" /> Top
+				<input type="radio" name="nav" value="left" /> Left
+				<input type="radio" name="nav" value="right" /> Right
+				<p>Font</p>
+				<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
+					<option style="font-family:Serif" value="serif"> Serif </option>
+					<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
+					<option style="font-family:Arial" value="Arial"> Arial </option>
+					<option style="font-family:Monospace" value="Monospace">Monospace</option>
+					<option style="font-family:Roboto" value="Roboto">Roboto</option>
+					<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
+					<option style="font-family:Garamond" value="Garamond">Garamond</option>
+					<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+					<option style="font-family:Courier" value="Courier">Courier</option>
+					<option style="font-family:Impact" value="Impact">Impact</option>
+				</select>
+				<p>Font Size</p>
+				<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('gallery')">
+					<option style="font-size: 15px">Small</option>
+					<option style="font-size: 20px" selected>Normal</option>
+					<option style="font-size: 25px">Medium</option>
+					<option style="font-size: 30px">Large</option>
+					<option style="font-size: 35px">Huge</option>
+				</select>
 			</div>
+			<div id="background">
+				<p>Background</p>
+				<select id="backselect" name="selectBackground" onchange="backupdate();">
+					<option value="1"> Theme1 </option>
+					<option value="2"> Theme2</option>
+					<option value="3"> Theme3 </option>
+					<option value="4"> Theme4 </option>
+					<option value="5"> Theme5 </option>
+				</select>
+			</div>
+		</div>
+	</div>
 
-			<div class="main-container">
-				<div class="contents">
-					<h1>GALLERY</h1>
-					<div id="tab">
-						<div class="first-tab" data-type="all">All</div>
-						<div class="deactive" data-type="social">Social Activity</div>
-						<div class="deactive" data-type="conference">Conference</div>
-						<div class="deactive last-tab" data-type="etc">Etc</div>
+	<main role="main">
+		<div id="sideNav">
+			<div class="nav-list-left">
+				<div id="sideLogo"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
+				<a id="sideSetting" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
+				<div role="login">
+					<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
+				</div>
+				<a id="sideContact" href="../contact/index.html"> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
+			</div>
+			<div class="nav-list-right">
+				<div class="nav-list">
+					<a href="../notice/index.html" >NOTICE</a>
+				</div>
+				<div class="nav-list">
+					<a href="../members/index.html" >MEMBERS</a>
+				</div>
+				<div class="nav-list">
+					<a href="../research/index.html" >RESEARCH</a>
+				</div>
+				<div class="nav-list">
+					<a href="../publications/index.html" >PUBLICATIONS</a>
+				</div>
+				<div class="nav-list">
+					<a href="../courses/index.html" >COURSES</a>
+				</div>
+				<div class="nav-list">
+					<a href="../gallery/index.html" >GALLERY</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="main-container">
+			<div class="contents" id='main'>
+				<h1>GALLERY</h1>
+				<div id="tab">
+					<div class="first-tab" data-type="all">All</div>
+					<div class="deactive" data-type="social">Social Activity</div>
+					<div class="deactive" data-type="conference">Conference</div>
+					<div class="deactive last-tab" data-type="etc">Etc</div>
+				</div>
+				<div id="hl"></div>
+				<div class="row back">
+					<div class="tile pull-left column conference">
+						<a href="./index_files/KakaoTalk_20170113_125937985.jpg" data-lightbox="all" title="KSCI 2017">
+							<img src="./index_files/KakaoTalk_20170113_125937985.jpg">
+						</a>
+						<div class="title">
+							<p>KSCI 2017</p>
+						</div>
 					</div>
-					<div id="hl"></div>
-					<div class="row back">
-						<div class="tile pull-left column conference">
-							<a href="./index_files/KakaoTalk_20170113_125937985.jpg" data-lightbox="all" title="KSCI 2017">
-								<img src="./index_files/KakaoTalk_20170113_125937985.jpg">
-							</a>
-							<div class="title">
-								<p>KSCI 2017</p>
-							</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/KakaoTalk_20170113_125748315.jpg" data-lightbox="all" title="KSCI 2017">
+							<img src="./index_files/KakaoTalk_20170113_125748315.jpg">
+						</a>
+						<div class="title">
+							<p>KSCI 2017</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/KakaoTalk_20170113_125748315.jpg" data-lightbox="all" title="KSCI 2017">
-								<img src="./index_files/KakaoTalk_20170113_125748315.jpg">
-							</a>
-							<div class="title">
-								<p>KSCI 2017</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/KakaoTalk_20170113_125722733.jpg" data-lightbox="all" title="KSCI 2017">
+							<img src="./index_files/KakaoTalk_20170113_125722733.jpg">
+						</a>
+						<div class="title">
+							<p>KSCI 2017</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/KakaoTalk_20170113_125722733.jpg" data-lightbox="all" title="KSCI 2017">
-								<img src="./index_files/KakaoTalk_20170113_125722733.jpg">
-							</a>
-							<div class="title">
-								<p>KSCI 2017</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/20161221_131538-1.jpg" data-lightbox="all" title="ICCCA 2016 Busan">
+							<img src="./index_files/20161221_131538-1.jpg">
+						</a>
+						<div class="title">
+							<p>ICCCA 2016 Busan</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/20161221_131538-1.jpg" data-lightbox="all" title="ICCCA 2016 Busan">
-								<img src="./index_files/20161221_131538-1.jpg">
-							</a>
-							<div class="title">
-								<p>ICCCA 2016 Busan</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/2016-07-25 12.25.28.jpg" data-lightbox="all" title="회식">
+							<img src="./index_files/2016-07-25 12.25.28.jpg">
+						</a>
+						<div class="title">
+							<p>회식</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/2016-07-25 12.25.28.jpg" data-lightbox="all" title="회식">
-								<img src="./index_files/2016-07-25 12.25.28.jpg">
-							</a>
-							<div class="title">
-								<p>회식</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/2016-07-28 14.48.46.jpg" data-lightbox="all" title="일상">
+							<img src="./index_files/2016-07-28 14.48.46.jpg">
+						</a>
+						<div class="title">
+							<p>일상</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/2016-07-28 14.48.46.jpg" data-lightbox="all" title="일상">
-								<img src="./index_files/2016-07-28 14.48.46.jpg">
-							</a>
-							<div class="title">
-								<p>일상</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/2015-12-20 17.39.26.jpg" data-lightbox="all" title="KCC">
+							<img src="./index_files/2015-12-20 17.39.26.jpg">
+						</a>
+						<div class="title">
+							<p>KCC</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/2015-12-20 17.39.26.jpg" data-lightbox="all" title="KCC">
-								<img src="./index_files/2015-12-20 17.39.26.jpg">
-							</a>
-							<div class="title">
-								<p>KCC</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/KakaoTalk_20161013_161859066.jpg" data-lightbox="all" title="Gayeon&#39;s Birthday ">
+							<img src="./index_files/KakaoTalk_20161013_161859066.jpg">
+						</a>
+						<div class="title">
+							<p>Gayeon's Birthday </p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/KakaoTalk_20161013_161859066.jpg" data-lightbox="all" title="Gayeon&#39;s Birthday ">
-								<img src="./index_files/KakaoTalk_20161013_161859066.jpg">
-							</a>
-							<div class="title">
-								<p>Gayeon's Birthday </p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/KakaoTalk_20161103_200248538.jpg" data-lightbox="all" title="Lab Dinner November 2016">
+							<img src="./index_files/KakaoTalk_20161103_200248538.jpg">
+						</a>
+						<div class="title">
+							<p>Lab Dinner November 2016</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/KakaoTalk_20161103_200248538.jpg" data-lightbox="all" title="Lab Dinner November 2016">
-								<img src="./index_files/KakaoTalk_20161103_200248538.jpg">
-							</a>
-							<div class="title">
-								<p>Lab Dinner November 2016</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/KakaoTalk_20160714_200728318.jpg" data-lightbox="all" title="ICISCA Conference 16 July 2016 Thailand">
+							<img src="./index_files/KakaoTalk_20160714_200728318.jpg">
+						</a>
+						<div class="title">
+							<p>ICISCA Conference 16 July 2016 Thailand</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/KakaoTalk_20160714_200728318.jpg" data-lightbox="all" title="ICISCA Conference 16 July 2016 Thailand">
-								<img src="./index_files/KakaoTalk_20160714_200728318.jpg">
-							</a>
-							<div class="title">
-								<p>ICISCA Conference 16 July 2016 Thailand</p>
-							</div>
+					</div>
+					<div class="tile pull-left column etc">
+						<a href="./index_files/1421654364774.jpeg" data-lightbox="all" title="Happy Birthday Prof!">
+							<img src="./index_files/1421654364774.jpeg" />
+						</a>
+						<div class="title">
+							<p>Happy Birthday Prof!</p>
 						</div>
-						<div class="tile pull-left column etc">
-							<a href="./index_files/1421654364774.jpeg" data-lightbox="all" title="Happy Birthday Prof!">
-								<img src="./index_files/1421654364774.jpeg" />
-							</a>
-							<div class="title">
-								<p>Happy Birthday Prof!</p>
-							</div>
+					</div>
+					<div class="tile pull-left column etc">
+						<a href="./index_files/20160707_173320.jpg" data-lightbox="all" title="Twins-2">
+							<img src="./index_files/20160707_173320.jpg" />
+						</a>
+						<div class="title">
+							<p>Twins-2</p>
 						</div>
-						<div class="tile pull-left column etc">
-							<a href="./index_files/20160707_173320.jpg" data-lightbox="all" title="Twins-2">
-								<img src="./index_files/20160707_173320.jpg" />
-							</a>
-							<div class="title">
-								<p>Twins-2</p>
-							</div>
+					</div>
+					<div class="tile pull-left column etc">
+						<a href="./index_files/20160504_174227.jpg" data-lightbox="all" title="Twins Birthday">
+							<img src="./index_files/20160504_174227.jpg" />
+						</a>
+						<div class="title">
+							<p>Twins Birthday</p>
 						</div>
-						<div class="tile pull-left column etc">
-							<a href="./index_files/20160504_174227.jpg" data-lightbox="all" title="Twins Birthday">
-								<img src="./index_files/20160504_174227.jpg" />
-							</a>
-							<div class="title">
-								<p>Twins Birthday</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/20160303_122313.jpg" data-lightbox="all" title="SELAB-Lunch ">
+							<img src="./index_files/20160303_122313.jpg" />
+						</a>
+						<div class="title">
+							<p>SELAB-Lunch </p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/20160303_122313.jpg" data-lightbox="all" title="SELAB-Lunch ">
-								<img src="./index_files/20160303_122313.jpg" />
-							</a>
-							<div class="title">
-								<p>SELAB-Lunch </p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/20151217_144926.jpg" data-lightbox="all" title="KCC Winter 2015">
+							<img src="./index_files/20151217_144926.jpg" />
+						</a>
+						<div class="title">
+							<p>KCC Winter 2015</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/20151217_144926.jpg" data-lightbox="all" title="KCC Winter 2015">
-								<img src="./index_files/20151217_144926.jpg" />
-							</a>
-							<div class="title">
-								<p>KCC Winter 2015</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/KakaoTalk_20151218_131111742.jpg" data-lightbox="all" title="KCC Winter 2015">
+							<img src="./index_files/KakaoTalk_20151218_131111742.jpg" />
+						</a>
+						<div class="title">
+							<p>KCC Winter 2015</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/KakaoTalk_20151218_131111742.jpg" data-lightbox="all" title="KCC Winter 2015">
-								<img src="./index_files/KakaoTalk_20151218_131111742.jpg" />
-							</a>
-							<div class="title">
-								<p>KCC Winter 2015</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/DSC_0093.JPG" data-lightbox="all" title="KCC Winter 2015-Rahim Presenting Paper">
+							<img src="./index_files/DSC_0093.JPG" />
+						</a>
+						<div class="title">
+							<p>KCC Winter 2015-Rahim Presenting Paper</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/DSC_0093.JPG" data-lightbox="all" title="KCC Winter 2015-Rahim Presenting Paper">
-								<img src="./index_files/DSC_0093.JPG" />
-							</a>
-							<div class="title">
-								<p>KCC Winter 2015-Rahim Presenting Paper</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/DSC_0114.JPG" data-lightbox="all" title="KCC Winter 2015">
+							<img src="./index_files/DSC_0114.JPG" />
+						</a>
+						<div class="title">
+							<p>KCC Winter 2015</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/DSC_0114.JPG" data-lightbox="all" title="KCC Winter 2015">
-								<img src="./index_files/DSC_0114.JPG" />
-							</a>
-							<div class="title">
-								<p>KCC Winter 2015</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/DSC_0081.JPG" data-lightbox="all" title="KCC Winter2015-Zhiqiang">
+							<img src="./index_files/DSC_0081.JPG" />
+						</a>
+						<div class="title">
+							<p>KCC Winter2015-Zhiqiang</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/DSC_0081.JPG" data-lightbox="all" title="KCC Winter2015-Zhiqiang">
-								<img src="./index_files/DSC_0081.JPG" />
-							</a>
-							<div class="title">
-								<p>KCC Winter2015-Zhiqiang</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/20151217_125809.jpg" data-lightbox="all" title="KCC WINTER Conference 2015-Lunch">
+							<img src="./index_files/20151217_125809.jpg" />
+						</a>
+						<div class="title">
+							<p>KCC WINTER Conference 2015-Lunch</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/20151217_125809.jpg" data-lightbox="all" title="KCC WINTER Conference 2015-Lunch">
-								<img src="./index_files/20151217_125809.jpg" />
-							</a>
-							<div class="title">
-								<p>KCC WINTER Conference 2015-Lunch</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/KakaoTalk_Photo_2016-07-07-17-07-51.jpeg" data-lightbox="all" title="SeonWoong Birthday">
+							<img src="./index_files/KakaoTalk_Photo_2016-07-07-17-07-51.jpeg" />
+						</a>
+						<div class="title">
+							<p>SeonWoong Birthday</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/KakaoTalk_Photo_2016-07-07-17-07-51.jpeg" data-lightbox="all" title="SeonWoong Birthday">
-								<img src="./index_files/KakaoTalk_Photo_2016-07-07-17-07-51.jpeg" />
-							</a>
-							<div class="title">
-								<p>SeonWoong Birthday</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/KakaoTalk_Photo_2016-07-07-17-07-46.jpeg" data-lightbox="all" title="Lab Lunch">
+							<img src="./index_files/KakaoTalk_Photo_2016-07-07-17-07-46.jpeg" />
+						</a>
+						<div class="title">
+							<p>Lab Lunch</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/KakaoTalk_Photo_2016-07-07-17-07-46.jpeg" data-lightbox="all" title="Lab Lunch">
-								<img src="./index_files/KakaoTalk_Photo_2016-07-07-17-07-46.jpeg" />
-							</a>
-							<div class="title">
-								<p>Lab Lunch</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/KakaoTalk_20150913_214113133.jpg" data-lightbox="all" title="Lab Lunch (14 September 2015)">
+							<img src="./index_files/KakaoTalk_20150913_214113133.jpg" />
+						</a>
+						<div class="title">
+							<p>Lab Lunch (14 September 2015)</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/KakaoTalk_20150913_214113133.jpg" data-lightbox="all" title="Lab Lunch (14 September 2015)">
-								<img src="./index_files/KakaoTalk_20150913_214113133.jpg" />
-							</a>
-							<div class="title">
-								<p>Lab Lunch (14 September 2015)</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/image.jpg" data-lightbox="all" title="Lab Lunch">
+							<img src="./index_files/image.jpg" />
+						</a>
+						<div class="title">
+							<p>Lab Lunch</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/image.jpg" data-lightbox="all" title="Lab Lunch">
-								<img src="./index_files/image.jpg" />
-							</a>
-							<div class="title">
-								<p>Lab Lunch</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/KakaoTalk_20150701_002505992.jpg" data-lightbox="all" title="KCC 2015 Seonwoong">
+							<img src="./index_files/KakaoTalk_20150701_002505992.jpg" />
+						</a>
+						<div class="title">
+							<p>KCC 2015 Seonwoong</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/KakaoTalk_20150701_002505992.jpg" data-lightbox="all" title="KCC 2015 Seonwoong">
-								<img src="./index_files/KakaoTalk_20150701_002505992.jpg" />
-							</a>
-							<div class="title">
-								<p>KCC 2015 Seonwoong</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/KakaoTalk_20150701_002517046.jpg" data-lightbox="all" title="KCC 2015 Seonwoong">
+							<img src="./index_files/KakaoTalk_20150701_002517046.jpg" />
+						</a>
+						<div class="title">
+							<p>KCC 2015 Seonwoong</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/KakaoTalk_20150701_002517046.jpg" data-lightbox="all" title="KCC 2015 Seonwoong">
-								<img src="./index_files/KakaoTalk_20150701_002517046.jpg" />
-							</a>
-							<div class="title">
-								<p>KCC 2015 Seonwoong</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/KakaoTalk_20150701_002517777.jpg" data-lightbox="all" title="KCC 2015 Seonwoong">
+							<img src="./index_files/KakaoTalk_20150701_002517777.jpg" />
+						</a>
+						<div class="title">
+							<p>KCC 2015 Seonwoong</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/KakaoTalk_20150701_002517777.jpg" data-lightbox="all" title="KCC 2015 Seonwoong">
-								<img src="./index_files/KakaoTalk_20150701_002517777.jpg" />
-							</a>
-							<div class="title">
-								<p>KCC 2015 Seonwoong</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/img2.jpeg" data-lightbox="all" title="KCC2015 Asad">
+							<img src="./index_files/img2.jpeg" />
+						</a>
+						<div class="title">
+							<p>KCC2015 Asad</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/img2.jpeg" data-lightbox="all" title="KCC2015 Asad">
-								<img src="./index_files/img2.jpeg" />
-							</a>
-							<div class="title">
-								<p>KCC2015 Asad</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/img.jpeg" data-lightbox="all" title="KCC2015 Asad and Isma">
+							<img src="./index_files/img.jpeg" />
+						</a>
+						<div class="title">
+							<p>KCC2015 Asad and Isma</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/img.jpeg" data-lightbox="all" title="KCC2015 Asad and Isma">
-								<img src="./index_files/img.jpeg" />
-							</a>
-							<div class="title">
-								<p>KCC2015 Asad and Isma</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/Bandphoto_2014_05_14_13_31_06.jpg" data-lightbox="all" title="Beer with Chips and People :-)">
+							<img src="./index_files/Bandphoto_2014_05_14_13_31_06.jpg" />
+						</a>
+						<div class="title">
+							<p>Beer with Chips and People :-)</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/Bandphoto_2014_05_14_13_31_06.jpg" data-lightbox="all" title="Beer with Chips and People :-)">
-								<img src="./index_files/Bandphoto_2014_05_14_13_31_06.jpg" />
-							</a>
-							<div class="title">
-								<p>Beer with Chips and People :-)</p>
-							</div>
+					</div>
+					<div class="tile pull-left column etc">
+						<a href="./index_files/KakaoTalk_20140513_124247945.jpg" data-lightbox="all" title="절대 누구라고는 말 안했음.... Who are you?">
+							<img src="./index_files/KakaoTalk_20140513_124247945.jpg" />
+						</a>
+						<div class="title">
+							<p>절대 누구라고는 말 안했음.... Who are you?</p>
 						</div>
-						<div class="tile pull-left column etc">
-							<a href="./index_files/KakaoTalk_20140513_124247945.jpg" data-lightbox="all" title="절대 누구라고는 말 안했음.... Who are you?">
-								<img src="./index_files/KakaoTalk_20140513_124247945.jpg" />
-							</a>
-							<div class="title">
-								<p>절대 누구라고는 말 안했음.... Who are you?</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/IMG_4923.JPG" data-lightbox="all" title="KCSE 2014 presentation">
+							<img src="./index_files/IMG_4923.JPG" />
+						</a>
+						<div class="title">
+							<p>KCSE 2014 presentation</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/IMG_4923.JPG" data-lightbox="all" title="KCSE 2014 presentation">
-								<img src="./index_files/IMG_4923.JPG" />
-							</a>
-							<div class="title">
-								<p>KCSE 2014 presentation</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/IMG_4772.JPG" data-lightbox="all" title="KCSE 2014 presentation">
+							<img src="./index_files/IMG_4772.JPG" />
+						</a>
+						<div class="title">
+							<p>KCSE 2014 presentation</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/IMG_4772.JPG" data-lightbox="all" title="KCSE 2014 presentation">
-								<img src="./index_files/IMG_4772.JPG" />
-							</a>
-							<div class="title">
-								<p>KCSE 2014 presentation</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/IMG_7602.JPG" data-lightbox="all" title="호수공원">
+							<img src="./index_files/IMG_7602.JPG" />
+						</a>
+						<div class="title">
+							<p>호수공원</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/IMG_7602.JPG" data-lightbox="all" title="호수공원">
-								<img src="./index_files/IMG_7602.JPG" />
-							</a>
-							<div class="title">
-								<p>호수공원</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/IMG_7584.JPG" data-lightbox="all" title="Plz, arrest him!!!! Crazy guy on the Lio">
+							<img src="./index_files/IMG_7584.JPG" />
+						</a>
+						<div class="title">
+							<p>Plz, arrest him!!!! Crazy guy on the Lio</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/IMG_7584.JPG" data-lightbox="all" title="Plz, arrest him!!!! Crazy guy on the Lio">
-								<img src="./index_files/IMG_7584.JPG" />
-							</a>
-							<div class="title">
-								<p>Plz, arrest him!!!! Crazy guy on the Lio</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/IMG_7586.JPG" data-lightbox="all" title="All mems In front of Lion Statue!!">
+							<img src="./index_files/IMG_7586.JPG" />
+						</a>
+						<div class="title">
+							<p>All mems In front of Lion Statue!!</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/IMG_7586.JPG" data-lightbox="all" title="All mems In front of Lion Statue!!">
-								<img src="./index_files/IMG_7586.JPG" />
-							</a>
-							<div class="title">
-								<p>All mems In front of Lion Statue!!</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/KakaoTalk_3f852c70fb6f4ca3.jpg" data-lightbox="all" title="Happy Birthday!! :-)">
+							<img src="./index_files/KakaoTalk_3f852c70fb6f4ca3.jpg" />
+						</a>
+						<div class="title">
+							<p>Happy Birthday!! :-)</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/KakaoTalk_3f852c70fb6f4ca3.jpg" data-lightbox="all" title="Happy Birthday!! :-)">
-								<img src="./index_files/KakaoTalk_3f852c70fb6f4ca3.jpg" />
-							</a>
-							<div class="title">
-								<p>Happy Birthday!! :-)</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/IMG_1109.JPG" data-lightbox="all" title="KCSE 2014 Pheonix Park">
+							<img src="./index_files/IMG_1109.JPG" />
+						</a>
+						<div class="title">
+							<p>KCSE 2014 Pheonix Park</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/IMG_1109.JPG" data-lightbox="all" title="KCSE 2014 Pheonix Park">
-								<img src="./index_files/IMG_1109.JPG" />
-							</a>
-							<div class="title">
-								<p>KCSE 2014 Pheonix Park</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/IMG_1164.JPG" data-lightbox="all" title="Dinner February 2014">
+							<img src="./index_files/IMG_1164.JPG" />
+						</a>
+						<div class="title">
+							<p>Dinner February 2014</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/IMG_1164.JPG" data-lightbox="all" title="Dinner February 2014">
-								<img src="./index_files/IMG_1164.JPG" />
-							</a>
-							<div class="title">
-								<p>Dinner February 2014</p>
-							</div>
+					</div>
+					<div class="tile pull-left column etc">
+						<a href="./index_files/20130628_121943.jpg" data-lightbox="all" title="숨막히는 뒤태~~~ 우후훗">
+							<img src="./index_files/20130628_121943.jpg" />
+						</a>
+						<div class="title">
+							<p>숨막히는 뒤태~~~ 우후훗</p>
 						</div>
-						<div class="tile pull-left column etc">
-							<a href="./index_files/20130628_121943.jpg" data-lightbox="all" title="숨막히는 뒤태~~~ 우후훗">
-								<img src="./index_files/20130628_121943.jpg" />
-							</a>
-							<div class="title">
-								<p>숨막히는 뒤태~~~ 우후훗</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/IMG_1716.JPG" data-lightbox="all" title="뭐가 그리 좋을꼬?? 누가 그리 좋을꼬? ㅋㅋ">
+							<img src="./index_files/IMG_1716.JPG" />
+						</a>
+						<div class="title">
+							<p>뭐가 그리 좋을꼬?? 누가 그리 좋을꼬? ㅋㅋ</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/IMG_1716.JPG" data-lightbox="all" title="뭐가 그리 좋을꼬?? 누가 그리 좋을꼬? ㅋㅋ">
-								<img src="./index_files/IMG_1716.JPG" />
-							</a>
-							<div class="title">
-								<p>뭐가 그리 좋을꼬?? 누가 그리 좋을꼬? ㅋㅋ</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/IMG_2197.JPG" data-lightbox="all" title="회식">
+							<img src="./index_files/IMG_2197.JPG" />
+						</a>
+						<div class="title">
+							<p>회식</p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/IMG_2197.JPG" data-lightbox="all" title="회식">
-								<img src="./index_files/IMG_2197.JPG" />
-							</a>
-							<div class="title">
-								<p>회식</p>
-							</div>
+					</div>
+					<div class="tile pull-left column social">
+						<a href="./index_files/IMG_2335.JPG" data-lightbox="all" title="나는 지금 총을 쏘는게 아니야!!! ">
+							<img src="./index_files/IMG_2335.JPG" />
+						</a>
+						<div class="title">
+							<p>나는 지금 총을 쏘는게 아니야!!! </p>
 						</div>
-						<div class="tile pull-left column social">
-							<a href="./index_files/IMG_2335.JPG" data-lightbox="all" title="나는 지금 총을 쏘는게 아니야!!! ">
-								<img src="./index_files/IMG_2335.JPG" />
-							</a>
-							<div class="title">
-								<p>나는 지금 총을 쏘는게 아니야!!! </p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/20130628_121831.jpg" data-lightbox="all" title="공허함의 끝은 발표">
+							<img src="./index_files/20130628_121831.jpg" />
+						</a>
+						<div class="title">
+							<p>공허함의 끝은 발표</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/20130628_121831.jpg" data-lightbox="all" title="공허함의 끝은 발표">
-								<img src="./index_files/20130628_121831.jpg" />
-							</a>
-							<div class="title">
-								<p>공허함의 끝은 발표</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/jaejin.png" data-lightbox="all" title="졸업생의 비애">
+							<img src="./index_files/jaejin.png" />
+						</a>
+						<div class="title">
+							<p>졸업생의 비애</p>
 						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/jaejin.png" data-lightbox="all" title="졸업생의 비애">
-								<img src="./index_files/jaejin.png" />
-							</a>
-							<div class="title">
-								<p>졸업생의 비애</p>
-							</div>
-						</div>
-						<div class="tile pull-left column conference">
-							<a href="./index_files/IMG_1794.JPG" data-lightbox="all" title="종합학술대회(여수)">
-								<img src="./index_files/IMG_1794.JPG" />
-							</a>
-							<div class="title">
-								<p>종합학술대회(여수)</p>
-							</div>
+					</div>
+					<div class="tile pull-left column conference">
+						<a href="./index_files/IMG_1794.JPG" data-lightbox="all" title="종합학술대회(여수)">
+							<img src="./index_files/IMG_1794.JPG" />
+						</a>
+						<div class="title">
+							<p>종합학술대회(여수)</p>
 						</div>
 					</div>
 				</div>
 			</div>
-		</main>
+		</div>
+	</main>
 
-		<footer role="contentinfo">
-			<div class="container">
-				<p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
-			</div>
-		</footer>
+	<footer role="contentinfo">
+		<div class="container">
+			<p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
+		</div>
+	</footer>
 		<!-- <div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div>
 		<div id="lightbox" class="lightbox" style="display: none;">
 			<div class="lb-outerContainer">
@@ -567,4 +562,4 @@
 		<i class="gr__tooltip-logo"></i>
 		<span class="gr__triangle"></span>
 	</span> -->
-</html>
+	</html>

@@ -80,7 +80,7 @@ nav {
 	line-height: 52px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	/* overflow: hidden; */
+	overflow: hidden;
 }
 
 nav img{
@@ -190,10 +190,11 @@ footer[role="contentinfo"] p {
 	margin: 0;
 	padding: 0;
 	padding-top: 80px;
+	min-width: 400px;
 }
 
 #samplePage {
-	width : 400px;
+	width : 350px;
 	height : 200px;
 	background-color: #fff4d1;
 	margin: 0 auto;
@@ -240,8 +241,10 @@ footer[role="contentinfo"] p {
 	padding: 5px;
 }
 
-#font{
-  margin-bottom: 10px;
+#font, #background{
+  margin: 0 auto;
+	width: 350px;
+	margin-bottom: 10px;
 }
 
 #font select, #background select{
@@ -271,6 +274,7 @@ select #backselect option[value="1"]{
 	line-height: normal;
 	/* overflow: hidden; */
 	display: none;
+	z-index: 50;
 }
 
 #sideNav div.nav-list {
