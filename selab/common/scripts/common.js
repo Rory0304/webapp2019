@@ -11,64 +11,32 @@ function closesetting() {
 }
 
 function fontupdate(value){
-  jQuery(function($) {
-    if(value=='fontstyle'){
-      var font = $("#fontselect").val();
-      $("#main").css("fontFamily",font);
-      $("#samplePage").css("fontFamily",font);
-    }
-
-    else if(value=='home'){
-      var select = $("#fontsizeSlectz").val();
-      var fontsize = titleSize(select);
-      $("#sortable").css("font-size",fontsize);
-      $("#sampleC").css("font-size",fontsize);
-    }
-
-    else if(value=='notice'){
-      var select = $("#fontsizeSlect").val();
-      var title = titleSize(select);
-      var content = contentSize(select);
-      $(".title pull-left").css("font-size",title);
-      $(".name pull-left").css("font-size",title);
-      $(".time pull-left").css("font-size",title);
-      $(".entry").css("font-size",content);
-    }
-
-    else if(value=='members'){
-      var select = $("#fontsizeSlect").val();
-      var title = titleSize(select);
-      var content = contentSize(select);
-      $(".position h2").css("font-size",title);
-      $(".name").css("font-size",title);
-      $("#main ul").css("font-size",content);
-    }
-
-     else if(value=='research'){
-      var select = $("#fontsizeSlect").val();
-      var title = titleSize(select);
-      var content = contentSize(select);
-      $("#tab div").css("font-size",title);
-      $(".contents h3").css("font-size",title);
-      $(".subject li").css("font-size",content);
-    }
-
-    else if(value=='publication'){
-      var select = $("#fontsizeSlect").val();
-      var title = titleSize(select);
-      var content = contentSize(select);
-      $("#tab div").css("font-size",title);
-      $("#publications td").css("font-size",content);
-    }
-
-    else if(value=='gallery'){
-     var select = $("#fontsizeSlect").val();
-     var title = titleSize(select);
-     var content = contentSize(select);
-     $("#tab div").css("font-size",title);
-     $(".title").css("font-size",content);
+  jQuery(function($){
+    //font style select
+    if(value=="fontstyle"){
+     var font = $("#fontselect").val();
+     $("#main").css("fontFamily",font);
+     $("#samplePage").css("fontFamily",font);
    }
- });
+   //font size select (contents)
+   if(value=="sizeC"){
+     var select = $("#fontsizeSlect").val();
+     var fontsize = titleSize(select);
+     $(".container").css("font-size",fontsize);
+     $("#sampleC").css("font-size",fontsize);
+   }
+    //font size select (contents and title)
+    if(value=="sizeTC"){
+      var select = $("#fontsizeSlect").val();
+      var content = contentSize(select);
+      var title = titleSize(select);
+      $("#main").css("font-size",content); //contents
+      $("#tab").css("font-size",title); //tab menu
+      $("#title").css("font-size",title); //list title size (members)
+      $("#sampleC").css("font-size",content);
+      $("#sampleC h1").css("font-size",title); 
+    }
+  });
 }
 
 function backupdate(){
@@ -80,23 +48,23 @@ function backupdate(){
 function titleSize(select){
   switch(select){
     case 'Small':
-    var result =  '15px';
-    break;
-
-    case 'Normal':
     var result =  '20px';
     break;
 
+    case 'Normal':
+    var result =  '22px';
+    break;
+
     case 'Medium':
-    var result ='25px';
+    var result ='24px';
     break;
 
     case 'Large':
-    var result =  '30px';
+    var result =  '26px';
     break;
 
     case 'Huge':
-    var result = '35px';
+    var result = '28px';
     break;
   }
 
@@ -106,23 +74,23 @@ function titleSize(select){
 function contentSize(select){
   switch(select){
     case 'Small':
-    var result =  '13px';
+    var result =  '17px';
     break;
 
     case 'Normal':
-    var result =  '18px';
+    var result =  '19px';
     break;
 
     case 'Medium':
-    var result ='23px';
+    var result ='21px';
     break;
 
     case 'Large':
-    var result =  '28px';
+    var result =  '23px';
     break;
 
     case 'Huge':
-    var result = '32px';
+    var result = '25px';
     break;
   }
 
@@ -151,7 +119,7 @@ function navigation() {
         $(".nav-list-right").css("float", "left");
         $(".nav-list-left").css("float", "left");
       }
-      else {
+      else if(nav=="right") {
         $(".header").css("display", "none");
         $("#sideNav").css({"display":"block", "right":"0", "top":"0", "left":""});
         var sideNavWidth = $("#sideNav")[0].clientWidth;
@@ -178,7 +146,7 @@ function navigation() {
       $(".nav-list-right").css("float", "left");
       $(".nav-list-left").css("float", "left");
     }
-    else {
+    else if(nav=="right") {
       $(".header").css("display", "none");
       $("#nav").css({"display":"block", "right":"0", "top":"0", "left":""});
       var sideNavWidth = $("#sideNav")[0].clientWidth;

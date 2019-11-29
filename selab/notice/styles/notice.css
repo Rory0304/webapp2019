@@ -48,9 +48,9 @@
 .contents .header li {
 	background-color: #C4C4C4;
 	height: 43px;
-	font-size: 20px;
 	line-height: 40px;
 	color: white;
+	/*font-size: 20px;*/
 	border-bottom: 3px solid #dfdfdf;
 }
 
@@ -154,7 +154,6 @@
 	width: 690px;
 	height: 350px;
 	margin-left:-345px;
-
 	color:#4796bd;
 	border-radius: 5px;
 	border: 2px solid #4796bd;

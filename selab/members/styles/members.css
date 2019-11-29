@@ -5,9 +5,10 @@
 	border-radius: 3px;
 }
 
-.position{
-	font-size: 15px;
+#title{
+	font-size: 20px;
 }
+
 #main h2{
     font-weight: bold;
     width: 100%;
@@ -52,7 +53,6 @@
 .name{
 	margin-top: 5px !important;
 	font-weight: bold;
-	font-size: 20px;
 }
 
 #edit{
