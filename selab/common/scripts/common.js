@@ -19,14 +19,14 @@ function fontupdate(value){
      $("#samplePage").css("fontFamily",font);
    }
    //font size select (contents)
-   if(value=="sizeC"){
+   else if(value=="sizeC"){
      var select = $("#fontsizeSlect").val();
      var fontsize = titleSize(select);
      $(".container").css("font-size",fontsize);
      $("#sampleC").css("font-size",fontsize);
    }
     //font size select (contents and title)
-    if(value=="sizeTC"){
+    else if(value=="sizeTC"){
       var select = $("#fontsizeSlect").val();
       var content = contentSize(select);
       var title = titleSize(select);

@@ -71,12 +71,14 @@ font-size: 30px;
     list-style : square;
 }
 
+#tab {
+  font-size: 20px;
+}
 #tab div {
   height: 48px;
   line-height: 48px; /* height(#class a) */ /* for vertical align */
   text-align: center;
   background-color: #C4C4C4;
-  font-size: 20px;
   font-weight: 300;
   color: white;
   display: inline-block;
