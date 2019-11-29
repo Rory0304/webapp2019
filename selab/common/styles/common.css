@@ -44,16 +44,15 @@ h2 {
 }
 
 .main-container {
-	width: auto;
-	overflow-x: hidden;
-	overflow-y: scroll;
+	width: 100%;
+	overflow: scroll;
 	margin-top: 120px;
 }
 
 .contents {
 	font-size: 15px;
-	width: 86%;
-	padding: 0 7%;
+	width: 65%;
+	margin: 0 auto;
 	/* margin-bottom: 40px; */
 }
 
@@ -97,7 +96,7 @@ nav img{
 	float: left;
 }
 
-header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a {
+header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
 	padding: 0 15px;
 	/*font-size: 18px;*/
 	font-weight: bold;
@@ -106,7 +105,7 @@ header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav
 	margin: 0 5px;
 }
 
-header[role="banner"] div[role="login"] a:hover, header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, #setting:hover, .selected, div[role="login"] a:hover {
+header[role="banner"] div[role="login"] a:hover, header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, #setting:hover, .selected, div[role="login"] a:hover{
   background-color: #fe4a49;
 	color: white;
 }
@@ -235,13 +234,7 @@ footer[role="contentinfo"] p {
 #sampleC h1{
 	margin:20px;
 	color:#fe4a49;
-<<<<<<< Updated upstream
-	font-size: 12pt;
-	float: none;
-	margin: 0;
-=======
 	font-size: 20px;
->>>>>>> Stashed changes
 }
 
 #sampleC p {
@@ -278,19 +271,21 @@ select #backselect option[value="1"]{
 	height: 100%;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	position: fixed;
+	color: white;
 	list-style-type: none;
-	/* font-size: 20px; */
-	line-height: 52px;
-	overflow: hidden;
+	font-size: 20px;
+	line-height: normal;
+	/* overflow: hidden; */
 	display: none;
 	z-index: 50;
 }
 
-#sideNav div.nav-list-right a {
-	padding: 0 15px;
-	font-weight: bold;
-	color: #fe4a49;
-	display: block;
+#sideNav div.nav-list {
+	padding: 20px 16px;
+}
+
+#sideNav div.nav-list:hover {
+	background-color: #afafaf;
 }
 
 #sideLogo {
@@ -306,7 +301,7 @@ select #backselect option[value="1"]{
 	float: left;
 	background-color: rgb(232, 232, 232);
 	height: 100%;
-	padding-top: 52px;
+	padding-top: 25px;
 }
 
 #sideNav .nav-list-left {
@@ -327,7 +322,6 @@ select #backselect option[value="1"]{
 	vertical-align: text-bottom;
 }
 
-#sideNav .nav-list-left #sideSetting:hover, #sideNav .nav-list-left #sideContact:hover, #sideNav .nav-list-right a.selected, #sideNav .nav-list-right a:hover{
-  background-color: #fe4a49;
-	color: white;
+#sideNav .nav-list-left a#sideSetting:hover, #sideNav .nav-list-left div[role=login]:hover, #sideNav .nav-list-left a#sideContact:hover {
+	background-color: #fe4a49;
 }
