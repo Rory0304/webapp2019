@@ -13,7 +13,6 @@
 
 #main .wrap-subcontent{
     background-color: white;
-
     overflow: hidden;
     margin-bottom: 30px;
 }
@@ -41,7 +40,7 @@ font-size: 30px;
 }
 
 #main h3, #main h4 {
-    font-size: 20px;
+/*    font-size: 20px;*/
     font-weight: 100;
     width: 100%;
     padding-left: 10px;

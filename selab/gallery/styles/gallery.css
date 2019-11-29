@@ -79,6 +79,9 @@ select {
 	background-color: rgb(41, 112, 148);
 }
 
+#main{
+	font-size: 15px;
+}
 .tile {
 	width: 195px;
 	height: 160px;
@@ -88,7 +91,6 @@ select {
 	color: gray;
 	cursor: pointer;
 	padding: 10px;
-	font-size: 15px;
 }
 
 .tile:hover{
@@ -123,12 +125,12 @@ select {
 }
 
 #page-bar {
-    width: 100%;
-    line-height: 20px;
-    overflow: hidden;
-    text-align: center;
-    font-size: 12px;
-    padding-right: 5px;
+	width: 100%;
+	line-height: 20px;
+	overflow: hidden;
+	text-align: center;
+	font-size: 12px;
+	padding-right: 5px;
 }
 .page{
 	color : gray;
@@ -140,28 +142,28 @@ select {
 }
 #hl{
 	height: 5px;
-  	padding: 0px;
+	padding: 0px;
 	background-color: #C4C4C4;
-  	clear: both;
+	clear: both;
 }
 
 #tab{
 	overflow: hidden;
+	font-size: 20px;
 }
 #tab div {
-  height: 48px;
-  line-height: 48px; /* height(#class a) */ /* for vertical align */
-  text-align: center;
-  background-color: #C4C4C4;
-  font-size: 20px;
-  font-weight: 300;
-  color: white;
-  display: inline-block;
-  padding: 0px 10px;
-  margin: 0px 2px;
-  float: left;
-  cursor: pointer;
-  border-radius: 3px 3px 0px 0px;
+	height: 48px;
+	line-height: 48px; /* height(#class a) */ /* for vertical align */
+	text-align: center;
+	background-color: #C4C4C4;
+	font-weight: 300;
+	color: white;
+	display: inline-block;
+	padding: 0px 10px;
+	margin: 0px 2px;
+	float: left;
+	cursor: pointer;
+	border-radius: 3px 3px 0px 0px;
 }
 .back{
 	padding: 10px;
@@ -169,18 +171,18 @@ select {
 	margin-bottom: 10px;
 }
 .first-tab{
-  margin-left: 0px !important;
+	margin-left: 0px !important;
 }
 
 .last-tab{
-  margin-right: 0px !important;
+	margin-right: 0px !important;
 }
 
 #tab div.deactive {
-  height: 41px;
-  margin-top: 7px;
-  background-color: #afafaf;
-  color: #d6d6d6;
+	height: 41px;
+	margin-top: 7px;
+	background-color: #afafaf;
+	color: #d6d6d6;
 }
 
 .column {

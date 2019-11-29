@@ -1,5 +1,5 @@
 table tr[data-href] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 table td:hover{
@@ -18,27 +18,45 @@ table th{
   font-size: 17px;
 }
 
-#publications tr:nth-child(odd) td {
+#main tr:nth-child(odd) td {
 	background-color: white;
 }
 
-#publications tr:nth-child(even) td {
+#main tr:nth-child(even) td {
 	background-color: #f5f5f5;
 }
 
+/*#publications{
+  font-size: 16px;
+}
 #publications td{
 	text-align: left;
   font-size: 16px;
- /* line-height: 20px;*/
-	vertical-align: middle;
+   line-height: 20px;
+  vertical-align: middle;
   padding: 10px;
+}*/
+
+/*#main{
+  font-size: 16px; 
+}*/
+#main td{
+  text-align: left;
+  /*font-size: 16px;*/
+  /* line-height: 20px;*/
+  vertical-align: middle;
+  padding: 10px; 
 }
 
 #hl{
 	height: 5px;
   padding: 0px;
-	background-color: #C4C4C4;
+  background-color: #C4C4C4;
   clear: both;
+}
+
+#tab{
+  font-size: 20px;
 }
 
 #tab div {
@@ -46,7 +64,6 @@ table th{
   line-height: 48px; /* height(#class a) */ /* for vertical align */
   text-align: center;
   background-color: #C4C4C4;
-  font-size: 20px;
   font-weight: 300;
   color: white;
   display: inline-block;
@@ -55,6 +72,7 @@ table th{
   float: left;
   cursor: pointer;
   border-radius: 3px 3px 0px 0px;
+  /*   font-size: 20px;*/
 }
 
 .first-tab{
