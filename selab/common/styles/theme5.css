@@ -1,0 +1,36 @@
+.menu a {
+  background-color: #524464;
+}
+
+#not,#gal {
+	background-color: #A07FF1;
+}
+
+header[role="banner"] #menu li a{
+    color: #A07FF1;
+}
+
+header[role="banner"] div[role="login"] a:hover, header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, #setting:hover, .selected, div[role="login"] a:hover {
+	background-color: #A07FF1;
+}
+
+h1{
+	color: #A07FF1;
+}
+
+
+#cou {
+	background-color: #FFCE49;
+}
+
+#pub, #mem {
+	background-color: #94D4D6;
+}
+
+#SampleH {
+	color:#A07FF1;
+}
+
+#sampleC h1{
+	color:#A07FF1;
+}

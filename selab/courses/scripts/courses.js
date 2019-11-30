@@ -16,9 +16,6 @@ $(document).ready(function(){
 		}, 50);
 	});
 
-	$(".active").click(function(){
-		location.href = $(this).data('href')+"/2019/";
-	});
 
 	$(".active").hover(function(){
 		$(this).addClass("hovered");

@@ -1,0 +1,40 @@
+.menu a{
+  background-color: #765D69;
+}
+
+/*.imgslide img{
+	border-color: #765D69;
+}
+*/
+
+header[role="banner"] #menu li a{
+    color: #fe4a49;
+}
+
+header[role="banner"] div[role="login"] a:hover, header[role="banner"] #menu li a:hover, header[role="banner"] #menu li a.selected, #contact:hover, #setting:hover, .selected, div[role="login"] a:hover {
+	background-color: #fe4a49;
+}
+
+h1{
+	color: #ff6860;
+}
+
+#not {
+	background-color: #FCD0BA;
+}
+
+#cou {
+	background-color: #8FB9A8;
+}
+
+#gal, #pub, #mem {
+	background-color: #ff6f69;
+}
+
+#SampleH {
+	color:#ff6860;
+}
+
+#sampleC h1{
+	color:#ff6860;
+}

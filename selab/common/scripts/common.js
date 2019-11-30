@@ -41,9 +41,24 @@ function fontupdate(value){
 
 function backupdate(){
   var back = document.getElementById("backselect").value;
-  var backcss = document.getElementById("backcss");
-  backcss.href=('home/styles/theme' + back +'.css');
+  var backcss = document.getElementById("backcss").getAttribute("href");
+  var backsplit = backcss.split("/");
+
+  if(backsplit[1]=="common"){
+     document.getElementById("backcss").href=('../common/styles/theme' + back +'.css');
+  }
+  else if(backsplit[1]=="styles"){
+     document.getElementById("backcss").href=('common/styles/theme' + back +'.css');
+  }
+  else if(backsplit[1]==".."){
+     document.getElementById("backcss").href=('../../../common/styles/theme' + back +'.css');
+  }
 }
+
+// function backupdateO(){
+//   var back = document.getElementById("backselect").value;
+//   var backcss = document.getElementById("backcss");
+// }
 
 function titleSize(select){
   switch(select){
@@ -77,7 +92,7 @@ function contentSize(select){
     var result =  '17px';
     break;
 
-    case 'Normal':
+    case 'Normal': 
     var result =  '19px';
     break;
 
