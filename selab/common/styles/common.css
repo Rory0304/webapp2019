@@ -45,7 +45,6 @@ h2 {
 
 .main-container {
 	width: 100%;
-	overflow: scroll;
 	margin-top: 120px;
 }
 
@@ -271,21 +270,19 @@ select #backselect option[value="1"]{
 	height: 100%;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	position: fixed;
-	color: white;
 	list-style-type: none;
-	font-size: 20px;
-	line-height: normal;
-	/* overflow: hidden; */
+	/* font-size: 20px; */
+	line-height: 52px;
+	overflow: hidden;
 	display: none;
 	z-index: 50;
 }
 
-#sideNav div.nav-list {
-	padding: 20px 16px;
-}
-
-#sideNav div.nav-list:hover {
-	background-color: #afafaf;
+#sideNav div.nav-list-right a {
+	padding: 0 15px;
+	font-weight: bold;
+	color: #fe4a49;
+	display: block;
 }
 
 #sideLogo {
@@ -301,7 +298,7 @@ select #backselect option[value="1"]{
 	float: left;
 	background-color: rgb(232, 232, 232);
 	height: 100%;
-	padding-top: 25px;
+	padding-top: 52px;
 }
 
 #sideNav .nav-list-left {
@@ -322,6 +319,7 @@ select #backselect option[value="1"]{
 	vertical-align: text-bottom;
 }
 
-#sideNav .nav-list-left a#sideSetting:hover, #sideNav .nav-list-left div[role=login]:hover, #sideNav .nav-list-left a#sideContact:hover {
-	background-color: #fe4a49;
+#sideNav .nav-list-left #sideSetting:hover, #sideNav .nav-list-left #sideContact:hover, #sideNav .nav-list-right a.selected, #sideNav .nav-list-right a:hover{
+  background-color: #fe4a49;
+	color: white;
 }
