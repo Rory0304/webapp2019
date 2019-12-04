@@ -162,6 +162,24 @@ a:link, a:visited {
   clear: both;
 }
 
+#submit {
+    border: 1.2px solid rgb(70, 118, 166);
+    border-radius: 2px;
+    background-color: rgb(70, 118, 166);
+    color: #fff;
+    transition: all 0.25s ease-in-out;
+    width: 60px;
+    height: 20px;
+    font-size: 15px;
+    display: block;
+    margin-top: 10px;
+}
+/* 
+#submit:hover {
+    color: rgb(70, 118, 166);
+    background: none;
+} */
+
   /*css for scroll (in webkit)*/
   body::-webkit-scrollbar{width: 13px;}
   body::-webkit-scrollbar-track {background-color:white;}
