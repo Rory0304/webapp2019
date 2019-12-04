@@ -195,8 +195,8 @@ footer[role="contentinfo"] p {
 }
 
 #samplePage {
-	width : 350px;
-	height : 200px;
+	width : 380px;
+	height : 250px;
 	background-color: #fff4d1;
 	margin: 0 auto;
 	padding: 0;
@@ -226,14 +226,15 @@ footer[role="contentinfo"] p {
 
 #sampleC {
 	margin: 0 auto;
-	width: 200px;
+	width: 250px;
 	font-size: 20px;
 }
 
 #sampleC h1{
-	margin:20px;
-	color:#fe4a49;
+	margin: 0px;
+	color: #fe4a49;
 	font-size: 20px;
+	float: none;
 }
 
 #sampleC p {
@@ -241,6 +242,8 @@ footer[role="contentinfo"] p {
 	color: black;
 	/*height: 80px;*/
 	padding: 10px;
+	line-height: normal;
+	font-weight: normal;
 }
 
 #font, #background{

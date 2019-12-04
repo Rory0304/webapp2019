@@ -4,6 +4,7 @@ $(document).ready(function () {
 	$("#submit").click(clickSubmitBtn);
 	$(".delete").click(clickDeleteBtn);
 	filterSelection("all");
+	tileHight();
 	$("#tab").find('div').click(function(){
 		$('#tab').find('div').addClass("deactive");
 		$(this).removeClass("deactive");
@@ -40,6 +41,7 @@ function clickDeleteBtn(){
 	});
 }
 
+//function from w3school https://www.w3schools.com/howto/howto_js_portfolio_filter.asp
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("column");
@@ -70,3 +72,15 @@ function w3RemoveClass(element, name) {
   }
   element.className = arr1.join(" ");
 }
+
+function tileHight() {
+	jQuery(function($) {
+		var tile = $(".tile");
+		var tileWidth = tile.outerWidth();
+		$(".tile").css("height", tileWidth/4*3);
+	});
+}
+
+$(window).resize(function() {
+	tileHight();
+});
