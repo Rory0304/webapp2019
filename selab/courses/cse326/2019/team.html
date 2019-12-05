@@ -6,13 +6,9 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Software Engineering Lab - Courses: Web Application Development</title>
-	<!--[if IE]>
-	<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	<link rel="stylesheet" href="../../../../maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
 	<link rel="stylesheet" href="../../../common/styles/reset-1.6.1.css" type="text/css" />
 	<link rel="stylesheet" href="../../../common/styles/jquery-ui.css" type="text/css" />
-	<link rel="stylesheet" href="../../../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="../../../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" /> -->
 	<link rel="stylesheet" href="../../../common/styles/common.css" type="text/css" />
 	<link rel="shortcut icon" href="../../../common/images/SelabFavicon.png" type="image/png">
 	<link rel="stylesheet" href="../../styles/course-home.css" type="text/css" />
@@ -146,25 +142,31 @@
 					<div class="deactive last-tab" data-tab="slides">team</div>
 				</div>
 				<div class="">
-					<div class="">
-						<select id="where" onchange="sorting();">
+					<div class="teamMenu">
+						<select id="by" onchange="sorting();">
 							<option value="all" selected="selected"> all </option>
-							<option value="team"> by taem</option>
-							<option value="lang"> by lang </option>
+							<option value="byTeam"> by taem</option>
+							<option value="byLang"> by lang </option>
 						</select>
+						<a href="#"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
+						<a href="#"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
+						<a href="#"> <img src="../../images/mail-24px.svg" alt="message"> </a>
 					</div>
 					<?php
 						include "../../../common/db.php";
-						$lang = array("html","css","js","jquery","php","db","ajax","xml","c","c++","java","python","ruby","Django","Perl");
+						$langList = array("html","css","js","jquery","php","db","ajax","xml","c","c++","java","python","ruby","Django","Perl");
 
-						if (isset($_GET["where"])) { $where = $_GET["where"]; }
-						else { $where = "all"; }
+						if (isset($_GET["by"])) { $by = $_GET["by"]; }
+						else { $by = "all"; }
 
-						echo "<script> addSelec('" .$where. "'); </script>";
+						echo "<script> addSelec('" .$by. "'); </script>";
 
-						if ($where == "team") {
+						if ($by == "byTeam") {
+							// 무소속인 학생부터
 							$studentQ = $db->query("select * from students where teamNum is null");
 							card();
+
+							//소속있는 학생은 팀별로
 							$teamQ = $db->query("select * from team");
 							for($i=0; $i<($teamQ->rowCount()); $i++) { ?>
 								<h2><?= $i+1 ?>조</h2>
@@ -174,10 +176,31 @@
 								card();
 							}
 						}
-						else if ($where == "lang") {
+						else if ($by == "byLang") {
+							if (isset($_GET["langOption"])) { $langOption = $_GET["langOption"]; }
+							else { $langOption = []; }
 
+							$link = "team.html?by=byLang";
+							$str = " where ";
+							for($k=0; $k<count($langOption); $k++) {
+								$link = $link . "&langOption[]=" . $langOption[$k];
+								$str = $str . $langOption[$k] . "=1";
+							} ?>
+
+							<div class="langSelecDiv">
+								<?php
+								for($i=0; $i<count($langList); $i++) { ?>
+									<button onClick=""><?= $langList[$i] ?></button>
+								<?php
+								} ?>
+							</div>
+
+							<?php
+							$studentQ = $db->query("select * from students" .$str);
+							card();
 						}
 						else { $studentQ = $db->query("select * from students"); card(); }
+
 						function card() {
 							global $studentQ;
 							foreach ($studentQ as $i) {  ?>
@@ -188,7 +211,7 @@
 									$colCount =  $studentQ->columnCount();
 									for ($j=3; $j<($colCount-1); $j++) {
 										if ($i[$j] == 1) {
-											echo $lang[$j]." ";
+											echo $langList[$j]." ";
 										}
 									}
 									echo $i["etc"]; ?>

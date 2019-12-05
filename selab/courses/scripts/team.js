@@ -1,7 +1,7 @@
 function sorting() {
   jQuery($(function(){
-	  var where = $( "#where" ).val();
-    $(location).attr('href', 'index0.html?where='+where);
+	  var by = $( "#by" ).val();
+    $(location).attr('href', 'team.html?by='+by);
   }));
 }
 
@@ -9,11 +9,11 @@ function addSelec(op) {
   var a = "";
   var t = "";
   var l = "";
-  var where = document.getElementById("where");
+  var where = document.getElementById("by");
   if (op == "all") {
     a = 'selected="selected"';
   }
-  else if (op == "team") {
+  else if (op == "byTeam") {
     t = 'selected="selected"';
   }
   else {
@@ -21,6 +21,10 @@ function addSelec(op) {
   }
   where.innerHTML =
   '<option value="all" ' +a+ '> all </option>' +
-  '<option value="team" ' +t+ '> by taem</option>' +
-  '<option value="lang" ' +l+ '> by lang </option>';
+  '<option value="byTeam" ' +t+ '> by team</option>' +
+  '<option value="byLang" ' +l+ '> by lang </option>';
+}
+
+function selectLang() {
+
 }
