@@ -37,5 +37,13 @@ INSERT INTO students VALUES ('id1',23497,null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null
 INSERT INTO students VALUES ('id2',23497,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,"flask");
 INSERT INTO students VALUES ('id3',23497,null,0,1,1,1,0,0,0,0,0,null,0,0,0,0,0,null);
 
+CREATE TABLE message (
+  sender VARCHAR(20),
+  receiver VARCHAR(20),
+  sendDay date
+);
+
+INSERT INTO message VALUES ('id2','id1','2019-12-06');
+
 drop table team;
 drop table students;

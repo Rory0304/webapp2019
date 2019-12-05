@@ -153,8 +153,11 @@
 					</div>
 					<?php
 						include "../../../common/db.php";
-						// 로그인된 계정(학생)의 반
+
+						// 로그인된 계정(학생)의 반,아이디,조
 						$class = 23497;
+						$id = 'id2';
+						$team = 1;
 
 						if (isset($_GET["by"])) { $by = $_GET["by"]; }
 						else { $by = "all"; } ?>
@@ -214,6 +217,8 @@
 						function card() {
 							global $studentQ;
 							global $langList;
+							global $id;
+							global $team;
 							foreach ($studentQ as $i) {  ?>
 							<div class="card" id="<?= $i["id"] ?>">
 								<h2><?= $i["id"] ?></h2>
@@ -227,12 +232,26 @@
 									}
 									echo $i["etc"]; ?>
 								</p>
-								<p>
-									<?php
-									if($i["teamNum"] == null) {echo "none";}
-									else {echo $i["teamNum"]."조";} ?>
-								</p>
-								<p><button>Contact</button></p>
+								<?php
+									if($i["teamNum"] == null && isset($team)) { ?>
+										<p> <?= "none" ?> </p>
+										<form action="send.php" method="post">
+											<input type="hidden" name="sender" value= "<?= $id ?>"/>
+											<input type="hidden" name="receiver" value= "<?= $i["id"] ?>"/>
+											<button type="submit">Contact</button>
+										</form>
+								<?php
+									}
+									else if ($i["teamNum"] == null && !isset($team)) { ?>
+										<p> <?= "none" ?> </p>
+										<button disabled>Contact</button>
+								<?php
+									}
+									else { ?>
+										<p> <?= $i["teamNum"]."조" ?> </p>
+										<button disabled>Contact</button>
+								<?php
+									} ?>
 							</div>
 							<?php
 							}
