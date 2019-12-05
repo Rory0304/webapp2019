@@ -55,8 +55,10 @@
 		</div>
 
 		<div id="option">
+			<form action="save.php" method="post">
 			<div id="font">
 				<p>Font</p>
+				<input type="text" id="order" name="order" value="" style="display: none;">
 				<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
 					<option style="font-family:Serif" value="serif"> Serif </option>
 					<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
@@ -78,6 +80,7 @@
 					<option style="font-size: 35px">Huge</option>
 				</select>
 			</div>
+			</form>
 			<div id="background">
 				<p>Background</p>
 				<select id="backselect" name="selectBackground" onchange="backupdate();">
@@ -95,7 +98,7 @@
 		<div class="container">
 			<div class="menu">
 				<a id = 'ind' href="index.html"><img src="common/images/selab_logo_S_2.png" /></a>
-				<div id ="sortable">
+				<div id ="sortable" onchange="saveorder();">
 					<a id='not' href="notice/index.html">NOTICE</a>
 					<a id='mem' href="members/index.html">MEMBERS</a>
 					<a id='res' href="research/index.html" >RESEARCH</a>

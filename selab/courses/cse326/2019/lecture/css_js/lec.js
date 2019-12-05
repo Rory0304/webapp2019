@@ -329,6 +329,15 @@ function point(n) {
   }
 }
 
+function checklogin() {
+  var check = sessionStorage.getItem('ID');
+  // alert(check);
+  if (check == null) {
+    var submit = document.getElementById("submit");
+    submit.style.display = "none";
+  }
+}
+
 function startup() {
   slideLabel();
   currentSlide();
@@ -336,6 +345,7 @@ function startup() {
   pptResizing();
   trackPage();
   colorpicker();
+  checklogin();
   document.onkeydown = keys;
 }
 

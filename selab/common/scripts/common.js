@@ -182,8 +182,18 @@ $(function(){
   $( ".nav-list-right" ).sortable();
 })
 
+//function for save, 
+function saveorder() {
+  var temp = document.getElementById("sortable");
+  var order = temp.innerHTML;
+  alert(order);
+  var text = document.getElementById("order");
+  text.value = order;
+}
+
 function startup() {
   navigation();
+  saveorder();
 }
 
 window.onload = startup;
