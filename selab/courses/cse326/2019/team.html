@@ -136,9 +136,9 @@
 			<div class="contents">
 				<h1>Web Application Development</h1>
 				<div id="tab">
-					<div class="first-tab" data-tab="main">Home</div>
+					<div class="deactive first-tab" data-tab="main">Home</div>
 					<div class="deactive" data-tab="slides">Slides</div>
-					<div class="deactive last-tab" data-tab="slides">team</div>
+					<div class="last-tab" data-tab="slides">team</div>
 				</div>
 				<div class="">
 					<div class="teamMenu">
@@ -155,7 +155,7 @@
 						include "../../../common/db.php";
 						// 로그인된 계정(학생)의 반
 						$class = 23497;
-						
+
 						if (isset($_GET["by"])) { $by = $_GET["by"]; }
 						else { $by = "all"; } ?>
 
