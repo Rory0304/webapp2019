@@ -5,15 +5,15 @@ function sorting() {
   }));
 }
 
-function addSelec(op) {
+function addSelec() {
   var a = "";
   var t = "";
   var l = "";
   var where = document.getElementById("by");
-  if (op == "all") {
+  if (by == "all") {
     a = 'selected="selected"';
   }
-  else if (op == "byTeam") {
+  else if (by == "byTeam") {
     t = 'selected="selected"';
   }
   else {
@@ -25,6 +25,30 @@ function addSelec(op) {
   '<option value="byLang" ' +l+ '> by lang </option>';
 }
 
-function selectLang() {
+function editLangClass() {
+  for (var i=0; i<langSelected.length; i++) {
+    var langButton = document.getElementById(langSelected[i]);
+    langButton.className = "selectedlangOption";
+  }
+}
 
+function selectLang(val) {
+  //최대 5개까지 선택 가늠
+  if (langSelected.length < 5) {
+    var langButton = document.getElementById(val);
+    if (langButton.className == "langOption") {
+      langSelected.push(val);
+    }
+    else {
+      if (langSelected.indexOf(val) > -1) {
+        langSelected.splice(langSelected.indexOf(val),1);
+      }
+    }
+
+    var link = 'team.html?by=' + by;
+    for (var i=0; i<langSelected.length; i++) {
+      link = link + "&langSelected[]=" + langSelected[i];
+    }
+    location.href = link;
+  }
 }
