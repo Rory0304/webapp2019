@@ -71,3 +71,49 @@
 .card button:hover, a:hover {
   opacity: 0.7;
 }
+
+.langOptions{
+  margin-left: 5px;
+  margin-top: 20px;
+}
+
+.langOption{
+ margin: 5px;
+ text-align: center;
+ background-color: white;
+ width: 100px;
+ height: 40px;
+ border: solid 0px;
+ border-radius: 50px 50px;
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+ font-weight: bold;
+ color: black;
+ transition: 0.3s;
+ -webkit-transition-duration: 0.4s; /* Safari */
+ transition-duration: 0.4s;
+}
+
+.selectedlangOption{
+  margin: 5px;
+  text-align: center;
+  background-color: black;
+  width: 100px;
+  height: 40px;
+  border: solid 0px;
+  border-radius: 50px 50px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  font-weight: bold;
+  color: white;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.langOption:hover{
+  background-color: black;
+  color: white;
+}
+
+.selectedlangOption:hover{
+  background-color: white;
+  color: black;
+}
