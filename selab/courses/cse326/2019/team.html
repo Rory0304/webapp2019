@@ -1,14 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-
-<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:27 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 	<meta charset="utf-8" />
 	<title>Software Engineering Lab - Courses: Web Application Development</title>
 	<link rel="stylesheet" href="../../../common/styles/reset-1.6.1.css" type="text/css" />
 	<link rel="stylesheet" href="../../../common/styles/jquery-ui.css" type="text/css" />
-	<!-- <link rel="stylesheet" href="../../../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" /> -->
 	<link rel="stylesheet" href="../../../common/styles/common.css" type="text/css" />
 	<link rel="shortcut icon" href="../../../common/images/SelabFavicon.png" type="image/png">
 	<link rel="stylesheet" href="../../styles/course-home.css" type="text/css" />
@@ -136,8 +133,8 @@
 			<div class="contents">
 				<h1>Web Application Development</h1>
 				<div id="tab">
-					<div class="deactive first-tab" data-tab="main"> <a href="team.html">Home</a></div>
-					<div class="deactive" data-tab="slides"><a href="team.html">Slides</a></div>
+					<div class="deactive first-tab" data-tab="main"> <a href="index.html">Home</a></div>
+					<div class="deactive" data-tab="slides"> <a href="index.html">Slides</a></div>
 					<div class="last-tab" data-tab="slides">Team</div>
 				</div>
 				<div id="hl"></div>
@@ -152,7 +149,6 @@
 						<a class="pull-right" href="#"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
 						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
 					</div>
-					<!-- <div id="cards"> -->
 					<?php
 					include "../../../common/db.php";
 
@@ -170,80 +166,101 @@
 					</script>
 
 					<?php
-							if ($by == "byTeam") { ?>
-								<!-- // 무소속인 학생부터 -->
-								<div class="team_none">
-									<?php
-									$studentQ = $db->query("select * from students where class='$class' and teamNum is null");
-									card(); ?>
-								</div>
+					if ($by == "byTeam") { // 무소속인 학생부터 ?>
+					<div class="team_none"> <?php
+						$studentQ = $db->query("select * from students where class='$class' and teamNum is null");
+						card(); ?>
+					</div>
 
-								<?php //소속있는 학생은 팀별로
-								$teamQ = $db->query("select * from team");
-								for($i=0; $i<($teamQ->rowCount()); $i++) { ?>
-									<div class="team">
-										<h2><?= $i+1 ?>조</h2>
-										<hr/>
-										<?php
-										$studentQ = $db->query("select * from students where teamNum= ".($i+1));
-										card();?>
-									</div> <?php
+					<?php //소속있는 학생은 팀별로
+					$teamQ = $db->query("select * from team");
+					for($i=0; $i<($teamQ->rowCount()); $i++) { ?>
+					<div class="team">
+						<h2><?= $i+1 ?>조</h2>
+						<hr/>
+						<?php
+						$studentQ = $db->query("select * from students where teamNum= ".($i+1));
+						card(); ?>
+					</div> <?php
+					}
+					}
+					else if ($by == "byLang") {
+					if (isset($_GET["langSelected"])) {
+					$langSelected = $_GET["langSelected"];
+					$str = " where class =".$class;
+					}
+					else { $langSelected = []; $str = ""; }
+
+					foreach ($langSelected as $m) {
+					$str = $str . " and " . $m . "=1";
+					}?>
+
+					<div class="langOptions">
+						<?php
+						for($i=0; $i<count($langList); $i++) { ?>
+						<button class="langOption" id="<?= $langList[$i] ?>" onClick="selectLang('<?= $langList[$i] ?>');"><?= $langList[$i] ?></button>
+						<?php
+						} ?>
+					</div>
+
+					<script type="text/javascript">
+						var langSelected = <?php echo json_encode($langSelected)?>;
+						editLangClass();
+					</script>
+
+					<?php
+					$studentQ = $db->query("select * from students" .$str);
+					card();
+					}
+					else { $studentQ = $db->query("select * from students where class= '$class'"); card(); }
+
+					function card() {
+					global $studentQ;
+					global $langList;
+					global $id;
+					global $team;
+					foreach ($studentQ as $i) {  ?>
+					<div class="card" id="<?= $i["id"] ?>">
+						<div class="card_inner">
+							<h2><?= $i["id"] ?></h2>
+							<p><?php
+								$colCount =  $studentQ->columnCount();
+								for ($j=3; $j<($colCount-1); $j++) {
+								if ($i[$j] == 1) {
+								echo $langList[$j-3]." ";
 								}
-							}
-							else if ($by == "byLang") {
-								if (isset($_GET["langOption"])) {
-									$langOption = $_GET["langOption"];
-									$str = " where class =".$class;
 								}
-								else { $langSelected = []; $str = ""; }
-
-								foreach ($langSelected as $m) {
-									$str = $str . " and " . $m . "=1";
-								}
-								?>
-
-								<div class="langOptions">
-									<?php
-									for($i=0; $i<count($langList); $i++) { ?>
-										<button class="langOption" id="<?= $langList[$i] ?>" onClick="selectLang('<?= $langList[$i] ?>');"><?= $langList[$i] ?></button>
-										<?php
-									} ?>
-								</div>
-
-								<?php
-								$studentQ = $db->query("select * from students" .$str);
-								card();
-							}
-							else { $studentQ = $db->query("select * from students where class= '$class'"); card(); }
-
-							function card() {
-								global $studentQ;
-								foreach ($studentQ as $i) {  ?>
-								<div class="card" id="<?= $i["id"] ?>">
-									<div class="card_inner">
-										<h2 class="card_name"><?= $i["id"] ?></h2>
-										<p>
-											<?php
-											$colCount =  $studentQ->columnCount();
-											for ($j=3; $j<($colCount-1); $j++) {
-												if ($i[$j] == 1) {
-													echo $langList[$j]." ";
-												}
-											}
-											echo $i["etc"]; ?>
-										</p>
-										<p>
-											<?php
-											if($i["teamNum"] == null) {echo "none";}
-											else {echo $i["teamNum"]."조";} ?>
-										</p>
-									</div>
-									<p class=card_but><button>Contact</button></p>
-								</div>
-								<?php
-								}
-							} ?>
+								echo $i["etc"]; ?>
+							</p><?php
+							if($i["teamNum"] == null && isset($team)) { ?>
+							<p> <?= "none" ?> </p>
 						</div>
+						<div class=card_but>
+							<form action="send.php" method="post">
+								<input type="hidden" name="sender" value= "<?= $id ?>"/>
+								<input type="hidden" name="receiver" value= "<?= $i["id"] ?>"/>
+								<button type="submit">Contact</button>
+							</form>
+						</div> <?php
+							}
+							else if ($i["teamNum"] == null && !isset($team)) { ?>
+							<p> <?= "none" ?> </p>
+						</div>
+						<div class=card_but>
+							<button disabled>Contact</button>
+						</div> <?php
+							}
+							else { ?>
+							<p> <?= $i["teamNum"]."조" ?> </p>
+						</div>
+						<div class=card_but>
+							<button disabled>Contact</button>
+						</div> <?php
+							} ?>
+					</div>
+					<?php
+					}
+					} ?>
 				</div>
 			</div>
 		</div>
@@ -255,6 +272,4 @@
 	</div>
 </footer>
 </body>
-
-<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:34 GMT -->
 </html>
