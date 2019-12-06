@@ -42,6 +42,7 @@ function selectLang(val) {
     else {
       if (langSelected.indexOf(val) > -1) {
         langSelected.splice(langSelected.indexOf(val),1);
+        langButton.className = "langOption";
       }
     }
 
