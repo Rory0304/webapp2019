@@ -1,10 +1,52 @@
+#team {
+  margin: 0 auto;
+}
+
+#team .teamMenu {
+  height: 50px;
+  background-color: white;
+  overflow: hidden;
+  line-height: 50px;
+}
+
+#team .team_none {
+  height: 260px;
+  padding: 25px 0;
+}
+
+#team .team {
+  display: block;
+  float: none;
+  height: 330px;
+}
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width : 200px;
+  height: 250px;
   max-width: 300px;
-  margin: auto;
+  margin: 5px;
   text-align: center;
   background-color: white;
+  float: left;
+  margin-bottom: 10px;
+  position:relative;
+}
+
+.card .card_inner {
+  top: 0;
+  margin: 0;
+}
+
+.card .card_inner .card_name {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.card .card_but {
+  width: 200px;
+  position: absolute;
+  bottom: 0;
 }
 
 .card button {
