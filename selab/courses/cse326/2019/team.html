@@ -136,9 +136,9 @@
 			<div class="contents">
 				<h1>Web Application Development</h1>
 				<div id="tab">
-					<div class="deactive first-tab" data-tab="main">Home</div>
-					<div class="deactive" data-tab="slides">Slides</div>
-					<div class="last-tab" data-tab="slides">team</div>
+					<div class="deactive first-tab" data-tab="main"> <a href="team.html">Home</a></div>
+					<div class="deactive" data-tab="slides"><a href="team.html">Slides</a></div>
+					<div class="last-tab" data-tab="slides">Team</div>
 				</div>
 				<div id="hl"></div>
 				<div id="team">
@@ -150,23 +150,31 @@
 						</select>
 						<a class="pull-right" href="#"> <img src="../../images/mail-24px.svg" alt="message"> </a>
 						<a class="pull-right" href="#"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
-						<a class="pull-right" href="#"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
+						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
 					</div>
-					<div id="cards">
-						<?php
-							include "../../../common/db.php";
-							$langList = array("html","css","js","jquery","php","db","ajax","xml","c","c++","java","python","ruby","Django","Perl");
+					<!-- <div id="cards"> -->
+					<?php
+					include "../../../common/db.php";
 
-							if (isset($_GET["by"])) { $by = $_GET["by"]; }
-							else { $by = "all"; }
+					// 로그인된 계정(학생)의 반,아이디,조
+					$class = 23497;
+					$id = 'id2';
+					$team = 1;
 
-							echo "<script> addSelec('" .$by. "'); </script>";
+					if (isset($_GET["by"])) { $by = $_GET["by"]; }
+					else { $by = "all"; } ?>
 
+					<script type="text/javascript">
+						var by = "<?php echo $by ?>";
+						addSelec();
+					</script>
+
+					<?php
 							if ($by == "byTeam") { ?>
 								<!-- // 무소속인 학생부터 -->
 								<div class="team_none">
 									<?php
-									$studentQ = $db->query("select * from students where teamNum is null");
+									$studentQ = $db->query("select * from students where class='$class' and teamNum is null");
 									card(); ?>
 								</div>
 
@@ -183,21 +191,22 @@
 								}
 							}
 							else if ($by == "byLang") {
-								if (isset($_GET["langOption"])) { $langOption = $_GET["langOption"]; }
-								else { $langOption = []; }
+								if (isset($_GET["langOption"])) {
+									$langOption = $_GET["langOption"];
+									$str = " where class =".$class;
+								}
+								else { $langSelected = []; $str = ""; }
 
-								$link = "team.html?by=byLang";
-								$str = " where ";
-								for($k=0; $k<count($langOption); $k++) {
-									$link = $link . "&langOption[]=" . $langOption[$k];
-									$str = $str . $langOption[$k] . "=1";
-								} ?>
+								foreach ($langSelected as $m) {
+									$str = $str . " and " . $m . "=1";
+								}
+								?>
 
-								<div class="langSelecDiv">
+								<div class="langOptions">
 									<?php
 									for($i=0; $i<count($langList); $i++) { ?>
-										<button onClick=""><?= $langList[$i] ?></button>
-									<?php
+										<button class="langOption" id="<?= $langList[$i] ?>" onClick="selectLang('<?= $langList[$i] ?>');"><?= $langList[$i] ?></button>
+										<?php
 									} ?>
 								</div>
 
@@ -205,7 +214,7 @@
 								$studentQ = $db->query("select * from students" .$str);
 								card();
 							}
-							else { $studentQ = $db->query("select * from students"); card(); }
+							else { $studentQ = $db->query("select * from students where class= '$class'"); card(); }
 
 							function card() {
 								global $studentQ;
