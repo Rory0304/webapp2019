@@ -1,8 +1,6 @@
-$( document ).ready(function(){
-	$("#idform").focus();
-	$("#error").slideDown("slow");
-	var timer = setInterval(function () {
-		$("#error").slideUp("slow");
-		clearInterval(timer);
-	}, 2000);
-});
+function show(val) {
+	var choose = document.getElementById("choose");
+	var obj = document.getElementById(val);
+	obj.style.display = 'block';
+	choose.style.display = 'none';
+}
