@@ -12,20 +12,36 @@
 </head>
 <body>
 	<div id="wrap">
-		<div class="login">
+		<div id="choose">
+			<button onClick="show('researcher')">연 구 원</button>
+			<p>OR</p>
+			<button onClick="show('student');">학 생</button>
+		</div>
+
+		<div id="student">
 			<form method="post" action="login.php">
-
-				<input id="idform" class="textfield" type="text" name="id" placeholder= "Username"/>
-
+				<input class="idform" type="text" name="id" placeholder= "Username"/>
 				<input class="textfield" type="password" name="password" placeholder = "Password"/>
-
-				<input id="submit_button" type="submit" value="login"/>
+				<input class="submit_button" type="submit" value="login"/>
 				<input type="hidden" name="source" value="/index.php">
 			</form>
 			<div class="join">
-				<input id="joinButton" type="button" value="join" onClick="location.href='join.html'">
+				<input class="joinButton" type="button" value="join" onClick="location.href='join.html'">
 			</div>
 		</div>
+
+		<div id="researcher">
+			<form method="" action="">
+				<input class="idform" class="textfield" type="text" name="id" placeholder= "Username"/>
+				<input class="textfield" type="password" name="password" placeholder = "Password"/>
+				<input class="submit_button" type="submit" value="login"/>
+				<input type="hidden" name="source" value="/index.php">
+			</form>
+			<div class="join">
+				<input class="joinButton" type="button" value="join" onClick="">
+			</div>
+		</div>
+
 		<div class="side">
 			<p>lab[se];</p>
 		</div>
