@@ -70,8 +70,8 @@
 				//setcookie('user_id',$id,time()+(86400*30),'/');
 
 				loadSetting($id);
-				Print_r($_SESSION);
-				//Header("Location:../index.html"); //프로젝트에는 실제 index.html 경로를 입력
+				//Print_r($_SESSION);
+				Header("Location:../index.html"); //프로젝트에는 실제 index.html 경로를 입력
 
 		}else{
 				$_SESSION['is_logged'] = 'NO';
