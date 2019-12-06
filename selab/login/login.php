@@ -8,11 +8,31 @@
 		$rows = $db->query($check);
 		if ( count($rows) !== 0 ) {
 			foreach ($rows as $row) {
-				$_SESSION['slide_1by1'] = $row['1by1'];
-				$_SESSION['slide_font'] = $row['font'];
-				$_SESSION['slide_fontsize'] = $row['fontsize'];
-				$_SESSION['slide_t_color'] = $row['t_color'];
-				$_SESSION['slide_c_color'] = $row['c_color'];
+			?>
+				<script>
+					var key = '1by1';
+					var value = <?= $row['1by1']; ?>;
+					// setItem( ) 메서드를 이용하여 key를 지정하고, value값을 세션에 저장한다.
+					sessionStorage.setItem(key, value);
+					key = 'font';
+					value = <?= $row['font'] ?>
+					sessionStorage.setItem(key, value);
+					key = 'fontsize';
+					value = <?= $row['fontsize'] ?>;
+					sessionStorage.setItem(key, value);
+					key = 't_color';
+					value = <?= $row['t_color'] ?>;
+					sessionStorage.setItem(key, value);
+					key = 'c_color';
+					value = <?= $row['c_color'] ?>;
+					sessionStorage.setItem(key, value);
+				</script>
+			<?php
+				// $_SESSION['slide_1by1'] = $row['1by1'];
+				// $_SESSION['slide_font'] = $row['font'];
+				// $_SESSION['slide_fontsize'] = $row['fontsize'];
+				// $_SESSION['slide_t_color'] = $row['t_color'];
+				// $_SESSION['slide_c_color'] = $row['c_color'];
 			}
 		}
 	}
@@ -32,7 +52,15 @@
 		foreach($results as $result) {
 			if ($result["id"] == $id) {
 				if ($result["password"] == $pw) {
-					$_SESSION['ID']=$id;
+					?>
+						<script>
+							var key = 'ID';
+							var value = <?= $id ?>;
+							// setItem( ) 메서드를 이용하여 key를 지정하고, value값을 세션에 저장한다.
+							sessionStorage.setItem(key, value);
+						</script>
+					<?php
+					// $_SESSION['ID']=$id;
 					loadSetting($id);
 					Header("Location:../index.html"); //프로젝트에는 실제 index.html 경로를 입력
 					break;

@@ -58,7 +58,7 @@
 			<form action="save.php" method="post">
 			<div id="font">
 				<p>Font</p>
-				<input type="text" id="order" name="order" value="" style="display: none;">
+				<input type="text" id="save" name="order" style="display: none;">
 				<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
 					<option style="font-family:Serif" value="serif"> Serif </option>
 					<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
@@ -79,6 +79,7 @@
 					<option style="font-size: 30px">Large</option>
 					<option style="font-size: 35px">Huge</option>
 				</select>
+				<input id="submit" type="submit" value="save">
 			</div>
 			</form>
 			<div id="background">

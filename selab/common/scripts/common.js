@@ -186,14 +186,26 @@ $(function(){
 function saveorder() {
   var temp = document.getElementById("sortable");
   var order = temp.innerHTML;
-  alert(order);
-  var text = document.getElementById("order");
-  text.value = order;
+
+  document.getElementById("save").value = order;
+}
+
+function checklogin() {
+  var check = sessionStorage.getItem('ID');
+  // alert(check);
+  if (check == null) {
+    var submit = document.getElementById("submit");
+    submit.style.display = "none";
+  } else {
+    var submit = document.getElementById("submit");
+    submit.style.display = "initial";
+  }
 }
 
 function startup() {
   navigation();
   saveorder();
+  checklogin();
 }
 
 window.onload = startup;
