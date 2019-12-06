@@ -110,10 +110,10 @@
 
 .langOption:hover{
   background-color: black;
+  transform: scale(1.2) perspective(1px)
   color: white;
 }
 
 .selectedlangOption:hover{
-  background-color: white;
-  color: black;
+ transform: scale(1.2) perspective(1px)
 }
