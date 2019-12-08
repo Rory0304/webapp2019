@@ -34,3 +34,7 @@ h1{
 #sampleC h1{
 	color:#A07FF1;
 }
+
+.active a{
+	color:#A07FF1;
+}

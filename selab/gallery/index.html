@@ -19,12 +19,37 @@
 	<script type="text/javascript" src="../common/scripts/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="../common/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="../common/scripts/buffered-keyup.js"></script>
-	<script type="text/javascript" src="../common/scripts/common.js"></script>
+	<script type="text/javascript" src="scripts/socialCircle.js"></script> 
+	<!-- 	<script type="text/javascript" src="../common/scripts/common.js"></script> -->
 	<script type="text/javascript" src="scripts/gallery.js"></script>
 	<script type="text/javascript" src="scripts/lightbox-2.6.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="jssocials.css" />
+	<link rel="stylesheet" type="text/css" href="jssocials-theme-flat.css" />
+
 </head>
 
 <body>
+	<div id="modal" class="modal">
+		<div class="dropdown">
+			<button id="sharebtn">SHARE</button>
+			<div class="dropdown-content">
+				<a href="#" id="facebook">Facebook</a>
+				<a href="#" id="twitter">Twitter</a>
+				<a href="#" id="kakao">Kakao</a>
+			</div>
+		</div>
+	<!-- 	<p>SHARE IT!</p>
+		<button id="twitter">TWITTER</button>
+		<button id="facebook">FACEBOOK</button>
+		<button id="kakao">Kakao</button> -->
+		<span class="close">&times;</span>
+		<!-- Modal Content (The Image) -->
+		<img class="modal-content" id="imgM">
+
+		<!-- Modal Caption (Image Text) -->
+		<!-- <div id="caption"></div> -->
+	</div>
+
 	<header role="banner" class="header">
 		<div class="container">
 			<nav>
@@ -111,6 +136,7 @@
 	</div>
 
 	<main role="main">
+
 		<div id="sideNav">
 			<div class="nav-list-left">
 				<div id="sideLogo"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
@@ -140,35 +166,29 @@
 					<div class="deactive last-tab" data-type="etc">Etc</div>
 				</div>
 				<div id="hl"></div>
+
 				<div class="row back">
+
 					<div class="tile pull-left column conference">
-						<a href="./index_files/KakaoTalk_20170113_125937985.jpg" data-lightbox="all" title="KSCI 2017">
-							<img src="./index_files/KakaoTalk_20170113_125937985.jpg">
-						</a>
+						<img src="./index_files/KakaoTalk_20170113_125937985.jpg">
 						<div class="title">
 							<p>KSCI 2017</p>
 						</div>
 					</div>
 					<div class="tile pull-left column conference">
-						<a href="./index_files/KakaoTalk_20170113_125748315.jpg" data-lightbox="all" title="KSCI 2017">
-							<img src="./index_files/KakaoTalk_20170113_125748315.jpg">
-						</a>
+						<img src="./index_files/KakaoTalk_20170113_125748315.jpg">
 						<div class="title">
 							<p>KSCI 2017</p>
 						</div>
 					</div>
 					<div class="tile pull-left column conference">
-						<a href="./index_files/KakaoTalk_20170113_125722733.jpg" data-lightbox="all" title="KSCI 2017">
-							<img src="./index_files/KakaoTalk_20170113_125722733.jpg">
-						</a>
+						<img src="./index_files/KakaoTalk_20170113_125722733.jpg">
 						<div class="title">
 							<p>KSCI 2017</p>
 						</div>
 					</div>
 					<div class="tile pull-left column conference">
-						<a href="./index_files/20161221_131538-1.jpg" data-lightbox="all" title="ICCCA 2016 Busan">
-							<img src="./index_files/20161221_131538-1.jpg">
-						</a>
+						<img src="./index_files/20161221_131538-1.jpg">
 						<div class="title">
 							<p>ICCCA 2016 Busan</p>
 						</div>

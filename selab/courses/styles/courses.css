@@ -50,7 +50,7 @@ td:last-child{
 }
 
 .active a {
-	color: #ff6860 !important;
+	color: #ff6860;
 	font-weight: bold;
 }
 
