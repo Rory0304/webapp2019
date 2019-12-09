@@ -1,15 +1,20 @@
+CREATE TABLE member
+(
+  studentNum VARCHAR(20) NOT NULL PRIMARY KEY,
+  class integer,
+  name VARCHAR(20)
+);
+
 CREATE TABLE team
 (
-  teamNum integer NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  teamNum integer,
+  class integer,
   name VARCHAR(20),
   githup VARCHAR(50)
 );
 
-INSERT INTO team VALUES (null,"수조",null);
-
-CREATE TABLE students (
-  id VARCHAR(20) PRIMARY KEY,
-  class integer,
+CREATE TABLE lang (
+  studentNum VARCHAR(20) NOT NULL PRIMARY KEY,
   teamNum integer,
 
   html VARCHAR(1) DEFAULT 0,
@@ -33,17 +38,8 @@ CREATE TABLE students (
   etc VARCHAR(20)
 );
 
-INSERT INTO students VALUES ('id1',23497,null,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null);
-INSERT INTO students VALUES ('id2',23497,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,"flask");
-INSERT INTO students VALUES ('id3',23497,null,0,1,1,1,0,0,0,0,0,null,0,0,0,0,0,null);
-
 CREATE TABLE message (
   sender VARCHAR(20),
   receiver VARCHAR(20),
   sendDay date
 );
-
-INSERT INTO message VALUES ('id2','id1','2019-12-06');
-
-drop table team;
-drop table students;

@@ -152,10 +152,14 @@
 					<?php
 					include "../../../common/db.php";
 
-					// 로그인된 계정(학생)의 반,아이디,조
+					// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
 					$class = 23497;
-					$id = 'id2';
-					$team = 1;
+					$num = 'num2';
+					$name = '가나다';
+
+					$teamQ = $db->query("select * from lang where studentNum = '$num'");
+					$teamR = $teamQ -> fetch();
+					$team = $teamR["teamNum"];
 
 					if (isset($_GET["by"])) { $by = $_GET["by"]; }
 					else { $by = "all"; } ?>
@@ -168,7 +172,7 @@
 					<?php
 					if ($by == "byTeam") { // 무소속인 학생부터 ?>
 					<div class="team_none"> <?php
-						$studentQ = $db->query("select * from students where class='$class' and teamNum is null");
+						$studentQ = $db->query($str." where m.class='$class' and l.teamNum is null");
 						card(); ?>
 					</div>
 
@@ -179,7 +183,7 @@
 						<h2><?= $i+1 ?>조</h2>
 						<hr/>
 						<?php
-						$studentQ = $db->query("select * from students where teamNum= ".($i+1));
+						$studentQ = $db->query($str." where l.teamNum= ".($i+1));
 						card(); ?>
 					</div> <?php
 					}
@@ -187,12 +191,12 @@
 					else if ($by == "byLang") {
 					if (isset($_GET["langSelected"])) {
 					$langSelected = $_GET["langSelected"];
-					$str = " where class =".$class;
+					$whr = " where m.class =".$class;
 					}
-					else { $langSelected = []; $str = ""; }
+					else { $langSelected = []; $whr = ""; }
 
 					foreach ($langSelected as $m) {
-					$str = $str . " and " . $m . "=1";
+					$whr = $whr . " and " . $m . "=1";
 					}?>
 
 					<div class="langOptions">
@@ -209,10 +213,10 @@
 					</script>
 
 					<?php
-					$studentQ = $db->query("select * from students" .$str);
+					$studentQ = $db->query($str . $whr);
 					card();
 					}
-					else { $studentQ = $db->query("select * from students where class= '$class'"); card(); }
+					else { $studentQ = $db->query($str . " where m.class= '$class'"); card(); }
 
 					function card() {
 					global $studentQ;
@@ -220,14 +224,15 @@
 					global $id;
 					global $team;
 					foreach ($studentQ as $i) {  ?>
-					<div class="card" id="<?= $i["id"] ?>">
+					<div class="card" id="<?= $i["name"] ?>">
 						<div class="card_inner">
-							<h2><?= $i["id"] ?></h2>
+							<h2><?= $i["name"] ?></h2>
+							<p><?=$i["studentNum"] ?></p>
 							<p><?php
 								$colCount =  $studentQ->columnCount();
-								for ($j=3; $j<($colCount-1); $j++) {
+								for ($j=2; $j<($colCount-4); $j++) {
 								if ($i[$j] == 1) {
-								echo $langList[$j-3]." ";
+								echo $langList[$j-2]." ";
 								}
 								}
 								echo $i["etc"]; ?>
@@ -237,8 +242,8 @@
 						</div>
 						<div class=card_but>
 							<form action="send.php" method="post">
-								<input type="hidden" name="sender" value= "<?= $id ?>"/>
-								<input type="hidden" name="receiver" value= "<?= $i["id"] ?>"/>
+								<input type="hidden" name="sender" value= "<?= $num ?>"/>
+								<input type="hidden" name="receiver" value= "<?= $i["studentNum"] ?>"/>
 								<button type="submit">Contact</button>
 							</form>
 						</div> <?php
