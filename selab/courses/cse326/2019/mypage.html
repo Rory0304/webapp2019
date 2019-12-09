@@ -1,14 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
-
-<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:27 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 	<meta charset="utf-8" />
 	<title>Software Engineering Lab - Courses: Web Application Development</title>
 	<link rel="stylesheet" href="../../../common/styles/reset-1.6.1.css" type="text/css" />
 	<link rel="stylesheet" href="../../../common/styles/jquery-ui.css" type="text/css" />
-	<!-- <link rel="stylesheet" href="../../../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" /> -->
 	<link rel="stylesheet" href="../../../common/styles/common.css" type="text/css" />
 	<link rel="shortcut icon" href="../../../common/images/SelabFavicon.png" type="image/png">
 	<link rel="stylesheet" href="../../styles/course-home.css" type="text/css" />
@@ -136,33 +133,36 @@
 			<div class="contents">
 				<h1>Web Application Development</h1>
 				<div id="tab">
-					<div class="deactive first-tab" data-tab="main">Home</div>
-					<div class="deactive" data-tab="slides">Slides</div>
-					<div class="last-tab" data-tab="slides">team</div>
+					<div class="deactive first-tab"> <a href="index.html">Home</a> </div>
+					<div class="deactive"> <a href="slides.html">Slides</a> </div>
+					<div class="last-tab">Team</div>
 				</div>
 				<div class="">
 					<div class="teamMenu">
 						<a href="team.html">팀신청페이지로 돌아가기</a>
-						<a href=""> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
+						<img src="../../images/account_circle-24px.svg" alt="myPage">
 						<a href="#"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
 						<a href="#"> <img src="../../images/mail-24px.svg" alt="message"> </a>
 					</div>
 					<?php
 						include "../../../common/db.php";
 
-						// 로그인된 계정(학생)의 아이디
-						$id = "id2";
+						// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
+						$class = 23497;
+						$num = 'num2';
+						$name = '가나다';
 
-						$studentQ = $db->query("select * from students where id= '$id'");
+						$studentQ = $db->query($str." where l.studentNum= '$num'");
 						$studentsRes = $studentQ -> fetch(); ?>
 
-						<h2><?= $studentsRes["id"] ?></h2>
-						<p>반 : <?= $studentsRes["class"] ?></p>
+						<h2><?= $name ?></h2>
+						<p>학번 : <?= $num ?></p>
+						<p>반 : <?= $class ?></p>
 						<p>조 : <?= $studentsRes["teamNum"] ?></p>
 						<form class="langOptions" action="mypage.php" method="post">
 							<?php
 								for($i=0; $i<count($langList); $i++) {
-									if ($studentsRes[$i+3] == 1) { ?>
+									if ($studentsRes[$i+2] == 1) { ?>
 										<input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>" checked><?= $langList[$i] ?>
 										<?php
 									} else { ?>
@@ -170,6 +170,7 @@
 							<?php
 									}
 								} ?>
+							<input type="text" name="etc" value="<?= $studentsRes["etc"] ?>">
 							<button type="submit">확인</button>
 						</form>
 				</div>
