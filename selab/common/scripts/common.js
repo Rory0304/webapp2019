@@ -119,9 +119,12 @@ function navigation() {
     $("input:radio[name=nav]").click(function() {
       var nav = $(':radio[name="nav"]:checked').val();
       if(nav == "top") {
+        var w = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
         $(".header").css("display", "block");
         $("#sideNav").css("display", "none");
-        $(".main-container").css({"margin-top":"130px", "margin-left":"0", "margin-right":"0"});
+        $(".main-container").css({"margin-top":"130px", "width":w, "margin-left":"0", "margin-right":"0"});
       }
       else if(nav == "left") {
         $(".header").css("display", "none");
@@ -147,9 +150,13 @@ function navigation() {
       }
     })
     if(nav == "top") {
+      var sideNavWidth = $("#sideNav")[0].clientWidth;
+      var w = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
       $(".header").css("display", "block");
       $("#sideNav").css("display", "none");
-      $(".main-container").css({"margin-top":"130px", "margin-left":"0", "margin-right":"0"});
+      $(".main-container").css({"margin-top":"130px", "width":w, "margin-left":"0", "margin-right":"0"});
     }
     else if(nav == "left") {
       $(".header").css("display", "none");
@@ -182,7 +189,7 @@ $(function(){
   $( ".nav-list-right" ).sortable();
 })
 
-//function for save, 
+//function for save,
 function saveorder() {
   var temp = document.getElementById("sortable");
   var order = temp.innerHTML;

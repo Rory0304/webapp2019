@@ -39,7 +39,7 @@ h2 {
 
 
 .container {
-	font-size: 20px;
+	font-size: 22px;
 	padding: 0;
 }
 
@@ -97,7 +97,7 @@ nav img{
 
 header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
 	padding: 0 15px;
-	/*font-size: 18px;*/
+	font-size: 18px;
 	font-weight: bold;
 	color: #fe4a49;
 	display: block;
