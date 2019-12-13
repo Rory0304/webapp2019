@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html>
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<!-- Mirrored from selab.hanyang.ac.kr/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 	<meta charset="utf-8" />
-	<title>Software Engineering Lab - Courses: Web Application Development</title>
-	<link rel="stylesheet" href="../../../common/styles/reset-1.6.1.css" type="text/css" />
-	<link rel="stylesheet" href="../../../common/styles/jquery-ui.css" type="text/css" />
-	<link rel="stylesheet" href="../../../common/styles/common.css" type="text/css" />
-	<link rel="shortcut icon" href="../../../common/images/SelabFavicon.png" type="image/png">
-	<link rel="stylesheet" href="../../styles/course-home.css" type="text/css" />
-	<link rel="stylesheet" href="../../styles/card.css" type="text/css" />
+	<title>Software Engineering Lab - Home</title>
+	<link rel="stylesheet" href="common/styles/reset-1.6.1.css" type="text/css" />
+	<link rel="stylesheet" href="common/styles/common.css" type="text/css" />
+	<link rel="shortcut icon" href="common/images/SelabFavicon.png" type="image/png">
+	<link rel="stylesheet" href="home/styles/home.css" type="text/css" />
+	<link rel="stylesheet" id = "backcss" href="common/styles/theme1.css" type="text/css" />
 
-	<script type="text/javascript" src="../../../common/scripts/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="../../../common/scripts/jquery-ui.js"></script>
-	<script type="text/javascript" src="../../../common/scripts/buffered-keyup.js"></script>
-	<script type="text/javascript" src="../../../common/scripts/common.js"></script>
-	<!-- <script type="text/javascript" src="../../scripts/course-page.js"></script> -->
-	<script type="text/javascript" src="../../scripts/team.js"></script>
+	<script type="text/javascript" src="common/scripts/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="common/scripts/jquery-ui.js"></script>
+	<script type="text/javascript" src="common/scripts/buffered-keyup.js"></script>
+	<script type="text/javascript" src="common/scripts/common.js"></script>
+	<script type="text/javascript" src="home/scripts/changeOrder.js"></script>
+
 
 </head>
 
@@ -24,41 +25,25 @@
 	<?php
 		session_start();
 	?>
-	<header role="banner" class="header">
-		<div class="container">
-			<nav>
-				<div id="logo" class="pull-left">
-					<a href="../../../index.html"><img src="../../../common/images/selab_logo_S.png" alt="logo"/></a>
-				</div>
-
-				<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="../../../common/images/color_lens-24px.svg" alt="customize"> </a>
-
-				<div role="login" class="pull-right">
-					<?php
-
-						if(isset($_SESSION["ID"])){ ?>
-							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
-						<?php }else{ ?>
-							<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
-						<?php
-						}
-					?>
-					<!-- <a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a> -->
-				</div>
-
-				<a id="contact" href="../../../contact/index.html" class='pull-right'> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
-			</nav>
-			<div id="menu">
-				<ul class="inline-list pull-left">
-					<li><a href="../../../notice/index.html" >NOTICE</a></li>
-					<li><a href="../../../members/index.html" >MEMBERS</a></li>
-					<li><a href="../../../research/index.html" >RESEARCH</a></li>
-					<li><a href="../../../publications/index.html" >PUBLICATIONS</a></li>
-					<li><a href="../../../courses/index.html" class="selected" >COURSES</a></li>
-					<li><a href="../../../gallery/index.html" >GALLERY</a></li>
-				</ul>
+	<header role="banner">
+		<nav>
+			<div id="logo" class="pull-left">
+				<a href="index.html"><img src="common/images/selab_logo_S.png" alt="logo"/></a>
 			</div>
-		</div>
+			<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="common/images/color_lens-24px.svg" alt="customize"/> </a>
+			<div role="login" class="pull-right">
+				<?php
+
+					if(isset($_SESSION["ID"])){ ?>
+						<a href="login/logout.php"> <img src="common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+					<?php }else{ ?>
+						<a href="login/index4e7d.html"> <img src="common/images/vpn_key-24px.svg" alt="login"> </a>
+					<?php
+					}
+				?>
+			</div>
+			<a id="contact" href="contact/index.html" class='pull-right'> <img src="common/images/phone-24px.svg" alt="contact"> </a>
+		</nav>
 	</header>
 
 	<div id="settingtab">
@@ -81,221 +66,68 @@
 		</div>
 
 		<div id="option">
-			<div id="font">
-				<p>Navigation</p>
-				<input type="radio" name="nav" value="top" checked="checked" /> Top
-				<input type="radio" name="nav" value="left" /> Left
-				<input type="radio" name="nav" value="right" /> Right
-				<p>Font</p>
-				<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
-					<option style="font-family:Serif" value="serif"> Serif </option>
-					<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
-					<option style="font-family:Arial" value="Arial"> Arial </option>
-					<option style="font-family:Monospace" value="Monospace">Monospace</option>
-					<option style="font-family:Roboto" value="Roboto">Roboto</option>
-					<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
-					<option style="font-family:Garamond" value="Garamond">Garamond</option>
-					<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
-					<option style="font-family:Courier" value="Courier">Courier</option>
-					<option style="font-family:Impact" value="Impact">Impact</option>
-				</select>
-				<p>Font Size</p>
-				<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeTC')">
-					<option style="font-size: 15px">Small</option>
-					<option style="font-size: 20px" selected>Normal</option>
-					<option style="font-size: 25px">Medium</option>
-					<option style="font-size: 30px">Large</option>
-					<option style="font-size: 35px">Huge</option>
-				</select>
-			</div>
-			<div id="background">
-				<p>Background</p>
-				<select id="backselect" name="selectBackground" onchange="backupdate();">
-					<option value="1"> Theme1 </option>
-					<option value="2"> Theme2</option>
-					<option value="3"> Theme3 </option>
-					<option value="4"> Theme4 </option>
-					<option value="5"> Theme5 </option>
-				</select>
+			<form action="savemain.php" method="post">
+				<div id="font">
+					<p>Font</p>
+					<input id="saveOr" type="text" value="" name="order" style="display: none;">
+					<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle');">
+						<option style="font-family:Serif" value="serif"> Serif </option>
+						<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
+						<option style="font-family:Arial" value="Arial"> Arial </option>
+						<option style="font-family:Monospace" value="Monospace">Monospace</option>
+						<option style="font-family:Roboto" value="Roboto">Roboto</option>
+						<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
+						<option style="font-family:Garamond" value="Garamond">Garamond</option>
+						<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+						<option style="font-family:Courier" value="Courier">Courier</option>
+						<option style="font-family:Impact" value="Impact">Impact</option>
+					</select>
+					<p>Font Size</p>
+					<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeC');">
+						<option style="font-size: 15px">Small</option>
+						<option style="font-size: 20px" selected>Normal</option>
+						<option style="font-size: 25px">Medium</option>
+						<option style="font-size: 30px">Large</option>
+						<option style="font-size: 35px">Huge</option>
+					</select>
+				</div>
+				<div id="background">
+					<p>Background</p>
+					<select id="backselect" name="selectBackground" onchange="backupdate();">
+						<option value="1"> Theme1 </option>
+						<option value="2"> Theme2</option>
+						<option value="3"> Theme3 </option>
+						<option value="4"> Theme4 </option>
+						<option value="5"> Theme5 </option>
+					</select>
+				</div>
+				<input id="submit" type="submit" value="save" onclick="saveorder();">
+			</form>
+		</div>
+	</div>
+
+	<div id="main">
+		<div class="container">
+			<div class="menu">
+				<a id = 'ind' href="index.html"><img src="common/images/selab_logo_S_2.png" /></a>
+				<div id ="sortable">
+					<a id='not' href="notice/index.html">NOTICE</a>
+					<a id='mem' href="members/index.html">MEMBERS</a>
+					<a id='res' href="research/index.html" >RESEARCH</a>
+					<a id='pub' href="publications/index.html" >PUBLICATIONS</a>
+					<a id='cou' href="courses/index.html" >COURSES</a>
+					<a id='gal' href="gallery/index.html" >GALLERY</a>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<main role="main">
-		<div id="sideNav">
-			<div class="nav-list-left">
-				<div id="sideLogo"><a href="../../../index.html"><img src="../../../common/images/selab_logo_S.png" /></a></div>
-				<a id="sideSetting" href="javascript:settingview();"> <img src="../../../common/images/color_lens-24px.svg" alt="customize"> </a>
-				<div role="login">
-					<?php
-
-						if(isset($_SESSION["ID"])){ ?>
-							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
-						<?php }else{ ?>
-							<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
-						<?php
-						}
-					?>
-					<!-- <a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a> -->
-				</div>
-				<a id="sideContact" href="../../../contact/index.html"> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
-			</div>
-			<div class="nav-list-right">
-				<a href="../notice/index.html" >NOTICE</a>
-				<a href="../members/index.html" >MEMBERS</a>
-				<a href="../research/index.html" >RESEARCH</a>
-				<a href="../publications/index.html" >PUBLICATIONS</a>
-				<a href="../courses/index.html" class="selected" >COURSES</a>
-				<a href="../gallery/index.html" >GALLERY</a>
-			</div>
+	<footer role="contentinfo">
+		<div class="container">
+			<p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
 		</div>
-
-		<div class="main-container">
-			<div class="contents">
-				<h1>Web Application Development</h1>
-				<div id="tab">
-					<div class="deactive first-tab" data-tab="main"> <a href="index.html">Home</a></div>
-					<div class="deactive"> <a href="slides.html">Slides</a></div>
-					<div class="last-tab">Team</div>
-				</div>
-				<div id="hl"></div>
-				<div id="team">
-					<div class="teamMenu">
-						<select id="by" class="pull-left" onchange="sorting();">
-							<option value="all" selected="selected"> all </option>
-							<option value="byTeam"> by team</option>
-							<option value="byLang"> by lang </option>
-						</select>
-						<a class="pull-right" href="#"> <img src="../../images/mail-24px.svg" alt="message"> </a>
-						<a class="pull-right" href="#"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
-						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
-					</div>
-					<?php
-					include "../../../common/db.php";
-
-					// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
-					$class = 23497;
-					$num = 'num2';
-					$name = '가나다';
-
-					$teamQ = $db->query("select * from lang where studentNum = '$num'");
-					$teamR = $teamQ -> fetch();
-					$team = $teamR["teamNum"];
-
-					if (isset($_GET["by"])) { $by = $_GET["by"]; }
-					else { $by = "all"; } ?>
-
-					<script type="text/javascript">
-						var by = "<?php echo $by ?>";
-						addSelec();
-					</script>
-
-					<?php
-					if ($by == "byTeam") { // 무소속인 학생부터 ?>
-					<div class="team_none"> <?php
-						$studentQ = $db->query($str." where m.class='$class' and l.teamNum is null");
-						card(); ?>
-					</div>
-
-					<?php //소속있는 학생은 팀별로
-					$teamQ = $db->query("select * from team");
-					for($i=0; $i<($teamQ->rowCount()); $i++) { ?>
-					<div class="team">
-						<h2><?= $i+1 ?>조</h2>
-						<hr/>
-						<?php
-						$studentQ = $db->query($str." where l.teamNum= ".($i+1));
-						card(); ?>
-					</div> <?php
-					}
-					}
-					else if ($by == "byLang") {
-					if (isset($_GET["langSelected"])) {
-					$langSelected = $_GET["langSelected"];
-					$whr = " where m.class =".$class;
-					}
-					else { $langSelected = []; $whr = ""; }
-
-					foreach ($langSelected as $m) {
-					$whr = $whr . " and " . $m . "=1";
-					}?>
-
-					<div class="langOptions">
-						<?php
-						for($i=0; $i<count($langList); $i++) { ?>
-						<button class="langOption" id="<?= $langList[$i] ?>" onClick="selectLang('<?= $langList[$i] ?>');"><?= $langList[$i] ?></button>
-						<?php
-						} ?>
-					</div>
-
-					<script type="text/javascript">
-						var langSelected = <?php echo json_encode($langSelected)?>;
-						editLangClass();
-					</script>
-
-					<?php
-					$studentQ = $db->query($str . $whr);
-					card();
-					}
-					else { $studentQ = $db->query($str . " where m.class= '$class'"); card(); }
-
-					function card() {
-					global $studentQ;
-					global $langList;
-					global $id;
-					global $team;
-					foreach ($studentQ as $i) {  ?>
-					<div class="card" id="<?= $i["name"] ?>">
-						<div class="card_inner">
-							<h2><?= $i["name"] ?></h2>
-							<p><?=$i["studentNum"] ?></p>
-							<p><?php
-								$colCount =  $studentQ->columnCount();
-								for ($j=2; $j<($colCount-4); $j++) {
-								if ($i[$j] == 1) {
-								echo $langList[$j-2]." ";
-								}
-								}
-								echo $i["etc"]; ?>
-							</p><?php
-							if($i["teamNum"] == null && isset($team)) { ?>
-							<p> <?= "none" ?> </p>
-						</div>
-						<div class=card_but>
-							<form action="send.php" method="post">
-								<input type="hidden" name="sender" value= "<?= $num ?>"/>
-								<input type="hidden" name="receiver" value= "<?= $i["studentNum"] ?>"/>
-								<button type="submit">Contact</button>
-							</form>
-						</div> <?php
-							}
-							else if ($i["teamNum"] == null && !isset($team)) { ?>
-							<p> <?= "none" ?> </p>
-						</div>
-						<div class=card_but>
-							<button disabled>Contact</button>
-						</div> <?php
-							}
-							else { ?>
-							<p> <?= $i["teamNum"]."조" ?> </p>
-						</div>
-						<div class=card_but>
-							<button disabled>Contact</button>
-						</div> <?php
-							} ?>
-					</div>
-					<?php
-					}
-					} ?>
-				</div>
-			</div>
-		</div>
-	</main>
-
-<footer role="contentinfo">
-	<div class="container">
-		<p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
-	</div>
-</footer>
+	</footer>
 </body>
+
+<!-- Mirrored from selab.hanyang.ac.kr/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:16 GMT -->
 </html>
