@@ -1,53 +1,54 @@
- <!DOCTYPE html>
-<head>
-    <meta charset="utf-8" />
-    <title>Software Engineering Lab - Courses</title>
-    <!--[if IE]>
-    <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" href="../common/styles/reset-1.6.1.css" type="text/css" />
-    <link rel="stylesheet" href="../common/styles/jquery-ui.css" type="text/css" />
-    <link rel="stylesheet" href="../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" />
-    <link rel="stylesheet" href="../common/styles/common.css" type="text/css" />
-    <link rel="stylesheet" href="styles/courses.css" type="text/css" />
-    <link rel="stylesheet" id = "backcss" href="../common/styles/theme1.css" type="text/css" />
-    <link rel="shortcut icon" href="../common/images/SelabFavicon.png" type="image/png">
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Software Engineering Lab - Courses</title>
+		<!--[if IE]>
+		<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" href="../common/styles/reset-1.6.1.css" type="text/css" />
+		<link rel="stylesheet" href="../common/styles/jquery-ui.css" type="text/css" />
+		<link rel="stylesheet" href="../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" />
+		<link rel="stylesheet" href="../common/styles/common.css" type="text/css" />
+		<link rel="stylesheet" href="styles/courses.css" type="text/css" />
+		<link rel="stylesheet" id = "backcss" href="../common/styles/theme1.css" type="text/css" />
+		<link rel="shortcut icon" href="../common/images/SelabFavicon.png" type="image/png">
 
-    <script type="text/javascript" src="../common/scripts/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../common/scripts/jquery-ui.js"></script>
-    <script type="text/javascript" src="../common/scripts/buffered-keyup.js"></script>
-    <script type="text/javascript" src="../common/scripts/common.js"></script>
-    <script type="text/javascript" src="scripts/courses.js"></script>
+		<script type="text/javascript" src="../common/scripts/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="../common/scripts/jquery-ui.js"></script>
+		<script type="text/javascript" src="../common/scripts/buffered-keyup.js"></script>
+		<script type="text/javascript" src="../common/scripts/common.js"></script>
+		<script type="text/javascript" src="scripts/courses.js"></script>
+
   </head>
 
   <body>
-	<?php
-		session_start();
-	?>	  
-  <header role="banner" class="header">
-    <div class="container">
-      <nav>
-        <div id="logo" class="pull-left">
-          <a href="../index.html"><img src="../common/images/selab_logo_S.png" alt="logo"/></a>
+		<header role="banner" class="header">
+			<div class="container">
+				<nav>
+					<div id="logo" class="pull-left">
+						<a href="../index.html"><img src="../common/images/selab_logo_S.png" alt="logo"/></a>
+					</div>
+					<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
+					<div role="login" class="pull-right">
+						<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
+					</div>
+					<a id="contact" href="../contact/index.html" class='pull-right'> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
+				</nav>
+				<div id="menu">
+					<ul class="inline-list pull-left">
+						<li><a href="../notice/index.html" >NOTICE</a></li>
+						<li><a href="../members/index.html" >MEMBERS</a></li>
+						<li><a href="../research/index.html" >RESEARCH</a></li>
+						<li><a href="../publications/index.html" >PUBLICATIONS</a></li>
+						<li><a href="../courses/index.html" class="selected" >COURSES</a></li>
+						<li><a href="../gallery/index.html" >GALLERY</a></li>
+					</ul>
+          </div>
         </div>
-        <a id="setting" class="pull-right" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
-        <div role="login" class="pull-right">
-          <a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
-        </div>
-        <a id="contact" href="../contact/index.html" class='pull-right'> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
-      </nav>
-      <div id="menu">
-        <ul class="inline-list pull-left">
-          <li><a href="../notice/index.html" >NOTICE</a></li>
-          <li><a href="../members/index.html" >MEMBERS</a></li>
-          <li><a href="../research/index.html" >RESEARCH</a></li>
-          <li><a href="../publications/index.html" >PUBLICATIONS</a></li>
-          <li><a href="../courses/index.html" class="selected" >COURSES</a></li>
-          <li><a href="../gallery/index.html" >GALLERY</a></li>
-        </ul>
-  </header>
+    </header>
 
-  <div id="settingtab">
+    <div id="settingtab">
   <a href="javascript:void(0)" class="closebtn" onclick="closesetting()">&times;</a>
   <div id="sample">
     <div id="samplePage">
@@ -59,12 +60,15 @@
           <p>notice members research ...</p>
         </div>
 
-        <div id="sampleC">
-  <h1>sample</h1>
-  <p>This is sample to help your costomizing. I hope you satisfied whith our wepsite
+      </div>
+      <div id="sampleC">
+        <h1>sample</h1>
+        <p>This is sample to help your costomizing. I hope you satisfied whith our wepsite
+        </div>
+      </div>
+  </div>
 
-
-    <div id="option">
+  <div id="option">
     <form action="../savemenu.php" method="POST">
       <div id="font">
         <p>Navigation</p>
@@ -105,10 +109,11 @@
         </select>
       </div>
       <input id="submit" type="submit" value="save" onclick="savemenu();">
-    </form>  
+    </form>
+  </div>
+</div>
 
-
-    <main role="main">
+<main role="main">
   <div id="sideNav">
     <div class="nav-list-left">
       <div id="sideLogo"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
@@ -125,157 +130,167 @@
       <a href="../publications/index.html" >PUBLICATIONS</a>
       <a href="../courses/index.html" class="selected" >COURSES</a>
       <a href="../gallery/index.html" >GALLERY</a>
+      </div>
+    </div>
 
-      <div class="main-container">
-  <div class="contents" id="main">
-    <h1>COURSES</h1>
-    <div id="course_table">
-      <table id="first_table">
-        <tr>
-          <th class="coursenum" colspan="2">Undergraduate Courses</th>
-        </tr>
-        <tr>
-          <td class="coursenum" data-href="cse107">CSE107</td>
-          <td class="course" data-href="cse107">Logical Fundamentals of Programming</td>
-        </tr>
-        <tr>
-          <td class="coursenum">CSE117</td>
-          <td class="course">Programming Fundamentals</td>
-        </tr>
-        <tr>
-          <td class="coursenum">CSE322</td>
-          <td class="course">Web Programming</td>
-        </tr>
-        <tr>
-          <td class="coursnum active"><a href="./cse326/2019/index.html">CSE326</a></td>
-          <td class="course active"><a href="./cse326/2019/index.html">
-          Web Application Development</a></td>
-        </tr>
-        <tr>
-          <td class="coursenum" data-href="cse406">CSE406</td>
-          <td class="course" data-href="cse406">Software Engineering</td>
-        </tr>
-      </table>
-      <div id="over">
-        <table id="second_table">
+    <div class="main-container">
+    <div class="contents" id="main">
+      <h1>COURSES</h1>
+      <div id="course_table">
+        <table id="first_table">
           <tr>
-            <th>2019-2</th>
-            <th>2019-1</th>
-            <th>2018-1</th>
-            <th>2017-2</th>
-            <th>2017-1</th>
-            <th>2016-2</th>
-            <th>2016-1</th>
-            <th>2015-2</th>
-            <th>2015-1</th>
-            <th>2014-2</th>
-            <th>2014-1</th>
-            <th>2013-2</th>
-            <th>2013-1</th>
-            <th>2012-2</th>
-            <th>2012-1</th>
-            <th>2011-2</th>
+            <th class="coursenum" colspan="2">Undergraduate Courses</th>
           </tr>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
+            <td class="coursenum" data-href="cse107">CSE107</td>
+            <td class="course" data-href="cse107">Logical Fundamentals of Programming</td>
           </tr>
-          <!--Programming Fundamentals-->
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><div class="circle"></div></td>
+            <td class="coursenum">CSE117</td>
+            <td class="course">Programming Fundamentals</td>
           </tr>
-          <!--Web-->
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td></td>
+            <td class="coursenum">CSE322</td>
+            <td class="course">Web Programming</td>
           </tr>
-          <!-- Web App -->
           <tr>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="coursnum active"><a href="./cse326/2019/index.html">CSE326</a></td>
+            <td class="course active"><a href="./cse326/2019/index.html">
+            Web Application Development</a></td>
           </tr>
-          <!--SE-->
           <tr>
-            <td></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><div class="circle"></div></td>
-            <td></td>
+            <td class="coursenum" data-href="cse406">CSE406</td>
+            <td class="course" data-href="cse406">Software Engineering</td>
           </tr>
         </table>
-      </div>
+        <div id="over">
+          <table id="second_table">
+            <tr>
+              <th>2019-2</th>
+              <th>2019-1</th>
+              <th>2018-1</th>
+              <th>2017-2</th>
+              <th>2017-1</th>
+              <th>2016-2</th>
+              <th>2016-1</th>
+              <th>2015-2</th>
+              <th>2015-1</th>
+              <th>2014-2</th>
+              <th>2014-1</th>
+              <th>2013-2</th>
+              <th>2013-1</th>
+              <th>2012-2</th>
+              <th>2012-1</th>
+              <th>2011-2</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+            </tr>
+            <!--Programming Fundamentals-->
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+            </tr>
+            <!--Web-->
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!-- Web App -->
+            <tr>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!--SE-->
+            <tr>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+    	</div>
 
-      <footer role="contentinfo">
+    </div>
+</div>
+
+
+
+<footer role="contentinfo">
   <div class="container">
     <p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
   </div>
 </footer>
 </body>
+
+</html>
