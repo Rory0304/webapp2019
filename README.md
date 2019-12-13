@@ -3,7 +3,7 @@
 
 ------
 
-Used Library
+Used Resources
 
 - within-viewport (ISC License)
 https://github.com/patik/within-viewport
