@@ -7,13 +7,14 @@
         //php 변수 쓸려면 
         $id = $_SESSION['ID'];
         $id = $db->quote($id);
-        $nav = $_POST["nav"];
-        $nav = $db->quote($nav);
+        $order = $_POST["order"];
+        $order = $db->quote($order);
         $font = $_POST["selectFontFamily"];
         $font = $db->quote($font);
         $fontsize = $_POST["selectfontsize"];
         $fontsize = $db->quote($fontsize);
-
+        $background = $_POST["selectBackground"];
+        $background = $db->quote($background);
         
         // echo "<pre>";
         // var_dump($id);
@@ -24,12 +25,11 @@
         // echo "</pre>";
 
 
-        $db->exec("UPDATE slide
-        SET 1by1 = 1,
+        $db->exec("UPDATE main_page
+        SET menuOrder = $order,
             font = $font,
             fontsize = $fontsize,
-            t_color = $titlecolor,
-            c_color = $contentscolor
+            background = $background
         WHERE id = $id");
 
         header("Location: ".$_SERVER['HTTP_REFERER']);

@@ -329,22 +329,8 @@ function point(n) {
   }
 }
 
-function checklogin() {
-  for(var key in window.sessionStorage) {
-    check = "";
-    check += key + " : " + sessionStorage.getItem(key);
-    alert(check);
-  }
-  // var check = sessionStorage.getItem('ID');
-  
-  // if (check == null) {
-  //   var submit = document.getElementById("submit");
-  //   submit.style.display = "none";
-  // } else {
-  //   var submit = document.getElementById("submit");
-  //   submit.style.display = "initial";
-  // }
-}
+
+
 
 function startup() {
   slideLabel();
@@ -353,7 +339,6 @@ function startup() {
   pptResizing();
   trackPage();
   colorpicker();
-  checklogin();
   document.onkeydown = keys;
 }
 

@@ -58,8 +58,8 @@
 			<form action="save.php" method="post">
 			<div id="font">
 				<p>Font</p>
-				<input type="text" id="save" name="order" style="display: none;">
-				<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
+				<input id="saveOr" type="text" value="" name="order" style="display: none;">
+				<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle');">
 					<option style="font-family:Serif" value="serif"> Serif </option>
 					<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
 					<option style="font-family:Arial" value="Arial"> Arial </option>
@@ -72,16 +72,14 @@
 					<option style="font-family:Impact" value="Impact">Impact</option>
 				</select>
 				<p>Font Size</p>
-				<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeC')">
+				<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeC');">
 					<option style="font-size: 15px">Small</option>
 					<option style="font-size: 20px" selected>Normal</option>
 					<option style="font-size: 25px">Medium</option>
 					<option style="font-size: 30px">Large</option>
 					<option style="font-size: 35px">Huge</option>
 				</select>
-				<input id="submit" type="submit" value="save">
 			</div>
-			</form>
 			<div id="background">
 				<p>Background</p>
 				<select id="backselect" name="selectBackground" onchange="backupdate();">
@@ -92,6 +90,8 @@
 					<option value="5"> Theme5 </option>
 				</select>
 			</div>
+			<input id="submit" type="submit" value="save" onclick="saveorder();">
+			</form>
 		</div>
 	</div>
 
@@ -99,7 +99,7 @@
 		<div class="container">
 			<div class="menu">
 				<a id = 'ind' href="index.html"><img src="common/images/selab_logo_S_2.png" /></a>
-				<div id ="sortable" onchange="saveorder();">
+				<div id ="sortable">
 					<a id='not' href="notice/index.html">NOTICE</a>
 					<a id='mem' href="members/index.html">MEMBERS</a>
 					<a id='res' href="research/index.html" >RESEARCH</a>
