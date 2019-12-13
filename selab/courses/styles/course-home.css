@@ -57,7 +57,7 @@ font-size: 30px;
 }
 
 #main .last{
-    margin-bottom: 100px;
+    margin-bottom: 30px;
 }
 
 #main ul{
@@ -79,6 +79,13 @@ font-size: 30px;
   margin: 0px 2px;
   float: left;
   cursor: pointer;
+}
+
+#tab div.deactive a {
+  line-height: 48px;
+  color: white;
+  font-weight: 300;
+  display: block;
 }
 
 .first-tab{
