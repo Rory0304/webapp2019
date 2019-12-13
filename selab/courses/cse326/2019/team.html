@@ -25,10 +25,10 @@
 	include "../../../common/db.php";
 
 	// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
+	session_start();
 	if (!isset($_SESSION["ID"])) {
 		echo "<script>location.replace('index.html')</script>";
 	}
-	session_start();
 	$num = $_SESSION["ID"];
 	?>
 	<header role="banner" class="header">
@@ -189,7 +189,7 @@
 						<h2><?= $i+1 ?>조</h2>
 						<hr/>
 						<?php
-						$studentQ = $db->query($str." where l.teamNum= ".($i+1));
+						$studentQ = $db->query($str." where m.class='$class' and l.teamNum= ".($i+1));
 						card(); ?>
 					</div> <?php
 					}
