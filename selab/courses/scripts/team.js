@@ -9,6 +9,7 @@ function addSelec() {
   var a = "";
   var t = "";
   var l = "";
+  var r = "";
   var where = document.getElementById("by");
   if (by == "all") {
     a = 'selected="selected"';
@@ -16,13 +17,17 @@ function addSelec() {
   else if (by == "byTeam") {
     t = 'selected="selected"';
   }
+  else if (by == "recommendation") {
+    r = 'selected="selected"';
+  }
   else {
     l = 'selected="selected"';
   }
   where.innerHTML =
   '<option value="all" ' +a+ '> all </option>' +
   '<option value="byTeam" ' +t+ '> by team</option>' +
-  '<option value="byLang" ' +l+ '> by lang </option>';
+  '<option value="byLang" ' +l+ '> by lang </option>' +
+  '<option value="recommendation" ' +r+ '> recommendation </option>';
 }
 
 function editLangClass() {

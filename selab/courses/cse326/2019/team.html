@@ -144,6 +144,7 @@
 							<option value="all" selected="selected"> all </option>
 							<option value="byTeam"> by team</option>
 							<option value="byLang"> by lang </option>
+							<option value="recommendation">recommendation</option>
 						</select>
 						<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
 						<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
@@ -162,7 +163,7 @@
 					$team = $teamR["teamNum"];
 
 					if (isset($_GET["by"])) { $by = $_GET["by"]; }
-					else { $by = "all"; } ?>
+					else { $by = "all"; }?>
 
 					<script type="text/javascript">
 						var by = "<?php echo $by ?>";
@@ -216,8 +217,16 @@
 					$studentQ = $db->query($str . $whr);
 					card();
 					}
+					else if ($by == "recommendation") {
+						$m_info = score($teamR);
+						$snums = recommend($m_info,$class);
+						foreach ($snums as $snum) {
+							$studentQ = $db->query($str . " where m.class= '$class' and m.studentNum = '$snum'");
+							card();
+						}
+					}
 					else { $studentQ = $db->query($str . " where m.class= '$class'"); card(); }?>
-					</div> <?php
+        </div> <?php
 
 					function card() {
 					global $studentQ;
