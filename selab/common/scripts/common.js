@@ -15,7 +15,8 @@ function fontupdate(value){
     //font style select
     if(value=="fontstyle"){
      var font = $("#fontselect").val();
-     $("#main").css("fontFamily",font);
+     $("#main").css("fontFamily",font); //contents
+     $("h1").css("fontFamily",font); //title h1
      $("#samplePage").css("fontFamily",font);
    }
    //font size select (contents)
@@ -32,7 +33,7 @@ function fontupdate(value){
       var title = titleSize(select);
       $("#main").css("font-size",content); //contents
       $("#tab").css("font-size",title); //tab menu
-      $("#title").css("font-size",title); //list title size (members)
+      $("#title").css("font-size",title); //list spelcial item size (members)
       $("#sampleC").css("font-size",content);
       $("#sampleC h1").css("font-size",title);
     }
