@@ -205,6 +205,10 @@ function savemenu() {
   document.getElementById("saveOr").value = order;
 }
 
+function logout(){
+  alert("로그아웃 되었습니다.");
+}
+
 function startup() {
   navigation();
   saveorder();
