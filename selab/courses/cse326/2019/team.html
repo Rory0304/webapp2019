@@ -168,7 +168,7 @@
 						var by = "<?php echo $by ?>";
 						addSelec();
 					</script>
-
+					<div class="cards">
 					<?php
 					if ($by == "byTeam") { // 무소속인 학생부터 ?>
 					<div class="team_none"> <?php
@@ -216,7 +216,8 @@
 					$studentQ = $db->query($str . $whr);
 					card();
 					}
-					else { $studentQ = $db->query($str . " where m.class= '$class'"); card(); }
+					else { $studentQ = $db->query($str . " where m.class= '$class'"); card(); }?>
+					</div> <?php
 
 					function card() {
 					global $studentQ;
@@ -228,6 +229,7 @@
 						<div class="card_inner">
 							<h2><?= $i["name"] ?></h2>
 							<p><?=$i["studentNum"] ?></p>
+							<p class="card_t">Language</p>
 							<p><?php
 								$colCount =  $studentQ->columnCount();
 								for ($j=2; $j<($colCount-4); $j++) {
@@ -236,7 +238,8 @@
 								}
 								}
 								echo $i["etc"]; ?>
-							</p><?php
+							</p>
+							<p class="card_t">Team</p><?php
 							if($i["teamNum"] == null && isset($team)) { ?>
 							<p> <?= "none" ?> </p>
 						</div>

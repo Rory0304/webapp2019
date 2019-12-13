@@ -46,6 +46,8 @@ h2 {
 .main-container {
 	width: 100%;
 	margin-top: 120px;
+	margin-bottom: 30px;
+	display: inline-block;
 }
 
 .contents {

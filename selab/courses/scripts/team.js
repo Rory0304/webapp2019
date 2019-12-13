@@ -53,3 +53,16 @@ function selectLang(val) {
   }
   location.href = link;
 }
+
+function cardWidth() {
+  jQuery($(function(){
+    var cardsWidth = $(".cards").outerWidth();
+    var cardNum = Math.floor(cardsWidth/220);
+    var cardMargin = (cardsWidth - 200*cardNum)/(cardNum*2);
+    $(".card").css({"margin-left":cardMargin, "margin-right":cardMargin});
+  }));
+}
+
+$(document).ready(function() {
+  cardWidth();
+});
