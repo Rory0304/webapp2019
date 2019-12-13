@@ -5,7 +5,6 @@
 
 Used Library
 
-within-viewport
+- within-viewport (ISC License)
 https://github.com/patik/within-viewport
-ISC License
 
