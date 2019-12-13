@@ -60,7 +60,7 @@
 		$bool = FALSE;
 		foreach($results as $result) {
 			if ($result["id"] == $id && $result["password"] == $pw) {
-					$bool = TRUE;
+				$bool = TRUE;
 			}
 		}
 

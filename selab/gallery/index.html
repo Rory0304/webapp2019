@@ -19,12 +19,10 @@
 	<script type="text/javascript" src="../common/scripts/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="../common/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="../common/scripts/buffered-keyup.js"></script>
-	<script type="text/javascript" src="scripts/socialCircle.js"></script> 
-	<!-- 	<script type="text/javascript" src="../common/scripts/common.js"></script> -->
+	<script type="text/javascript" src="scripts/socialCircle.js"></script>
+	<script type="text/javascript" src="../common/scripts/common.js"></script>
 	<script type="text/javascript" src="scripts/gallery.js"></script>
 	<script type="text/javascript" src="scripts/lightbox-2.6.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="jssocials.css" />
-	<link rel="stylesheet" type="text/css" href="jssocials-theme-flat.css" />
 
 </head>
 
@@ -95,43 +93,47 @@
 		</div>
 
 		<div id="option">
-			<div id="font">
-				<p>Navigation</p>
-				<input type="radio" name="nav" value="top" checked="checked" /> Top
-				<input type="radio" name="nav" value="left" /> Left
-				<input type="radio" name="nav" value="right" /> Right
-				<p>Font</p>
-				<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
-					<option style="font-family:Serif" value="serif"> Serif </option>
-					<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
-					<option style="font-family:Arial" value="Arial"> Arial </option>
-					<option style="font-family:Monospace" value="Monospace">Monospace</option>
-					<option style="font-family:Roboto" value="Roboto">Roboto</option>
-					<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
-					<option style="font-family:Garamond" value="Garamond">Garamond</option>
-					<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
-					<option style="font-family:Courier" value="Courier">Courier</option>
-					<option style="font-family:Impact" value="Impact">Impact</option>
-				</select>
-				<p>Font Size</p>
-				<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeTC')">
-					<option style="font-size: 15px">Small</option>
-					<option style="font-size: 20px" selected>Normal</option>
-					<option style="font-size: 25px">Medium</option>
-					<option style="font-size: 30px">Large</option>
-					<option style="font-size: 35px">Huge</option>
-				</select>
-			</div>
-			<div id="background">
-				<p>Background</p>
-				<select id="backselect" name="selectBackground" onchange="backupdate();">
-					<option value="1"> Theme1 </option>
-					<option value="2"> Theme2</option>
-					<option value="3"> Theme3 </option>
-					<option value="4"> Theme4 </option>
-					<option value="5"> Theme5 </option>
-				</select>
-			</div>
+			<form action="../savemenu.php" method="POST">
+				<div id="font">
+					<p>Navigation</p>
+					<input id="saveOr" type="text" value="" name="order" style="display: none;">
+					<input type="radio" name="nav" value="top" checked="checked" /> Top
+					<input type="radio" name="nav" value="left" /> Left
+					<input type="radio" name="nav" value="right" /> Right
+					<p>Font</p>
+					<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
+						<option style="font-family:Serif" value="serif"> Serif </option>
+						<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
+						<option style="font-family:Arial" value="Arial"> Arial </option>
+						<option style="font-family:Monospace" value="Monospace">Monospace</option>
+						<option style="font-family:Roboto" value="Roboto">Roboto</option>
+						<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
+						<option style="font-family:Garamond" value="Garamond">Garamond</option>
+						<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+						<option style="font-family:Courier" value="Courier">Courier</option>
+						<option style="font-family:Impact" value="Impact">Impact</option>
+					</select>
+					<p>Font Size</p>
+						<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeTC')">
+							<option style="font-size: 15px">Small</option>
+							<option style="font-size: 20px" selected>Normal</option>
+							<option style="font-size: 25px">Medium</option>
+							<option style="font-size: 30px">Large</option>
+							<option style="font-size: 35px">Huge</option>
+						</select>
+				</div>
+				<div id="background">
+					<p>Background</p>
+					<select id="backselect" name="selectBackground" onchange="backupdate();">
+						<option value="1"> Theme1 </option>
+						<option value="2"> Theme2</option>
+						<option value="3"> Theme3 </option>
+						<option value="4"> Theme4 </option>
+						<option value="5"> Theme5 </option>
+					</select>
+				</div>
+				<input id="submit" type="submit" value="save" onclick="savemenu();">
+			</form>
 		</div>
 	</div>
 
@@ -157,7 +159,7 @@
 		</div>
 
 		<div class="main-container">
-			<div class="contents" id='main'>
+			<div class="contents">
 				<h1>GALLERY</h1>
 				<div id="tab">
 					<div class="first-tab" data-type="all">All</div>

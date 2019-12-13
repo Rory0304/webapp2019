@@ -1,16 +1,13 @@
 #slides, #problems {
-  font-size: 15px;
-  margin: 0 auto;
+	margin: 0 auto;
 }
 
-#slides a, #problems a {
-    color: #ff6860;
-    font-size: 15px;
-
+#main{
+	font-size: 15px;
 }
 
 #slides a:hover, #problems a:hover {
-    color: rgb(255, 103, 103);
+	color: rgb(255, 103, 103);
 }
 
 
@@ -20,10 +17,10 @@ h1 {
 }
 
 #lecture, #lab {
-  width: 50%;
+	width: 50%;
 	display: inline-block;
 	vertical-align: top;
-  float: left;
+	float: left;
 }
 
 #slides th, #problems th {
@@ -49,7 +46,7 @@ tr>th:first-child, tr>td:first-child {
 }
 
 #slides table {
-      width: 100%;
+	width: 100%;
 }
 
 #slides th.title, #slides td.title {
@@ -62,7 +59,6 @@ tr>th:first-child, tr>td:first-child {
 
 #slides tr td, #problems tr td {
 	background-color: white;
-	font-size: 18px;
 	height: 30px;
 	vertical-align: middle;
 	cursor: pointer;
@@ -93,5 +89,5 @@ tr>th:first-child, tr>td:first-child {
 }
 
 #problems table {
-    width: 100%;
+	width: 100%;
 }

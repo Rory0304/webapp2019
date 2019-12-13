@@ -39,7 +39,7 @@ h2 {
 
 
 .container {
-	font-size: 20px;
+	font-size: 22px;
 	padding: 0;
 }
 
@@ -97,7 +97,7 @@ nav img{
 
 header[role="banner"] #menu li a, header[role="banner"] div[role="login"] a, nav a{
 	padding: 0 15px;
-	/*font-size: 18px;*/
+	font-size: 18px;
 	font-weight: bold;
 	color: #fe4a49;
 	display: block;
@@ -319,10 +319,28 @@ select #backselect option[value="1"]{
 	color: #fe4a49;
 	display: block;
 	float: left;
-	vertical-align: text-bottom;
 }
 
 #sideNav .nav-list-left #sideSetting:hover, #sideNav .nav-list-left #sideContact:hover, #sideNav .nav-list-right a.selected, #sideNav .nav-list-right a:hover{
   background-color: #fe4a49;
 	color: white;
+}
+
+#submit {
+    border: 1.2px solid rgb(70, 118, 166);
+    border-radius: 2px;
+    background-color: rgb(70, 118, 166);
+    color: #fff;
+    transition: all 0.25s ease-in-out;
+    width: 60px;
+    height: 25px;
+    font-size: 15px;
+    display: block;
+	margin-top: 10px;
+	float: right;
+}
+
+#submit:hover {
+    color: rgb(70, 118, 166);
+    background-color: #fff;;
 }

@@ -1,6 +1,6 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 	<meta charset="utf-8" />
 	<title>Software Engineering Lab - Courses: Web Application Development</title>
@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="../../../common/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="../../../common/scripts/buffered-keyup.js"></script>
 	<script type="text/javascript" src="../../../common/scripts/common.js"></script>
-	<script type="text/javascript" src="../../scripts/course-page.js"></script>
+	<!-- <script type="text/javascript" src="../../scripts/course-page.js"></script> -->
 	<script type="text/javascript" src="../../scripts/team.js"></script>
 
 </head>
@@ -133,46 +133,23 @@
 			<div class="contents">
 				<h1>Web Application Development</h1>
 				<div id="tab">
-					<div class="deactive first-tab"> <a href="index.html">Home</a> </div>
-					<div class="deactive"> <a href="slides.html">Slides</a> </div>
+					<div class="deactive first-tab" data-tab="main"> <a href="index.html">Home</a></div>
+					<div class="deactive"> <a href="slides.html">Slides</a></div>
 					<div class="last-tab">Team</div>
 				</div>
-				<div class="">
+				<div id="hl"></div>
+				<div id="team">
 					<div class="teamMenu">
-						<a href="team.html">팀신청페이지로 돌아가기</a>
-						<img src="../../images/account_circle-24px.svg" alt="myPage">
-						<a href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
-						<a href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
+						<select id="by" class="pull-left" onchange="sorting();">
+							<option value="all" selected="selected"> all </option>
+							<option value="byTeam"> by team</option>
+							<option value="byLang"> by lang </option>
+						</select>
+						<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
+						<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
+						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
 					</div>
-					<?php
-						include "../../../common/db.php";
-
-						// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
-						$class = 23497;
-						$num = 'num2';
-						$name = '가나다';
-
-						$studentQ = $db->query($str." where l.studentNum= '$num'");
-						$studentsRes = $studentQ -> fetch(); ?>
-
-						<h2><?= $name ?></h2>
-						<p>학번 : <?= $num ?></p>
-						<p>반 : <?= $class ?></p>
-						<p>조 : <?= $studentsRes["teamNum"] ?></p>
-						<form class="langOptions" action="mypage.php" method="post">
-							<?php
-								for($i=0; $i<count($langList); $i++) {
-									if ($studentsRes[$i+2] == 1) { ?>
-										<input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>" checked><?= $langList[$i] ?>
-										<?php
-									} else { ?>
-										<input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>"><?= $langList[$i] ?>
-							<?php
-									}
-								} ?>
-							<input type="text" name="etc" value="<?= $studentsRes["etc"] ?>">
-							<button type="submit">확인</button>
-						</form>
+					
 				</div>
 			</div>
 		</div>
@@ -180,10 +157,8 @@
 
 <footer role="contentinfo">
 	<div class="container">
-		<p>COPYRIGHT 2014 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
+		<p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
 	</div>
 </footer>
 </body>
-
-<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:34 GMT -->
 </html>

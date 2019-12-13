@@ -43,3 +43,9 @@ CREATE TABLE message (
   receiver VARCHAR(20),
   sendDay date
 );
+
+
+ALTER TABLE member CONVERT TO character SET utf8;
+ALTER TABLE team CONVERT TO character SET utf8;
+ALTER TABLE lang CONVERT TO character SET utf8;
+ALTER TABLE message CONVERT TO character SET utf8;

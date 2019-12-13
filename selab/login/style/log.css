@@ -11,13 +11,13 @@ body {
   margin: 0 auto;
   margin-top: 50px;
   width: 60%;
-  height: 310px;
+  height: 350px;
 }
 
 #choose {
   width : 60%;
-  height: 230px;
-  padding-top: 80px;
+  height: 250px;
+  padding-top: 100px;
   float: left;
   background-color: white;
   color: grey;
@@ -48,11 +48,12 @@ button:hover {
 
 #student, #researcher {
   width : 60%;
-  height: 100%;
+  height: 310px;
   float: left;
   background-color: white;
   color: #fe4a49;
   display: none;
+  padding: 20px 0px;
 }
 
 .side {

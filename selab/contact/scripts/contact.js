@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+	mapHight();
 	initialize();
 	$("body").keydown(function(event) {
 		if(event.which == '27'){
@@ -8,7 +9,7 @@
 
 	$('input').keypress(function (event) {
 		if (event.which == 13) {
-			event.preventDefault(); 
+			event.preventDefault();
 		}
 	});
 	$('#mail').click(clickMailBtn);
@@ -23,10 +24,10 @@
 });
 
 function initialize () {
-	var SElabLocation = new google.maps.LatLng(37.297608,126.836463); 
-	var mapOptions = { 
-		zoom: 17, 
-		center: SElabLocation, 
+	var SElabLocation = new google.maps.LatLng(37.297608,126.836463);
+	var mapOptions = {
+		zoom: 17,
+		center: SElabLocation,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		scrollwheel:false
 	}
@@ -53,4 +54,11 @@ function clickSendBtn () {
 			data:{from:$("#from")[0].value, subject:$("#subject")[0].value, message:$("#message")[0].value}
 		});
 	}
+}
+
+function mapHight() {
+	jQuery(function($) {
+		var mapWidth = $("#map").outerWidth();
+		$("#map").css("height", mapWidth);
+	});
 }
