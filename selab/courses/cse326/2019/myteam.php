@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -140,16 +143,73 @@
 				<div id="hl"></div>
 				<div id="team">
 					<div class="teamMenu">
-						<select id="by" class="pull-left" onchange="sorting();">
-							<option value="all" selected="selected"> all </option>
-							<option value="byTeam"> by team</option>
-							<option value="byLang"> by lang </option>
-						</select>
+						<a href="team.html">팀신청페이지로 돌아가기</a>
 						<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
 						<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
 						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
 					</div>
-					
+					<div>
+						<?php
+						
+							try {
+								$db = new PDO("mysql:dbname=team; host=54.180.112.225; port=3306", "root", "1111");
+								$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+								//php 변수 쓸려면 
+								$id = $_SESSION['ID'];
+								
+								$id = $db->quote($id);
+								
+								$check = "SELECT * FROM lang WHERE studentNum = $id";
+								$rows = $db->query($check);
+								$results = $rows->fetchAll();
+								
+								// var_dump($id);
+								
+								foreach($results as $result) {
+									if ($result["teamNum"] === NULL) {
+						?>
+										<form action="php/maketeam.php" method="POST">
+											<h2>팀만들기</h2>
+											<span>팀명: </span><input type="text" name="teamname">
+											<input type="submit" value="만들기">
+										</form>
+						<?php
+									} else {
+										$teamNum = $result["teamNum"];
+										$check = "SELECT * FROM team WHERE studentNum = $teamNum";
+										$rows = $db->query($check);
+										$results = $rows->fetchAll();
+										foreach($results as $result) {
+											$teamname = $result["name"];
+        								}
+						?>
+										<form action="php/updateteam.php" method="POST">
+											<input type="text" name="teamname" value="<?=$teamname?>">
+											<span>팀명: </span><input type="text" name="teamname">
+											<input type="submit" value="만들기">
+										</form>
+						<?php
+									}
+								}
+
+								// echo "<pre>";
+								// var_dump($nav);
+								// var_dump($order);
+								// var_dump($font);
+								// var_dump($fontsize);
+								// var_dump($background);
+								// echo "</pre>";
+						
+						
+								
+							} catch (PDOException $ex) {
+							?>
+								<p>Sorry, a database error occurred. Please try again later.</p>
+								<p>(Error details: <?= $ex->getMessage() ?>)</p>
+							<?php
+							}
+						?>
+					</div>	
 				</div>
 			</div>
 		</div>
