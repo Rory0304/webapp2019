@@ -154,13 +154,14 @@
 					include "../../../common/db.php";
 
 					// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
-					$class = 23497;
-					$num = 'num2';
-					$name = '가나다';
+					session_start();
+					$num = $_SESSION["ID"];
 
-					$teamQ = $db->query("select * from lang where studentNum = '$num'");
+					$teamQ = $db->query($str." where m.studentNum = '$num'");
 					$teamR = $teamQ -> fetch();
 					$team = $teamR["teamNum"];
+					$class = $teamR["class"];
+					$name = $teamR["name"];
 
 					if (isset($_GET["by"])) { $by = $_GET["by"]; }
 					else { $by = "all"; }?>
