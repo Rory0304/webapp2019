@@ -186,18 +186,21 @@
 					$teamQ = $db->query("select * from team");
 					for($i=0; $i<($teamQ->rowCount()); $i++) { ?>
 					<div class="team">
-						<h2><?= $i+1 ?>조</h2>
-						<hr/>
 						<?php
 						$studentQ = $db->query($str." where m.class='$class' and l.teamNum= ".($i+1));
-						card(); ?>
+						if ($studentQ->rowCount() >0) { ?>
+							<h2><?= $i+1 ?>조</h2>
+							<hr/>
+						<?php
+								card();
+						} ?>
 					</div> <?php
 					}
 					}
 					else if ($by == "byLang") {
+					$whr = " where m.class =".$class;
 					if (isset($_GET["langSelected"])) {
 					$langSelected = $_GET["langSelected"];
-					$whr = " where m.class =".$class;
 					}
 					else { $langSelected = []; $whr = ""; }
 
