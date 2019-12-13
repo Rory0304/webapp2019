@@ -153,20 +153,20 @@
 						
 							try {
 								$db = new PDO("mysql:dbname=team; host=54.180.112.225; port=3306", "root", "1111");
-								$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                $db->query("set session character_set_connection=utf8;");
+                                $db->query("set session character_set_results=utf8;");
+                                $db->query("set session character_set_client=utf8;");
 								//php 변수 쓸려면 
 								$id = $_SESSION['ID'];
-								
 								$id = $db->quote($id);
 								
-								$check = "SELECT * FROM lang WHERE studentNum = $id";
+								$check = "SELECT * FROM member WHERE studentNum = $id";
 								$rows = $db->query($check);
 								$results = $rows->fetchAll();
 								
-								// var_dump($id);
-								
 								foreach($results as $result) {
-									if ($result["teamNum"] === NULL) {
+									if ($result["teamname"] === NULL) {
 						?>
 										<form action="php/maketeam.php" method="POST">
 											<h2>팀만들기</h2>
@@ -175,38 +175,40 @@
 										</form>
 						<?php
 									} else {
-										$teamNum = $result["teamNum"];
-										$check = "SELECT * FROM team WHERE studentNum = $teamNum";
-										$rows = $db->query($check);
-										$results = $rows->fetchAll();
-										foreach($results as $result) {
-											$teamname = $result["name"];
-        								}
+                                        $teamname = $result["teamname"];
+                                        $q_teamname = $db->quote($teamname);
+                                        $check = "SELECT * FROM team WHERE name=$q_teamname";
+                                        $rows = $db->query($check);
+                                        $teams = $rows->fetchAll();
+                                        foreach($teams as $team) {
 						?>
-										<form action="php/updateteam.php" method="POST">
-											<input type="text" name="teamname" value="<?=$teamname?>">
-											<span>팀명: </span><input type="text" name="teamname">
-											<input type="submit" value="만들기">
-										</form>
-						<?php
+                                            <form action="php/updateteam.php" method="POST">
+                                                <input type="text" name="exname" value="<?=$teamname?>" style="display:none;">
+                                                <span>팀명: </span><input type="text" name="teamname" value="<?=$teamname?>">
+                                                <span>Github: </span><input type="text" name="github" value="<?=$team['github']?>">
+                                                <ul>
+                        <?php
+                                                $check = "SELECT * FROM member WHERE teamname=$q_teamname";
+                                                $rows = $db->query($check);
+                                                $members = $rows->fetchAll();
+                                                foreach($members as $member) {
+                        ?>
+                                                    <li><?=$member['studentNum']?>  <?=$member['name']?></li>
+                        <?php
+                                                }
+                        ?>
+                                                </ul>
+                                                <input type="submit" value="수정하기">
+                                            </form>
+                        <?php
+                                        }
 									}
 								}
-
-								// echo "<pre>";
-								// var_dump($nav);
-								// var_dump($order);
-								// var_dump($font);
-								// var_dump($fontsize);
-								// var_dump($background);
-								// echo "</pre>";
-						
-						
-								
 							} catch (PDOException $ex) {
-							?>
+						?>
 								<p>Sorry, a database error occurred. Please try again later.</p>
 								<p>(Error details: <?= $ex->getMessage() ?>)</p>
-							<?php
+						<?php
 							}
 						?>
 					</div>	

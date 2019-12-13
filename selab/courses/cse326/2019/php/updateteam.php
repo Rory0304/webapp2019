@@ -4,26 +4,27 @@
     try {
         $db = new PDO("mysql:dbname=team; host=54.180.112.225; port=3306", "root", "1111");
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->exec("set names utf8");
+        $db->query("set session character_set_connection=utf8;");
+        $db->query("set session character_set_results=utf8;");
+        $db->query("set session character_set_client=utf8;");
 
-        #studentNum
-        $id = $_SESSION['ID'];
-        // var_dump($id);
-        #class
-        $check = "SELECT * FROM member WHERE studentNum = $id";
-        $rows = $db->query($check);
-        $results = $rows->fetchAll();
-        foreach($results as $result) {
-           $class = $result["class"];
-        //    var_dump($class);
-        }
-        // $class = $results[0]['class'];
-        // $class = $db->query($class);
-        
-
+        $exname = $_POST['exname'];
         $teamname = $_POST['teamname'];
-        var_dump($teamname);
-        $db->exec("insert into team values (NULL,$class,$teamname,NULL)");
+        $github = $_POST['github'];
+        $q_exname = $db->quote($exname);
+        $q_teamname = $db->quote($teamname);
+        $q_github = $db->quote($github);
+
+        $db->exec("UPDATE team SET 
+                    name=$q_teamname,
+                    github=$q_github
+                    WHERE name = $q_exname");
+
+        $db->exec("UPDATE member SET 
+                    teamname=$q_teamname
+                    WHERE teamname = $q_exname");
+
+        header("Location: ../team.html");
     } catch (PDOException $ex) {
     ?>
         <p>Sorry, a database error occurred. Please try again later.</p>

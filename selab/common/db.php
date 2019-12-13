@@ -5,6 +5,7 @@
     $dbPass = "1111";
     
     $db = new PDO("mysql:host={$dbHost};dbname={$dbName};port=3306", $dbUser, $dbPass);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->query("set session character_set_connection=utf8;");
     $db->query("set session character_set_results=utf8;");
     $db->query("set session character_set_client=utf8;");
