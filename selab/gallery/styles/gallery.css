@@ -199,12 +199,24 @@ select {
 	transition: 0.3s;
 }
 
+#modal a img{
+	position: relative;
+	top: 15px;
+	width: 40px;
+	height: 40px;
+	margin-left: 5px;
+	float: left;
+}
+
+#modal a img:hover{
+	transform: scale(1.1) perspective(1.5px);
+}
+
 /*https://www.w3schools.com/*/
 .modal {
 	display: none;
 	position: fixed;
 	z-index: 9999;
-	padding-top: 20px;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -220,7 +232,7 @@ select {
 	display: block;
 	max-width: 700px;
 	object-fit: contain;
-	height: 90%;
+	height: 85%;
 	width: 90%;
 }
 
@@ -265,13 +277,15 @@ select {
 	margin-left: 15px;
 }
 
-#sharebtn{
-	color: white;
+/*#sharebtn{
+	color: black;
 	padding: 16px;
 	font-size: 16px;
 	border: none;
-}
-
+	border-radius: 2px;
+	margin-top: 15px;
+}*/
+/*
 .dropdown-content {
 	display: none;
 	position: absolute;
@@ -280,18 +294,43 @@ select {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
 }
-
-.dropdown-content a {
+*/
+/*.dropdown-content a {
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
 	display: block;
 }
+*/
 
+/*.dropdown-content a:hover {background-color: #ddd;}*/
 
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {
+/*.dropdown:hover .dropdown-content {
+	display: block;
+}
+*/
+.prev, .next{
+	color: white;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
 	display: block;
 }
 
+.prev{
+	left:100px;
+}
+
+.next {
+	right: 100px;
+	border-radius: 3px 0 0 3px;
+}
