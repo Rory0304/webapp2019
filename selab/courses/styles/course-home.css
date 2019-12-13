@@ -2,10 +2,6 @@
     margin: 0 auto;
 }
 
-#main a{
-    color: #ff6860;
-}
-
 #main a:hover{
     color: rgb(255, 103, 103);
 }

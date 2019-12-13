@@ -35,6 +35,6 @@ h1{
 	color:#893D5A;
 }
 
-.active a{
+.active a, #main a{
 	color:#893D5A;
 }
