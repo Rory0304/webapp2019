@@ -3,7 +3,8 @@
   include "../../../common/db.php";
 
   // 로그인된 계정(학생)의 학번
-  $num = "num2";
+  session_start();
+  $num = $_SESSION["ID"];
 
   if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['lang'])){
     $lang = $_POST['lang'];
