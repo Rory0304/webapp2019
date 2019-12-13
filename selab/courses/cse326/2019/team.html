@@ -21,6 +21,16 @@
 </head>
 
 <body>
+	<?php
+	include "../../../common/db.php";
+
+	// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
+	if (!isset($_SESSION["ID"])) {
+		echo "<script>location.replace('index.html')</script>";
+	}
+	session_start();
+	$num = $_SESSION["ID"];
+	?>
 	<header role="banner" class="header">
 		<div class="container">
 			<nav>
@@ -151,12 +161,6 @@
 						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
 					</div>
 					<?php
-					include "../../../common/db.php";
-
-					// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
-					session_start();
-					$num = $_SESSION["ID"];
-
 					$teamQ = $db->query($str." where m.studentNum = '$num'");
 					$teamR = $teamQ -> fetch();
 					$team = $teamR["teamNum"];
