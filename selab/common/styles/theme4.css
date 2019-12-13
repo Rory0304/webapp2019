@@ -37,3 +37,6 @@ h1{
 .active a, #main a{
 	color:#EEB76E;
 }
+#sortable a{
+	color: white;
+}

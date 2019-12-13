@@ -38,3 +38,6 @@ h1{
 .active a, #main a{
 	color:#893D5A;
 }
+#sortable a{
+	color: white;
+}
