@@ -169,16 +169,16 @@ a:link, a:visited {
     color: #fff;
     transition: all 0.25s ease-in-out;
     width: 60px;
-    height: 20px;
+    height: 25px;
     font-size: 15px;
     display: block;
     margin-top: 10px;
 }
-/* 
+
 #submit:hover {
     color: rgb(70, 118, 166);
-    background: none;
-} */
+    background-color: #fff;;
+}
 
   /*css for scroll (in webkit)*/
   body::-webkit-scrollbar{width: 13px;}

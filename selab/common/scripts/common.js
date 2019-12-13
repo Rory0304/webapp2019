@@ -195,19 +195,14 @@ function saveorder() {
   var temp = document.getElementById("sortable");
   var order = temp.innerHTML;
 
-  document.getElementById("save").value = order;
+  document.getElementById("saveOr").value = order;
 }
 
-function checklogin() {
-  var check = sessionStorage.getItem('ID');
-  // alert(check);
-  if (check == null) {
-    var submit = document.getElementById("submit");
-    submit.style.display = "none";
-  } else {
-    var submit = document.getElementById("submit");
-    submit.style.display = "initial";
-  }
+function savemenu() {
+  var temp = document.getElementsByClassName("ui-sortable");
+  var order = temp[0].innerHTML;
+
+  document.getElementById("saveOr").value = order;
 }
 
 function startup() {
