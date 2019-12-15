@@ -3,7 +3,7 @@
     $dbName = "team";
     $dbUser = "root";
     $dbPass = "1111";
-    
+
     $db = new PDO("mysql:host={$dbHost};dbname={$dbName};port=3306", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->query("set session character_set_connection=utf8;");
@@ -34,7 +34,7 @@ function score($s) {
     $s_kind = "front";
 
     for($i=0; $i<count($langList); $i++) {
-        if ($s[$i+2] == 1) {
+        if ($s[$i+1] == 1) {
           if (in_array($i, array(0,1,2,3))) {
             $s_front = $s_front + 1;
           }
@@ -53,5 +53,9 @@ function score($s) {
       $s_kind = "server";
     }
     return $s_kind;
+}
+
+function conlog($data){
+  echo "<script>console.log('" . $data . "');</script>";
 }
 ?>
