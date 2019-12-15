@@ -7,6 +7,7 @@
   background-color: white;
   overflow: hidden;
   line-height: 50px;
+  vertical-align: middle;
 }
 
 #team .teamMenu #by {
@@ -19,12 +20,17 @@
 }
 
 #team .teamMenu a {
-  /* vertical-align: middle; */
   margin: 0 10px;
 }
 
 img {
+  line-height: 100%;
   vertical-align: middle;
+}
+
+.this-page {
+  margin: 0 10px;
+  margin-top: 14px;
 }
 
 #team .team_none {
@@ -42,7 +48,8 @@ img {
 .cards {
   display: inline-block;
   width: 100%;
-  margin-top: 25px;
+  padding-top: 25px;
+  background-color: #fff4d1;
 }
 
 .card {
@@ -101,7 +108,7 @@ img {
 }
 
 .langOptions{
-  margin: 0px 5px 25px;
+  margin-bottom: 25px;
 }
 
 .langOption{
@@ -137,10 +144,86 @@ img {
 
 .langOption:hover{
   background-color: black;
-  transform: scale(1.2) perspective(1px)
+  transform: scale(1.2) perspective(1px);
   color: white;
 }
 
 .selectedlangOption:hover{
  transform: scale(1.2) perspective(1px)
+}
+
+.mypage, .myteam {
+  padding-top: 1px;
+  background-color: white;
+}
+
+div.myinf, form.langOptions {
+  padding-left: 10px;
+}
+
+span {
+  display: inline-block;
+  font-weight: bold;
+}
+
+.mypage p {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+input[type=text] {
+  padding: 5px 5px;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 10px 5px;
+}
+
+.inputcon {
+  display: inline-block;
+}
+
+input[type=checkbox] {
+  cursor: pointer;
+  margin-left: 25px;
+}
+
+.langlast {
+  margin-left: 25px;
+}
+
+div.teamname {
+  margin-left: 20px;
+}
+
+div.mteamname, div.git {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+ul {
+  padding-left: 30px;
+  list-style-type: square;
+  list-style-position: inside;
+}
+
+input[type=submit], button[type=submit].submit {
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover, button[type=submit].submit:hover {
+  background-color: black;
+  color: white;
+}
+
+.center {
+  text-align: center;
+}
+
+hr.div {
+  margin: 0;
 }
