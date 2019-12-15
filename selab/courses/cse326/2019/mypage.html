@@ -153,18 +153,18 @@
 
 						$studentQ = $db->query($str." where l.studentNum= '$num'");
 						$studentsRes = $studentQ -> fetch();
-						$team = $studentsRes["teamNum"];
+						$team = $studentsRes["teamname"];
 						$class = $studentsRes["class"];
 						$name = $studentsRes["name"]; ?>
 
 						<h2><?= $name ?></h2>
 						<p>학번 : <?= $num ?></p>
 						<p>반 : <?= $class ?></p>
-						<p>조 : <?= $studentsRes["teamNum"] ?></p>
+						<p>조 : <?= $team ?></p>
 						<form class="langOptions" action="mypage.php" method="post">
 							<?php
 								for($i=0; $i<count($langList); $i++) {
-									if ($studentsRes[$i+2] == 1) { ?>
+									if ($studentsRes[$i+1] == 1) { ?>
 										<input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>" checked><?= $langList[$i] ?>
 										<?php
 									} else { ?>

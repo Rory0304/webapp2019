@@ -166,6 +166,8 @@
 					$team = $teamR["teamname"];
 					$class = $teamR["class"];
 					$name = $teamR["name"];
+					//conlog($num);
+					//conlog($class);
 
 					if (isset($_GET["by"])) { $by = $_GET["by"]; }
 					else { $by = "all"; }?>
@@ -178,18 +180,19 @@
 					<?php
 					if ($by == "byTeam") { // 무소속인 학생부터 ?>
 					<div class="team_none"> <?php
-						$studentQ = $db->query($str." where m.class='$class' and l.teamname is null");
+						$studentQ = $db->query($str." where m.class='$class' and m.teamname is null");
 						card(); ?>
 					</div>
 
 					<?php //소속있는 학생은 팀별로
 					$teamQ = $db->query("select * from team");
-					for($i=0; $i<($teamQ->rowCount()); $i++) { ?>
+					foreach($teamQ as $team) { ?>
 					<div class="team">
 						<?php
-						$studentQ = $db->query($str." where m.class='$class' and l.teamNum= ".($i+1));
+						$teamN = $team["name"];
+						$studentQ = $db->query($str." where m.class='$class' and m.teamname= '$teamN'");
 						if ($studentQ->rowCount() >0) { ?>
-							<h2><?= $i+1 ?>조</h2>
+							<h2><?= $teamN ?>조</h2>
 							<hr/>
 						<?php
 								card();
@@ -202,11 +205,11 @@
 					if (isset($_GET["langSelected"])) {
 					$langSelected = $_GET["langSelected"];
 					}
-					else { $langSelected = []; $whr = ""; }
+					else { $langSelected = []; }
 
 					foreach ($langSelected as $m) {
-					$whr = $whr . " and " . $m . "=1";
-					}?>
+					  $whr = $whr . " and " . $m . "=1";
+					} ?>
 
 					<div class="langOptions">
 						<?php
@@ -245,19 +248,20 @@
 					<div class="card" id="<?= $i["name"] ?>">
 						<div class="card_inner">
 							<h2><?= $i["name"] ?></h2>
+							<!-- <p><?= $i["class"] ?></p> -->
 							<p><?=$i["studentNum"] ?></p>
 							<p class="card_t">Language</p>
 							<p><?php
 								$colCount =  $studentQ->columnCount();
-								for ($j=2; $j<($colCount-4); $j++) {
+								for ($j=1; $j<($colCount-3); $j++) {
 								if ($i[$j] == 1) {
-								echo $langList[$j-2]." ";
+								echo $langList[$j-1]." ";
 								}
 								}
 								echo $i["etc"]; ?>
 							</p>
 							<p class="card_t">Team</p><?php
-							if($i["teamNum"] == null && isset($team)) { ?>
+							if($i["teamname"] == null && isset($team)) { ?>
 							<p> <?= "none" ?> </p>
 						</div>
 						<div class=card_but>
@@ -268,7 +272,7 @@
 							</form>
 						</div> <?php
 							}
-							else if ($i["teamNum"] == null && !isset($team)) { ?>
+							else if ($i["teamname"] == null && !isset($team)) { ?>
 							<p> <?= "none" ?> </p>
 						</div>
 						<div class=card_but>
@@ -276,7 +280,7 @@
 						</div> <?php
 							}
 							else { ?>
-							<p> <?= $i["teamNum"]."조" ?> </p>
+							<p> <?= $i["teamname"]."조" ?> </p>
 						</div>
 						<div class=card_but>
 							<button disabled>Contact</button>

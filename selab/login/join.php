@@ -19,6 +19,8 @@
             $num = $_POST['num'];
             $class = $_POST['class'];
 
+            $overlapQ = $db-> query("select * from member where studentNum = '$num'");
+            if ($overlapQ->rowCount() > 0) { echo "<script>location.replace('join.html')</script>"; }
             $db-> exec("insert into member (studentNum,class,teamname,name) values ('$num',$class,NULL,'$name')");
             $a = "insert into lang (studentNum,html,css,js,jquery,php,db,ajax,xml,c,cplusplus,java,python,ruby,Django,Perl,etc) values ('$num',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null)";
             $db->exec($a);
@@ -26,7 +28,7 @@
             initailizecustom($num, $password);
             echo "<script>location.replace('index4e7d.html')</script>";
         }
-        
+
     } catch (PDOException $ex) {
 ?>
 		<p>Sorry, a database error occurred. Please try again later.</p>
