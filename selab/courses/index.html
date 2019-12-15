@@ -20,9 +20,9 @@
 		<script type="text/javascript" src="../common/scripts/common.js"></script>
 		<script type="text/javascript" src="scripts/courses.js"></script>
 
-	</head>
+  </head>
 
-	<body>
+  <body>
 		<header role="banner" class="header">
 			<div class="container">
 				<nav>
@@ -44,249 +44,253 @@
 						<li><a href="../courses/index.html" class="selected" >COURSES</a></li>
 						<li><a href="../gallery/index.html" >GALLERY</a></li>
 					</ul>
-				</div>
-			</div>
-		</header>
+          </div>
+        </div>
+    </header>
 
-		<div id="settingtab">
-			<a href="javascript:void(0)" class="closebtn" onclick="closesetting()">&times;</a>
-			<div id="sample">
-				<div id="samplePage">
-					<div id="SampleH">
-						<div id="SampleH1">
-							<p>[lab];</p>
-						</div>
-						<div id="SampleH2">
-							<p>notice members research ...</p>
-						</div>
-					</div>
-					<div id="sampleC">
-						<h1>sample</h1>
-						<p>This is sample to help your costomizing. I hope you satisfied whith our wepsite.</p>
-					</div>
-				</div>
-			</div>
+    <div id="settingtab">
+  <a href="javascript:void(0)" class="closebtn" onclick="closesetting()">&times;</a>
+  <div id="sample">
+    <div id="samplePage">
+      <div id="SampleH">
+        <div id="SampleH1">
+          <p>[lab];</p>
+        </div>
+        <div id="SampleH2">
+          <p>notice members research ...</p>
+        </div>
 
-			<div id="option">
-				<form action="../savemenu.php" method="POST">
-					<div id="font">
-						<p>Navigation</p>
-						<input id="saveOr" type="text" value="" name="order" style="display: none;">
-						<input type="radio" name="nav" value="top" checked="checked" /> Top
-						<input type="radio" name="nav" value="left" /> Left
-						<input type="radio" name="nav" value="right" /> Right
-						<p>Font</p>
-						<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
-							<option style="font-family:Serif" value="serif"> Serif </option>
-							<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
-							<option style="font-family:Arial" value="Arial"> Arial </option>
-							<option style="font-family:Monospace" value="Monospace">Monospace</option>
-							<option style="font-family:Roboto" value="Roboto">Roboto</option>
-							<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
-							<option style="font-family:Garamond" value="Garamond">Garamond</option>
-							<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
-							<option style="font-family:Courier" value="Courier">Courier</option>
-							<option style="font-family:Impact" value="Impact">Impact</option>
-						</select>
-						<p>Font Size</p>
-							<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeTC')">
-								<option style="font-size: 15px">Small</option>
-								<option style="font-size: 20px" selected>Normal</option>
-								<option style="font-size: 25px">Medium</option>
-								<option style="font-size: 30px">Large</option>
-								<option style="font-size: 35px">Huge</option>
-							</select>
-					</div>
-					<div id="background">
-						<p>Background</p>
-						<select id="backselect" name="selectBackground" onchange="backupdate();">
-							<option value="1"> Theme1 </option>
-							<option value="2"> Theme2</option>
-							<option value="3"> Theme3 </option>
-							<option value="4"> Theme4 </option>
-							<option value="5"> Theme5 </option>
-						</select>
-					</div>
-					<input id="submit" type="submit" value="save" onclick="savemenu();">
-				</form>
-			</div>
-		</div>
+      </div>
+      <div id="sampleC">
+        <h1>sample</h1>
+        <p>This is sample to help your costomizing. I hope you satisfied whith our wepsite
+        </div>
+      </div>
+  </div>
 
-		<main role="main">
-			<div id="sideNav">
-				<div class="nav-list-left">
-					<div id="sideLogo"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
-					<a id="sideSetting" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
-					<div role="login">
-						<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
-					</div>
-					<a id="sideContact" href="../contact/index.html"> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
-				</div>
-				<div class="nav-list-right">
-					<a href="../notice/index.html" >NOTICE</a>
-					<a href="../members/index.html" >MEMBERS</a>
-					<a href="../research/index.html" >RESEARCH</a>
-					<a href="../publications/index.html" >PUBLICATIONS</a>
-					<a href="../courses/index.html" class="selected" >COURSES</a>
-					<a href="../gallery/index.html" >GALLERY</a>
-				</div>
-			</div>
+  <div id="option">
+    <form action="../savemenu.php" method="POST">
+      <div id="font">
+        <p>Navigation</p>
+        <input id="saveOr" type="text" value="" name="order" style="display: none;">
+        <input type="radio" name="nav" value="top" checked="checked" /> Top
+        <input type="radio" name="nav" value="left" /> Left
+        <input type="radio" name="nav" value="right" /> Right
+        <p>Font</p>
+        <select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
+          <option style="font-family:Serif" value="serif"> Serif </option>
+          <option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
+          <option style="font-family:Arial" value="Arial"> Arial </option>
+          <option style="font-family:Monospace" value="Monospace">Monospace</option>
+          <option style="font-family:Roboto" value="Roboto">Roboto</option>
+          <option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
+          <option style="font-family:Garamond" value="Garamond">Garamond</option>
+          <option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+          <option style="font-family:Courier" value="Courier">Courier</option>
+          <option style="font-family:Impact" value="Impact">Impact</option>
+        </select>
+        <p>Font Size</p>
+          <select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeTC')">
+            <option style="font-size: 15px">Small</option>
+            <option style="font-size: 20px" selected>Normal</option>
+            <option style="font-size: 25px">Medium</option>
+            <option style="font-size: 30px">Large</option>
+            <option style="font-size: 35px">Huge</option>
+          </select>
+      </div>
+      <div id="background">
+        <p>Background</p>
+        <select id="backselect" name="selectBackground" onchange="backupdate();">
+          <option value="1"> Theme1 </option>
+          <option value="2"> Theme2</option>
+          <option value="3"> Theme3 </option>
+          <option value="4"> Theme4 </option>
+          <option value="5"> Theme5 </option>
+        </select>
+      </div>
+      <input id="submit" type="submit" value="save" onclick="savemenu();">
+    </form>
+  </div>
+</div>
 
-			<div class="main-container">
-				<div class="contents" id="main">
-					<h1>COURSES</h1>
-					<div id="course_table">
-						<table id="first_table">
-							<tr>
-								<th class="coursenum" colspan="2">Undergraduate Courses</th>
-							</tr>
-							<tr>
-								<td class="coursenum" data-href="cse107">CSE107</td>
-								<td class="course" data-href="cse107">Logical Fundamentals of Programming</td>
-							</tr>
-							<tr>
-								<td class="coursenum">CSE117</td>
-								<td class="course">Programming Fundamentals</td>
-							</tr>
-							<tr>
-								<td class="coursenum">CSE322</td>
-								<td class="course">Web Programming</td>
-							</tr>
-							<tr>
-								<td class="coursnum active"><a href="./cse326/2019/index.html">CSE326</a></td>
-								<td class="course active"><a href="./cse326/2019/index.html">
-								Web Application Development</a></td>
-							</tr>
-							<tr>
-								<td class="coursenum" data-href="cse406">CSE406</td>
-								<td class="course" data-href="cse406">Software Engineering</td>
-							</tr>
-						</table>
-						<div id="over">
-							<table id="second_table">
-								<tr>
-									<th>2019-2</th>
-									<th>2019-1</th>
-									<th>2018-1</th>
-									<th>2017-2</th>
-									<th>2017-1</th>
-									<th>2016-2</th>
-									<th>2016-1</th>
-									<th>2015-2</th>
-									<th>2015-1</th>
-									<th>2014-2</th>
-									<th>2014-1</th>
-									<th>2013-2</th>
-									<th>2013-1</th>
-									<th>2012-2</th>
-									<th>2012-1</th>
-									<th>2011-2</th>
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-								</tr>
-								<!--Programming Fundamentals-->
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-								</tr>
-								<!--Web-->
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<!-- Web App -->
-								<tr>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<!--SE-->
-								<tr>
-									<td></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><div class="circle"></div></td>
-									<td></td>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<main role="main">
+  <div id="sideNav">
+    <div class="nav-list-left">
+      <div id="sideLogo"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
+      <a id="sideSetting" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
+      <div role="login">
+        <a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
+      </div>
+      <a id="sideContact" href="../contact/index.html"> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
+    </div>
+    <div class="nav-list-right">
+      <a href="../notice/index.html" >NOTICE</a>
+      <a href="../members/index.html" >MEMBERS</a>
+      <a href="../research/index.html" >RESEARCH</a>
+      <a href="../publications/index.html" >PUBLICATIONS</a>
+      <a href="../courses/index.html" class="selected" >COURSES</a>
+      <a href="../gallery/index.html" >GALLERY</a>
+      </div>
+    </div>
 
-		<footer role="contentinfo">
-			<div class="container">
-				<p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
-			</div>
-		</footer>
-	</body>
+    <div class="main-container">
+    <div class="contents" id="main">
+      <h1>COURSES</h1>
+      <div id="course_table">
+        <table id="first_table">
+          <tr>
+            <th class="coursenum" colspan="2">Undergraduate Courses</th>
+          </tr>
+          <tr>
+            <td class="coursenum" data-href="cse107">CSE107</td>
+            <td class="course" data-href="cse107">Logical Fundamentals of Programming</td>
+          </tr>
+          <tr>
+            <td class="coursenum">CSE117</td>
+            <td class="course">Programming Fundamentals</td>
+          </tr>
+          <tr>
+            <td class="coursenum">CSE322</td>
+            <td class="course">Web Programming</td>
+          </tr>
+          <tr>
+            <td class="coursnum active"><a href="./cse326/2019/index.html">CSE326</a></td>
+            <td class="course active"><a href="./cse326/2019/index.html">
+            Web Application Development</a></td>
+          </tr>
+          <tr>
+            <td class="coursenum" data-href="cse406">CSE406</td>
+            <td class="course" data-href="cse406">Software Engineering</td>
+          </tr>
+        </table>
+        <div id="over">
+          <table id="second_table">
+            <tr>
+              <th>2019-2</th>
+              <th>2019-1</th>
+              <th>2018-1</th>
+              <th>2017-2</th>
+              <th>2017-1</th>
+              <th>2016-2</th>
+              <th>2016-1</th>
+              <th>2015-2</th>
+              <th>2015-1</th>
+              <th>2014-2</th>
+              <th>2014-1</th>
+              <th>2013-2</th>
+              <th>2013-1</th>
+              <th>2012-2</th>
+              <th>2012-1</th>
+              <th>2011-2</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+            </tr>
+            <!--Programming Fundamentals-->
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+            </tr>
+            <!--Web-->
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!-- Web App -->
+            <tr>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!--SE-->
+            <tr>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><div class="circle"></div></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+    	</div>
+
+    </div>
+</div>
+
+
+
+<footer role="contentinfo">
+  <div class="container">
+    <p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
+  </div>
+</footer>
+</body>
+
 </html>

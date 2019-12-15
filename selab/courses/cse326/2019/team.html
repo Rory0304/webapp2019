@@ -163,7 +163,7 @@
 					<?php
 					$teamQ = $db->query($str." where m.studentNum = '$num'");
 					$teamR = $teamQ -> fetch();
-					$team = $teamR["teamNum"];
+					$team = $teamR["teamname"];
 					$class = $teamR["class"];
 					$name = $teamR["name"];
 
@@ -178,7 +178,7 @@
 					<?php
 					if ($by == "byTeam") { // 무소속인 학생부터 ?>
 					<div class="team_none"> <?php
-						$studentQ = $db->query($str." where m.class='$class' and l.teamNum is null");
+						$studentQ = $db->query($str." where m.class='$class' and l.teamname is null");
 						card(); ?>
 					</div>
 

@@ -1,9 +1,7 @@
 var title="";
+var currentIndex;
+
 $(document).ready(function () {
-	// $("#add").click(clickAddBtn);
-	// $("#cancel").click(clickCancelBtn);
-	// $("#submit").click(clickSubmitBtn);
-	// $(".delete").click(clickDeleteBtn);
 	$(".tile").click(openModal);
 	$(".close").click(closeModal);
 	filterSelection("all");
@@ -20,6 +18,10 @@ $(document).ready(function () {
 
 function openModal(){
 	var src = $(this).children('img').attr('src');
+	currentIndex = $(this).index();
+	if(currentIndex==0){
+		document.getElementsByClassName("prev")[0].style.display = "none";
+	}
 	title = $(this).children(".title").find("p").text();
 	var modal = document.getElementById("modal");
 	var modalImg = document.getElementById("imgM");
@@ -42,7 +44,7 @@ function shareAct(a){
 		curl = 'http://www.facebook.com/sharer/sharer.php?u='+url;
 		break;
 		case"kakao":
-		curl = 'https://story.kakao.com/share?url='+url;
+		curl = 'https://story.kakao.com/share?url='+ url;		
 		break;
 	}
 	window.open(curl,'','width=600,height=300,top=100,left=100,scrollbars=yes');
@@ -123,6 +125,38 @@ function tileHight() {
 		var tileWidth = tile.outerWidth();
 		$(".tile").css("height", tileWidth/4*3);
 	});
+}
+
+function minusSlides(){
+	var tile = document.getElementsByClassName("tile");
+	var nextClass = tile[currentIndex+1];
+	var imgsrc = nextClass.getElementsByTagName("img")[0].src;
+	var modalImg = document.getElementById("imgM");
+	modalImg.src = imgsrc;
+	currentIndex +=1;
+	if(currentIndex==tile.length-1){
+		document.getElementsByClassName("next")[0].style.display = "none";
+	}
+	if(currentIndex==1){
+		document.getElementsByClassName("prev")[0].style.display = "block";
+	}	
+}
+
+function plusSlides(){
+	var tile = document.getElementsByClassName("tile");
+	var prevClass = tile[currentIndex-1];
+	var imgsrc = prevClass.getElementsByTagName("img")[0].src;
+	var modalImg = document.getElementById("imgM");
+	modalImg.src = imgsrc;
+	currentIndex -=1;
+	if(currentIndex+2==tile.length){
+		document.getElementsByClassName("next")[0].style.display = "block";
+	}
+	if(currentIndex==0){
+		document.getElementsByClassName("prev")[0].style.display = "none";
+	}
+	
+
 }
 
 $(window).resize(function() {
