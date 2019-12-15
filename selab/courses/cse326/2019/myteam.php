@@ -24,6 +24,9 @@
 </head>
 
 <body>
+	<?php
+		session_start();
+	?>
 	<header role="banner" class="header">
 		<div class="container">
 			<nav>
@@ -34,7 +37,14 @@
 				<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="../../../common/images/color_lens-24px.svg" alt="customize"> </a>
 
 				<div role="login" class="pull-right">
-					<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+					<?php
+						if(isset($_SESSION["ID"])){ ?>
+							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+						<?php }else{ ?>
+							<a href="../../../login/index4e7d.html"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+						<?php
+						}
+					?>
 				</div>
 
 				<a id="contact" href="../../../contact/index.html" class='pull-right'> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
@@ -145,33 +155,34 @@
 					<div class="teamMenu">
 						<a href="team.html">팀신청페이지로 돌아가기</a>
 						<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
-						<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
+						<img class="this-page pull-right" src="../../images/supervised_user_circle-24px.svg" alt="myTeam">
 						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
 					</div>
-					<div>
+					<hr class="div" />
+					<div class="myteam">
 						<?php
-						
+
 							try {
 								$db = new PDO("mysql:dbname=team; host=54.180.112.225; port=3306", "root", "1111");
                                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                 $db->query("set session character_set_connection=utf8;");
                                 $db->query("set session character_set_results=utf8;");
                                 $db->query("set session character_set_client=utf8;");
-								//php 변수 쓸려면 
+								//php 변수 쓸려면
 								$id = $_SESSION['ID'];
 								$id = $db->quote($id);
-								
+
 								$check = "SELECT * FROM member WHERE studentNum = $id";
 								$rows = $db->query($check);
 								$results = $rows->fetchAll();
-								
+
 								foreach($results as $result) {
 									if ($result["teamname"] === NULL) {
 						?>
 										<form action="php/maketeam.php" method="POST">
-											<h2>팀만들기</h2>
-											<span>팀명: </span><input type="text" name="teamname">
-											<input type="submit" value="만들기">
+											<h2 class="center">팀만들기</h2>
+											<div class="teamname"><span>팀명: </span><input type="text" name="teamname"></div>
+											<div class="center"><input type="submit" value="만들기"></div>
 										</form>
 						<?php
 									} else {
@@ -184,8 +195,8 @@
 						?>
                                             <form action="php/updateteam.php" method="POST">
                                                 <input type="text" name="exname" value="<?=$teamname?>" style="display:none;">
-                                                <span>팀명: </span><input type="text" name="teamname" value="<?=$teamname?>">
-                                                <span>Github: </span><input type="text" name="github" value="<?=$team['github']?>">
+                                                <div class="mteamname"><span>팀명: </span><input type="text" name="teamname" value="<?=$teamname?>"></div>
+                                                <div class="git"><span>Github: </span><input type="text" name="github" value="<?=$team['github']?>"></div>
                                                 <ul>
                         <?php
                                                 $check = "SELECT * FROM member WHERE teamname=$q_teamname";
@@ -193,12 +204,12 @@
                                                 $members = $rows->fetchAll();
                                                 foreach($members as $member) {
                         ?>
-                                                    <li><?=$member['studentNum']?>  <?=$member['name']?></li>
+                                                    <li><?=$member['studentNum']?> <?=$member['name']?></li>
                         <?php
                                                 }
                         ?>
                                                 </ul>
-                                                <input type="submit" value="수정하기">
+                                                <div class="center"><input type="submit" value="수정하기"></div>
                                             </form>
                         <?php
                                         }
@@ -211,7 +222,7 @@
 						<?php
 							}
 						?>
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>

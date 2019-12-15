@@ -21,6 +21,9 @@
 </head>
 
 <body>
+	<?php
+		session_start();
+	?>
 	<header role="banner" class="header">
 		<div class="container">
 			<nav>
@@ -31,7 +34,14 @@
 				<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="../../../common/images/color_lens-24px.svg" alt="customize"> </a>
 
 				<div role="login" class="pull-right">
-					<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+					<?php
+						if(isset($_SESSION["ID"])){ ?>
+							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+						<?php }else{ ?>
+							<a href="../../../login/index4e7d.html"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+						<?php
+						}
+					?>
 				</div>
 
 				<a id="contact" href="../../../contact/index.html" class='pull-right'> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
@@ -146,21 +156,21 @@
 						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
 					</div>
 					    <?php
-						
+
                             try {
 								$db = new PDO("mysql:dbname=team; host=54.180.112.225; port=3306", "root", "1111");
                                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                 $db->query("set session character_set_connection=utf8;");
                                 $db->query("set session character_set_results=utf8;");
                                 $db->query("set session character_set_client=utf8;");
-								//php 변수 쓸려면 
+								//php 변수 쓸려면
 								$id = $_SESSION['ID'];
 								$id = $db->quote($id);
-								
+
 								$check = "SELECT * FROM member WHERE studentNum = $id";
 								$rows = $db->query($check);
 								$results = $rows->fetchAll();
-								
+
 								foreach($results as $result) {
 									if ($result["teamname"] === NULL) {
 						?>
