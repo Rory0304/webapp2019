@@ -38,10 +38,11 @@
 				<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
 				<div role="login" class="pull-right">
 					<?php
+
 						if(isset($_SESSION["ID"])){ ?>
-							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+							<a href="../login/logout.php"> <img src="../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
 						<?php }else{ ?>
-							<a href="../../../login/index4e7d.html"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+							<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
 						<?php
 						}
 					?>
@@ -131,7 +132,16 @@
 				<div id="sideLogo"><a href="../index.html"><img src="../common/images/selab_logo_S.png" /></a></div>
 				<a id="sideSetting" href="javascript:settingview();"> <img src="../common/images/color_lens-24px.svg" alt="customize"> </a>
 				<div role="login">
-					<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
+					<?php
+
+						if(isset($_SESSION["ID"])){ ?>
+							<a href="../login/logout.php"> <img src="../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+						<?php }else{ ?>
+							<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a>
+						<?php
+						}
+					?>
+<!-- 					<a href="../login/index4e7d.html?source=/index.php"> <img src="../common/images/vpn_key-24px.svg" alt="login"> </a> -->
 				</div>
 				<a id="sideContact" href="../contact/index.html"> <img src="../common/images/phone-24px.svg" alt="contact"> </a>
 			</div>
