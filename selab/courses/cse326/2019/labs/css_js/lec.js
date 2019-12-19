@@ -144,7 +144,7 @@ function trackPage() {
 function layoutResizing() {
   var lOut = document.getElementsByClassName("layout");
   lOut[0].style.height = window.innerHeight + 'px';
-  document.getElementById('index').style.height = (window.innerHeight * 0.65) + 'px';
+  document.getElementById('index').style.height = (window.innerHeight * 0.9) + 'px';
 }
 
 function detectResize() {
@@ -285,7 +285,7 @@ function colorpicker(){
       ['black', 'white', 'blanchedalmond'],
       ['rgb(255, 128, 0);', 'hsv 100 70 50', 'lightyellow']
       ],
-      
+
       change: function(color){
 
         $(".presentation h1").css("color",color.toHexString());
