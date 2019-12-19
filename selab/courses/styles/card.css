@@ -180,7 +180,7 @@ span {
 
 input[type=text] {
   padding: 5px 5px;
-  border: 1px solid black;
+  border: 1px solid #6e6e6e;
   border-radius: 4px;
   box-sizing: border-box;
   margin: 10px 5px;
@@ -215,7 +215,7 @@ ul:not(.inline-list) {
   list-style-position: inside;
 }
 
-input[type=submit], button[type=submit].submit {
+input[type=submit], button[type=submit].submit, button {
   padding: 14px 20px;
   margin: 8px 0;
   background-color: #6e6e6e;
@@ -225,7 +225,7 @@ input[type=submit], button[type=submit].submit {
   border : none;
 }
 
-input[type=submit]:hover, button[type=submit].submit:hover {
+input[type=submit]:hover, button[type=submit].submit:hover, button:hover {
   opacity: 0.8;
 }
 
