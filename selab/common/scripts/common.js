@@ -15,27 +15,27 @@ function fontupdate(value){
     //font style select
     if(value=="fontstyle"){
      var font = $("#fontselect").val();
-     $("#main").css("fontFamily",font); //contents
-     $("h1").css("fontFamily",font); //title h1
-     $("#samplePage").css("fontFamily",font);
+     j$("#main").css("fontFamily",font); //contents
+     j$("h1").css("fontFamily",font); //title h1
+     j$("#samplePage").css("fontFamily",font);
    }
    //font size select (contents)
    else if(value=="sizeC"){
      var select = $("#fontsizeSlect").val();
      var fontsize = titleSize(select);
-     $(".container").css("font-size",fontsize);
-     $("#sampleC").css("font-size",fontsize);
+     j$(".container").css("font-size",fontsize);
+     j$("#sampleC").css("font-size",fontsize);
    }
     //font size select (contents and title)
     else if(value=="sizeTC"){
       var select = $("#fontsizeSlect").val();
       var content = contentSize(select);
       var title = titleSize(select);
-      $("#main").css("font-size",content); //contents
-      $("#tab").css("font-size",title); //tab menu
-      $("#title").css("font-size",title); //list spelcial item size (members)
-      $("#sampleC").css("font-size",content);
-      $("#sampleC h1").css("font-size",title);
+      j$("#main").css("font-size",content); //contents
+      j$("#tab").css("font-size",title); //tab menu
+      j$("#title").css("font-size",title); //list spelcial item size (members)
+      j$("#sampleC").css("font-size",content);
+      j$("#sampleC h1").css("font-size",title);
     }
   });
 }
@@ -186,8 +186,8 @@ function navigation() {
 
 // function for make index sortable
 $(function(){
-	$( "#menu ul" ).sortable();
-  $( ".nav-list-right" ).sortable();
+	j$( "#menu ul" ).sortable();
+  j$( ".nav-list-right" ).sortable();
 })
 
 //function for save,
