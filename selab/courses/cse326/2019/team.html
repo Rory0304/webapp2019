@@ -282,7 +282,7 @@
 						</div>
 						<div class=card_but>
 							<form action="send.php" method="post">
-								<input type="hidden" name="sender" value= "<?= $num ?>"/>
+								<input type="hidden" name="sender" value= "<?= $_SESSION["ID"] ?>"/>
 								<input type="hidden" name="receiver" value= "<?= $i["studentNum"] ?>"/>
 								<button type="submit">Contact</button>
 							</form>

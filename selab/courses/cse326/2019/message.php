@@ -167,7 +167,7 @@
 								$id = $_SESSION['ID'];
 								$id = $db->quote($id);
 
-								$check = "SELECT * FROM member WHERE studentNum = $id";
+								$check = "SELECT * FROM message WHERE studentNum = $id";
 								$rows = $db->query($check);
 								$results = $rows->fetchAll();
 

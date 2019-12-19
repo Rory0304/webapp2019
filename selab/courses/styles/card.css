@@ -201,7 +201,7 @@ div.mteamname, div.git {
   padding-left: 20px;
 }
 
-ul {
+ul:not(.inline-list) {
   padding-left: 30px;
   list-style-type: square;
   list-style-position: inside;
