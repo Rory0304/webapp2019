@@ -167,49 +167,60 @@
 								$id = $_SESSION['ID'];
 								$id = $db->quote($id);
 
-								$check = "SELECT * FROM member WHERE studentNum = $id";
+								$check = "SELECT * FROM message WHERE receiver = $id";
 								$rows = $db->query($check);
 								$results = $rows->fetchAll();
-
-								foreach($results as $result) {
-									if ($result["teamname"] === NULL) {
 						?>
-										<form action="php/maketeam.php" method="POST">
-											<h2>팀만들기</h2>
-											<span>팀명: </span><input type="text" name="teamname">
-											<input type="submit" value="만들기">
-										</form>
+								<ul>
+									<p>받은 메세지</p>
 						<?php
-									} else {
-                                        $teamname = $result["teamname"];
-                                        $q_teamname = $db->quote($teamname);
-                                        $check = "SELECT * FROM team WHERE name=$q_teamname";
-                                        $rows = $db->query($check);
-                                        $teams = $rows->fetchAll();
-                                        foreach($teams as $team) {
+								foreach($results as $result) {
+									$num = $result["sender"];
+									$num = $db->quote($num);
+									$check = "SELECT * FROM member WHERE studentNum = $num";
+									$rows = $db->query($check);
+									$name = $rows->fetchAll();
 						?>
-                                            <form action="php/updateteam.php" method="POST">
-                                                <input type="text" name="exname" value="<?=$teamname?>" style="display:none;">
-                                                <span>팀명: </span><input type="text" name="teamname" value="<?=$teamname?>">
-                                                <span>Github: </span><input type="text" name="github" value="<?=$team['github']?>">
-                                                <ul>
-                        <?php
-                                                $check = "SELECT * FROM member WHERE teamname=$q_teamname";
-                                                $rows = $db->query($check);
-                                                $members = $rows->fetchAll();
-                                                foreach($members as $member) {
-                        ?>
-                                                    <li><?=$member['studentNum']?>  <?=$member['name']?></li>
-                        <?php
-                                                }
-                        ?>
-                                                </ul>
-                                                <input type="submit" value="수정하기">
-                                            </form>
-                        <?php
-                                        }
-									}
+									<li> 
+										<span>보낸사람 : <?=$name[0]["name"]?></span> <span>보낸날짜 : <?=$result["sendDay"]?></span>
+										<span>
+											<form action="php/receive.php" method="POST">
+												<input type="submit" value="받기">
+											</form>
+										</span>
+									</li>
+						<?php
 								}
+						?>
+								</ul>
+						<?php
+								$check = "SELECT * FROM message WHERE sender = $id";
+								$rows = $db->query($check);
+								$results = $rows->fetchAll();
+						?>
+								<ul>
+									<p>보낸 메세지</p>
+						<?php
+								foreach($results as $result) {
+									$num = $result["receiver"];
+									$num = $db->quote($num);
+									$check = "SELECT * FROM member WHERE studentNum = $num";
+									$rows = $db->query($check);
+									$name = $rows->fetchAll();
+						?>
+									<li>
+										<span>받는사람 : <?=$name[0]["name"]?> 보낸날짜 : <?=$result["sendDay"]?> </span>
+										<span>
+											<form action="php/cancel.php" method="POST">
+												<input type="submit" value="취소">
+											</form>
+										</span>
+									</li>
+						<?php
+								}
+						?>
+								</ul>
+						<?php
 							} catch (PDOException $ex) {
 						?>
 								<p>Sorry, a database error occurred. Please try again later.</p>
