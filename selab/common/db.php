@@ -2,7 +2,7 @@
     $dbHost = "54.180.112.225";
     $dbName = "team";
     $dbUser = "root";
-    $dbPass = "1111";
+    $dbPass = "11111111";
 
     $db = new PDO("mysql:host={$dbHost};dbname={$dbName};port=3306", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

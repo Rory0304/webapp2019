@@ -4,7 +4,7 @@
 
 
 	function loadSetting($id) {
-		$db = new PDO("mysql:dbname=custom;host=54.180.112.225;port=3306","root","1111"); // passwoar, ip 
+		$db = new PDO("mysql:dbname=custom;host=54.180.112.225;port=3306","root","11111111"); // passwoar, ip 
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$check_slide = "SELECT * FROM slide WHERE id = '$id'";
 		$slide_rows = $db->query($check_slide);
@@ -49,7 +49,7 @@
 <?php
 
 	try {
-		$db = new PDO("mysql:dbname=custom;host=54.180.112.225;port=3306","root","1111"); //프로젝트에는 실제 mysql의 id, password 입력
+		$db = new PDO("mysql:dbname=custom;host=54.180.112.225;port=3306","root","11111111"); //프로젝트에는 실제 mysql의 id, password 입력
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$id = $_POST['id'];
 		$pw = $_POST['password'];

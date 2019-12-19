@@ -3,7 +3,9 @@
 
     header("Content-type: application/jason");
     if ( !isset($_SESSION["ID"]) ) {
-        print "NULL";
+        $data = array();
+        $jason_data = json_encode($data);
+        print $jason_data;
         exit;
     }
 
@@ -31,4 +33,5 @@
     );
     $jason_data = json_encode($data);
     print $jason_data;
+    exit;
 ?>
