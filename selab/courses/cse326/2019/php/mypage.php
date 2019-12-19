@@ -1,6 +1,6 @@
 <?php
 
-  include "../../../common/db.php";
+  include "../../../../common/db.php";
 
   // 로그인된 계정(학생)의 학번
   session_start();
@@ -33,5 +33,5 @@
     }
   }
 
-  echo "<script>location.replace('mypage.html')</script>";
+  echo "<script>location.replace('../mypage.html')</script>";
 ?>

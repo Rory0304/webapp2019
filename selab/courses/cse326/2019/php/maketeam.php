@@ -25,7 +25,7 @@
         $db->exec("insert into team values ($teamname,$class,NULL)");
         $db->exec("UPDATE member SET teamname=$teamname WHERE studentNum = $id");
 
-        header("Location: ../team.html");
+        header("Location: ../myteam.html");
     } catch (PDOException $ex) {
     ?>
         <p>Sorry, a database error occurred. Please try again later.</p>
