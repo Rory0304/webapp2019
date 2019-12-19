@@ -217,7 +217,7 @@ ul:not(.inline-list) {
 }
 
 input[type=submit], button[type=submit].submit, button.secession {
-  padding: 14px 20px;
+  padding: 14px 25px;
   margin: 8px 0;
   background-color: #6e6e6e;
   color: white;
@@ -228,6 +228,20 @@ input[type=submit], button[type=submit].submit, button.secession {
 
 input[type=submit]:hover, button[type=submit].submit:hover, button.secession:hover {
   opacity: 0.8;
+}
+
+#editButton {
+  padding: 10px 15px;
+  margin: 8px 0;
+  background-color: #a3a3a3;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  border : none;
+}
+
+.right {
+  text-align:right;
 }
 
 .center {

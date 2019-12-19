@@ -197,7 +197,7 @@ session_start();
 											<input type="text" name="exname" value="<?=$teamname?>" style="display:none;">
 											<div class="mteamname"><span>팀명: </span><input type="text" name="teamname" value="<?=$teamname?>"></div>
 											<div class="git"><span>Github: </span><input type="text" name="github" value="<?=$team['github']?>"></div>
-											<div class="center"><input type="submit" value="수정하기"></div>
+											<div class="right"><input id = "editButton" type="submit" value="수정하기"></div>
 										</form>
 										<ul>
 											<?php
@@ -211,7 +211,9 @@ session_start();
 											}
 											?>
 										</ul>
-										<a href="php/out.php"> <button class="secession">탈퇴</button> </a>
+										<div class="center">
+											<a href="php/out.php"> <button class="secession">탈퇴</button> </a>
+										</div>
 										<?php
 									}
 								}
