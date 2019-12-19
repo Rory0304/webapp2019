@@ -197,20 +197,21 @@ session_start();
 											<input type="text" name="exname" value="<?=$teamname?>" style="display:none;">
 											<div class="mteamname"><span>팀명: </span><input type="text" name="teamname" value="<?=$teamname?>"></div>
 											<div class="git"><span>Github: </span><input type="text" name="github" value="<?=$team['github']?>"></div>
-											<ul>
-												<?php
-												$check = "SELECT * FROM member WHERE teamname=$q_teamname";
-												$rows = $db->query($check);
-												$members = $rows->fetchAll();
-												foreach($members as $member) {
-													?>
-													<li><?=$member['name']?> (<?=$member['studentNum']?>)</li>
-													<?php
-												}
-												?>
-											</ul>
 											<div class="center"><input type="submit" value="수정하기"></div>
 										</form>
+										<ul>
+											<?php
+											$check = "SELECT * FROM member WHERE teamname=$q_teamname";
+											$rows = $db->query($check);
+											$members = $rows->fetchAll();
+											foreach($members as $member) {
+												?>
+												<li><?=$member['name']?> (<?=$member['studentNum']?>)</li>
+												<?php
+											}
+											?>
+										</ul>
+										<a href="php/out.php"> <button>탈퇴</button> </a>
 										<?php
 									}
 								}
