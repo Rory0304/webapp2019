@@ -185,6 +185,9 @@
 										<span>보낸사람 : <?=$name[0]["name"]?></span> <span>보낸날짜 : <?=$result["sendDay"]?></span>
 										<span>
 											<form action="php/receive.php" method="POST">
+												<input type="text" name="mynum" value="<?=$_SESSION["ID"]?>" style="display: none;">
+												<input type="text" name="sender" value="<?=$result["sender"]?>" style="display: none;">
+												<input type="text" name="day" value="<?=$result["sendDay"]?>" style="display: none;">
 												<input type="submit" value="받기">
 											</form>
 										</span>
@@ -212,6 +215,9 @@
 										<span>받는사람 : <?=$name[0]["name"]?> 보낸날짜 : <?=$result["sendDay"]?> </span>
 										<span>
 											<form action="php/cancel.php" method="POST">
+												<input type="text" name="mynum" value="<?=$_SESSION["ID"]?>" style="display: none;">
+												<input type="text" name="receiver" value="<?=$result["receiver"]?>" style="display: none;">
+												<input type="text" name="day" value="<?=$result["sendDay"]?>" style="display: none;">
 												<input type="submit" value="취소">
 											</form>
 										</span>
