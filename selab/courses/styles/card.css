@@ -69,6 +69,7 @@ img {
 }
 
 .card .card_inner p {
+  padding: 0;
   line-height: 1.2;
   margin: 5px auto;
 }
@@ -217,10 +218,11 @@ ul:not(.inline-list) {
 input[type=submit], button[type=submit].submit {
   padding: 14px 20px;
   margin: 8px 0;
-  background-color: black;
+  background-color: #6e6e6e;
   color: white;
   border-radius: 4px;
   cursor: pointer;
+  border : none;
 }
 
 input[type=submit]:hover, button[type=submit].submit:hover {
