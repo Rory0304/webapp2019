@@ -10,7 +10,7 @@
     $db->query("set session character_set_results=utf8;");
     $db->query("set session character_set_client=utf8;");
 
-    $langList = array("html","css","js","jquery","php","db","ajax","xml","c","c++","java","python","ruby","Django","Perl");
+    $langList = array("html","css","js","jquery","php","db","ajax","xml","c","cplusplus","java","python","ruby","Django","Perl");
     $str = "select * from lang as l join member as m on l.studentNum = m.studentNum";
 
 function recommend($m_kind,$class) {

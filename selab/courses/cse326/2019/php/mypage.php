@@ -14,21 +14,10 @@
     }
     for ($i=0; $i<count($langList); $i++) {
       if (in_array($langList[$i], $lang)) {
-        if ($langList[$i] == 'c++') {
-          //conlog($langList[$i]);
-          $updateQ = $db->query("UPDATE lang SET cplusplus = 1 WHERE studentNum='$num'");
-        }
-        else {
-          $updateQ = $db->query("UPDATE lang SET $langList[$i] = 1 WHERE studentNum='$num'");
-        }
+        $updateQ = $db->query("UPDATE lang SET $langList[$i] = 1 WHERE studentNum='$num'");
       }
       else {
-        if ($langList[$i] == 'c++') {
-          $updateQ = $db->query("UPDATE lang SET cplusplus = 0 WHERE studentNum='$num'");
-        }
-        else {
-          $updateQ = $db->query("UPDATE lang SET $langList[$i] = 0 WHERE studentNum='$num'");
-        }
+        $updateQ = $db->query("UPDATE lang SET $langList[$i] = 0 WHERE studentNum='$num'");
       }
     }
   }
