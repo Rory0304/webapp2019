@@ -197,18 +197,21 @@
                                                 <input type="text" name="exname" value="<?=$teamname?>" style="display:none;">
                                                 <div class="mteamname"><span>팀명: </span><input type="text" name="teamname" value="<?=$teamname?>"></div>
                                                 <div class="git"><span>Github: </span><input type="text" name="github" value="<?=$team['github']?>"></div>
-                                                <ul>
-                        <?php
-                                                $check = "SELECT * FROM member WHERE teamname=$q_teamname";
-                                                $rows = $db->query($check);
-                                                $members = $rows->fetchAll();
-                                                foreach($members as $member) {
-                        ?>
-                                                    <li><?=$member['studentNum']?> <?=$member['name']?></li>
-                        <?php
-                                                }
-                        ?>
-                                                </ul>
+																								<div class="teammember">
+																									<span>팀원</span>
+                                                	<ul>
+	                        <?php
+	                                                $check = "SELECT * FROM member WHERE teamname=$q_teamname";
+	                                                $rows = $db->query($check);
+	                                                $members = $rows->fetchAll();
+	                                                foreach($members as $member) {
+	                        ?>
+	                                                    <li><?=$member['name']?> (<?=$member['studentNum']?>)</li>
+	                        <?php
+	                                                }
+	                        ?>
+	                                                </ul>
+																								</div>
                                                 <div class="center"><input type="submit" value="수정하기"></div>
                                             </form>
                         <?php
