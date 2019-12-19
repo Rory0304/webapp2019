@@ -212,7 +212,7 @@ function logout(){
 function startup() {
   navigation();
   saveorder();
-  checklogin();
+  Request();
 }
 
 window.onload = startup;
