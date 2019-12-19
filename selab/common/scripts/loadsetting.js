@@ -28,39 +28,38 @@ function loadsetting(ajax) {
         var slide_fontsize = data.slide['fontsize'];
         var slide_tcolor = data.slide['tcolor'];
         var slide_ccolor = data.slide['ccolor'];
-    }
-    
-    document.getElementById("sortable").innerHTML = main_menuorder;
+        document.getElementById("sortable").innerHTML = main_menuorder;
 
-    var options = document.getElementById("fontselect").children
-    for(var i=0; i<options.length; i++) {
-        if (options[i].getAttribute("value") == main_font) {
-            options[i].setAttribute("selected", "selected")
-        } else {
-            options[i].setAttribute("selected", "")
+        var options = document.getElementById("fontselect").children
+        for(var i=0; i<options.length; i++) {
+            if (options[i].getAttribute("value") == main_font) {
+                options[i].setAttribute("selected", "selected")
+            } else {
+                options[i].setAttribute("selected", "")
+            }
         }
-    }
-    fontupdate("fontstyle")
+        fontupdate("fontstyle")
 
-    var options = document.getElementById("fontsizeSlect").children
-    for(var i=0; i<options.length; i++) {
-        if (options[i].innerHTML == main_fontsize) {
-            options[i].setAttribute("selected", "selected")
-        } else {
-            options[i].setAttribute("selected", "")
+        var options = document.getElementById("fontsizeSlect").children
+        for(var i=0; i<options.length; i++) {
+            if (options[i].innerHTML == main_fontsize) {
+                options[i].setAttribute("selected", "selected")
+            } else {
+                options[i].setAttribute("selected", "")
+            }
         }
-    }
-    fontupdate("sizeC")
+        fontupdate("sizeC")
 
-    var backgrounds = document.getElementById("backselect").children
-    for(var i=0; i<backgrounds.length; i++) {
-        if (backgrounds[i].getAttribute("value") == main_background) {
-            backgrounds[i].setAttribute("selected", "selected")
-        } else {
-            backgrounds[i].setAttribute("selected", "")
+        var backgrounds = document.getElementById("backselect").children
+        for(var i=0; i<backgrounds.length; i++) {
+            if (backgrounds[i].getAttribute("value") == main_background) {
+                backgrounds[i].setAttribute("selected", "selected")
+            } else {
+                backgrounds[i].setAttribute("selected", "")
+            }
         }
+        backupdate();
     }
-    backupdate();
 }
 
 
