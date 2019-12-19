@@ -60,5 +60,6 @@ function mapHight() {
 	jQuery(function($) {
 		var mapWidth = $("#map").outerWidth();
 		$("#map").css("height", mapWidth);
+		$(".wrap").css("height", mapWidth+80);
 	});
 }
