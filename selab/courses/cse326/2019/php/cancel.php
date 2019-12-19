@@ -19,17 +19,18 @@
         $rows = $db->query($teams);
         $results = $rows->fetchAll();
         $teamname = $results[0]["teamname"];
-        //$q_teamname = $dv->quote($teamname);
+        $q_teamname = $db->quote($teamname);
 
         echo "<pre>";
         var_dump($q_mynum);
         var_dump($q_receiver);
         var_dump($q_day);
+        var_dump($q_teamname);
         echo "</pre>";
 
         $db->exec("DELETE FROM message
                     WHERE
-                    sender = $teamname and
+                    sender = $q_teamname and
                     receiver = $q_receiver and
                     sendDay = $q_day");
 
