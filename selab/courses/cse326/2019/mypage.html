@@ -21,6 +21,9 @@
 </head>
 
 <body>
+	<?php
+		session_start();
+	?>
 	<header role="banner" class="header">
 		<div class="container">
 			<nav>
@@ -31,7 +34,14 @@
 				<a id="setting" class="pull-right" href="javascript:settingview();"> <img src="../../../common/images/color_lens-24px.svg" alt="customize"> </a>
 
 				<div role="login" class="pull-right">
-					<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+					<?php
+						if(isset($_SESSION["ID"])){ ?>
+							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+						<?php }else{ ?>
+							<a href="../../../login/index4e7d.html"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+						<?php
+						}
+					?>
 				</div>
 
 				<a id="contact" href="../../../contact/index.html" class='pull-right'> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
@@ -115,7 +125,16 @@
 				<div id="sideLogo"><a href="../../../index.html"><img src="../../../common/images/selab_logo_S.png" /></a></div>
 				<a id="sideSetting" href="javascript:settingview();"> <img src="../../../common/images/color_lens-24px.svg" alt="customize"> </a>
 				<div role="login">
-					<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+					<?php
+
+						if(isset($_SESSION["ID"])){ ?>
+							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+						<?php }else{ ?>
+							<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+						<?php
+						}
+					?>
+<!-- 					<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a> -->
 				</div>
 				<a id="sideContact" href="../../../contact/index.html"> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
 			</div>
@@ -137,13 +156,16 @@
 					<div class="deactive"> <a href="slides.html">Slides</a> </div>
 					<div class="last-tab">Team</div>
 				</div>
-				<div class="">
+				<div id="hl"></div>
+				<div id="team">
 					<div class="teamMenu">
-						<a href="team.html">팀신청페이지로 돌아가기</a>
-						<img src="../../images/account_circle-24px.svg" alt="myPage">
-						<a href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
-						<a href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
+						<a class="pull-left" href="team.html">팀신청페이지로 돌아가기</a>
+						<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
+						<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
+						<img class="this-page pull-right" src="../../images/account_circle-24px.svg" alt="myPage">
 					</div>
+					<hr class="div" />
+					<div class="mypage">
 					<?php
 						include "../../../common/db.php";
 
@@ -157,24 +179,28 @@
 						$class = $studentsRes["class"];
 						$name = $studentsRes["name"]; ?>
 
-						<h2><?= $name ?></h2>
-						<p>학번 : <?= $num ?></p>
-						<p>반 : <?= $class ?></p>
-						<p>조 : <?= $team ?></p>
+						<div class="myinf">
+							<h2><?= $name ?></h2>
+							<p><span>학번 : </span> <?= $num ?></p>
+							<p><span>반 : </span> <?= $class ?></p>
+							<p><span>조 : <span> <?= $team ?></p>
+						</div>
 						<form class="langOptions" action="mypage.php" method="post">
+							<p class="langtitle">language</p>
 							<?php
 								for($i=0; $i<count($langList); $i++) {
 									if ($studentsRes[$i+1] == 1) { ?>
-										<input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>" checked><?= $langList[$i] ?>
+										<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>" checked><?= $langList[$i] ?></div>
 										<?php
 									} else { ?>
-										<input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>"><?= $langList[$i] ?>
+										<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>"><?= $langList[$i] ?></div>
 							<?php
 									}
 								} ?>
-							<input type="text" name="etc" value="<?= $studentsRes["etc"] ?>">
-							<button type="submit">확인</button>
+							<span class="langlast">기타: </span><input type="text" name="etc" value="<?= $studentsRes["etc"] ?>">
+							<div class="center"><button class="submit" type="submit">저장</button></div>
 						</form>
+					</div>
 				</div>
 			</div>
 		</div>
