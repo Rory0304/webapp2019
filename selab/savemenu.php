@@ -2,7 +2,7 @@
     session_start();
 
     try {
-        $db = new PDO("mysql:dbname=custom; host=54.180.112.225; port=3306", "root", "1111");
+        $db = new PDO("mysql:dbname=custom; host=54.180.112.225; port=3306", "root", "11111111");
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //php 변수 쓸려면 
         $id = $_SESSION['ID'];
