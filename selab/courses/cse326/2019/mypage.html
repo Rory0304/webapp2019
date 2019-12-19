@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -127,86 +127,85 @@ session_start();
 			<a id="sideSetting" href="javascript:settingview();"> <img src="../../../common/images/color_lens-24px.svg" alt="customize"> </a>
 			<div role="login">
 				<?php
-
 				if(isset($_SESSION["ID"])){ ?>
 				<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
 				<?php }else{ ?>
 				<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
 				<?php
-			}
-			?>
-			<!-- 					<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a> -->
-		</div>
-		<a id="sideContact" href="../../../contact/index.html"> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
-	</div>
-	<div class="nav-list-right">
-		<a href="../notice/index.html" >NOTICE</a>
-		<a href="../members/index.html" >MEMBERS</a>
-		<a href="../research/index.html" >RESEARCH</a>
-		<a href="../publications/index.html" >PUBLICATIONS</a>
-		<a href="../courses/index.html" class="selected" >COURSES</a>
-		<a href="../gallery/index.html" >GALLERY</a>
-	</div>
-</div>
-
-<div class="main-container">
-	<div class="contents">
-		<h1>Web Application Development</h1>
-		<div id="tab">
-			<div class="deactive first-tab"> <a href="index.html">Home</a> </div>
-			<div class="deactive"> <a href="slides.html">Slides</a> </div>
-			<div class="last-tab">Team</div>
-		</div>
-		<div id="hl"></div>
-		<div id="team">
-			<div class="teamMenu">
-				<a class="pull-left" href="team.html"><img src="../../images/reply-24px.svg" alt="back to team page"></a>
-				<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
-				<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
-				<img class="this-page pull-right" src="../../images/account_circle-24px.svg" alt="myPage">
+				}
+				?>
 			</div>
-			<hr class="div" />
-			<div class="mypage" id="main">
-				<?php
-				include "../../../common/db.php";
+			<a id="sideContact" href="../../../contact/index.html"> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
+		</div>
+		<div class="nav-list-right">
+			<a href="../notice/index.html" >NOTICE</a>
+			<a href="../members/index.html" >MEMBERS</a>
+			<a href="../research/index.html" >RESEARCH</a>
+			<a href="../publications/index.html" >PUBLICATIONS</a>
+			<a href="../courses/index.html" class="selected" >COURSES</a>
+			<a href="../gallery/index.html" >GALLERY</a>
+		</div>
+	</div>
 
-				// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
-				$num = $_SESSION["ID"];
+	<div class="main-container">
+		<div class="contents">
+			<h1>Web Application Development</h1>
+			<div id="tab">
+				<div class="deactive first-tab"> <a href="index.html">Home</a> </div>
+				<div class="deactive"> <a href="slides.html">Slides</a> </div>
+				<div class="last-tab">Team</div>
+			</div>
+			<div id="hl"></div>
+			<div id="team">
+				<div class="teamMenu">
+					<a class="pull-left" href="team.html"><img src="../../images/reply-24px.svg" alt="back to team page"></a>
+					<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
+					<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
+					<img class="this-page pull-right" src="../../images/account_circle-24px.svg" alt="myPage">
+				</div>
+				<hr class="div" />
+				<div class="mypage" id="main">
+					<?php
+					include "../../../common/db.php";
 
-				$studentQ = $db->query($str." where l.studentNum= '$num'");
-				$studentsRes = $studentQ -> fetch();
-				$team = $studentsRes["teamname"];
-				$class = $studentsRes["class"];
-				$name = $studentsRes["name"]; ?>
+					// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
+					$num = $_SESSION["ID"];
 
-				<div class="myinf">
-					<h2><?= $name ?></h2>
-					<p><span>학번 : </span> <?= $num ?></p>
-					<p><span>반 : </span> <?= $class ?></p>
-					<p><span>조 : <span> <?= $team ?></p>
+					$studentQ = $db->query($str." where l.studentNum= '$num'");
+					$studentsRes = $studentQ -> fetch();
+					$team = $studentsRes["teamname"];
+					$class = $studentsRes["class"];
+					$name = $studentsRes["name"]; ?>
+
+					<div class="myinf">
+						<h2><?= $name ?></h2>
+						<p><span>학번 : </span> <?= $num ?></p>
+						<p><span>반 : </span> <?= $class ?></p>
+						<p><span>조 : <span> <?= $team ?></p>
 					</div>
 					<form class="langOptions" action="php/mypage.php" method="post">
-						<p class="langtitle">language</p>
-						<?php
-						for($i=0; $i<count($langList); $i++) {
-						if ($studentsRes[$i+1] == 1) { ?>
-						<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>" checked><?= $langList[$i] ?></div>
-						<?php
-					} else { ?>
-					<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>"><?= $langList[$i] ?></div>
-					<?php
-										}
-									} ?>
-								<br />
-								<span class="langlast">기타: </span><input type="text" name="etc" value="<?= $studentsRes["etc"] ?>">
-							</div>
-							<div class="center"><button class="submit" type="submit">저장</button></div>
-						</form>
-					</div>
+						<p><span>Language</span></p>
+						<div class="langlist">
+							<?php
+								for($i=0; $i<count($langList); $i++) {
+									if ($studentsRes[$i+1] == 1) { ?>
+										<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>" checked/><?= $langList[$i] ?></div>
+										<?php
+									} else { ?>
+										<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>"/><?= $langList[$i] ?></div>
+										<?php
+									}
+								} ?>
+							<br />
+							<span class="langlast">기타: </span><input type="text" name="etc" value="<?= $studentsRes['etc'] ?>"/>
+						</div>
+						<div class="center"><button class="submit" type="submit">저장</button></div>
+					</form>
 				</div>
 			</div>
 		</div>
-	</main>
+	</div>
+</main>
 
 <footer role="contentinfo">
 	<div class="container">
@@ -215,5 +214,4 @@ session_start();
 </footer>
 </body>
 
-<!-- Mirrored from selab.hanyang.ac.kr/courses/cse326/2019/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 01 Nov 2019 07:38:34 GMT -->
 </html>
