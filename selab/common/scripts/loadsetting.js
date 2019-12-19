@@ -1,18 +1,11 @@
 function Request() {
-    // new Ajax.Request("common/php/loadsetting.php", {
-    //     method: "get",
-    //     onSuccess: loadsetting,
-    //     onFailure: ajaxFailure,
-    //     onException: ajaxFailure
-    // });
-
-    $.ajax({
-        url: "common/php/loadsetting.php",
-        type: "GET",
-        dataType: json,
-        success: loadsetting,
-        error: ajaxFailure
+    new Ajax.Request("common/php/loadsetting.php", {
+        method: "get",
+        onSuccess: loadsetting,
+        onFailure: ajaxFailure,
+        onException: ajaxFailure
     });
+    
 }
 
 function loadsetting(ajax) {
@@ -35,6 +28,37 @@ function loadsetting(ajax) {
         var slide_fontsize = data.slide['fontsize'];
         var slide_tcolor = data.slide['tcolor'];
         var slide_ccolor = data.slide['ccolor'];
+        document.getElementById("sortable").innerHTML = main_menuorder;
+
+        var options = document.getElementById("fontselect").children
+        for(var i=0; i<options.length; i++) {
+            if (options[i].getAttribute("value") == main_font) {
+                options[i].setAttribute("selected", "selected")
+            } else {
+                options[i].setAttribute("selected", "")
+            }
+        }
+        fontupdate("fontstyle")
+
+        var options = document.getElementById("fontsizeSlect").children
+        for(var i=0; i<options.length; i++) {
+            if (options[i].innerHTML == main_fontsize) {
+                options[i].setAttribute("selected", "selected")
+            } else {
+                options[i].setAttribute("selected", "")
+            }
+        }
+        fontupdate("sizeC")
+
+        var backgrounds = document.getElementById("backselect").children
+        for(var i=0; i<backgrounds.length; i++) {
+            if (backgrounds[i].getAttribute("value") == main_background) {
+                backgrounds[i].setAttribute("selected", "selected")
+            } else {
+                backgrounds[i].setAttribute("selected", "")
+            }
+        }
+        backupdate();
     }
 }
 
