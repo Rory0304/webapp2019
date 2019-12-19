@@ -15,6 +15,12 @@
         $q_receiver = $db->quote($receiver);
         $q_day = $db->quote($day);
 
+        $teams = "SELECT * FROM member WHERE studentNum = $mynum";
+        $rows = $db->query($teams);
+        $results = $rows->fetchAll();
+        $teamname = $results[0]["teamname"];
+        //$q_teamname = $dv->quote($teamname);
+
         echo "<pre>";
         var_dump($q_mynum);
         var_dump($q_receiver);
@@ -23,7 +29,7 @@
 
         $db->exec("DELETE FROM message
                     WHERE
-                    sender = $q_mynum and
+                    sender = $teamname and
                     receiver = $q_receiver and
                     sendDay = $q_day");
 
