@@ -2,7 +2,7 @@
     session_start();
 
     try {
-        $db = new PDO("mysql:dbname=team; host=54.180.112.225; port=3306", "root", "1111");
+        $db = new PDO("mysql:dbname=team; host=54.180.112.225; port=3306", "root", "11111111");
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $db->query("set session character_set_connection=utf8;");
         $db->query("set session character_set_results=utf8;");
