@@ -1,5 +1,5 @@
 ﻿<?php
-	session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
 	<link rel="shortcut icon" href="../../../common/images/SelabFavicon.png" type="image/png">
 	<link rel="stylesheet" href="../../styles/course-home.css" type="text/css" />
 	<link rel="stylesheet" href="../../styles/card.css" type="text/css" />
-
+	<link rel="stylesheet" id = "backcss" href="../../../common/styles/theme1.css" type="text/css" />
 	<script type="text/javascript" src="../../../common/scripts/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="../../../common/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="../../../common/scripts/buffered-keyup.js"></script>
@@ -36,166 +36,165 @@
 
 				<div role="login" class="pull-right">
 					<?php
-						if(isset($_SESSION["ID"])){ ?>
-							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
-						<?php }else{ ?>
-							<a href="../../../login/index4e7d.html"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
-						<?php
-						}
-					?>
-				</div>
-
-				<a id="contact" href="../../../contact/index.html" class='pull-right'> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
-			</nav>
-			<div id="menu">
-				<ul class="inline-list pull-left">
-					<li><a href="../../../notice/index.html" >NOTICE</a></li>
-					<li><a href="../../../members/index.html" >MEMBERS</a></li>
-					<li><a href="../../../research/index.html" >RESEARCH</a></li>
-					<li><a href="../../../publications/index.html" >PUBLICATIONS</a></li>
-					<li><a href="../../../courses/index.html" class="selected" >COURSES</a></li>
-					<li><a href="../../../gallery/index.html" >GALLERY</a></li>
-				</ul>
+					if(isset($_SESSION["ID"])){ ?>
+					<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+					<?php }else{ ?>
+					<a href="../../../login/index4e7d.html"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+					<?php
+				}
+				?>
 			</div>
+
+			<a id="contact" href="../../../contact/index.html" class='pull-right'> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
+		</nav>
+		<div id="menu">
+			<ul class="inline-list pull-left">
+				<li><a href="../../../notice/index.html" >NOTICE</a></li>
+				<li><a href="../../../members/index.html" >MEMBERS</a></li>
+				<li><a href="../../../research/index.html" >RESEARCH</a></li>
+				<li><a href="../../../publications/index.html" >PUBLICATIONS</a></li>
+				<li><a href="../../../courses/index.html" class="selected" >COURSES</a></li>
+				<li><a href="../../../gallery/index.html" >GALLERY</a></li>
+			</ul>
 		</div>
-	</header>
+	</div>
+</header>
 
-	<div id="settingtab">
-		<a href="javascript:void(0)" class="closebtn" onclick="closesetting()">&times;</a>
-		<div id="sample">
-			<div id="samplePage">
-				<div id="SampleH">
-					<div id="SampleH1">
-						<p>[lab];</p>
-					</div>
-					<div id="SampleH2">
-						<p>notice members research ...</p>
-					</div>
+<div id="settingtab">
+	<a href="javascript:void(0)" class="closebtn" onclick="closesetting()">&times;</a>
+	<div id="sample">
+		<div id="samplePage">
+			<div id="SampleH">
+				<div id="SampleH1">
+					<p>[lab];</p>
 				</div>
-				<div id="sampleC">
-					<h1>sample</h1>
-					<p>This is sample to help your costomizing. I hope you satisfied whith our wepsite.</p>
+				<div id="SampleH2">
+					<p>notice members research ...</p>
 				</div>
 			</div>
-		</div>
-
-		<div id="option">
-			<div id="font">
-				<p>Navigation</p>
-				<input type="radio" name="nav" value="top" checked="checked" /> Top
-				<input type="radio" name="nav" value="left" /> Left
-				<input type="radio" name="nav" value="right" /> Right
-				<p>Font</p>
-				<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
-					<option style="font-family:Serif" value="serif"> Serif </option>
-					<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
-					<option style="font-family:Arial" value="Arial"> Arial </option>
-					<option style="font-family:Monospace" value="Monospace">Monospace</option>
-					<option style="font-family:Roboto" value="Roboto">Roboto</option>
-					<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
-					<option style="font-family:Garamond" value="Garamond">Garamond</option>
-					<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
-					<option style="font-family:Courier" value="Courier">Courier</option>
-					<option style="font-family:Impact" value="Impact">Impact</option>
-				</select>
-				<p>Font Size</p>
-				<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeTC')">
-					<option style="font-size: 15px">Small</option>
-					<option style="font-size: 20px" selected>Normal</option>
-					<option style="font-size: 25px">Medium</option>
-					<option style="font-size: 30px">Large</option>
-					<option style="font-size: 35px">Huge</option>
-				</select>
-			</div>
-			<div id="background">
-				<p>Background</p>
-				<select id="backselect" name="selectBackground" onchange="backupdate();">
-					<option value="1"> Theme1 </option>
-					<option value="2"> Theme2</option>
-					<option value="3"> Theme3 </option>
-					<option value="4"> Theme4 </option>
-					<option value="5"> Theme5 </option>
-				</select>
+			<div id="sampleC">
+				<h1>sample</h1>
+				<p>This is sample to help your costomizing. I hope you satisfied whith our wepsite.</p>
 			</div>
 		</div>
 	</div>
 
-	<main role="main">
-		<div id="sideNav">
-			<div class="nav-list-left">
-				<div id="sideLogo"><a href="../../../index.html"><img src="../../../common/images/selab_logo_S.png" /></a></div>
-				<a id="sideSetting" href="javascript:settingview();"> <img src="../../../common/images/color_lens-24px.svg" alt="customize"> </a>
-				<div role="login">
-					<?php
-
-						if(isset($_SESSION["ID"])){ ?>
-							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
-						<?php }else{ ?>
-							<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
-						<?php
-						}
-					?>
-<!-- 					<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a> -->
-				</div>
-				<a id="sideContact" href="../../../contact/index.html"> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
-			</div>
-			<div class="nav-list-right">
-				<a href="../notice/index.html" >NOTICE</a>
-				<a href="../members/index.html" >MEMBERS</a>
-				<a href="../research/index.html" >RESEARCH</a>
-				<a href="../publications/index.html" >PUBLICATIONS</a>
-				<a href="../courses/index.html" class="selected" >COURSES</a>
-				<a href="../gallery/index.html" >GALLERY</a>
-			</div>
+	<div id="option">
+		<div id="font">
+			<p>Navigation</p>
+			<input type="radio" name="nav" value="top" checked="checked" /> Top
+			<input type="radio" name="nav" value="left" /> Left
+			<input type="radio" name="nav" value="right" /> Right
+			<p>Font</p>
+			<select id="fontselect" name="selectFontFamily" onchange="fontupdate('fontstyle')">
+				<option style="font-family:Serif" value="serif"> Serif </option>
+				<option style="font-family:Tahoma" value="Tahoma"> Tahoma </option>
+				<option style="font-family:Arial" value="Arial"> Arial </option>
+				<option style="font-family:Monospace" value="Monospace">Monospace</option>
+				<option style="font-family:Roboto" value="Roboto">Roboto</option>
+				<option style="font-family:Times New Roman" value="Times New Roman">Times New Roman</option>
+				<option style="font-family:Garamond" value="Garamond">Garamond</option>
+				<option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+				<option style="font-family:Courier" value="Courier">Courier</option>
+				<option style="font-family:Impact" value="Impact">Impact</option>
+			</select>
+			<p>Font Size</p>
+			<select id="fontsizeSlect" name="selectfontsize" onchange="fontupdate('sizeTC')">
+				<option style="font-size: 15px">Small</option>
+				<option style="font-size: 20px" selected>Normal</option>
+				<option style="font-size: 25px">Medium</option>
+				<option style="font-size: 30px">Large</option>
+				<option style="font-size: 35px">Huge</option>
+			</select>
 		</div>
+		<div id="background">
+			<p>Background</p>
+			<select id="backselect" name="selectBackground" onchange="backupdate();">
+				<option value="1"> Theme1 </option>
+				<option value="2"> Theme2</option>
+				<option value="3"> Theme3 </option>
+				<option value="4"> Theme4 </option>
+				<option value="5"> Theme5 </option>
+			</select>
+		</div>
+	</div>
+</div>
 
-		<div class="main-container">
-			<div class="contents">
-				<h1>Web Application Development</h1>
-				<div id="tab">
-					<div class="deactive first-tab"> <a href="index.html">Home</a> </div>
-					<div class="deactive"> <a href="slides.html">Slides</a> </div>
-					<div class="last-tab">Team</div>
-				</div>
-				<div id="hl"></div>
-				<div id="team">
-					<div class="teamMenu">
-						<a class="pull-left" href="team.html"><img src="../../images/reply-24px.svg" alt="back to team page"></a>
-						<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
-						<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
-						<img class="this-page pull-right" src="../../images/account_circle-24px.svg" alt="myPage">
+<main role="main">
+	<div id="sideNav">
+		<div class="nav-list-left">
+			<div id="sideLogo"><a href="../../../index.html"><img src="../../../common/images/selab_logo_S.png" /></a></div>
+			<a id="sideSetting" href="javascript:settingview();"> <img src="../../../common/images/color_lens-24px.svg" alt="customize"> </a>
+			<div role="login">
+				<?php
+
+				if(isset($_SESSION["ID"])){ ?>
+				<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+				<?php }else{ ?>
+				<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+				<?php
+			}
+			?>
+			<!-- 					<a href="../../../login/index4e7d.html?source=/index.php"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a> -->
+		</div>
+		<a id="sideContact" href="../../../contact/index.html"> <img src="../../../common/images/phone-24px.svg" alt="contact"> </a>
+	</div>
+	<div class="nav-list-right">
+		<a href="../notice/index.html" >NOTICE</a>
+		<a href="../members/index.html" >MEMBERS</a>
+		<a href="../research/index.html" >RESEARCH</a>
+		<a href="../publications/index.html" >PUBLICATIONS</a>
+		<a href="../courses/index.html" class="selected" >COURSES</a>
+		<a href="../gallery/index.html" >GALLERY</a>
+	</div>
+</div>
+
+<div class="main-container">
+	<div class="contents">
+		<h1>Web Application Development</h1>
+		<div id="tab">
+			<div class="deactive first-tab"> <a href="index.html">Home</a> </div>
+			<div class="deactive"> <a href="slides.html">Slides</a> </div>
+			<div class="last-tab">Team</div>
+		</div>
+		<div id="hl"></div>
+		<div id="team">
+			<div class="teamMenu">
+				<a class="pull-left" href="team.html"><img src="../../images/reply-24px.svg" alt="back to team page"></a>
+				<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
+				<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
+				<img class="this-page pull-right" src="../../images/account_circle-24px.svg" alt="myPage">
+			</div>
+			<hr class="div" />
+			<div class="mypage" id="main">
+				<?php
+				include "../../../common/db.php";
+
+				// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
+				$num = $_SESSION["ID"];
+
+				$studentQ = $db->query($str." where l.studentNum= '$num'");
+				$studentsRes = $studentQ -> fetch();
+				$team = $studentsRes["teamname"];
+				$class = $studentsRes["class"];
+				$name = $studentsRes["name"]; ?>
+
+				<div class="myinf">
+					<h2><?= $name ?></h2>
+					<p><span>학번 : </span> <?= $num ?></p>
+					<p><span>반 : </span> <?= $class ?></p>
+					<p><span>조 : <span> <?= $team ?></p>
 					</div>
-					<hr class="div" />
-					<div class="mypage">
+					<form class="langOptions" action="mypage.php" method="post">
+						<p class="langtitle">language</p>
+						<?php
+						for($i=0; $i<count($langList); $i++) {
+						if ($studentsRes[$i+1] == 1) { ?>
+						<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>" checked><?= $langList[$i] ?></div>
+						<?php
+					} else { ?>
+					<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>"><?= $langList[$i] ?></div>
 					<?php
-						include "../../../common/db.php";
-
-						// 로그인된 계정(학생)의 반,학번,이름 (세션으로 로그인시 띄워주기)
-						$num = $_SESSION["ID"];
-
-						$studentQ = $db->query($str." where l.studentNum= '$num'");
-						$studentsRes = $studentQ -> fetch();
-						$team = $studentsRes["teamname"];
-						$class = $studentsRes["class"];
-						$name = $studentsRes["name"]; ?>
-
-						<div class="myinf">
-							<h2><?= $name ?></h2>
-							<p><span>학번 : </span> <?= $num ?></p>
-							<p><span>반 : </span> <?= $class ?></p>
-							<p><span>조 : </span> <?= $team ?></p>
-						</div>
-						<form class="langOptions" action="mypage.php" method="post">
-							<p><span>Language</span></p>
-							<div class="langlist">
-								<?php
-									for($i=0; $i<count($langList); $i++) {
-										if ($studentsRes[$i+1] == 1) { ?>
-											<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>" checked><?= $langList[$i] ?></div>
-											<?php
-										} else { ?>
-											<div class="inputcon"><input type="checkbox" name="lang[]" value="<?= $langList[$i] ?>"><?= $langList[$i] ?></div>
-								<?php
 										}
 									} ?>
 								<br />
