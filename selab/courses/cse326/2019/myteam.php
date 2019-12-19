@@ -1,5 +1,5 @@
 <?php
-	session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +13,7 @@
 	<link rel="shortcut icon" href="../../../common/images/SelabFavicon.png" type="image/png">
 	<link rel="stylesheet" href="../../styles/course-home.css" type="text/css" />
 	<link rel="stylesheet" href="../../styles/card.css" type="text/css" />
-
+	<link rel="stylesheet" id = "backcss" href="../../../common/styles/theme1.css" type="text/css" />
 	<script type="text/javascript" src="../../../common/scripts/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="../../../common/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="../../../common/scripts/buffered-keyup.js"></script>
@@ -25,7 +25,7 @@
 
 <body>
 	<?php
-		session_start();
+	session_start();
 	?>
 	<header role="banner" class="header">
 		<div class="container">
@@ -38,12 +38,12 @@
 
 				<div role="login" class="pull-right">
 					<?php
-						if(isset($_SESSION["ID"])){ ?>
-							<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
-						<?php }else{ ?>
-							<a href="../../../login/index4e7d.html"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
+					if(isset($_SESSION["ID"])){ ?>
+						<a href="../../../login/logout.php"> <img src="../../../common/images/logout.svg" alt="logout" onclick="logout()"> </a>
+					<?php }else{ ?>
+						<a href="../../../login/index4e7d.html"> <img src="../../../common/images/vpn_key-24px.svg" alt="login"> </a>
 						<?php
-						}
+					}
 					?>
 				</div>
 
@@ -159,68 +159,68 @@
 						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
 					</div>
 					<hr class="div" />
-					<div class="myteam">
+					<div class="myteam" id="main">
 						<?php
 
-							try {
-								$db = new PDO("mysql:dbname=team; host=54.180.112.225; port=3306", "root", "1111");
-                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                $db->query("set session character_set_connection=utf8;");
-                                $db->query("set session character_set_results=utf8;");
-                                $db->query("set session character_set_client=utf8;");
+						try {
+							$db = new PDO("mysql:dbname=team; host=54.180.112.225; port=3306", "root", "1111");
+							$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+							$db->query("set session character_set_connection=utf8;");
+							$db->query("set session character_set_results=utf8;");
+							$db->query("set session character_set_client=utf8;");
 								//php 변수 쓸려면
-								$id = $_SESSION['ID'];
-								$id = $db->quote($id);
+							$id = $_SESSION['ID'];
+							$id = $db->quote($id);
 
-								$check = "SELECT * FROM member WHERE studentNum = $id";
-								$rows = $db->query($check);
-								$results = $rows->fetchAll();
+							$check = "SELECT * FROM member WHERE studentNum = $id";
+							$rows = $db->query($check);
+							$results = $rows->fetchAll();
 
-								foreach($results as $result) {
-									if ($result["teamname"] === NULL) {
-						?>
-										<form action="php/maketeam.php" method="POST">
-											<h2 class="center">팀만들기</h2>
-											<div class="teamname"><span>팀명: </span><input type="text" name="teamname"></div>
-											<div class="center"><input type="submit" value="만들기"></div>
+							foreach($results as $result) {
+								if ($result["teamname"] === NULL) {
+									?>
+									<form action="php/maketeam.php" method="POST">
+										<h2 class="center">팀만들기</h2>
+										<div class="teamname"><span>팀명: </span><input type="text" name="teamname"></div>
+										<div class="center"><input type="submit" value="만들기"></div>
+									</form>
+									<?php
+								} else {
+									$teamname = $result["teamname"];
+									$q_teamname = $db->quote($teamname);
+									$check = "SELECT * FROM team WHERE name=$q_teamname";
+									$rows = $db->query($check);
+									$teams = $rows->fetchAll();
+									foreach($teams as $team) {
+										?>
+										<form action="php/updateteam.php" method="POST">
+											<input type="text" name="exname" value="<?=$teamname?>" style="display:none;">
+											<div class="mteamname"><span>팀명: </span><input type="text" name="teamname" value="<?=$teamname?>"></div>
+											<div class="git"><span>Github: </span><input type="text" name="github" value="<?=$team['github']?>"></div>
+											<ul>
+												<?php
+												$check = "SELECT * FROM member WHERE teamname=$q_teamname";
+												$rows = $db->query($check);
+												$members = $rows->fetchAll();
+												foreach($members as $member) {
+													?>
+													<li><?=$member['studentNum']?> <?=$member['name']?></li>
+													<?php
+												}
+												?>
+											</ul>
+											<div class="center"><input type="submit" value="수정하기"></div>
 										</form>
-						<?php
-									} else {
-                                        $teamname = $result["teamname"];
-                                        $q_teamname = $db->quote($teamname);
-                                        $check = "SELECT * FROM team WHERE name=$q_teamname";
-                                        $rows = $db->query($check);
-                                        $teams = $rows->fetchAll();
-                                        foreach($teams as $team) {
-						?>
-                                            <form action="php/updateteam.php" method="POST">
-                                                <input type="text" name="exname" value="<?=$teamname?>" style="display:none;">
-                                                <div class="mteamname"><span>팀명: </span><input type="text" name="teamname" value="<?=$teamname?>"></div>
-                                                <div class="git"><span>Github: </span><input type="text" name="github" value="<?=$team['github']?>"></div>
-                                                <ul>
-                        <?php
-                                                $check = "SELECT * FROM member WHERE teamname=$q_teamname";
-                                                $rows = $db->query($check);
-                                                $members = $rows->fetchAll();
-                                                foreach($members as $member) {
-                        ?>
-                                                    <li><?=$member['studentNum']?> <?=$member['name']?></li>
-                        <?php
-                                                }
-                        ?>
-                                                </ul>
-                                                <div class="center"><input type="submit" value="수정하기"></div>
-                                            </form>
-                        <?php
-                                        }
+										<?php
 									}
 								}
-							} catch (PDOException $ex) {
-						?>
-								<p>Sorry, a database error occurred. Please try again later.</p>
-								<p>(Error details: <?= $ex->getMessage() ?>)</p>
-						<?php
 							}
+						} catch (PDOException $ex) {
+							?>
+							<p>Sorry, a database error occurred. Please try again later.</p>
+							<p>(Error details: <?= $ex->getMessage() ?>)</p>
+							<?php
+						}
 						?>
 					</div>
 				</div>
@@ -228,10 +228,10 @@
 		</div>
 	</main>
 
-<footer role="contentinfo">
-	<div class="container">
-		<p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
-	</div>
-</footer>
+	<footer role="contentinfo">
+		<div class="container">
+			<p>COPYRIGHT 2019 SELAB, ALL RIGHTS RESERVED. COMPUTER SCIENECE AND ENGINEERING, HANYANG UNIV. LOCATION: ENGINEERING BUILDING #3, ROOM 421. T +82-31-400-4754</p>
+		</div>
+	</footer>
 </body>
 </html>
