@@ -150,7 +150,7 @@
 				<div id="hl"></div>
 				<div id="team">
 					<div class="teamMenu">
-                        <a href="team.html">팀신청페이지로 돌아가기</a>
+                        <a href="team.html"><img src="../../images/reply-24px.svg" alt="back to team page"></a>
 						<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
 						<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
 						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
@@ -181,7 +181,7 @@
 									$rows = $db->query($check);
 									$name = $rows->fetchAll();
 						?>
-									<li> 
+									<li>
 										<span>보낸사람 : <?=$name[0]["name"]?></span> <span>보낸날짜 : <?=$result["sendDay"]?></span>
 										<span>
 											<form action="php/receive.php" method="POST">

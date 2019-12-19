@@ -153,7 +153,7 @@
 				<div id="hl"></div>
 				<div id="team">
 					<div class="teamMenu">
-						<a href="team.html">팀신청페이지로 돌아가기</a>
+						<a href="team.html"> <img src="../../images/reply-24px.svg" alt="back to team page"> </a>
 						<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
 						<img class="this-page pull-right" src="../../images/supervised_user_circle-24px.svg" alt="myTeam">
 						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
