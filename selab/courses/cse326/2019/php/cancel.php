@@ -20,14 +20,14 @@
         var_dump($q_receiver);
         var_dump($q_day);
         echo "</pre>";
-        
+
         $db->exec("DELETE FROM message
-                    WHERE 
+                    WHERE
                     sender = $q_mynum and
                     receiver = $q_receiver and
                     sendDay = $q_day");
 
-        header("Location: ../team.html");
+        header("Location: ../message.php");
     } catch (PDOException $ex) {
     ?>
         <p>Sorry, a database error occurred. Please try again later.</p>

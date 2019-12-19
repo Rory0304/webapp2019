@@ -15,7 +15,6 @@
 	<script type="text/javascript" src="../../../common/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="../../../common/scripts/buffered-keyup.js"></script>
 	<script type="text/javascript" src="../../../common/scripts/common.js"></script>
-	<!-- <script type="text/javascript" src="../../scripts/course-page.js"></script> -->
 	<script type="text/javascript" src="../../scripts/team.js"></script>
 
 </head>
@@ -203,17 +202,17 @@
 					<?php //소속있는 학생은 팀별로
 					$teamQ = $db->query("select * from team");
 					foreach($teamQ as $team) { ?>
-					<div class="team">
 						<?php
 						$teamN = $team["name"];
 						$studentQ = $db->query($str." where m.class='$class' and m.teamname= '$teamN'");
 						if ($studentQ->rowCount() >0) { ?>
+							<div class="team">
 							<h2><?= $teamN ?>조</h2>
 							<hr/>
 						<?php
-								card();
-						} ?>
-					</div> <?php
+								card(); ?>
+							</div>
+						<?php }
 					}
 					}
 					else if ($by == "byLang") {
