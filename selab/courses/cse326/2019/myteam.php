@@ -204,7 +204,7 @@ session_start();
 												$members = $rows->fetchAll();
 												foreach($members as $member) {
 													?>
-													<li><?=$member['studentNum']?> <?=$member['name']?></li>
+													<li><?=$member['name']?> (<?=$member['studentNum']?>)</li>
 													<?php
 												}
 												?>

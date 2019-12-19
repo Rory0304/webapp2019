@@ -6,6 +6,7 @@
 	<title>Software Engineering Lab - Courses: Web Application Development</title>
 	<link rel="stylesheet" href="../../../common/styles/reset-1.6.1.css" type="text/css" />
 	<link rel="stylesheet" href="../../../common/styles/jquery-ui.css" type="text/css" />
+	<link rel="stylesheet" href="../../../common/styles/font-awesome-4.0.3/css/font-awesome.min.css" type="text/css" />
 	<link rel="stylesheet" href="../../../common/styles/common.css" type="text/css" />
 	<link rel="shortcut icon" href="../../../common/images/SelabFavicon.png" type="image/png">
 	<link rel="stylesheet" href="../../styles/course-home.css" type="text/css" />
@@ -150,11 +151,13 @@
 				<div id="hl"></div>
 				<div id="team">
 					<div class="teamMenu">
-						<a href="team.html"><img src="../../images/reply-24px.svg" alt="back to team page"></a>
-						<a class="pull-right" href="message.php"> <img src="../../images/mail-24px.svg" alt="message"> </a>
+            <a href="team.html"><img src="../../images/reply-24px.svg" alt="back to team page"></a>
+						<img class="this-page pull-right" src="../../images/mail-24px.svg" alt="message">
 						<a class="pull-right" href="myteam.php"> <img src="../../images/supervised_user_circle-24px.svg" alt="myTeam"> </a>
 						<a class="pull-right" href="mypage.html"> <img src="../../images/account_circle-24px.svg" alt="myPage"> </a>
 					</div>
+					<hr class="div" />
+					<div class="message">
 					<?php
 
 					try {
@@ -166,74 +169,93 @@
 								//php 변수 쓸려면
 						$id = $_SESSION['ID'];
 						$id = $db->quote($id);
-
-						$check = "SELECT * FROM message WHERE receiver = $id";
-						$rows = $db->query($check);
-						$results = $rows->fetchAll();
-						?>
-						<ul>
-							<p>받은 메세지</p>
-							<?php
-							foreach($results as $result) {
-								$num = $result["sender"];
-								$num = $db->quote($num);
-								$check = "SELECT * FROM member WHERE studentNum = $num";
+								$check = "SELECT * FROM message WHERE receiver = $id";
 								$rows = $db->query($check);
-								$name = $rows->fetchAll();
-								?>
-								<li>
-									<span>보낸사람 : <?=$name[0]["name"]?></span> <span>보낸날짜 : <?=$result["sendDay"]?></span>
-									<span>
-										<form action="php/receive.php" method="POST">
-											<input type="text" name="mynum" value="<?=$_SESSION["ID"]?>" style="display: none;">
-											<input type="text" name="sender" value="<?=$result["sender"]?>" style="display: none;">
-											<input type="text" name="day" value="<?=$result["sendDay"]?>" style="display: none;">
-											<input type="submit" value="받기">
-										</form>
-									</span>
-								</li>
-								<?php
-							}
-							?>
-						</ul>
+								$results = $rows->fetchAll();
+						?>
+								<p class="mestitle">받은 메세지</p>
+								<ul id="mes_get">
+									<li class="subject">
+										<ul>
+											<li class="person pull-left">보낸 사람</li>
+											<li class="time pull-left">보낸 시간</li>
+											<li class="but pull-left">수락</li>
+										</ul>
+									</li>
 						<?php
-						$check = "SELECT * FROM message WHERE sender = $id";
-						$rows = $db->query($check);
-						$results = $rows->fetchAll();
+								foreach($results as $result) {
+									$num = $result["sender"];
+									$num = $db->quote($num);
+									$check = "SELECT * FROM member WHERE studentNum = $num";
+									$rows = $db->query($check);
+									$name = $rows->fetchAll();
 						?>
-						<ul>
-							<p>보낸 메세지</p>
-							<?php
-							foreach($results as $result) {
-								$num = $result["receiver"];
-								$num = $db->quote($num);
-								$check = "SELECT * FROM member WHERE studentNum = $num";
+									<li class="mes">
+										<ul>
+											<li class="person pull-left"><?=$name[0]["name"]?></li>
+											<li class="time pull-left"><?=$result["sendDay"]?></li>
+											<li class="but pull-left">
+												<form action="php/receive.php" method="POST">
+                          <input type="text" name="mynum" value="<?=$_SESSION["ID"]?>" style="display: none;">
+                          <input type="text" name="sender" value="<?=$result["sender"]?>" style="display: none;">
+                          <input type="text" name="day" value="<?=$result["sendDay"]?>" style="display: none;">
+                          <input type="submit" value="받기">
+                        </form>
+											</li>
+										</ul>
+									</li>
+						<?php
+								}
+						?>
+								</ul>
+								<span></span>
+						<?php
+								$check = "SELECT * FROM message WHERE sender = $id";
 								$rows = $db->query($check);
-								$name = $rows->fetchAll();
-								?>
-								<li>
-									<span>받는사람 : <?=$name[0]["name"]?> 보낸날짜 : <?=$result["sendDay"]?> </span>
-									<span>
-										<form action="php/cancel.php" method="POST">
-											<input type="text" name="mynum" value="<?=$_SESSION["ID"]?>" style="display: none;">
-											<input type="text" name="receiver" value="<?=$result["receiver"]?>" style="display: none;">
-											<input type="text" name="day" value="<?=$result["sendDay"]?>" style="display: none;">
-											<input type="submit" value="취소">
-										</form>
-									</span>
-								</li>
-								<?php
-							}
-							?>
-						</ul>
+								$results = $rows->fetchAll();
+						?>
+								<p class="mestitle">보낸 메세지</p>
+								<ul id="mes_send">
+									<li class="subject">
+										<ul>
+											<li class="person pull-left">받는 사람</li>
+											<li class="time pull-left">보낸 시간</li>
+											<li class="but pull-left">취소</li>
+										</ul>
+									</li>
+						<?php
+								foreach($results as $result) {
+									$num = $result["receiver"];
+									$num = $db->quote($num);
+									$check = "SELECT * FROM member WHERE studentNum = $num";
+									$rows = $db->query($check);
+									$name = $rows->fetchAll();
+						?>
+									<li class="mes">
+										<ul>
+											<li class="person pull-left"><?=$name[0]["name"]?></li>
+											<li class="time pull-left"><?=$result["sendDay"]?></li>
+											<li class="but pull-left">
+												<form action="php/cancel.php" method="POST">
+                          <input type="text" name="mynum" value="<?=$_SESSION["ID"]?>" style="display: none;">
+                          <input type="text" name="receiver" value="<?=$result["receiver"]?>" style="display: none;">
+                          <input type="text" name="day" value="<?=$result["sendDay"]?>" style="display: none;">
+                          <input type="submit" value="취소">
+                        </form>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<span></span>
 						<?php
 					} catch (PDOException $ex) {
 						?>
 						<p>Sorry, a database error occurred. Please try again later.</p>
 						<p>(Error details: <?= $ex->getMessage() ?>)</p>
 						<?php
-					}
-					?>
+							}
+						?>
+					</div>
 				</div>
 			</div>
 		</div>
