@@ -43,6 +43,7 @@ img {
   float: none;
   height: 340px;
   margin-bottom: 25px;
+  overflow: hidden;
 }
 
 .cards {
