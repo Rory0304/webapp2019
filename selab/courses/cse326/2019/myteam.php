@@ -215,6 +215,7 @@ session_start();
 											<a href="php/out.php"> <button class="secession">탈퇴</button> </a>
 										</div>
 										<?php
+
 									}
 								}
 							}
